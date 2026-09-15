@@ -6,8 +6,24 @@
     [collapsed]="true"
   >
     @if (texture) {
-      <div class="texture-preview">
-        <img [src]="texture.textureUri" />
+      <div class="texture-container">
+        <div class="texture-preview">
+          <img [src]="texture.textureUri" />
+        </div>
+        <div class="enums">
+          <editor-enum-inspector
+            [label]="'Filter Mode'"
+            [items]="_enums['minFilter']"
+            [selected]="texture.minFilter"
+            (change)="onTextureEnumChange('filter', $event)"
+          ></editor-enum-inspector>
+          <editor-enum-inspector
+            [label]="'Wrap Mode'"
+            [items]="_enums['wrapT']"
+            [selected]="texture.wrapS"
+            (change)="onTextureEnumChange('wrap', $event)"
+          ></editor-enum-inspector>
+        </div>
       </div>
     }
     @for (item of _properties; track $index) {

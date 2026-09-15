@@ -1,28 +1,34 @@
-:host{
-
-  .panel-header{
-    content:"    ";
+:host {
+  .panel-header {
+    content: "    ";
     min-width: 126px;
     min-height: 16px;
     width: 80%;
     margin-left: 30px;
     text-align: center;
     padding-top: 4px;
-    max-width: 40%; 
-
+    max-width: 40%;
   }
 
-  .texture-preview{
+  .texture-preview {
     position: relative;
     max-width: 64px;
-    max-height: 64px
-
+    max-height: 64px;
+    margin-left: 4px;
   }
-  .texture-preview img{
+  .texture-preview img {
     max-width: 64px;
     max-height: 64px;
     min-width: 64px;
-    max-width:64px;
+    max-width: 64px;
   }
- 
+
+  .texture-container {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  .texture-container > .enums {
+    flex-grow: 1;
+  }
 }

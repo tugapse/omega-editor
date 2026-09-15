@@ -1,23 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 import {
   Color,
   NumberRange,
   Texture,
   TextureFilterMode,
   TextureWrapMode,
-} from 'omega-game-engine';
-import { InpectorTogglePanel } from '../../components/inpector-toggle-panel/inpector-toggle-panel';
+} from "omega-game-engine";
+import { InpectorTogglePanel } from "../../components/inpector-toggle-panel/inpector-toggle-panel";
 import {
   ITargetProperty,
   ObjectInspector,
-} from '../object-inspector/object-inspector';
-import { DefaultInspector } from '../default-inspector/default-inspector';
+} from "../object-inspector/object-inspector";
+import { DefaultInspector } from "../default-inspector/default-inspector";
+import { EnumInspector } from "../enum-inspector/enum-inspector";
+import { DropdownItem } from "src/app/components/dropdown/dropdown";
 
 @Component({
-  selector: 'editor-texture-inspector',
-  imports: [InpectorTogglePanel, ObjectInspector, DefaultInspector],
-  templateUrl: './texture-inspector.html',
-  styleUrl: './texture-inspector.scss',
+  selector: "editor-texture-inspector",
+  imports: [
+    InpectorTogglePanel,
+    ObjectInspector,
+    DefaultInspector,
+    EnumInspector,
+  ],
+  templateUrl: "./texture-inspector.html",
+  styleUrl: "./texture-inspector.scss",
 })
 export class TextureInspector extends ObjectInspector {
   get texture() {
@@ -26,11 +33,20 @@ export class TextureInspector extends ObjectInspector {
 
   constructor() {
     super();
-    this._enums['minFilter'] = this.convertEnumToObject(TextureFilterMode);
-    this._enums['magFilter'] = this.convertEnumToObject(TextureFilterMode);
-    this._enums['wrapS'] = this.convertEnumToObject(TextureWrapMode);
-    this._enums['wrapT'] = this.convertEnumToObject(TextureWrapMode);
-    this.denyProperties.push('isLoading', 'isLoaded', 'image', 'textureUri');
+    this._enums["minFilter"] = this.convertEnumToObject(TextureFilterMode);
+    this._enums["magFilter"] = this.convertEnumToObject(TextureFilterMode);
+    this._enums["wrapS"] = this.convertEnumToObject(TextureWrapMode);
+    this._enums["wrapT"] = this.convertEnumToObject(TextureWrapMode);
+    this.denyProperties.push(
+      "isLoading",
+      "isLoaded",
+      "image",
+      "textureUri",
+      "minFilter",
+      "magFilter",
+      "wrapS",
+      "wrapT",
+    );
   }
 
   ngOnInit() {}
@@ -44,5 +60,21 @@ export class TextureInspector extends ObjectInspector {
     if (Object.keys(this._enums).includes(targetProperty.key)) {
       this.texture.rebuild();
     }
+  }
+
+  protected onTextureEnumChange(
+    key: "wrap" | "filter",
+    menuItem: DropdownItem,
+  ) {
+    debugger;
+    if (key === "filter") {
+      this.texture.setMagFilter(+menuItem.value);
+      this.texture.setMinFilter(+menuItem.value);
+    } else {
+      this.texture.setWrapS(+menuItem.value);
+      this.texture.setWrapT(+menuItem.value);
+    }
+    this.texture.setTextureParameters();
+    this.editorService.requestCanvasResize();
   }
 }
