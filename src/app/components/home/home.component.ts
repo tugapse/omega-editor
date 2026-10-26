@@ -1,25 +1,24 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { BackgroundVisualizationComponent } from '../background-visualization/background-visualization.component';
-import { UserBarComponent } from '../user-bar/user-bar.component';
-import { ProjectDetails } from '../project-details/project-details';
-import { SceneList } from '../scene-list/scene-list';
-import { ProjectService } from '../../api/services/project.service';
+import { AfterViewInit, Component, inject, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { BackgroundVisualizationComponent } from "../background-visualization/background-visualization.component";
+import { UserBarComponent } from "../user-bar/user-bar.component";
+import { ProjectDetails } from "../project-details/project-details";
+import { SceneList } from "../scene-list/scene-list";
+import { ProjectService } from "../../api/services/project.service";
 import {
   ProjectResponse,
   CreateProjectRequest,
   UpdateProjectRequest,
-} from '../../api/models/omega-api.models';
-import { AssetsExplorerComponent } from '@editor/components/asset-explorer/assets-explorer.component';
-import { EditorService } from '@editor/services/editor.service';
-import { ActivatedRoute } from '@angular/router';
-import { LoadingService } from 'src/app/services/loading.service';
-import { DashboardWelcome } from './components/dashboard-welcome/dashboard-welcome';
-import { Icon } from '../icon/icon';
+} from "../../api/models/omega-api.models";
+import { EditorService } from "@editor/services/editor.service";
+import { ActivatedRoute } from "@angular/router";
+import { LoadingService } from "src/app/services/loading.service";
+import { DashboardWelcome } from "./components/dashboard-welcome/dashboard-welcome";
+import { Icon } from "../icon/icon";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   standalone: true,
   imports: [
     CommonModule,
@@ -28,12 +27,11 @@ import { Icon } from '../icon/icon';
     UserBarComponent,
     ProjectDetails,
     SceneList,
-    AssetsExplorerComponent,
     DashboardWelcome,
     Icon,
   ],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements AfterViewInit, OnInit {
   private readonly projectService = inject(ProjectService);
@@ -44,7 +42,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   projects: ProjectResponse[] = [];
 
   isModalOpen = false;
-  newProjectName = '';
+  newProjectName = "";
 
   constructor(private editorService: EditorService) {}
 
@@ -62,11 +60,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
         this.projects = projects;
         this.selectedProject =
           this.projects.find(
-            (o) => o.id == this.activatedRoute.snapshot.paramMap.get('project'),
+            (o) => o.id == this.activatedRoute.snapshot.paramMap.get("project"),
           ) || null;
         this.loadingService.hide();
       },
-      error: (err) => console.error('Failed to load projects', err),
+      error: (err) => console.error("Failed to load projects", err),
     });
   }
 
@@ -81,7 +79,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   closeModal(): void {
     this.isModalOpen = false;
-    this.newProjectName = '';
+    this.newProjectName = "";
   }
 
   createProject(): void {
@@ -99,7 +97,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
         this.loadProjects(); // Refresh the list
       },
       error: (err) => {
-        console.error('Failed to create project', err);
+        console.error("Failed to create project", err);
         // Optionally, show an error message in the UI
       },
     });
@@ -107,7 +105,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   handleProjectUpdate(updatedProjectData: ProjectResponse): void {
     if (!updatedProjectData || !updatedProjectData.id) {
-      console.error('Invalid project data received for update.');
+      console.error("Invalid project data received for update.");
       return;
     }
 
@@ -136,10 +134,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
             this.selectedProject = { ...this.selectedProject, ...savedProject };
           }
 
-          console.log('Project updated successfully', savedProject);
+          console.log("Project updated successfully", savedProject);
         },
         error: (err) => {
-          console.error('Failed to update project', err);
+          console.error("Failed to update project", err);
           // Optionally, revert optimistic updates or show an error toast
         },
       });

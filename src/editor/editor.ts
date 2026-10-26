@@ -38,7 +38,6 @@ import {
   Colors,
   Engine,
 } from "omega-game-engine";
-import { LoadingOverlayComponent } from "src/app/components/loading/loading.component";
 import { LoadingService } from "src/app/services/loading.service";
 import { EngineLogger } from "src/engine/logger";
 import { OmegaLoggerPanelComponent } from "./components/problems-panel/problems-panel";
@@ -53,7 +52,6 @@ import { EditorSettings } from "./interfaces/editor-settings";
     SceneTree,
     AssetExplorerWindow,
     EngineStatsComponent,
-    AssetsExplorerComponent,
     WorkspaceComponent,
     EditorMainMenu,
     CodeWorkspaceComponent,

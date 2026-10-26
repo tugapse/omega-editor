@@ -1,3 +1,5 @@
+@use "themes/index.scss";
+
 :root {
   /* It's good practice to define global variables in :root */
   /* global */
@@ -67,5 +69,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover-background);
 }
-
-@import "themes/index.scss";
