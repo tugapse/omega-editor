@@ -1,0 +1,118 @@
+{
+  "component": {
+    "name": "CannonPhysicsBridge",
+    "source_path": "/engine/phisics/bridges/cannon-es.ts",
+    "doc_path": "/engine/phisics/bridges/cannon-es.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "CannonPhysicsBridge acts as a dedicated service layer, abstracting the low-level physics simulation from the `cannon-es` library into the engine's component-based system. It manages the lifecycle of physics bodies, translating engine components like RigidbodyComponent and ColliderComponent into CANNON.Body and CANNON.Shape objects. Its primary responsibilities include initialization, entity registration, simulation stepping, and synchronizing engine transforms with the physics world state."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#CannonPhysicsBridge",
+      "label": "Class",
+      "name": "CannonPhysicsBridge",
+      "signature": "class CannonPhysicsBridge extends PhysicsEngineBridge"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#initialize",
+      "label": "Method",
+      "name": "initialize",
+      "signature": "async initialize(settings: PhysicsWorldSettings): Promise<void>"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#registerEntity",
+      "label": "Method",
+      "name": "registerEntity",
+      "signature": "registerEntity(entityId: string, rb: RigidbodyComponent, col?: ColliderComponent, transform?: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#unregisterEntity",
+      "label": "Method",
+      "name": "unregisterEntity",
+      "signature": "unregisterEntity(entityId: string): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#syncToPhysics",
+      "label": "Method",
+      "name": "syncToPhysics",
+      "signature": "syncToPhysics(entityId: string, transform: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#step",
+      "label": "Method",
+      "name": "step",
+      "signature": "step(dt: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#setGravity",
+      "label": "Method",
+      "name": "setGravity",
+      "signature": "setGravity(x: number, y: number, z: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#destroy",
+      "label": "Method",
+      "name": "destroy",
+      "signature": "destroy(): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#world",
+      "label": "Variable",
+      "name": "world",
+      "signature": "private world!: CANNON.World;"
+    },
+    {
+      "id": "/engine/phisics/bridges/cannon-es.ts#bodyMap",
+      "label": "Variable",
+      "name": "bodyMap",
+      "signature": "private bodyMap = new Map<string, CANNON.Body>();"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/bridges/bridge.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/collider-component.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/collider-shape.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/physics-transform.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/physics-world-settings.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/rigidbody-component.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/bridges/cannon-es.ts",
+      "target": "/engine/phisics/components/rigidbody-type.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "cannon-es",
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

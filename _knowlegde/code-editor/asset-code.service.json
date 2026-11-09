@@ -1,0 +1,103 @@
+{
+  "component": {
+    "name": "AssetCodeService",
+    "source_path": "/code-editor/asset-code.service.ts",
+    "doc_path": "/code-editor/asset-code.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetCodeService acts as the dedicated service layer for managing all interactions between the frontend and the backend API concerning project code assets. It abstracts HTTP communication, providing typed methods to perform CRUD operations (get, create, update, delete) on files and directories within a project structure. It relies on HttpClient and configuration from API_URL to construct RESTful endpoints for code management operations like fetching workspace trees or triggering compilations."
+  },
+  "graph_nodes": [
+    {
+      "id": "/code-editor/asset-code.service.ts#AssetCodeService",
+      "label": "Class",
+      "name": "AssetCodeService",
+      "signature": ""
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#http",
+      "label": "Variable",
+      "name": "http",
+      "signature": ""
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#apiUrl",
+      "label": "Variable",
+      "name": "apiUrl",
+      "signature": ""
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#baseUrl",
+      "label": "Method",
+      "name": "baseUrl",
+      "signature": "get baseUrl(): string"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#getWorkspaceTree",
+      "label": "Method",
+      "name": "getWorkspaceTree",
+      "signature": "getWorkspaceTree(projectId: string): Observable<WorkspaceNode>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#getFileContent",
+      "label": "Method",
+      "name": "getFileContent",
+      "signature": "getFileContent(projectId: string, path: string): Observable<FileContentResult>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#createFile",
+      "label": "Method",
+      "name": "createFile",
+      "signature": "createFile(projectId: string, payload: CreateFileRequest): Observable<void>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#updateFileContent",
+      "label": "Method",
+      "name": "updateFileContent",
+      "signature": "updateFileContent(projectId: string, payload: UpdateFileContentRequest): Observable<void>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#deleteFile",
+      "label": "Method",
+      "name": "deleteFile",
+      "signature": "deleteFile(projectId: string, path: string): Observable<void>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#getEngineTypings",
+      "label": "Method",
+      "name": "getEngineTypings",
+      "signature": "getEngineTypings(projectId: string): Observable<string>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#getWorkspaceTypings",
+      "label": "Method",
+      "name": "getWorkspaceTypings",
+      "signature": "getWorkspaceTypings(projectId: string): Observable<string>"
+    },
+    {
+      "id": "/code-editor/asset-code.service.ts#compileWorkspace",
+      "label": "Method",
+      "name": "compileWorkspace",
+      "signature": "compileWorkspace(projectId: string): Observable<CompileResult>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/code-editor/asset-code.service.ts",
+      "target": "/code-editor/asset-code.models.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "API_URL"
+    ],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common/http",
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

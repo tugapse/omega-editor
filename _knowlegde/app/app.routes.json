@@ -1,0 +1,108 @@
+{
+  "component": {
+    "name": "routes",
+    "source_path": "/app/app.routes.ts",
+    "doc_path": "/app/app.routes.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This module defines the central routing configuration for the Angular application, mapping specific URL paths to their corresponding components. It acts as the application's navigation map, enforcing access control using guards like authGuard on protected routes. It handles default redirection to 'home' and provides a catch-all route for 404 error handling."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/app.routes.ts#routes",
+      "label": "Variable",
+      "name": "routes",
+      "signature": "Routes"
+    },
+    {
+      "id": "/app/app.routes.ts#authGuard",
+      "label": "Type",
+      "name": "authGuard",
+      "signature": "import { authGuard } from '../guards/auth.guard';"
+    },
+    {
+      "id": "/app/app.routes.ts#Editor",
+      "label": "Type",
+      "name": "Editor",
+      "signature": "import { Editor } from '../editor/editor';"
+    },
+    {
+      "id": "/app/app.routes.ts#LoginComponent",
+      "label": "Type",
+      "name": "LoginComponent",
+      "signature": "import { LoginComponent } from './components/login/login';"
+    },
+    {
+      "id": "/app/app.routes.ts#RegisterComponent",
+      "label": "Type",
+      "name": "RegisterComponent",
+      "signature": "import { RegisterComponent } from './components/register/register';"
+    },
+    {
+      "id": "/app/app.routes.ts#HomeComponent",
+      "label": "Type",
+      "name": "HomeComponent",
+      "signature": "import { HomeComponent } from './components/home/home.component';"
+    },
+    {
+      "id": "/app/app.routes.ts#NotFoundComponent",
+      "label": "Type",
+      "name": "NotFoundComponent",
+      "signature": "import { NotFoundComponent } from './components/not-found/not-found.component';"
+    },
+    {
+      "id": "/app/app.routes.ts#CodeWorkspaceComponent",
+      "label": "Type",
+      "name": "CodeWorkspaceComponent",
+      "signature": "import { CodeWorkspaceComponent } from 'src/code-editor/editor/code-editor.component';"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/app/app.routes.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/guards/auth.guard.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/editor/editor.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/components/login/login.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/components/register/register.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/components/home/home.component.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/components/not-found/not-found.component.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.routes.ts",
+      "target": "/code-editor/editor/code-editor.component.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

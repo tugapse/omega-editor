@@ -1,0 +1,66 @@
+{
+  "component": {
+    "name": "EnumInspector",
+    "source_path": "/editor/inspectors/enum-inspector/enum-inspector.ts",
+    "doc_path": "/editor/inspectors/enum-inspector/enum-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EnumInspector is a presentation layer UI component designed to allow users to select a value from a predefined set of enumerated options. It consumes an array of DropdownItem objects and a label via @Input. Its core logic involves binding an external numeric selection value to an internal state by matching it against item values. It emits a change event containing the selected DropdownItem upon user interaction."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#EnumInspector",
+      "label": "Class",
+      "name": "EnumInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#label",
+      "label": "Input",
+      "name": "label",
+      "signature": "label: string"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#items",
+      "label": "Input",
+      "name": "items",
+      "signature": "items: DropdownItem[]"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#selected",
+      "label": "Input/Setter",
+      "name": "selected",
+      "signature": "set selected(value:number)"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#_selected",
+      "label": "Variable",
+      "name": "_selected",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.ts#change",
+      "label": "Output",
+      "name": "change",
+      "signature": "change = new EventEmitter<DropdownItem>()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/enum-inspector/enum-inspector.ts",
+      "target": "/src/app/components/dropdown/dropdown.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/enum-inspector/enum-inspector.ts",
+      "target": "/src/app/components/dropdown/dropdown.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

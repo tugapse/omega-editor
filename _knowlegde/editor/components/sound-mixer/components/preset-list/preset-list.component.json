@@ -1,0 +1,61 @@
+{
+  "component": {
+    "name": "PresetListComponent",
+    "source_path": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts",
+    "doc_path": "/editor/components/sound-mixer/components/preset-list/preset-list.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "PresetListComponent is a presentation layer Angular component responsible for rendering a list of synthesizer presets. It consumes an array of SynthPreset data via an input and manages user interactions by emitting specific events like 'add', 'edit', and 'preview'. It is purely declarative, relying on Angular's change detection and event emission to communicate state changes to parent components."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#PresetListComponent",
+      "label": "Class",
+      "name": "PresetListComponent",
+      "signature": "export class PresetListComponent"
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#presets",
+      "label": "Input",
+      "name": "presets",
+      "signature": "input.required<SynthPreset[]>()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#add",
+      "label": "Output",
+      "name": "add",
+      "signature": "output<void>()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#edit",
+      "label": "Output",
+      "name": "edit",
+      "signature": "output<SynthPreset>()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#preview",
+      "label": "Output",
+      "name": "preview",
+      "signature": "output<SynthPreset>()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts#dragStart",
+      "label": "Output",
+      "name": "dragStart",
+      "signature": "output<{ event: DragEvent, preset: SynthPreset }>()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sound-mixer/components/preset-list/preset-list.component.ts",
+      "target": "/editor/models/synth.types.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

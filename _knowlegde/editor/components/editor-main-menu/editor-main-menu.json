@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "EditorMainMenu",
+    "source_path": "/editor/components/editor-main-menu/editor-main-menu.ts",
+    "doc_path": "/editor/components/editor-main-menu/editor-main-menu.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorMainMenu is the primary UI controller responsible for rendering the application's main menu structure. It manages the display logic for both predefined and externally provided menu items. Its core function is to dispatch actions, such as toggling UI visibility or opening new windows, when a user interacts with a menu item, coordinating state changes across various editor services."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#EditorMainMenu",
+      "label": "Class",
+      "name": "EditorMainMenu",
+      "signature": "class EditorMainMenu"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#items",
+      "label": "Input",
+      "name": "items",
+      "signature": "items: MenuItem[]"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#menuItemClicked",
+      "label": "Output",
+      "name": "menuItemClicked",
+      "signature": "menuItemClicked: EventEmitter<MenuItem>"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#displayItems",
+      "label": "Variable",
+      "name": "displayItems",
+      "signature": "displayItems: MenuItem[]"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private readonly windowService: WindowService, private editorSettings: EditorSettingsService, private editorStateService: EditorStateService)"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#createMenuItems",
+      "label": "Method",
+      "name": "createMenuItems",
+      "signature": "createMenuItems()"
+    },
+    {
+      "id": "/editor/components/editor-main-menu/editor-main-menu.ts#onMenuItemClick",
+      "label": "Method",
+      "name": "onMenuItemClick",
+      "signature": "onMenuItemClick(menuItem: MenuItem)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/components/editor-main-menu/menu-item.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/services/window.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/services/editor.settings.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/components/sound-mixer/sound-mixer.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/components/code-editor/editor/code-editor.component.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/editor-main-menu/editor-main-menu.ts",
+      "target": "/editor/services/editor-state.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "component": {
+    "name": "EditorInpector",
+    "source_path": "/editor/inspectors/inpector-window/inpector.ts",
+    "doc_path": "/editor/inspectors/inpector-window/inpector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorInpector is a presentation component responsible for displaying and managing the inspection panel for a selected SceneEntity within the editor UI. It consumes the targetEntity via an @Input() and utilizes EditorService to manage state transitions, such as notifying the system upon window closure. It integrates InspectorHeader and EntityInspector to fulfill its display responsibilities, acting as the primary view layer for entity data inspection."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#EditorInpector",
+      "label": "Class",
+      "name": "EditorInpector",
+      "signature": "class EditorInpector"
+    },
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#objectsToshow",
+      "label": "Variable",
+      "name": "objectsToshow",
+      "signature": "objectsToshow: { key: string; type: string; property: any }[] = []"
+    },
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#targetEntity",
+      "label": "Input",
+      "name": "targetEntity",
+      "signature": "@Input() targetEntity!: SceneEntity"
+    },
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#entity",
+      "label": "Variable",
+      "name": "entity",
+      "signature": "entity?: SceneEntity | null"
+    },
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private editorService: EditorService)"
+    },
+    {
+      "id": "/editor/inspectors/inpector-window/inpector.ts#onClose",
+      "label": "Method",
+      "name": "onClose",
+      "signature": "onClose()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/inpector-window/inpector.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/inspectors/inpector-window/inpector.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/inspectors/inpector-window/inpector.ts",
+      "target": "/editor/inspectors/inpector-window/inspector-header.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/inpector-window/inpector.ts",
+      "target": "/editor/inspectors/entity-inspector/entity-inspector.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

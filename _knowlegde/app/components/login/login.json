@@ -1,0 +1,98 @@
+{
+  "component": {
+    "name": "LoginComponent",
+    "source_path": "/app/components/login/login.ts",
+    "doc_path": "/app/components/login/login.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "LoginComponent is the presentation layer responsible for handling user authentication via a dedicated login form. It manages form state using ReactiveFormsModule and coordinates the login process by injecting AuthService for network communication. Upon successful authentication, it navigates the user to the /home route, while errors are captured and displayed via a signal."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/login/login.ts#LoginComponent",
+      "label": "Class",
+      "name": "LoginComponent",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#fb",
+      "label": "Variable",
+      "name": "fb",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#authService",
+      "label": "Variable",
+      "name": "authService",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#router",
+      "label": "Variable",
+      "name": "router",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#loadingService",
+      "label": "Variable",
+      "name": "loadingService",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#loginForm",
+      "label": "Variable",
+      "name": "loginForm",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#loginError",
+      "label": "Variable",
+      "name": "loginError",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/login/login.ts#login",
+      "label": "Method",
+      "name": "login",
+      "signature": "login(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/login/login.ts",
+      "target": "/app/components/login/login.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/login/login.ts",
+      "target": "/api/services/auth.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/login/login.ts",
+      "target": "/components/background-visualization/background-visualization.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/login/login.ts",
+      "target": "/services/loading.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/login/login.ts",
+      "target": "/app/components/login/login.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common",
+      "@angular/forms",
+      "@angular/router"
+    ],
+    "has_side_effects": true
+  }
+}

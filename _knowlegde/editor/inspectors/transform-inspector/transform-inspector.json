@@ -1,0 +1,110 @@
+{
+  "component": {
+    "name": "TransformInspector",
+    "source_path": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+    "doc_path": "/editor/inspectors/transform-inspector/transform-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "TransformInspector is a specialized Angular component designed to provide a UI panel for inspecting and manipulating the position, rotation, and scale of a SceneEntity within the editor. It manages three modes of transformation: direct input binding, interactive dragging via DragHandleDirective, and a global reset function. It mutates the bound entity's Transform object, ensuring changes are reflected in the scene graph via updateMatrices()."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#TransformInspector",
+      "label": "Class",
+      "name": "TransformInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#onSpanDrag",
+      "label": "Method",
+      "name": "onSpanDrag",
+      "signature": "onSpanDrag(side: number, index: number, $event: DragEventData): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#performAction",
+      "label": "Method",
+      "name": "performAction",
+      "signature": "performAction(index: number, x: number, y: number, z: number): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#transform",
+      "label": "Variable",
+      "name": "transform",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#entity",
+      "label": "Input",
+      "name": "entity",
+      "signature": "set entity(value: SceneEntity): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#collapsed",
+      "label": "Input",
+      "name": "collapsed",
+      "signature": "Input() collapsed = false"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#onPositionChanged",
+      "label": "Method",
+      "name": "onPositionChanged",
+      "signature": "onPositionChanged(index: number, event: Event): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#onRotationChanged",
+      "label": "Method",
+      "name": "onRotationChanged",
+      "signature": "onRotationChanged(index: number, event: Event): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#onScaleChanged",
+      "label": "Method",
+      "name": "onScaleChanged",
+      "signature": "onScaleChanged(index: number, event: Event): void"
+    },
+    {
+      "id": "/editor/inspectors/transform-inspector/transform-inspector.ts#onReset",
+      "label": "Method",
+      "name": "onReset",
+      "signature": "onReset(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/editor/inspectors/transform-inspector/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/editor/directives/mouse-drag.directive.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/src/app/services/confirmation.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/omega-game-engine/scene-entity.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/omega-game-engine/transform.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "target": "/src/engine/logger.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

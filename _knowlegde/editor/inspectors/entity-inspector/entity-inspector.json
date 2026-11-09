@@ -1,0 +1,200 @@
+{
+  "component": {
+    "name": "EntityInspector",
+    "source_path": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+    "doc_path": "/editor/inspectors/entity-inspector/entity-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EntityInspector is a core Angular component inheriting from ObjectInspector, designed to provide a comprehensive, interactive property inspection panel for a SceneEntity. It dynamically discovers and displays all relevant entity properties, integrating specialized inspectors like TransformInspector and BehaviourInspector. Its primary role is to facilitate runtime modification of entity state, triggering canvas resizing upon data changes and managing behaviour instantiation via ObjectInstanciator."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#EntityInspector",
+      "label": "Class",
+      "name": "EntityInspector",
+      "signature": "class EntityInspector extends ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onDefaultChange",
+      "label": "Method",
+      "name": "onDefaultChange",
+      "signature": "onDefaultChange(): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#excludeProperties",
+      "label": "Variable",
+      "name": "excludeProperties",
+      "signature": "excludeProperties: string[]"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#objectsToshow",
+      "label": "Variable",
+      "name": "objectsToshow",
+      "signature": "objectsToshow: ITargetProperty[]"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#_isScene",
+      "label": "Variable",
+      "name": "_isScene",
+      "signature": "_isScene: boolean"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#prepareProperties",
+      "label": "Function",
+      "name": "prepareProperties",
+      "signature": "prepareProperties(entity: SceneEntity): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#targetEntity",
+      "label": "Input",
+      "name": "targetEntity",
+      "signature": "@Input() set targetEntity(entity: SceneEntity)"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#entity",
+      "label": "Variable",
+      "name": "entity",
+      "signature": "entity?: SceneEntity | null"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#isAddBehaviourMenuOpen",
+      "label": "Variable",
+      "name": "isAddBehaviourMenuOpen",
+      "signature": "isAddBehaviourMenuOpen: boolean"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#availableBehaviours",
+      "label": "Variable",
+      "name": "availableBehaviours",
+      "signature": "availableBehaviours: ClassMetadata[]"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#menuX",
+      "label": "Variable",
+      "name": "menuX",
+      "signature": "menuX: number"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#menuY",
+      "label": "Variable",
+      "name": "menuY",
+      "signature": "menuY: number"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onNameChanged",
+      "label": "Method",
+      "name": "onNameChanged",
+      "signature": "onNameChanged(value: any): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onTagChanged",
+      "label": "Method",
+      "name": "onTagChanged",
+      "signature": "onTagChanged(value: any): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onValueChanged",
+      "label": "Method",
+      "name": "onValueChanged",
+      "signature": "onValueChanged(entityProperty: any, value: string | number | boolean): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onColorChanged",
+      "label": "Method",
+      "name": "onColorChanged",
+      "signature": "onColorChanged(entityProperty: ITargetObject, value: Color): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#mapProperty",
+      "label": "Function",
+      "name": "mapProperty",
+      "signature": "mapProperty(entity: SceneEntity, key: string): ITargetProperty"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#isPropertyValid",
+      "label": "Method",
+      "name": "isPropertyValid",
+      "signature": "isPropertyValid(key: string): boolean"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onAddBehaviourRequested",
+      "label": "Method",
+      "name": "onAddBehaviourRequested",
+      "signature": "onAddBehaviourRequested(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onBehaviourSelected",
+      "label": "Method",
+      "name": "onBehaviourSelected",
+      "signature": "onBehaviourSelected(behaviour: ClassMetadata): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onEnumChange",
+      "label": "Method",
+      "name": "onEnumChange",
+      "signature": "onEnumChange(key: string, menuItem: DropdownItem): void"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.ts#onDefaultChanged",
+      "label": "Method",
+      "name": "onDefaultChanged",
+      "signature": "onDefaultChanged(item: ITargetProperty, value: string | number | boolean | NumberRange | Color): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/inspectors/transform-inspector/transform-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

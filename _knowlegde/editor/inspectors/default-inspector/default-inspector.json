@@ -1,0 +1,109 @@
+{
+  "component": {
+    "name": "DefaultInspector",
+    "source_path": "/editor/inspectors/default-inspector/default-inspector.ts",
+    "doc_path": "/editor/inspectors/default-inspector/default-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "DefaultInspector serves as the central presentation layer component responsible for displaying and managing the properties of a selected target object within the editor. It dynamically renders UI based on the property's data type, delegating rendering to specialized inspectors like TextInputInspector or ColorInspector. It manages state mutation by updating the bound ITargetProperty and emits a 'change' event upon successful modification."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#DefaultInspector",
+      "label": "Class",
+      "name": "DefaultInspector",
+      "signature": "class DefaultInspector"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#item",
+      "label": "Variable",
+      "name": "item",
+      "signature": "@Input() item!: ITargetProperty"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#change",
+      "label": "Variable",
+      "name": "change",
+      "signature": "@Output() change = new EventEmitter<string | number | boolean | NumberRange | Color>()"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#_onPropertyChanged",
+      "label": "Method",
+      "name": "_onPropertyChanged",
+      "signature": "private _onPropertyChanged(propertyKey: string, value: any): void"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#onValueChanged",
+      "label": "Method",
+      "name": "onValueChanged",
+      "signature": "onValueChanged(property: ITargetObject, value: string | number | boolean | NumberRange): void"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#onVectorChanged",
+      "label": "Method",
+      "name": "onVectorChanged",
+      "signature": "onVectorChanged(property: ITargetObject, value: Vector4 | Vector3 | Vector2): void"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#onColorChanged",
+      "label": "Method",
+      "name": "onColorChanged",
+      "signature": "onColorChanged(property: ITargetObject, value: Color): void"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#onEnumChange",
+      "label": "Method",
+      "name": "onEnumChange",
+      "signature": "protected onEnumChange(key: string, menuItem: DropdownItem): void"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.ts#onRangeChange",
+      "label": "Method",
+      "name": "onRangeChange",
+      "signature": "protected onRangeChange(item: ITargetProperty, $event: NumberRange): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/color-inspector/color-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/enum-inspector/enum-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

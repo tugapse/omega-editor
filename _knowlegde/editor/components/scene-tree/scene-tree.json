@@ -1,0 +1,167 @@
+{
+  "component": {
+    "name": "SceneTree",
+    "source_path": "/editor/components/scene-tree/scene-tree.ts",
+    "doc_path": "/editor/components/scene-tree/scene-tree.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The SceneTree component manages the hierarchical visualization of entities within the game scene, acting as a crucial bridge between the core engine data model and the editor UI. It is responsible for rendering the scene structure, handling user interactions like selection, toggling visibility, and managing entity instantiation via context menus. It synchronizes its state by subscribing to updates from EditorService and SceneTreeService."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#SceneTree",
+      "label": "Class",
+      "name": "SceneTree",
+      "signature": "class SceneTree"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#targetScene",
+      "label": "Input",
+      "name": "targetScene",
+      "signature": "set targetScene(scene: Scene)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(public sceneTreeService: SceneTreeService, private editorService: EditorService)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#toggleObj",
+      "label": "Method",
+      "name": "toggleObj",
+      "signature": "toggleObj(obj: SceneEntity, event: Event)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#entitySelected",
+      "label": "Method",
+      "name": "entitySelected",
+      "signature": "entitySelected(entity: SceneEntity, event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#refreshTree",
+      "label": "Method",
+      "name": "refreshTree",
+      "signature": "refreshTree()"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#prepareObjects",
+      "label": "Method",
+      "name": "prepareObjects",
+      "signature": "prepareObjects()"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#createNodeListFromObjectArray",
+      "label": "Method",
+      "name": "createNodeListFromObjectArray",
+      "signature": "createNodeListFromObjectArray(objs: SceneEntity[], childObjectsMap: { [key: string]: SceneEntity[] })"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#handleNodeDropped",
+      "label": "Method",
+      "name": "handleNodeDropped",
+      "signature": "handleNodeDropped(event: { draggedNode: TreeNode<string>; targetNode: TreeNode<string>; dropPosition: 'above' | 'below' | 'inside' })"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#onNodeDeleted",
+      "label": "Method",
+      "name": "onNodeDeleted",
+      "signature": "onNodeDeleted(node: TreeNode<string>)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#deleteEntityAndChildren",
+      "label": "Method",
+      "name": "deleteEntityAndChildren",
+      "signature": "deleteEntityAndChildren(entity: SceneEntity)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#findNodeAndParent",
+      "label": "Method",
+      "name": "findNodeAndParent",
+      "signature": "findNodeAndParent(nodes: TreeNode<string>[], name: string, parent: TreeNode<string> | null = null): { node: TreeNode<string> | null; parent: TreeNode<string> | null }"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#onNodeSelected",
+      "label": "Method",
+      "name": "onNodeSelected",
+      "signature": "onNodeSelected(node: TreeNode<string>)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#onSceneTreeAddNewRequested",
+      "label": "Method",
+      "name": "onSceneTreeAddNewRequested",
+      "signature": "onSceneTreeAddNewRequested(event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#onEntitySelected",
+      "label": "Method",
+      "name": "onEntitySelected",
+      "signature": "onEntitySelected(entityMetadata: ClassMetadata)"
+    },
+    {
+      "id": "/editor/components/scene-tree/scene-tree.ts#inspectScene",
+      "label": "Method",
+      "name": "inspectScene",
+      "signature": "inspectScene(arg0: Scene)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/editor/components/scene-tree/scene-tree.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/scene-entity.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/entity-type.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/scene.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/object-instanciator.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/class-metadata.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/omega-game-engine/class-type.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/scene-tree.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "CommonModule",
+      "Icon",
+      "TreeNode",
+      "TreeNodeComponent",
+      "AddBehaviourMenuComponent"
+    ],
+    "has_side_effects": true
+  }
+}

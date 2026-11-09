@@ -1,0 +1,55 @@
+{
+  "component": {
+    "name": "asset-code.models",
+    "source_path": "/code-editor/asset-code.models.ts",
+    "doc_path": "/code-editor/asset-code.models.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the core data structures and request/response schemas for the code editor's asset management system. It establishes strongly typed interfaces for operations like file creation, content updates, and representing the workspace structure. These models serve as the foundational data contract, ensuring type safety across services interacting with the file system abstraction layer."
+  },
+  "graph_nodes": [
+    {
+      "id": "/code-editor/asset-code.models.ts#CreateFileRequest",
+      "label": "Interface",
+      "name": "CreateFileRequest",
+      "signature": "interface CreateFileRequest { path: string; template: string; }"
+    },
+    {
+      "id": "/code-editor/asset-code.models.ts#UpdateFileContentRequest",
+      "label": "Interface",
+      "name": "UpdateFileContentRequest",
+      "signature": "interface UpdateFileContentRequest { path:string; content: string; }"
+    },
+    {
+      "id": "/code-editor/asset-code.models.ts#WorkspaceNode",
+      "label": "Interface",
+      "name": "WorkspaceNode",
+      "signature": "interface WorkspaceNode { name: string; relativePath: string; isDirectory: boolean; children?: WorkspaceNode[]; }"
+    },
+    {
+      "id": "/code-editor/asset-code.models.ts#FileContentResult",
+      "label": "Interface",
+      "name": "FileContentResult",
+      "signature": "interface FileContentResult { path: string; content: string; language: string; }"
+    },
+    {
+      "id": "/code-editor/asset-code.models.ts#CompileError",
+      "label": "Interface",
+      "name": "CompileError",
+      "signature": "interface CompileError { text: string; }"
+    },
+    {
+      "id": "/code-editor/asset-code.models.ts#CompileResult",
+      "label": "Interface",
+      "name": "CompileResult",
+      "signature": "interface CompileResult { success: boolean; message: string; code: string | null; errors: CompileError[] | null; }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "EngineLogger",
+    "source_path": "/engine/logger.ts",
+    "doc_path": "/engine/logger.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EngineLogger implements a Singleton pattern to provide a centralized, thread-safe logging mechanism for the application. It manages log entries internally, enforcing a maximum buffer size by discarding the oldest entries when the limit is reached. It exposes static methods for logging at debug, info, and error levels, while also providing access to the stored log history."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/logger.ts#EngineLogger",
+      "label": "Class",
+      "name": "EngineLogger",
+      "signature": ""
+    },
+    {
+      "id": "/engine/logger.ts#getInstance",
+      "label": "Method",
+      "name": "getInstance",
+      "signature": "private static getInstance(): EngineLogger"
+    },
+    {
+      "id": "/engine/logger.ts#sanitizeStack",
+      "label": "Method",
+      "name": "sanitizeStack",
+      "signature": "private static sanitizeStack(stack?: string): string"
+    },
+    {
+      "id": "/engine/logger.ts#log",
+      "label": "Method",
+      "name": "log",
+      "signature": "public static log(message: string, ...optionalParams: unknown[]): void"
+    },
+    {
+      "id": "/engine/logger.ts#debug",
+      "label": "Method",
+      "name": "debug",
+      "signature": "public static debug(message: string, ...optionalParams: unknown[]): void"
+    },
+    {
+      "id": "/engine/logger.ts#error",
+      "label": "Method",
+      "name": "error",
+      "signature": "public static error(message: string, ...optionalParams: unknown[]): void"
+    },
+    {
+      "id": "/engine/logger.ts#store",
+      "label": "Method",
+      "name": "store",
+      "signature": "private store(level: string, message: string, params: unknown[]): void"
+    },
+    {
+      "id": "/engine/logger.ts#getLogs",
+      "label": "Method",
+      "name": "getLogs",
+      "signature": "public static getLogs(): Array<{ level: string; message: string; timestamp: number }>"
+    },
+    {
+      "id": "/engine/logger.ts#clear",
+      "label": "Method",
+      "name": "clear",
+      "signature": "public static clear(): void"
+    },
+    {
+      "id": "/engine/logger.ts#instance",
+      "label": "Variable",
+      "name": "instance",
+      "signature": ""
+    },
+    {
+      "id": "/engine/logger.ts#logs",
+      "label": "Variable",
+      "name": "logs",
+      "signature": ""
+    },
+    {
+      "id": "/engine/logger.ts#maxLogs",
+      "label": "Variable",
+      "name": "maxLogs",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/logger.ts",
+      "target": "/engine/logger.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

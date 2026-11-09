@@ -1,0 +1,77 @@
+{
+  "component": {
+    "name": "AssetTreeComponent",
+    "source_path": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts",
+    "doc_path": "/editor/components/asset-explorer/components/asset-tree/asset-tree.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetTreeComponent is a presentation layer UI component responsible for rendering a hierarchical, navigable tree structure of assets within the editor. It consumes asset data via the `treeData` input and manages state through `expandedNodes` and `selectedNodeId` inputs. It communicates user interactions, such as clicks and context menu triggers, by emitting `nodeClick` and `contextMenu` outputs, operating efficiently with OnPush change detection."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#AssetTreeComponent",
+      "label": "Class",
+      "name": "AssetTreeComponent",
+      "signature": "class AssetTreeComponent"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#treeData",
+      "label": "Input",
+      "name": "treeData",
+      "signature": "input.required<IAsset | null>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#expandedNodes",
+      "label": "Input",
+      "name": "expandedNodes",
+      "signature": "input.required<Set<string>>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#selectedNodeId",
+      "label": "Input",
+      "name": "selectedNodeId",
+      "signature": "input<string | null>(null)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#nodeClick",
+      "label": "Output",
+      "name": "nodeClick",
+      "signature": "output<IAsset>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#contextMenu",
+      "label": "Output",
+      "name": "contextMenu",
+      "signature": "output<{ e: MouseEvent; node: IAsset }>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts#isExpanded",
+      "label": "Method",
+      "name": "isExpanded",
+      "signature": "isExpanded(node: IAsset): boolean"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts",
+      "target": "/editor/components/asset-explorer/components/asset-tree/asset-tree.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts",
+      "target": "/editor/components/asset-explorer/components/asset-tree/asset-tree.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/components/asset-tree/asset-tree.ts",
+      "target": "/src/app/components/icon/icon.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

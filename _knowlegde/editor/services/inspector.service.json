@@ -1,0 +1,27 @@
+{
+  "component": {
+    "name": "InspectorService",
+    "source_path": "/editor/services/inspector.service.ts",
+    "doc_path": "/editor/services/inspector.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "InspectorService is a core service layer component responsible for encapsulating the logic required to inspect elements or components within the editor environment. It acts as a centralized bridge, allowing other parts of the application to query the state, properties, or structure of selected items. Its primary architectural role is to provide consistent, deep insight into the current editor context across the application."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/inspector.service.ts#InspectorService",
+      "label": "Class",
+      "name": "InspectorService",
+      "signature": "class InspectorService"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

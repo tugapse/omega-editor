@@ -1,0 +1,108 @@
+{
+  "component": {
+    "name": "VectorInspector",
+    "source_path": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+    "doc_path": "/editor/components/inspector-components/vector-inspector/vector-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "VectorInspector is a specialized Angular component designed to provide a UI for inspecting and modifying vector data (Vector4, Vector3, Vector2) within the editor. It manages interaction through two primary modes: direct text input modification and visual gizmo manipulation. It consumes vector data via @Input() and emits changes via the @Output() vectorChanged event, ensuring data integrity through sanitization before state updates."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#VectorInspector",
+      "label": "Class",
+      "name": "VectorInspector",
+      "signature": "class VectorInspector"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#isGizmoMode",
+      "label": "Variable",
+      "name": "isGizmoMode",
+      "signature": "isGizmoMode: boolean = false"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#showGizmo",
+      "label": "Variable",
+      "name": "showGizmo",
+      "signature": "showGizmo: boolean = false"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#collapsed",
+      "label": "Variable",
+      "name": "collapsed",
+      "signature": "collapsed: boolean = true"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#vectorKeys",
+      "label": "Input",
+      "name": "vectorKeys",
+      "signature": "@Input() vectorKeys = ['x', 'y', 'z', 'w']"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#vector",
+      "label": "Input",
+      "name": "vector",
+      "signature": "@Input() vector!: Vector4 | Vector3 | Vector2"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#label",
+      "label": "Input",
+      "name": "label",
+      "signature": "@Input() label: string = 'No title'"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#scale",
+      "label": "Input",
+      "name": "scale",
+      "signature": "@Input() scale: number = 0.1"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#vectorChanged",
+      "label": "Output",
+      "name": "vectorChanged",
+      "signature": "@Output() vectorChanged = new EventEmitter<Vector4 | Vector3 | Vector2>()"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#onGizmoChanged",
+      "label": "Method",
+      "name": "onGizmoChanged",
+      "signature": "onGizmoChanged($event: { index: number; value: any })"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts#onVectorChanged",
+      "label": "Method",
+      "name": "onVectorChanged",
+      "signature": "onVectorChanged(index: number, value: any)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+      "target": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+      "target": "/editor/components/inspector-components/vector-gizmo/vector-gizmo.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+      "target": "/src/app/components/icon/icon.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/vector-inspector/vector-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

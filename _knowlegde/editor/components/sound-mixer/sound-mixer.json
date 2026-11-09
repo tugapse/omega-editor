@@ -1,0 +1,270 @@
+{
+  "component": {
+    "name": "SoundMixerComponent",
+    "source_path": "/editor/components/sound-mixer/sound-mixer.ts",
+    "doc_path": "/editor/components/sound-mixer/sound-mixer.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "SoundMixerComponent acts as the central UI controller for the sound design and sequencing module. It manages the visualization, manipulation, and control of musical sequences across multiple tracks. It orchestrates interactions between playback services, preset lists, and the sound designer modal, handling complex state transitions for editing and playback synchronization."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#SoundMixerComponent",
+      "label": "Class",
+      "name": "SoundMixerComponent",
+      "signature": "class SoundMixerComponent implements AfterViewInit, OnDestroy"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#pixelsPerSecond",
+      "label": "Signal",
+      "name": "pixelsPerSecond",
+      "signature": "readonly pixelsPerSecond = signal(150);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#trackHeight",
+      "label": "Constant",
+      "name": "trackHeight",
+      "signature": "readonly trackHeight = 72;"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#rulerHeight",
+      "label": "Constant",
+      "name": "rulerHeight",
+      "signature": "readonly rulerHeight = 32;"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#trackHeaderWidth",
+      "label": "Constant",
+      "name": "trackHeaderWidth",
+      "signature": "readonly trackHeaderWidth = 96;"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#numTracks",
+      "label": "Constant",
+      "name": "numTracks",
+      "signature": "readonly numTracks = 5;"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#snapResolution",
+      "label": "Constant",
+      "name": "snapResolution",
+      "signature": "readonly snapResolution = 0.1;"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#tracks",
+      "label": "Signal",
+      "name": "tracks",
+      "signature": "tracks = Array.from({ length: this.numTracks }, (_, i) => ({ id: i }));"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#trackFrequencies",
+      "label": "Readonly Array",
+      "name": "trackFrequencies",
+      "signature": "readonly trackFrequencies = [880.00, 440.00, 220.00, 110.00, 55.00];"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#presetColors",
+      "label": "Readonly Array",
+      "name": "presetColors",
+      "signature": "readonly presetColors = ['bg-rose-500 border-rose-400', ...];"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#presets",
+      "label": "Signal",
+      "name": "presets",
+      "signature": "presets = signal<SynthPreset[]>([...]);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#isDesignerOpen",
+      "label": "Signal",
+      "name": "isDesignerOpen",
+      "signature": "isDesignerOpen = signal(false);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#editingPresetId",
+      "label": "Signal",
+      "name": "editingPresetId",
+      "signature": "editingPresetId = signal<string | null>(null);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#editingTimelineNoteId",
+      "label": "Signal",
+      "name": "editingTimelineNoteId",
+      "signature": "editingTimelineNoteId = signal<string | null>(null);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#designerDraft",
+      "label": "Signal",
+      "name": "designerDraft",
+      "signature": "designerDraft = signal<SynthPreset>(this.getDefaultPreset());"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#dragIndicator",
+      "label": "Signal",
+      "name": "dragIndicator",
+      "signature": "readonly dragIndicator = signal<{ left: number; top: number; width: number } | null>(null);"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#designerTitle",
+      "label": "Computed",
+      "name": "designerTitle",
+      "signature": "designerTitle = computed(() => {...});"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#timelineWidth",
+      "label": "Computed",
+      "name": "timelineWidth",
+      "signature": "timelineWidth = computed(() => {...});"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#rulerTicks",
+      "label": "Computed",
+      "name": "rulerTicks",
+      "signature": "rulerTicks = computed(() => {...});"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit() { this.playback.loadDemoSong('techno', this.presets()); }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy() { this.playback.stopSequence(); }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#gridPattern",
+      "label": "Method",
+      "name": "gridPattern",
+      "signature": "gridPattern() { return `linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px)`; }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#updateZoom",
+      "label": "Method",
+      "name": "updateZoom",
+      "signature": "updateZoom(event: Event) { this.pixelsPerSecond.set(Number((event.target as HTMLInputElement).value)); }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#getDefaultPreset",
+      "label": "Method",
+      "name": "getDefaultPreset",
+      "signature": "getDefaultPreset(): SynthPreset { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#openDesigner",
+      "label": "Method",
+      "name": "openDesigner",
+      "signature": "openDesigner(preset?: SynthPreset) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#openDesignerForTimelineNote",
+      "label": "Method",
+      "name": "openDesignerForTimelineNote",
+      "signature": "openDesignerForTimelineNote(note: SynthNote) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#closeDesigner",
+      "label": "Method",
+      "name": "closeDesigner",
+      "signature": "closeDesigner() { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#savePreset",
+      "label": "Method",
+      "name": "savePreset",
+      "signature": "savePreset(draft: SynthPreset) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onDragStartPreset",
+      "label": "Method",
+      "name": "onDragStartPreset",
+      "signature": "onDragStartPreset(event: DragEvent, preset: SynthPreset) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onDragStartExistingNote",
+      "label": "Method",
+      "name": "onDragStartExistingNote",
+      "signature": "onDragStartExistingNote(event: DragEvent, note: SynthNote) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onDragOver",
+      "label": "Method",
+      "name": "onDragOver",
+      "signature": "onDragOver(event: DragEvent) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onDragLeave",
+      "label": "Method",
+      "name": "onDragLeave",
+      "signature": "onDragLeave() { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onDrop",
+      "label": "Method",
+      "name": "onDrop",
+      "signature": "onDrop(event: DragEvent) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#onRulerClick",
+      "label": "Method",
+      "name": "onRulerClick",
+      "signature": "onRulerClick(event: MouseEvent) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#triggerPlay",
+      "label": "Method",
+      "name": "triggerPlay",
+      "signature": "triggerPlay() { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#handlePlayheadFrameUpdate",
+      "label": "Method",
+      "name": "handlePlayheadFrameUpdate",
+      "signature": "handlePlayheadFrameUpdate(time: number) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#removeNote",
+      "label": "Method",
+      "name": "removeNote",
+      "signature": "removeNote(id: string) { ... }"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.ts#clearTimeline",
+      "label": "Method",
+      "name": "clearTimeline",
+      "signature": "clearTimeline() { ... }"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.ts",
+      "target": "/editor/components/preset-list/preset-list.component",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.ts",
+      "target": "/editor/components/oscilloscope/oscilloscope.component",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.ts",
+      "target": "/editor/components/sound-designer/sound-designer.component",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.ts",
+      "target": "/editor/components/sound-mixer/sound-mixer.service",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "crypto"
+    ],
+    "has_side_effects": true
+  }
+}

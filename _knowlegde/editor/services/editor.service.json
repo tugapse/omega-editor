@@ -1,0 +1,220 @@
+{
+  "component": {
+    "name": "EditorService",
+    "source_path": "/editor/services/editor.service.ts",
+    "doc_path": "/editor/services/editor.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorService acts as the central orchestration controller for the editor environment, managing the lifecycle of the game engine, scene loading, and rendering context. It provides a unified API by exposing numerous EventEmitter and BehaviorSubject streams for decoupled component interaction. Key responsibilities include initializing the camera, handling runtime reloading of the game engine via dynamic module loading, and mediating state changes between the application and the low-level engine."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/editor.service.ts#EditorService",
+      "label": "Class",
+      "name": "EditorService",
+      "signature": "class EditorService"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onSceneLoaded",
+      "label": "EventEmitter",
+      "name": "onSceneLoaded",
+      "signature": "new EventEmitter<Scene>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onScenePlay",
+      "label": "EventEmitter",
+      "name": "onScenePlay",
+      "signature": "new EventEmitter<Scene>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onScenePause",
+      "label": "EventEmitter",
+      "name": "onScenePause",
+      "signature": "new EventEmitter<Scene>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onSceneStop",
+      "label": "EventEmitter",
+      "name": "onSceneStop",
+      "signature": "new EventEmitter<Scene>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onSceneUpdated",
+      "label": "EventEmitter",
+      "name": "onSceneUpdated",
+      "signature": "new EventEmitter<Scene>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onEditorSaveStateRequest",
+      "label": "EventEmitter",
+      "name": "onEditorSaveStateRequest",
+      "signature": "new EventEmitter<>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#editorRunningState",
+      "label": "EventEmitter",
+      "name": "editorRunningState",
+      "signature": "new EventEmitter<boolean>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onRenderingContextCreated",
+      "label": "EventEmitter",
+      "name": "onRenderingContextCreated",
+      "signature": "new EventEmitter<WebGL2RenderingContext>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onCanvasRequestResize",
+      "label": "BehaviorSubject",
+      "name": "onCanvasRequestResize",
+      "signature": "new BehaviorSubject<{width: number; height: number}>({ width: 0, height: 0 })"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onCanvasRequestReset",
+      "label": "EventEmitter",
+      "name": "onCanvasRequestReset",
+      "signature": "new EventEmitter<>()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onRenderFrame",
+      "label": "BehaviorSubject",
+      "name": "onRenderFrame",
+      "signature": "new BehaviorSubject<WebGL2RenderingContext | null>(null)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onUpdateFrame",
+      "label": "BehaviorSubject",
+      "name": "onUpdateFrame",
+      "signature": "new BehaviorSubject<number>(0)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#gizmoMode",
+      "label": "BehaviorSubject",
+      "name": "gizmoMode",
+      "signature": "new BehaviorSubject<GizmoMode>(GizmoMode.Translate)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#transformSpace",
+      "label": "BehaviorSubject",
+      "name": "transformSpace",
+      "signature": "new BehaviorSubject<TransformSpace>(TransformSpace.Local)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#setCanvas",
+      "label": "Method",
+      "name": "setCanvas",
+      "signature": "setCanvas(canvas: HTMLCanvasElement)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#getScene",
+      "label": "Getter",
+      "name": "scene",
+      "signature": "get scene(): Scene"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#getCamera",
+      "label": "Getter",
+      "name": "camera",
+      "signature": "get camera(): Camera"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#getGl",
+      "label": "Getter",
+      "name": "gl",
+      "signature": "get gl(): WebGL2RenderingContext"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#getGameEngine",
+      "label": "Getter",
+      "name": "gameEngine",
+      "signature": "get gameEngine(): Engine | null"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#setGizmoMode",
+      "label": "Method",
+      "name": "setGizmoMode",
+      "signature": "setGizmoMode(mode: GizmoMode)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#setTransformSpace",
+      "label": "Method",
+      "name": "setTransformSpace",
+      "signature": "setTransformSpace(space: TransformSpace)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#setToggleWorkspacePanel",
+      "label": "Method",
+      "name": "setToggleWorkspacePanel",
+      "signature": "setToggleWorkspacePanel(panel: \"left\" | \"right\" | \"footer\", visible: boolean)"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#reloadEngineRuntime",
+      "label": "Method",
+      "name": "reloadEngineRuntime",
+      "signature": "reloadEngineRuntime(): Promise<Engine | null>"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#initializeEditorCamera",
+      "label": "Method",
+      "name": "initializeEditorCamera",
+      "signature": "initializeEditorCamera()"
+    },
+    {
+      "id": "/editor/services/editor.service.ts#onGlContextCreated",
+      "label": "Method",
+      "name": "onGlContextCreated",
+      "signature": "onGlContextCreated(gl: WebGL2RenderingContext)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/editor/services/editor-state.service.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/src/app/api/api-url.token.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/omega-game-engine/Camera",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/omega-game-engine/CanvasViewport",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/omega-game-engine/Engine",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/omega-game-engine/Scene",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/editor.service.ts",
+      "target": "/editor/behaviours/scene-editor/transform-space.enum.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "API_URL"
+    ],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

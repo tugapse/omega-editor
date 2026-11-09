@@ -1,0 +1,85 @@
+{
+  "component": {
+    "name": "OmegaDropzoneComponent",
+    "source_path": "/editor/components/asset-explorer/components/omega-dropzone.component.ts",
+    "doc_path": "/editor/components/asset-explorer/components/omega-dropzone.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "OmegaDropzoneComponent implements a reusable, interactive UI dropzone for asset uploads within the asset explorer. It manages file ingestion via two mechanisms: native drag-and-drop events and a triggered file input dialog. Architecturally, it encapsulates complex DOM event handling, using Angular Signals to manage visual states (isDragging) and emits collected File objects through the filesDropped output for downstream processing."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#OmegaDropzoneComponent",
+      "label": "Class",
+      "name": "OmegaDropzoneComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#filesDropped",
+      "label": "Output",
+      "name": "filesDropped",
+      "signature": "output<File[]>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#isDragging",
+      "label": "Signal",
+      "name": "isDragging",
+      "signature": "signal<boolean>(false)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#fileInput",
+      "label": "Variable",
+      "name": "fileInput",
+      "signature": "viewChild<ElementRef<HTMLInputElement>>('fileInput')"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#onDragOver",
+      "label": "Method",
+      "name": "onDragOver",
+      "signature": "onDragOver(event: DragEvent)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#onDragLeave",
+      "label": "Method",
+      "name": "onDragLeave",
+      "signature": "onDragLeave(event: DragEvent)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#onDrop",
+      "label": "Method",
+      "name": "onDrop",
+      "signature": "onDrop(event: DragEvent)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#triggerFilePicker",
+      "label": "Method",
+      "name": "triggerFilePicker",
+      "signature": "triggerFilePicker()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#onFileSelected",
+      "label": "Method",
+      "name": "onFileSelected",
+      "signature": "onFileSelected(event: Event)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-dropzone.component.ts#emitFileList",
+      "label": "Method",
+      "name": "emitFileList",
+      "signature": "emitFileList(fileList: FileList)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/omega-dropzone.component.ts",
+      "target": "/editor/components/asset-explorer/components/omega-dropzone.component.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

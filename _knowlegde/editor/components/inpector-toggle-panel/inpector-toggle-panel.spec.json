@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "InpectorTogglePanel",
+    "source_path": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts",
+    "doc_path": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as a unit test suite for the InpectorTogglePanel component, verifying its correct initialization within an Angular testing environment. It utilizes TestBed to configure the testing module, ensuring the component can be instantiated successfully. The primary function is to act as a quality gate, confirming the component's structural integrity before application integration."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#InpectorTogglePanel",
+      "label": "Class",
+      "name": "InpectorTogglePanel",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('InpectorTogglePanel', () => {})"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => {})"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => {})"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.spec.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

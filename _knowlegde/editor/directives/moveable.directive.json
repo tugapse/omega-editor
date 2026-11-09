@@ -1,0 +1,183 @@
+{
+  "component": {
+    "name": "MovableDirective",
+    "source_path": "/editor/directives/moveable.directive.ts",
+    "doc_path": "/editor/directives/moveable.directive.json",
+    "type": "directive"
+  },
+  "vector_memory": {
+    "semantic_summary": "MovableDirective is a low-level Angular directive designed to grant host HTML elements draggable and resizable capabilities within the viewport. It manages complex state transitions by listening to mouse events on designated child handles. The directive calculates and applies CSS transforms for movement and dynamically adjusts width/height for resizing, ensuring boundary clamping. It handles initialization by reading existing transform states and automatically creating a default resize handle if necessary."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/directives/moveable.directive.ts#MovableDirective",
+      "label": "Class",
+      "name": "MovableDirective",
+      "signature": "class MovableDirective implements OnInit, OnDestroy"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#movableHandleId",
+      "label": "Input",
+      "name": "movableHandleId",
+      "signature": "@Input({ required: true }) movableHandleId!: string"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#resizeHandleId",
+      "label": "Input",
+      "name": "resizeHandleId",
+      "signature": "@Input() resizeHandleId?: string"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#showResize",
+      "label": "Input",
+      "name": "showResize",
+      "signature": "@Input() showResize = true"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#isDragging",
+      "label": "Signal",
+      "name": "isDragging",
+      "signature": "private isDragging = signal(false)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startDragX",
+      "label": "Signal",
+      "name": "startDragX",
+      "signature": "private startDragX = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startDragY",
+      "label": "Signal",
+      "name": "startDragY",
+      "signature": "private startDragY = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#translateX",
+      "label": "Signal",
+      "name": "translateX",
+      "signature": "private translateX = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#translateY",
+      "label": "Signal",
+      "name": "translateY",
+      "signature": "private translateY = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#dragHandleElement",
+      "label": "Variable",
+      "name": "dragHandleElement",
+      "signature": "private dragHandleElement: HTMLElement | null = null"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#isResizing",
+      "label": "Signal",
+      "name": "isResizing",
+      "signature": "private isResizing = signal(false)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startResizeWidth",
+      "label": "Signal",
+      "name": "startResizeWidth",
+      "signature": "private startResizeWidth = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startResizeHeight",
+      "label": "Signal",
+      "name": "startResizeHeight",
+      "signature": "private startResizeHeight = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startResizeClientX",
+      "label": "Signal",
+      "name": "startResizeClientX",
+      "signature": "private startResizeClientX = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#startResizeClientY",
+      "label": "Signal",
+      "name": "startResizeClientY",
+      "signature": "private startResizeClientY = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#resizeHandleElement",
+      "label": "Variable",
+      "name": "resizeHandleElement",
+      "signature": "private resizeHandleElement: HTMLElement | null = null"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#animationFrameId",
+      "label": "Variable",
+      "name": "animationFrameId",
+      "signature": "private animationFrameId: number | null = null"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#lastMouseX",
+      "label": "Signal",
+      "name": "lastMouseX",
+      "signature": "private lastMouseX = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#lastMouseY",
+      "label": "Signal",
+      "name": "lastMouseY",
+      "signature": "private lastMouseY = signal(0)"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#onMouseDown",
+      "label": "Method",
+      "name": "onMouseDown",
+      "signature": "@HostListener('mousedown', ['$event']) onMouseDown(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#onMouseMove",
+      "label": "Method",
+      "name": "onMouseMove",
+      "signature": "@HostListener('document:mousemove', ['$event']) onMouseMove(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "@HostListener('document:mouseup') onMouseUp(): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#onContextMenu",
+      "label": "Method",
+      "name": "onContextMenu",
+      "signature": "@HostListener('contextmenu', ['$event']) onContextMenu(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/directives/moveable.directive.ts#onHoverMouseMove",
+      "label": "Method",
+      "name": "onHoverMouseMove",
+      "signature": "@HostListener('mousemove', ['$event']) onHoverMouseMove(event: MouseEvent): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/directives/moveable.directive.ts",
+      "target": "/editor/directives/moveable.directive.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

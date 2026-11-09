@@ -1,0 +1,141 @@
+{
+  "component": {
+    "name": "NumberRangeInspector",
+    "source_path": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts",
+    "doc_path": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component implements a specialized Angular UI element for visualizing and manipulating a numerical range defined by a NumberRange object. It supports two primary interaction modes: a standard HTML slider input and a custom drag-and-drop mechanism on a label element. Its core responsibility is synchronizing UI state changes with the external NumberRange data model, emitting updates via the rangeChange output event. It handles state management within NgZone and ensures value integrity using clamping and rounding logic."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#NumberRangeInspector",
+      "label": "Class",
+      "name": "NumberRangeInspector",
+      "signature": "class NumberRangeInspector implements OnDestroy"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#label",
+      "label": "Input",
+      "name": "label",
+      "signature": "Input() label: string = ''"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#range",
+      "label": "Input",
+      "name": "range",
+      "signature": "Input() range!: NumberRange"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#rangeChange",
+      "label": "Output",
+      "name": "rangeChange",
+      "signature": "Output() rangeChange = new EventEmitter<NumberRange>()"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#sliderInput",
+      "label": "ViewChild",
+      "name": "sliderInput",
+      "signature": "ViewChild('sliderInput') sliderInput!: ElementRef<HTMLInputElement>"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#isDraggingLabel",
+      "label": "Variable",
+      "name": "isDraggingLabel",
+      "signature": "private isDraggingLabel = false"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#lastX",
+      "label": "Variable",
+      "name": "lastX",
+      "signature": "private lastX = 0"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#unlistenMouseMove",
+      "label": "Variable",
+      "name": "unlistenMouseMove",
+      "signature": "private unlistenMouseMove: (() => void) | null = null"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#unlistenMouseUp",
+      "label": "Variable",
+      "name": "unlistenMouseUp",
+      "signature": "private unlistenMouseUp: (() => void) | null = null"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#originalCursor",
+      "label": "Variable",
+      "name": "originalCursor",
+      "signature": "private originalCursor: string = ''"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#startLabelDrag",
+      "label": "Method",
+      "name": "startLabelDrag",
+      "signature": "startLabelDrag(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#handleLabelMove",
+      "label": "Method",
+      "name": "handleLabelMove",
+      "signature": "handleLabelMove(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#stopLabelDrag",
+      "label": "Method",
+      "name": "stopLabelDrag",
+      "signature": "stopLabelDrag(): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#onSliderChange",
+      "label": "Method",
+      "name": "onSliderChange",
+      "signature": "onSliderChange(event: Event): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#onInputChange",
+      "label": "Method",
+      "name": "onInputChange",
+      "signature": "onInputChange(event: Event): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#updateValue",
+      "label": "Method",
+      "name": "updateValue",
+      "signature": "updateValue(value: number): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#clampAndRound",
+      "label": "Method",
+      "name": "clampAndRound",
+      "signature": "clampAndRound(val: number): number"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#destroyListeners",
+      "label": "Method",
+      "name": "destroyListeners",
+      "signature": "destroyListeners(): void"
+    },
+    {
+      "id": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "component": {
+    "name": "Toggle",
+    "source_path": "/app/components/toggle/toggle.ts",
+    "doc_path": "/app/components/toggle/toggle.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Toggle component provides a reusable, interactive UI element for managing a binary state (on/off). It functions as a presentation layer, accepting an 'active' boolean input to set its initial state. State changes are communicated externally via an emitted 'change' event, allowing parent components to control and react to the switch's status."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/toggle/toggle.ts#Toggle",
+      "label": "Class",
+      "name": "Toggle",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/toggle/toggle.ts#change",
+      "label": "Output",
+      "name": "change",
+      "signature": "new EventEmitter<boolean>()"
+    },
+    {
+      "id": "/app/components/toggle/toggle.ts#active",
+      "label": "Input",
+      "name": "active",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/toggle/toggle.ts",
+      "target": "/app/components/toggle/toggle.html",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/toggle/toggle.ts",
+      "target": "/app/components/toggle/toggle.scss",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "EventEmitter",
+      "Input",
+      "Output"
+    ],
+    "has_side_effects": false
+  }
+}

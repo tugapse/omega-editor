@@ -1,0 +1,93 @@
+{
+  "component": {
+    "name": "RapierPhysicsBridge",
+    "source_path": "/engine/phisics/bridges/rappier.ts",
+    "doc_path": "/engine/phisics/bridges/rappier.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "RapierPhysicsBridge acts as a dedicated service layer, abstracting the Rapier 3D physics simulation into the engine's internal component model. It manages the lifecycle of physical entities by mapping engine components (RigidbodyComponent, ColliderComponent) to native Rapier structures. Its core responsibilities include initializing the physics world, stepping the simulation, and providing query interfaces like raycasting and transform synchronization."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#RapierPhysicsBridge",
+      "label": "Class",
+      "name": "RapierPhysicsBridge",
+      "signature": "class RapierPhysicsBridge extends PhysicsEngineBridge"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#bodyMap",
+      "label": "Variable",
+      "name": "bodyMap",
+      "signature": "new Map<string, RAPIER.RigidBody>()"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#initialize",
+      "label": "Method",
+      "name": "initialize",
+      "signature": "async initialize(settings: PhysicsWorldSettings): Promise<void>"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#registerEntity",
+      "label": "Method",
+      "name": "registerEntity",
+      "signature": "registerEntity(entityId: string, rb: RigidbodyComponent, col?: ColliderComponent, transform?: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#unregisterEntity",
+      "label": "Method",
+      "name": "unregisterEntity",
+      "signature": "unregisterEntity(entityId: string): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#syncToPhysics",
+      "label": "Method",
+      "name": "syncToPhysics",
+      "signature": "syncToPhysics(entityId: string, transform: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#getTransformFromPhysics",
+      "label": "Method",
+      "name": "getTransformFromPhysics",
+      "signature": "getTransformFromPhysics(entityId: string): PhysicsTransform | null"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#step",
+      "label": "Method",
+      "name": "step",
+      "signature": "step(dt: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#setGravity",
+      "label": "Method",
+      "name": "setGravity",
+      "signature": "setGravity(x: number, y: number, z: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#raycast",
+      "label": "Method",
+      "name": "raycast",
+      "signature": "raycast(origin: Vector3D, direction: Vector3D, maxDistance: number)"
+    },
+    {
+      "id": "/engine/phisics/bridges/rappier.ts#dispose",
+      "label": "Method",
+      "name": "dispose",
+      "signature": "dispose(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/bridges/rappier.ts",
+      "target": "/components.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@dimforge/rapier3d"
+    ],
+    "has_side_effects": true
+  }
+}

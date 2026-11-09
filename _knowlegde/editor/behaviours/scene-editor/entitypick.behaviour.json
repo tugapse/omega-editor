@@ -1,0 +1,127 @@
+{
+  "component": {
+    "name": "EntityPicker",
+    "source_path": "/editor/behaviours/scene-editor/entitypick.behaviour.ts",
+    "doc_path": "/editor/behaviours/scene-editor/entitypick.behaviour.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EntityPicker is a RendererBehaviour responsible for implementing scene entity picking within the editor. It renders the entire scene geometry to an off-screen texture, using unique entity IDs embedded in the rendering pass. Upon a mouse click, it reads the pixel data at the cursor position to determine the selected entity ID. It manages selection state by notifying the SceneTreeService and updating the GizmosBoxBehaviour."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#EntityPicker",
+      "label": "Class",
+      "name": "EntityPicker",
+      "signature": "class EntityPicker extends RendererBehaviour"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#renderTexture",
+      "label": "Variable",
+      "name": "renderTexture",
+      "signature": "Texture"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#selectedEntityId",
+      "label": "Variable",
+      "name": "selectedEntityId",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#width",
+      "label": "Variable",
+      "name": "width",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#height",
+      "label": "Variable",
+      "name": "height",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#boundingBehaviour",
+      "label": "Variable",
+      "name": "boundingBehaviour",
+      "signature": "GizmosBoxBehaviour"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#lastClickedId",
+      "label": "Variable",
+      "name": "lastClickedId",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#dontNeedControlToSelect",
+      "label": "Variable",
+      "name": "dontNeedControlToSelect",
+      "signature": "boolean"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#_pickingPixel",
+      "label": "Variable",
+      "name": "_pickingPixel",
+      "signature": "Uint8Array"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(gl: WebGL2RenderingContext, private sceneTreeService: SceneTreeService)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "override draw(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#canSelectEntity",
+      "label": "Method",
+      "name": "canSelectEntity",
+      "signature": "private canSelectEntity(): boolean"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#renderAndGetSelected",
+      "label": "Method",
+      "name": "renderAndGetSelected",
+      "signature": "public renderAndGetSelected(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#refreshTexture",
+      "label": "Method",
+      "name": "refreshTexture",
+      "signature": "private refreshTexture(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/entitypick.behaviour.ts#setMatrices",
+      "label": "Method",
+      "name": "setMatrices",
+      "signature": "setMatrices(transform: Transform): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/entitypick.behaviour.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/entitypick.behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/gizmos-behaviour.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/entitypick.behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/gizmos-behaviour.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

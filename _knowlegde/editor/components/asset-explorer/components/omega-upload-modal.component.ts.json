@@ -1,0 +1,105 @@
+{
+  "component": {
+    "name": "OmegaUploadModalComponent",
+    "source_path": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts",
+    "doc_path": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "OmegaUploadModalComponent manages the UI and logic for batch importing assets into the editor. It utilizes a signal-based queue to stage files dropped via OmegaDropzoneComponent, allowing users to configure metadata like custom names and asset types. Its primary role is to collect, validate, and emit the final array of StagedAssetResult upon user confirmation, while providing clear cancellation pathways."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#OmegaUploadModalComponent",
+      "label": "Class",
+      "name": "OmegaUploadModalComponent",
+      "signature": "class OmegaUploadModalComponent"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#targetFolderColumn",
+      "label": "Input",
+      "name": "targetFolderColumn",
+      "signature": "input<string>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#confirmed",
+      "label": "Output",
+      "name": "confirmed",
+      "signature": "output<StagedAssetResult[]>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#closed",
+      "label": "Output",
+      "name": "closed",
+      "signature": "output<void>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#queue",
+      "label": "Signal",
+      "name": "queue",
+      "signature": "signal<LocalStagedItem[]>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#onFilesIngested",
+      "label": "Method",
+      "name": "onFilesIngested",
+      "signature": "onFilesIngested(files: File[])"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#removeRow",
+      "label": "Method",
+      "name": "removeRow",
+      "signature": "removeRow(id: string)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#onCancel",
+      "label": "Method",
+      "name": "onCancel",
+      "signature": "onCancel()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#onConfirm",
+      "label": "Method",
+      "name": "onConfirm",
+      "signature": "onConfirm()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#inferAssetType",
+      "label": "Method",
+      "name": "inferAssetType",
+      "signature": "inferAssetType(filename: string): string"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#formatBytes",
+      "label": "Method",
+      "name": "formatBytes",
+      "signature": "formatBytes(bytes: number): string"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#StagedAssetResult",
+      "label": "Interface",
+      "name": "StagedAssetResult",
+      "signature": "interface StagedAssetResult { file: File; customName: string; assetType: string; }"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts#LocalStagedItem",
+      "label": "Interface",
+      "name": "LocalStagedItem",
+      "signature": "interface LocalStagedItem { id: string; file: File; customName: string; assetType: string; sizeFormatted: string; }"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/omega-upload-modal.component.ts",
+      "target": "/editor/components/asset-explorer/components/omega-dropzone.component.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "FormsModule"
+    ],
+    "has_side_effects": false
+  }
+}

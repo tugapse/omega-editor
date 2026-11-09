@@ -1,0 +1,33 @@
+{
+  "component": {
+    "name": "EditorSettingsService",
+    "source_path": "/editor/services/menu.service.ts",
+    "doc_path": "/editor/services/menu.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorSettingsService is a dedicated injectable service responsible for managing and providing centralized access to the application's editor configuration settings. It encapsulates the logic necessary to retrieve, modify, and persist parameters like theme preferences or font sizes. Architecturally, it acts as a service layer, abstracting the underlying configuration storage mechanism from consuming modules like UI components."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/menu.service.ts#EditorSettingsService",
+      "label": "Class",
+      "name": "EditorSettingsService",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/menu.service.ts",
+      "target": "/editor/services/menu.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

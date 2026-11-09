@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "AssetIcons",
+    "source_path": "/editor/components/asset-explorer/icons.ts",
+    "doc_path": "/editor/components/asset-explorer/icons.json",
+    "type": "module"
+  },
+  "vector_memory": {
+    "semantic_summary": "This module defines the constant object AssetIcons, which acts as a centralized, static data provider for mapping asset types to their corresponding visual icon names. Its primary architectural role is to enforce UI consistency across the editor by providing a standardized lookup mechanism for asset representation. It is consumed by the asset explorer to correctly render glyphs for different asset types like 'image' or 'material'."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/icons.ts#AssetIcons",
+      "label": "Variable",
+      "name": "AssetIcons",
+      "signature": "export const AssetIcons: { [key: string]: string }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

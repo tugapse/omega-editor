@@ -1,0 +1,88 @@
+{
+  "component": {
+    "name": "appConfig",
+    "source_path": "/app/app.config.ts",
+    "doc_path": "/app/app.config.json",
+    "type": "module"
+  },
+  "vector_memory": {
+    "semantic_summary": "This module configures the entire Angular application instance by defining the `appConfig` object, which serves as the central dependency injection container setup. It integrates core Angular features like routing via `provideRouter` and HTTP communication via `provideHttpClient`. Key responsibilities include setting up zone change detection for performance and registering the `AuthInterceptor` to manage authentication headers for all outgoing HTTP requests."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/app.config.ts#appConfig",
+      "label": "Variable",
+      "name": "appConfig",
+      "signature": "export const appConfig: ApplicationConfig = { ... }"
+    },
+    {
+      "id": "/app/app.config.ts#provideZoneChangeDetection",
+      "label": "Function",
+      "name": "provideZoneChangeDetection",
+      "signature": "provideZoneChangeDetection({ eventCoalescing: true })"
+    },
+    {
+      "id": "/app/app.config.ts#provideRouter",
+      "label": "Function",
+      "name": "provideRouter",
+      "signature": "provideRouter(routes)"
+    },
+    {
+      "id": "/app/app.config.ts#provideHttpClient",
+      "label": "Function",
+      "name": "provideHttpClient",
+      "signature": "provideHttpClient(withInterceptorsFromDi())"
+    },
+    {
+      "id": "/app/app.config.ts#HTTP_INTERCEPTORS",
+      "label": "Type",
+      "name": "HTTP_INTERCEPTORS",
+      "signature": "provide: HTTP_INTERCEPTORS"
+    },
+    {
+      "id": "/app/app.config.ts#AuthInterceptor",
+      "label": "Class",
+      "name": "AuthInterceptor",
+      "signature": "useClass: AuthInterceptor"
+    },
+    {
+      "id": "/app/app.config.ts#API_URL",
+      "label": "Type",
+      "name": "API_URL",
+      "signature": "provide: API_URL"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/app.config.ts",
+      "target": "/app/app.routes.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.config.ts",
+      "target": "/app/api/auth.interceptor.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.config.ts",
+      "target": "/app/environment.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/app.config.ts",
+      "target": "/app/api/api-url.token.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "environment.apiUrl"
+    ],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/router",
+      "@angular/common/http"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "component": {
+    "name": "NotFoundComponent",
+    "source_path": "/app/components/not-found/not-found.component.ts",
+    "doc_path": "/app/components/not-found/not-found.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component serves as the dedicated fallback UI for handling unresolvable routes within the application, displaying a user-friendly 404 page. It is architecturally positioned as a top-level presentation layer component that intercepts unmatched routes via Angular's routing mechanism. Its primary responsibility is to inform the user of the resource absence while providing navigational context back to the application root."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/not-found/not-found.component.ts#NotFoundComponent",
+      "label": "Class",
+      "name": "NotFoundComponent",
+      "signature": "class NotFoundComponent"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/not-found/not-found.component.ts",
+      "target": "/app/components/background-visualization/background-visualization.component.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

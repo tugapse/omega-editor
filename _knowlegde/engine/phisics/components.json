@@ -1,0 +1,64 @@
+{
+  "component": {
+    "name": "RigidbodyComponent",
+    "source_path": "/engine/phisics/components.ts",
+    "doc_path": "/engine/phisics/components.json",
+    "type": "model"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the core data structures for the physics subsystem, acting as the primary data model for physical entities. It encapsulates properties like mass, damping coefficients, and the physical state (Static, Dynamic, Kinematic) of an object. It serves as the interface layer between the game object representation and the underlying physics solver, defining constraints rather than executing simulation logic."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/components.ts#RigidbodyType",
+      "label": "Type",
+      "name": "RigidbodyType",
+      "signature": "enum RigidbodyType { Static, Dynamic, Kinematic }"
+    },
+    {
+      "id": "/engine/phisics/components.ts#ColliderShape",
+      "label": "Type",
+      "name": "ColliderShape",
+      "signature": "enum ColliderShape { Box, Sphere, Capsule, Plane, Mesh }"
+    },
+    {
+      "id": "/engine/phisics/components.ts#PhysicsWorldSettings",
+      "label": "Interface",
+      "name": "PhysicsWorldSettings",
+      "signature": "interface PhysicsWorldSettings { gravity: Vector3; timeStep: number; }"
+    },
+    {
+      "id": "/engine/phisics/components.ts#RigidbodyComponent",
+      "label": "Class",
+      "name": "RigidbodyComponent",
+      "signature": "class RigidbodyComponent { public type: RigidbodyType = RigidbodyType.Dynamic; public mass: number = 1.0; public linearDamping: number = 0.0; public angularDamping: number = 0.0; }"
+    },
+    {
+      "id": "/engine/phisics/components.ts#ColliderComponent",
+      "label": "Class",
+      "name": "ColliderComponent",
+      "signature": "class ColliderComponent { public shape: ColliderShape = ColliderShape.Box; public size: Vector3 = new Vector3(1, 1, 1); public isTrigger: boolean = false; public friction: number = 0.5; public restitution: number = 0.0; }"
+    },
+    {
+      "id": "/engine/phisics/components.ts#PhysicsTransform",
+      "label": "Interface",
+      "name": "PhysicsTransform",
+      "signature": "interface PhysicsTransform { position: Vector3; rotation: quat; isDirty?: boolean; }"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/components.ts",
+      "target": "/engine/phisics/components.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix",
+      "omega-game-engine"
+    ],
+    "has_side_effects": false
+  }
+}

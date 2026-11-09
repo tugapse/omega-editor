@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "ThemeSelector",
+    "source_path": "/editor/components/theme-selector/theme-selector.ts",
+    "doc_path": "/editor/components/theme-selector/theme-selector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The ThemeSelector component manages the application's visual theming by providing a UI mechanism to select and apply CSS themes. It initializes by reading the user's preference from localStorage and applies the corresponding theme class to the document body. Its core logic involves mapping predefined theme data into dropdown items and handling selection events to persist the choice."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#ThemeSelector",
+      "label": "Class",
+      "name": "ThemeSelector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#items",
+      "label": "Variable",
+      "name": "items",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#selectedItem",
+      "label": "Variable",
+      "name": "selectedItem",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#data",
+      "label": "Variable",
+      "name": "data",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#setTheme",
+      "label": "Method",
+      "name": "setTheme",
+      "signature": "setTheme(newThemeClass: string)"
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#onItemSetected",
+      "label": "Method",
+      "name": "onItemSetected",
+      "signature": "onItemSetected($event: DropdownItem)"
+    },
+    {
+      "id": "/editor/components/theme-selector/theme-selector.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(@Inject(DOCUMENT) private document: Document)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/theme-selector/theme-selector.ts",
+      "target": "/editor/components/dropdown/dropdown.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "DOCUMENT"
+    ],
+    "has_side_effects": true
+  }
+}

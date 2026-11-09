@@ -1,0 +1,77 @@
+{
+  "component": {
+    "name": "AssetGridComponent",
+    "source_path": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts",
+    "doc_path": "/editor/components/asset-explorer/components/asset-grid/asset-grid.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetGridComponent is a presentation layer UI component responsible for rendering a grid view of assets within the editor. It consumes required inputs like activeFolder and optional inputs like selectedNodeId to drive its rendering logic. It manages user interactions such as clicks and context menu requests, emitting them upwards via defined outputs. The component is purely declarative, relying on Angular's reactive inputs and outputs for state management."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#AssetGridComponent",
+      "label": "Class",
+      "name": "AssetGridComponent",
+      "signature": "class AssetGridComponent"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#activeFolder",
+      "label": "Input",
+      "name": "activeFolder",
+      "signature": "input.required<IAsset | null>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#selectedNodeId",
+      "label": "Input",
+      "name": "selectedNodeId",
+      "signature": "input<string | null>(null)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#itemClick",
+      "label": "Output",
+      "name": "itemClick",
+      "signature": "output<IAsset>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#itemDoubleClick",
+      "label": "Output",
+      "name": "itemDoubleClick",
+      "signature": "output<IAsset>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#contextMenu",
+      "label": "Output",
+      "name": "contextMenu",
+      "signature": "output<{ e: MouseEvent; node: IAsset }>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts#icons",
+      "label": "Property",
+      "name": "icons",
+      "signature": "AssetIcons"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts",
+      "target": "/editor/interfaces/asset.interface.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts",
+      "target": "/editor/components/asset-explorer/components/asset-grid/asset-grid.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/asset-explorer/components/asset-grid/asset-grid.ts",
+      "target": "/src/app/components/icon/icon.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

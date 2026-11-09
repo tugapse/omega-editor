@@ -1,0 +1,139 @@
+{
+  "component": {
+    "name": "HomeComponent",
+    "source_path": "/app/components/home/home.component.ts",
+    "doc_path": "/app/components/home/home.component.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "HomeComponent acts as the central hub and high-level UI controller for the application, managing the project lifecycle view. It is responsible for displaying available projects, handling project selection, and facilitating the creation of new projects. It orchestrates data flow by interacting with ProjectService to fetch and manipulate project states, while integrating specialized UI elements like SceneList and UserBarComponent."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/home/home.component.ts#HomeComponent",
+      "label": "Class",
+      "name": "HomeComponent",
+      "signature": "class HomeComponent implements AfterViewInit, OnInit"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#loadProjects",
+      "label": "Method",
+      "name": "loadProjects",
+      "signature": "private loadProjects(): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#selectProject",
+      "label": "Method",
+      "name": "selectProject",
+      "signature": "selectProject(project: ProjectResponse): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#openNewProjectModal",
+      "label": "Method",
+      "name": "openNewProjectModal",
+      "signature": "openNewProjectModal(): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#closeModal",
+      "label": "Method",
+      "name": "closeModal",
+      "signature": "closeModal(): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#createProject",
+      "label": "Method",
+      "name": "createProject",
+      "signature": "createProject(): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#handleProjectUpdate",
+      "label": "Method",
+      "name": "handleProjectUpdate",
+      "signature": "handleProjectUpdate(updatedProjectData: ProjectResponse): void"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#projectService",
+      "label": "Variable",
+      "name": "projectService",
+      "signature": "private readonly projectService = inject(ProjectService);"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#activatedRoute",
+      "label": "Variable",
+      "name": "activatedRoute",
+      "signature": "private readonly activatedRoute = inject(ActivatedRoute);"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#loadingService",
+      "label": "Variable",
+      "name": "loadingService",
+      "signature": "private readonly loadingService = inject(LoadingService);"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#selectedProject",
+      "label": "Variable",
+      "name": "selectedProject",
+      "signature": "selectedProject: ProjectResponse | null = null"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#projects",
+      "label": "Variable",
+      "name": "projects",
+      "signature": "projects: ProjectResponse[] = []"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#isModalOpen",
+      "label": "Variable",
+      "name": "isModalOpen",
+      "signature": "isModalOpen = false"
+    },
+    {
+      "id": "/app/components/home/home.component.ts#newProjectName",
+      "label": "Variable",
+      "name": "newProjectName",
+      "signature": "newProjectName = \"\""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/app/api/services/project.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/src/app/services/loading.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/angular/router.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/app/components/background-visualization/background-visualization.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/app/components/user-bar/user-bar.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/home/home.component.ts",
+      "target": "/app/components/scene-list/scene-list.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "component": {
+    "name": "ObjectInspector",
+    "source_path": "/editor/inspectors/object-inspector/object-inspector.ts",
+    "doc_path": "/editor/inspectors/object-inspector/object-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "ObjectInspector is a presentation layer component responsible for dynamically displaying and allowing modification of properties for a selected target object within the editor UI. It abstracts property access, filtering properties based on allow/deny lists, and rendering appropriate UI controls based on property type. It manages state changes by mutating the object's internal property structure and notifies the application of updates via the EditorService."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#ObjectInspector",
+      "label": "Class",
+      "name": "ObjectInspector",
+      "signature": "class ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#ITargetObject",
+      "label": "Interface",
+      "name": "ITargetObject",
+      "signature": "export interface ITargetObject { [key: string]: any; key: string; type: string; property?: any; name?: string; value?: any; }"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#ITargetProperty",
+      "label": "Interface",
+      "name": "ITargetProperty",
+      "signature": "export interface ITargetProperty extends ITargetObject { value: any; }"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#onValueChanged",
+      "label": "Method",
+      "name": "onValueChanged",
+      "signature": "onValueChanged(property: ITargetObject, value: string | number | boolean | NumberRange): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#onVectorChanged",
+      "label": "Method",
+      "name": "onVectorChanged",
+      "signature": "onVectorChanged(property: ITargetObject, value: Vector4 | Vector3 | Vector2): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#onColorChanged",
+      "label": "Method",
+      "name": "onColorChanged",
+      "signature": "onColorChanged(property: ITargetObject, value: Color): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#isNotPrivate",
+      "label": "Method",
+      "name": "isNotPrivate",
+      "signature": "isNotPrivate(key: string): boolean"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#isValidPropertyType",
+      "label": "Method",
+      "name": "isValidPropertyType",
+      "signature": "isValidPropertyType(key: string): boolean"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#convertEnumToObject",
+      "label": "Method",
+      "name": "convertEnumToObject",
+      "signature": "convertEnumToObject(something: any): { key: string; value: number }[]"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#_onPropertyChanged",
+      "label": "Method",
+      "name": "_onPropertyChanged",
+      "signature": "_onPropertyChanged(propertyKey: string, value: any): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#loadProperties",
+      "label": "Method",
+      "name": "loadProperties",
+      "signature": "loadProperties(): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#createPropertyViewModel",
+      "label": "Method",
+      "name": "createPropertyViewModel",
+      "signature": "createPropertyViewModel(key: string, value: any): ITargetProperty"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#getObjectType",
+      "label": "Method",
+      "name": "getObjectType",
+      "signature": "getObjectType(value: object): string"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#isPropertyValid",
+      "label": "Method",
+      "name": "isPropertyValid",
+      "signature": "isPropertyValid(key: string): boolean"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#updateScene",
+      "label": "Method",
+      "name": "updateScene",
+      "signature": "updateScene(): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#onEnumChange",
+      "label": "Method",
+      "name": "onEnumChange",
+      "signature": "onEnumChange(key: string, menuItem: DropdownItem): void"
+    },
+    {
+      "id": "/editor/inspectors/object-inspector/object-inspector.ts#onRangeChange",
+      "label": "Method",
+      "name": "onRangeChange",
+      "signature": "onRangeChange(item: ITargetProperty, $event: NumberRange): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/src/app/components/dropdown/dropdown.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/components/inspector-components/vector-inspector/vector-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/inspectors/color-inspector/color-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/inspectors/enum-inspector/enum-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/components/inspector-components/number-range-inspector/number-range-inspector.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

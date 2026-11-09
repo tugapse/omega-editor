@@ -1,0 +1,59 @@
+{
+  "component": {
+    "name": "EngineStatsComponent",
+    "source_path": "/editor/components/engine-stats/engine-stats.ts",
+    "doc_path": "/editor/components/engine-stats/engine-stats.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EngineStatsComponent is a reactive Angular component designed to visualize real-time performance metrics from the editor's rendering and update cycles. It consumes performance data structured by the EngineStats interface via an @Input() and signals dismissal via a @Output() event. Its architecture is purely presentation-focused, utilizing OnPush change detection for efficiency."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/engine-stats/engine-stats.ts#EngineStats",
+      "label": "Interface",
+      "name": "EngineStats",
+      "signature": "fps: number; frameTimeMs: number; updateTimeMs: number; renderTimeMs: number; browserTimeMs: number;"
+    },
+    {
+      "id": "/editor/components/engine-stats/engine-stats.ts#EngineStatsComponent",
+      "label": "Class",
+      "name": "EngineStatsComponent",
+      "signature": "class EngineStatsComponent"
+    },
+    {
+      "id": "/editor/components/engine-stats/engine-stats.ts#stats",
+      "label": "Variable",
+      "name": "stats",
+      "signature": "@Input() stats: EngineStats | null = null;"
+    },
+    {
+      "id": "/editor/components/engine-stats/engine-stats.ts#closeRequested",
+      "label": "Variable",
+      "name": "closeRequested",
+      "signature": "@Output() closeRequested = new EventEmitter<void>();"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/engine-stats/engine-stats.ts",
+      "target": "/common/common.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/engine-stats/engine-stats.ts",
+      "target": "/editor/directives/moveable.directive.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/engine-stats/engine-stats.ts",
+      "target": "/app/components/icon/icon.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

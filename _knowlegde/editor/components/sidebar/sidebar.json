@@ -1,0 +1,42 @@
+{
+  "component": {
+    "name": "Sidebar",
+    "source_path": "/editor/components/sidebar/sidebar.ts",
+    "doc_path": "/editor/components/sidebar/sidebar.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Sidebar component serves as the primary presentation layer UI element for the editor environment. Its core responsibility is to display scene-related controls and information by consuming a Scene object passed via an @Input(). It delegates the rendering of the scene's hierarchical structure to the SceneTree component. Architecturally, it acts as a declarative wrapper focused purely on presentation, exhibiting no internal side effects."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sidebar/sidebar.ts#Sidebar",
+      "label": "Class",
+      "name": "Sidebar",
+      "signature": "class Sidebar"
+    },
+    {
+      "id": "/editor/components/sidebar/sidebar.ts#scene",
+      "label": "Variable",
+      "name": "scene",
+      "signature": "@Input() scene!: Scene;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sidebar/sidebar.ts",
+      "target": "/editor/components/sidebar/scene-tree.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/sidebar/sidebar.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

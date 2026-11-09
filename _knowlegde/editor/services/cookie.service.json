@@ -1,0 +1,52 @@
+{
+  "component": {
+    "name": "CookieService",
+    "source_path": "/editor/services/cookie.service.ts",
+    "doc_path": "/editor/services/cookie.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "CookieService is a dedicated Angular service responsible for abstracting and managing HTTP cookie operations within the application. It provides encapsulated methods to set, retrieve, and delete cookies, ensuring client-side state persistence across page reloads. The service interacts directly with the browser's global document.cookie state, acting as a crucial utility layer for state management."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/cookie.service.ts#CookieService",
+      "label": "Class",
+      "name": "CookieService",
+      "signature": ""
+    },
+    {
+      "id": "/editor/services/cookie.service.ts#setCookie",
+      "label": "Method",
+      "name": "setCookie",
+      "signature": "setCookie(name: string, value: string, days?: number): void"
+    },
+    {
+      "id": "/editor/services/cookie.service.ts#getCookie",
+      "label": "Method",
+      "name": "getCookie",
+      "signature": "getCookie(name: string): string | null"
+    },
+    {
+      "id": "/editor/services/cookie.service.ts#deleteCookie",
+      "label": "Method",
+      "name": "deleteCookie",
+      "signature": "deleteCookie(name: string): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/cookie.service.ts",
+      "target": "/editor/services/cookie.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "Injectable",
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "component": {
+    "name": "ConfirmationModalComponent",
+    "source_path": "/app/components/confirmation-modal/confirmation-modal.component.ts",
+    "doc_path": "/app/components/confirmation-modal/confirmation-modal.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component serves as the presentation layer for displaying user confirmation prompts within the application. It subscribes to a global request stream managed by ConfirmationService to react to necessary prompts. Its primary role is to expose public methods, `confirm()` and `cancel()`, which relay the user's decision back to the service before closing the modal UI state."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#ConfirmationModalComponent",
+      "label": "Class",
+      "name": "ConfirmationModalComponent",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#confirm",
+      "label": "Method",
+      "name": "confirm",
+      "signature": "confirm(): void"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#cancel",
+      "label": "Method",
+      "name": "cancel",
+      "signature": "cancel(): void"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#close",
+      "label": "Method",
+      "name": "close",
+      "signature": "close(): void"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#request",
+      "label": "Variable",
+      "name": "request",
+      "signature": "ConfirmationRequest | null"
+    },
+    {
+      "id": "/app/components/confirmation-modal/confirmation-modal.component.ts#subscription",
+      "label": "Variable",
+      "name": "subscription",
+      "signature": "Subscription | null"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/confirmation-modal/confirmation-modal.component.ts",
+      "target": "/app/services/confirmation.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/confirmation-modal/confirmation-modal.component.ts",
+      "target": "/app/components/confirmation-modal/confirmation-modal.component.html",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/confirmation-modal/confirmation-modal.component.ts",
+      "target": "/app/components/confirmation-modal/confirmation-modal.component.scss",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "component": {
+    "name": "PhysicsBehavior",
+    "source_path": "/engine/phisics/phisics-behaviour.ts",
+    "doc_path": "/engine/phisics/phisics-behaviour.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "PhysicsBehavior acts as a high-level controller layer, bridging game logic to the core physics simulation. It aggregates RigidbodyComponent and ColliderComponent to provide scriptable methods for configuring mass, shape, and movement dynamics. It manages the entity's state by interacting with the PhysicsWorld, allowing external forces and velocity to be applied directly to the underlying physics body."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#PhysicsBehavior",
+      "label": "Class",
+      "name": "PhysicsBehavior",
+      "signature": "constructor(physicsWorld: PhysicsWorld)"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#rigidbody",
+      "label": "Variable",
+      "name": "rigidbody",
+      "signature": "RigidbodyComponent"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#collider",
+      "label": "Variable",
+      "name": "collider",
+      "signature": "ColliderComponent | undefined"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#physicsWorld",
+      "label": "Variable",
+      "name": "physicsWorld",
+      "signature": "PhysicsWorld"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#makeDynamic",
+      "label": "Method",
+      "name": "makeDynamic",
+      "signature": "makeDynamic(mass: number = 1.0): this"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#makeStatic",
+      "label": "Method",
+      "name": "makeStatic",
+      "signature": "makeStatic(): this"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#addBoxCollider",
+      "label": "Method",
+      "name": "addBoxCollider",
+      "signature": "addBoxCollider(width: number, height: number, depth: number): this"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#enableSimulation",
+      "label": "Method",
+      "name": "enableSimulation",
+      "signature": "enableSimulation(): void"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#applyForce",
+      "label": "Method",
+      "name": "applyForce",
+      "signature": "applyForce(force: Vector3): void"
+    },
+    {
+      "id": "/engine/phisics/phisics-behaviour.ts#setLinearVelocity",
+      "label": "Method",
+      "name": "setLinearVelocity",
+      "signature": "setLinearVelocity(velocity: Vector3): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/phisics-behaviour.ts",
+      "target": "/engine/phisics/components.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/phisics-behaviour.ts",
+      "target": "/engine/phisics/world.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine/dist/core/vector"
+    ],
+    "has_side_effects": true
+  }
+}

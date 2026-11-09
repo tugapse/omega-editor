@@ -1,0 +1,98 @@
+{
+  "component": {
+    "name": "DropdownComponent",
+    "source_path": "/app/components/dropdown/dropdown.ts",
+    "doc_path": "/app/components/dropdown/dropdown.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "DropdownComponent is a presentation layer Angular component responsible for rendering an interactive selection menu. It manages its visibility state (`isOpen`) and handles user selection events by emitting the chosen item via the `itemSelected` output. Architecturally, it consumes item data via `@Input()` properties (`items`, `selectedItem`) and implements lifecycle hooks to manage global DOM event listeners for closing the dropdown when clicking outside."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/dropdown/dropdown.ts#DropdownComponent",
+      "label": "Class",
+      "name": "DropdownComponent",
+      "signature": "class DropdownComponent implements OnInit, OnDestroy"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#DropdownItem",
+      "label": "Interface",
+      "name": "DropdownItem",
+      "signature": "interface DropdownItem { key: string; value: string|number; }"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#selectedItem",
+      "label": "Input",
+      "name": "selectedItem",
+      "signature": "@Input() selectedItem: DropdownItem | null = null"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#items",
+      "label": "Input",
+      "name": "items",
+      "signature": "@Input() items: DropdownItem[] = []"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#itemSelected",
+      "label": "Output",
+      "name": "itemSelected",
+      "signature": "@Output() itemSelected = new EventEmitter<DropdownItem>()"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#isOpen",
+      "label": "Variable",
+      "name": "isOpen",
+      "signature": "public isOpen: boolean = false"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#mouseListener",
+      "label": "Variable",
+      "name": "mouseListener",
+      "signature": "private mouseListener: (() => void) | null = null"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#toggleDropdown",
+      "label": "Method",
+      "name": "toggleDropdown",
+      "signature": "toggleDropdown(): void"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.ts#selectItem",
+      "label": "Method",
+      "name": "selectItem",
+      "signature": "selectItem(item: DropdownItem): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/dropdown/dropdown.ts",
+      "target": "/app/components/dropdown/dropdown.html",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/dropdown/dropdown.ts",
+      "target": "/app/components/dropdown/dropdown.scss",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "CommonModule"
+    ],
+    "has_side_effects": true
+  }
+}

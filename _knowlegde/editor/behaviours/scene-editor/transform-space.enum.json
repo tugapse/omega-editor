@@ -1,0 +1,37 @@
+{
+  "component": {
+    "name": "transform-space.enum",
+    "source_path": "/editor/behaviours/scene-editor/transform-space.enum.ts",
+    "doc_path": "/editor/behaviours/scene-editor/transform-space.enum.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the TransformSpace enum, which dictates the coordinate system context for spatial transformations within the editor. It provides a fundamental, enumerated distinction between transformations relative to an object's local axes and those relative to the global world axes. This type is crucial for transformation logic handlers to correctly interpret and apply spatial operations across the scene graph structure."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/transform-space.enum.ts#TransformSpace",
+      "label": "Type",
+      "name": "TransformSpace",
+      "signature": "enum"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/transform-space.enum.ts#Local",
+      "label": "Type",
+      "name": "Local",
+      "signature": "Local"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/transform-space.enum.ts#World",
+      "label": "Type",
+      "name": "World",
+      "signature": "World"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "component": {
+    "name": "EntityInspector",
+    "source_path": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts",
+    "doc_path": "/editor/inspectors/entity-inspector/entity-inspector.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as the unit test suite for the EntityInspector component, verifying its correct initialization within an Angular testing environment. It utilizes TestBed to configure a controlled testing module, ensuring the component instance is successfully created and available. The core logic involves triggering change detection and asserting the component's truthiness to confirm successful setup."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('EntityInspector', () => {})"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => {})"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => {})"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": "let component: EntityInspector;"
+    },
+    {
+      "id": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": "let fixture: ComponentFixture<EntityInspector>;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts",
+      "target": "/editor/inspectors/entity-inspector/entity-inspector.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

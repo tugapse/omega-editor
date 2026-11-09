@@ -1,0 +1,110 @@
+{
+  "component": {
+    "name": "EditorStateService",
+    "source_path": "/editor/services/editor-state.service.ts",
+    "doc_path": "/editor/services/editor-state.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorStateService acts as the central state management hub for the editor application, providing a single source of truth for operational context. It manages critical state variables like the active project, selected asset, and workspace dirty status using Angular signals. Its public API allows components to observe and manipulate the application's core state, ensuring reactive data flow across the UI."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/editor-state.service.ts#EditorStateService",
+      "label": "Class",
+      "name": "EditorStateService",
+      "signature": "class EditorStateService"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#activeProject",
+      "label": "Variable",
+      "name": "activeProject",
+      "signature": "signal<IProject | null>"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#selectedAsset",
+      "label": "Variable",
+      "name": "selectedAsset",
+      "signature": "signal<IAsset | null>"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#openedFiles",
+      "label": "Variable",
+      "name": "openedFiles",
+      "signature": "signal<IAsset[]>"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#isDirty",
+      "label": "Variable",
+      "name": "isDirty",
+      "signature": "signal<boolean>"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#centralView",
+      "label": "Variable",
+      "name": "centralView",
+      "signature": "signal<'canvas' | 'assets' | 'code'>"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#setCentralView",
+      "label": "Method",
+      "name": "setCentralView",
+      "signature": "setCentralView(view: 'canvas' | 'assets' | 'code'): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#setActiveProject",
+      "label": "Method",
+      "name": "setActiveProject",
+      "signature": "setActiveProject(project: IProject | null): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#setSelectedAsset",
+      "label": "Method",
+      "name": "setSelectedAsset",
+      "signature": "setSelectedAsset(asset: IAsset | null): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#setOpenedFiles",
+      "label": "Method",
+      "name": "setOpenedFiles",
+      "signature": "setOpenedFiles(files: IAsset[]): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#addOpenedFile",
+      "label": "Method",
+      "name": "addOpenedFile",
+      "signature": "addOpenedFile(file: IAsset): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#removeOpenedFile",
+      "label": "Method",
+      "name": "removeOpenedFile",
+      "signature": "removeOpenedFile(file: IAsset): void"
+    },
+    {
+      "id": "/editor/services/editor-state.service.ts#setDirty",
+      "label": "Method",
+      "name": "setDirty",
+      "signature": "setDirty(isDirty: boolean): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/editor-state.service.ts",
+      "target": "/interfaces/project.interface.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/services/editor-state.service.ts",
+      "target": "/interfaces/asset.interface.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

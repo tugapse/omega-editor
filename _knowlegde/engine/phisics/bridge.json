@@ -1,0 +1,102 @@
+{
+  "component": {
+    "name": "PhysicsEngineBridge",
+    "source_path": "/engine/phisics/bridge.ts",
+    "doc_path": "/engine/phisics/bridge.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This abstract class defines the contract for bridging the application's core simulation logic with any external physics engine implementation. It serves as a crucial service layer, abstracting away specific physics library details to provide a standardized interface for managing entities, forces, and physical states. Its methods cover lifecycle management, entity registration, state synchronization, and performing physics queries like raycasting."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/bridge.ts#PhysicsEngineBridge",
+      "label": "Class",
+      "name": "PhysicsEngineBridge",
+      "signature": "abstract class PhysicsEngineBridge"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#initialize",
+      "label": "Method",
+      "name": "initialize",
+      "signature": "abstract initialize(settings: PhysicsWorldSettings): Promise<void>"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#step",
+      "label": "Method",
+      "name": "step",
+      "signature": "abstract step(dt: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#destroy",
+      "label": "Method",
+      "name": "destroy",
+      "signature": "abstract destroy(): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#registerEntity",
+      "label": "Method",
+      "name": "registerEntity",
+      "signature": "abstract registerEntity(entityId: string, rb: RigidbodyComponent, col?: ColliderComponent, transform?: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#unregisterEntity",
+      "label": "Method",
+      "name": "unregisterEntity",
+      "signature": "abstract unregisterEntity(entityId: string): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#syncToPhysics",
+      "label": "Method",
+      "name": "syncToPhysics",
+      "signature": "abstract syncToPhysics(entityId: string, transform: PhysicsTransform): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#getTransformFromPhysics",
+      "label": "Method",
+      "name": "getTransformFromPhysics",
+      "signature": "abstract getTransformFromPhysics(entityId: string): PhysicsTransform | null"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#setGravity",
+      "label": "Method",
+      "name": "setGravity",
+      "signature": "abstract setGravity(x: number, y: number, z: number): void"
+    },
+    {
+      "id": "/engine/phisics/bridge.ts#raycast",
+      "label": "Method",
+      "name": "raycast",
+      "signature": "abstract raycast(origin: Vector3, direction: Vector3, maxDistance: number): { hit: boolean; entityId: string | null; distance: number; normal: Vector3 } | null"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/bridge.ts",
+      "target": "/engine/phisics/components.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/engine/phisics/bridge.ts",
+      "target": "/engine/phisics/components.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/engine/phisics/bridge.ts",
+      "target": "/engine/phisics/components.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/engine/phisics/bridge.ts",
+      "target": "/engine/phisics/components.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

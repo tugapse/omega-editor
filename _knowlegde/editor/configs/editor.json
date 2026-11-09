@@ -1,0 +1,45 @@
+{
+  "component": {
+    "name": "editor.ts",
+    "source_path": "/editor/configs/editor.ts",
+    "doc_path": "/editor/configs/editor.json",
+    "type": "module"
+  },
+  "vector_memory": {
+    "semantic_summary": "This module serves as the central configuration layer for the editor application, exporting two primary configuration objects: EditorSettings and APISettings. EditorSettings governs visual properties, such as the gridColor, while APISettings defines critical network parameters like the apiHost and apiVersion. It acts as a single source of truth for static configuration parameters consumed by various application services."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/configs/editor.ts#EditorSettings",
+      "label": "Variable",
+      "name": "EditorSettings",
+      "signature": "object"
+    },
+    {
+      "id": "/editor/configs/editor.ts#APISettings",
+      "label": "Variable",
+      "name": "APISettings",
+      "signature": "object"
+    },
+    {
+      "id": "/editor/configs/editor.ts#Colors",
+      "label": "Type",
+      "name": "Colors",
+      "signature": "enum"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/configs/editor.ts",
+      "target": "/omega-game-engine",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": false
+  }
+}

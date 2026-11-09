@@ -1,0 +1,57 @@
+{
+  "component": {
+    "name": "Dropdown",
+    "source_path": "/app/components/dropdown/dropdown.spec.ts",
+    "doc_path": "/app/components/dropdown/dropdown.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as a unit test suite for the DropdownComponent, validating its initialization and basic structure in isolation. It utilizes Angular's TestBed to configure a testing module and creates a ComponentFixture. The primary function is to assert that the component instance is successfully created and ready for testing, acting as a quality gate for the component's implementation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/dropdown/dropdown.spec.ts#Dropdown",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('Dropdown', () => { ... })"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": "let component: DropdownComponent;"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": "let fixture: ComponentFixture<DropdownComponent>;"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => { ... })"
+    },
+    {
+      "id": "/app/components/dropdown/dropdown.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => { ... })"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/dropdown/dropdown.spec.ts",
+      "target": "/app/components/dropdown/dropdown.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

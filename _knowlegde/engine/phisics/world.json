@@ -1,0 +1,84 @@
+{
+  "component": {
+    "name": "PhysicsWorld",
+    "source_path": "/engine/phisics/world.ts",
+    "doc_path": "/engine/phisics/world.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "PhysicsWorld acts as the high-level service layer orchestrating the entire physics simulation lifecycle. It manages entity registration, handles simulation stepping via the injected PhysicsEngineBridge, and synchronizes entity transforms between the application state and the physics backend. Its core logic involves a three-stage loop: pushing external changes to physics, stepping the simulation, and pulling results back to the application state."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/world.ts#PhysicsWorld",
+      "label": "Class",
+      "name": "PhysicsWorld",
+      "signature": ""
+    },
+    {
+      "id": "/engine/phisics/world.ts#activeBridge",
+      "label": "Variable",
+      "name": "activeBridge",
+      "signature": "PhysicsEngineBridge | null"
+    },
+    {
+      "id": "/engine/phisics/world.ts#registeredEntities",
+      "label": "Variable",
+      "name": "registeredEntities",
+      "signature": "Set<string>"
+    },
+    {
+      "id": "/engine/phisics/world.ts#initialize",
+      "label": "Method",
+      "name": "initialize",
+      "signature": "async initialize(bridge: PhysicsEngineBridge, settings: PhysicsWorldSettings): Promise<void>"
+    },
+    {
+      "id": "/engine/phisics/world.ts#registerEntity",
+      "label": "Method",
+      "name": "registerEntity",
+      "signature": "registerEntity(entityId: string, rb: RigidbodyComponent, col?: ColliderComponent, transform?: any): void"
+    },
+    {
+      "id": "/engine/phisics/world.ts#unregisterEntity",
+      "label": "Method",
+      "name": "unregisterEntity",
+      "signature": "unregisterEntity(entityId: string): void"
+    },
+    {
+      "id": "/engine/phisics/world.ts#update",
+      "label": "Method",
+      "name": "update",
+      "signature": "update(dt: number, getEntityTransform: (id: string) => any, updateEntityTransform: (id: string, pos: any, rot: any) => void): void"
+    },
+    {
+      "id": "/engine/phisics/world.ts#setGravity",
+      "label": "Method",
+      "name": "setGravity",
+      "signature": "setGravity(x: number, y: number, z: number): void"
+    },
+    {
+      "id": "/engine/phisics/world.ts#destroy",
+      "label": "Method",
+      "name": "destroy",
+      "signature": "destroy(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/world.ts",
+      "target": "/engine/phisics/bridge.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/engine/phisics/world.ts",
+      "target": "/engine/phisics/components.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

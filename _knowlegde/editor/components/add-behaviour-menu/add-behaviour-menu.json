@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "AddBehaviourMenuComponent",
+    "source_path": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts",
+    "doc_path": "/editor/components/add-behaviour-menu/add-behaviour-menu.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component manages an interactive, searchable UI menu for selecting game behaviours within the editor. It consumes an array of ClassMetadata objects and controls its visibility via input flags. Its core logic filters behaviours based on user search queries and emits events upon selection or dismissal, acting as a specialized UI controller for behaviour selection."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#AddBehaviourMenuComponent",
+      "label": "Class",
+      "name": "AddBehaviourMenuComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#behaviours",
+      "label": "Input",
+      "name": "behaviours",
+      "signature": "ClassMetadata[]"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#isOpen",
+      "label": "Input",
+      "name": "isOpen",
+      "signature": "boolean"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#menuX",
+      "label": "Input",
+      "name": "menuX",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#menuY",
+      "label": "Input",
+      "name": "menuY",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#behaviourSelected",
+      "label": "Output",
+      "name": "behaviourSelected",
+      "signature": "EventEmitter<ClassMetadata>"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#closeMenu",
+      "label": "Output",
+      "name": "closeMenu",
+      "signature": "EventEmitter<void>"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#searchQuery",
+      "label": "Variable",
+      "name": "searchQuery",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#filteredBehaviours",
+      "label": "Method",
+      "name": "filteredBehaviours",
+      "signature": "get filteredBehaviours(): ClassMetadata[]"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#onSearch",
+      "label": "Method",
+      "name": "onSearch",
+      "signature": "onSearch(event: Event): void"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#onDocumentClick",
+      "label": "Method",
+      "name": "onDocumentClick",
+      "signature": "@HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts#selectBehaviour",
+      "label": "Method",
+      "name": "selectBehaviour",
+      "signature": "selectBehaviour(behaviour: ClassMetadata, event: MouseEvent): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/add-behaviour-menu/add-behaviour-menu.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

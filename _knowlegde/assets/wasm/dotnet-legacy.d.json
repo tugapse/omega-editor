@@ -1,0 +1,91 @@
+{
+  "component": {
+    "name": "dotnet-legacy",
+    "source_path": "/assets/wasm/dotnet-legacy.d.ts",
+    "doc_path": "/assets/wasm/dotnet-legacy.d.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component serves as a foundational declaration file defining the TypeScript interfaces for interoperability between JavaScript and a WebAssembly-compiled .NET runtime. It establishes contracts for managed types like MonoObject, MonoString, and WasmRoot, acting as a crucial bridge layer. It exposes deprecated APIs, such as BINDINGType and MONOType, which handle low-level memory access and runtime configuration. The file is purely declarative, defining the structure of the runtime contract without implementing executable logic."
+  },
+  "graph_nodes": [
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#ManagedPointer",
+      "label": "Interface",
+      "name": "ManagedPointer",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#NativePointer",
+      "label": "Interface",
+      "name": "NativePointer",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#VoidPtr",
+      "label": "Interface",
+      "name": "VoidPtr",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#MonoObject",
+      "label": "Interface",
+      "name": "MonoObject",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#MonoString",
+      "label": "Interface",
+      "name": "MonoString",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#MonoArray",
+      "label": "Interface",
+      "name": "MonoArray",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#MonoObjectRef",
+      "label": "Interface",
+      "name": "MonoObjectRef",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#WasmRoot",
+      "label": "Interface",
+      "name": "WasmRoot",
+      "signature": "get_address(): MonoObjectRef; get_address_32(): number; get address(): MonoObjectRef; get(): T; set(value: T): T; get value(): T; set value(value: T); copy_from_address(source: MonoObjectRef): void; copy_to_address(destination: MonoObjectRef): void; copy_from(source: WasmRoot<T>): void; copy_to(destination: WasmRoot<T>): void; valueOf(): T; clear(): void; release(): void; toString(): string"
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#WasmRootBuffer",
+      "label": "Interface",
+      "name": "WasmRootBuffer",
+      "signature": "get_address(index: number): MonoObjectRef; get_address_32(index: number): number; get(index: number): ManagedPointer; set(index: number, value: ManagedPointer): ManagedPointer; copy_value_from_address(index: number, sourceAddress: MonoObjectRef): void; clear(): void; release(): void; toString(): string"
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#BINDINGType",
+      "label": "Type",
+      "name": "BINDINGType",
+      "signature": "bind_static_method: (fqn: string, signature?: string) => Function; call_assembly_entry_point: (assembly: string, args?: any[], signature?: string) => number; mono_obj_array_new: (size: number) => MonoArray; mono_obj_array_set: (array: MonoArray, idx: number, obj: MonoObject) => void; js_string_to_mono_string: (string: string) => MonoString; js_typed_array_to_array: (js_obj: any) => MonoArray; mono_array_to_js_array: (mono_array: MonoArray) => any[] | null; js_to_mono_obj: (js_obj: any) => MonoObject; conv_string: (mono_obj: MonoString) => string | null; unbox_mono_obj: (mono_obj: MonoObject) => any; mono_obj_array_new_ref: (size: number, result: MonoObjectRef) => void; mono_obj_array_set_ref: (array: MonoObjectRef, idx: number, obj: MonoObjectRef) => void; js_string_to_mono_string_root: (string: string, result: WasmRoot<MonoString>) => void; js_typed_array_to_array_root: (js_obj: any, result: WasmRoot<MonoArray>) => void; js_to_mono_obj_root: (js_obj: any, result: WasmRoot<MonoObject>, should_add_in_flight: boolean) => void; conv_string_root: (root: WasmRoot<MonoString>) => string | null; unbox_mono_obj_root: (root: WasmRoot<any>) => any; mono_array_root_to_js_array: (arrayRoot: WasmRoot<MonoArray>) => any[] | null"
+    },
+    {
+      "id": "/assets/wasm/dotnet-legacy.d.ts#MONOType",
+      "label": "Type",
+      "name": "MONOType",
+      "signature": "mono_wasm_setenv: (name: string, value: string) => void; mono_wasm_load_bytes_into_heap: (bytes: Uint8Array) => VoidPtr; mono_wasm_load_icu_data: (offset: VoidPtr) => boolean; mono_wasm_runtime_ready: () => void; mono_wasm_new_root_buffer: (capacity: number, name?: string) => WasmRootBuffer; mono_wasm_new_root: <T extends MonoObject>(value?: T | undefined) => WasmRoot<T>; mono_wasm_new_external_root: <T extends MonoObject>(address: VoidPtr | MonoObjectRef) => WasmRoot<T>; mono_wasm_release_roots: (...args: WasmRoot<any>[]) => void; mono_run_main: (main_assembly_name: string, args: string[]) => Promise<number>; mono_run_main_and_exit: (main_assembly_name: string, args: string[]) => Promise<number>; mono_wasm_add_assembly: (name: string, data: VoidPtr, size: number) => number; mono_wasm_load_runtime: (unused: string, debugLevel: number) => void; config: any; loaded_files: string[]; setB32: (offset: MemOffset, value: number | boolean) => void; setI8: (offset: MemOffset, value: number) => void; setI16: (offset: MemOffset, value: number) => void; setI32: (offset: MemOffset, value: number) => void; setI52: (offset: MemOffset, value: number) => void; setU52: (offset: MemOffset, value: number) => void; setI64Big: (offset: MemOffset, value: bigint) => void; setU8: (offset: MemOffset, value: number) => void; setU16: (offset: MemOffset, value: number) => void; setU32: (offset: MemOffset, value: NumberOrPointer) => void; setF32: (offset: MemOffset, value: number) => void; setF64: (offset: MemOffset, value: number) => void; getB32: (offset: MemOffset) => boolean; getI8: (offset: MemOffset) => number; getI16: (offset: MemOffset) => number; getI32: (offset: MemOffset) => number; getI52: (offset: MemOffset) => number; getU52: (offset: MemOffset) => number; getI64Big: (offset: MemOffset) => bigint; getU8: (offset: MemOffset) => number; getU16: (offset: MemOffset) => number; getU32: (offset: MemOffset) => number; getF32: (offset: MemOffset) => number; getF64: (offset: MemOffset) => number"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/assets/wasm/dotnet-legacy.d.ts",
+      "target": "/assets/wasm/dotnet-legacy.d.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

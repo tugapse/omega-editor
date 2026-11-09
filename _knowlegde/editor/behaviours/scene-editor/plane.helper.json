@@ -1,0 +1,80 @@
+{
+  "component": {
+    "name": "PlaneHelper",
+    "source_path": "/editor/behaviours/scene-editor/plane.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/plane.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "PlaneHelper is a low-level rendering utility responsible for managing the geometry and WebGL buffers required to represent a planar surface within the scene editor. It initializes a structured grid of vertices and calculates separate index buffers for solid quad rendering (TRIANGLES) and structural line rendering (LINES). Its primary role is to abstract complex GPU buffer setup, providing dedicated methods to draw the plane either as a solid surface or as a wireframe outline using a provided Shader."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#PlaneHelper",
+      "label": "Class",
+      "name": "PlaneHelper",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#init",
+      "label": "Method",
+      "name": "init",
+      "signature": "private init()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#drawSolid",
+      "label": "Method",
+      "name": "drawSolid",
+      "signature": "public drawSolid(shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#drawLines",
+      "label": "Method",
+      "name": "drawLines",
+      "signature": "public drawLines(shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#gl",
+      "label": "Variable",
+      "name": "gl",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#positionBuffer",
+      "label": "Variable",
+      "name": "positionBuffer",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#indexBuffer",
+      "label": "Variable",
+      "name": "indexBuffer",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/plane.helper.ts#lineIndexBuffer",
+      "label": "Variable",
+      "name": "lineIndexBuffer",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/plane.helper.ts",
+      "target": "/omega-game-engine#Shader",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/plane.helper.ts",
+      "target": "/omega-game-engine#ShaderUniformsEnum",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

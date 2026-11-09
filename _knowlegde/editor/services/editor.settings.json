@@ -1,0 +1,57 @@
+{
+  "component": {
+    "name": "EditorSettingsService",
+    "source_path": "/editor/services/editor.settings.ts",
+    "doc_path": "/editor/services/editor.settings.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorSettingsService manages the application's editor preferences, acting as a centralized state management service. It loads settings from localStorage upon initialization, falling back to defaults if none are found. It exposes the current state via a BehaviorSubject, allowing reactive updates across the application whenever settings are modified and persisted."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/editor.settings.ts#EditorSettingsService",
+      "label": "Class",
+      "name": "EditorSettingsService",
+      "signature": ""
+    },
+    {
+      "id": "/editor/services/editor.settings.ts#settings",
+      "label": "Getter",
+      "name": "settings",
+      "signature": "get settings(): EditorSettings"
+    },
+    {
+      "id": "/editor/services/editor.settings.ts#onSettingsChanged",
+      "label": "BehaviorSubject",
+      "name": "onSettingsChanged",
+      "signature": ""
+    },
+    {
+      "id": "/editor/services/editor.settings.ts#saveSettings",
+      "label": "Method",
+      "name": "saveSettings",
+      "signature": "saveSettings(): void"
+    },
+    {
+      "id": "/editor/services/editor.settings.ts#_settings",
+      "label": "Variable",
+      "name": "_settings",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/editor.settings.ts",
+      "target": "/editor/interfaces/editor-settings.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

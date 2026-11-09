@@ -1,0 +1,31 @@
+{
+  "component": {
+    "name": "file-explorer.model",
+    "source_path": "/editor/components/file-explorer/file-explorer.model.ts",
+    "doc_path": "/editor/components/file-explorer/file-explorer.model.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the core data structures for the file explorer module, serving as the foundational data model. It establishes blueprints for representing file system items via the FileNode interface, which includes metadata like size and children. It also defines the ContextMenuAction interface, standardizing actions available during user interaction within the file tree."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/file-explorer/file-explorer.model.ts#FileNode",
+      "label": "Interface",
+      "name": "FileNode",
+      "signature": "interface FileNode { name: string; path: string; type: 'file' | 'directory'; size?: number; extension?: string; children?: FileNode[]; }"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.model.ts#ContextMenuAction",
+      "label": "Interface",
+      "name": "ContextMenuAction",
+      "signature": "interface ContextMenuAction { id: string; label: string; icon?: string; }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

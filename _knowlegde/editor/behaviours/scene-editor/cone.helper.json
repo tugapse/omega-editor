@@ -1,0 +1,66 @@
+{
+  "component": {
+    "name": "ConeHelper",
+    "source_path": "/editor/behaviours/scene-editor/cone.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/cone.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "ConeHelper is a low-level rendering utility responsible for generating and managing the WebGL buffers required to render a 3D cone geometry. It encapsulates the geometry creation logic, calculating vertices and indices for the cone's base and tip. The class manages the upload of this geometry data to GPU buffers and provides a 'draw' method to execute rendering commands via a provided Shader object."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#ConeHelper",
+      "label": "Class",
+      "name": "ConeHelper",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#createConeGeometry",
+      "label": "Function",
+      "name": "createConeGeometry",
+      "signature": "createConeGeometry(radius: number = 0.1, height: number = 0.3, segments: number = 16): { vertices: number[], indices: number[] }"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "draw(shader: Shader): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#vertexBuffer",
+      "label": "Variable",
+      "name": "vertexBuffer",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#indexBuffer",
+      "label": "Variable",
+      "name": "indexBuffer",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cone.helper.ts#indexCount",
+      "label": "Variable",
+      "name": "indexCount",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/cone.helper.ts",
+      "target": "/omega-game-engine/Shader",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/cone.helper.ts",
+      "target": "/omega-game-engine/ShaderUniformsEnum",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

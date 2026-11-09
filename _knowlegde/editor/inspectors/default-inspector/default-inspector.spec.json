@@ -1,0 +1,68 @@
+{
+  "component": {
+    "name": "DefaultInspector",
+    "source_path": "/editor/inspectors/default-inspector/default-inspector.spec.ts",
+    "doc_path": "/editor/inspectors/default-inspector/default-inspector.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as the unit test suite for the DefaultInspector component, verifying its correct initialization within a controlled testing environment. It utilizes TestBed to configure the testing module and instantiates the component to assert its truthiness. Architecturally, it functions purely as a quality gate, ensuring the component's basic state is valid before integration into the main application flow."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#DefaultInspector",
+      "label": "Class",
+      "name": "DefaultInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('DefaultInspector', () => { ... })"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => { ... })"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => { ... })"
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/default-inspector/default-inspector.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.spec.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.spec.ts#DefaultInspector",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/default-inspector/default-inspector.spec.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.spec.ts#TestBed",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

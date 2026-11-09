@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "FileExplorerComponent",
+    "source_path": "/editor/components/file-explorer/file-explorer.component.ts",
+    "doc_path": "/editor/components/file-explorer/file-explorer.component.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "The FileExplorerComponent acts as the primary UI controller for rendering and managing the hierarchical file system view within the editor. It consumes the current directory state from FileSystemService and emits an event when a file is clicked, signaling the need to load its content. It manages the visibility and state of the context menu, allowing users to perform actions like renaming or deleting files on selected nodes."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#FileExplorerComponent",
+      "label": "Class",
+      "name": "FileExplorerComponent",
+      "signature": "class FileExplorerComponent"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#fileContentRequested",
+      "label": "Output",
+      "name": "fileContentRequested",
+      "signature": "@Output() fileContentRequested = new EventEmitter<Observable<string>>()"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#directoryListing$",
+      "label": "Variable",
+      "name": "directoryListing$",
+      "signature": "public directoryListing$: Observable<FileNode[]>"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#activeFile",
+      "label": "Variable",
+      "name": "activeFile",
+      "signature": "public activeFile: FileNode | null = null"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#contextMenuState",
+      "label": "Variable",
+      "name": "contextMenuState",
+      "signature": "public contextMenuState = signal<ContextMenuState>({ ... })"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private fileSystemService: FileSystemService)"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#onNodeClick",
+      "label": "Method",
+      "name": "onNodeClick",
+      "signature": "onNodeClick(node: FileNode): void"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#onNodeDoubleClick",
+      "label": "Method",
+      "name": "onNodeDoubleClick",
+      "signature": "onNodeDoubleClick(node: FileNode): void"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#onContextMenu",
+      "label": "Method",
+      "name": "onContextMenu",
+      "signature": "onContextMenu(event: MouseEvent, node: FileNode): void"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-explorer.component.ts#handleContextMenuAction",
+      "label": "Method",
+      "name": "handleContextMenuAction",
+      "signature": "handleContextMenuAction(event: { action: ContextMenuAction; node: FileNode }): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/file-explorer/file-explorer.component.ts",
+      "target": "/editor/components/file-explorer/file-system.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/file-explorer/file-explorer.component.ts",
+      "target": "/editor/components/file-explorer/file-explorer.model.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/file-explorer/file-explorer.component.ts",
+      "target": "/editor/components/context-menu/context-menu.component.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

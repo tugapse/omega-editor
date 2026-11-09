@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "asset-types",
+    "source_path": "/editor/models/asset-types.ts",
+    "doc_path": "/editor/models/asset-types.json",
+    "type": "model"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the EngineAssetType enumeration, which serves as the canonical registry for all distinct asset types within the editor system. It provides a strongly typed, exhaustive set of identifiers, such as Texture, Material, and Scene, ensuring type safety across the application. Its primary role is to dictate how the system classifies and handles various resources loaded into the engine's asset pipeline. This structure acts as a stable contract for subsystems like the AssetManager and SceneLoader."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/models/asset-types.ts#EngineAssetType",
+      "label": "Type",
+      "name": "EngineAssetType",
+      "signature": "export enum EngineAssetType { Texture = 'texture', Material = 'material', Audio = 'audio', Scene = 'scene', MeshData = 'meshdata', Font = 'font', Shader = 'shader' }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

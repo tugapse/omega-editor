@@ -1,0 +1,110 @@
+{
+  "component": {
+    "name": "OmegaLoggerPanelComponent",
+    "source_path": "/editor/components/problems-panel/problems-panel.ts",
+    "doc_path": "/editor/components/problems-panel/problems-panel.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "OmegaLoggerPanelComponent is a standalone Angular component responsible for rendering and managing a real-time log panel within the editor UI. It actively polls the global EngineLogger service every 250ms to maintain an up-to-date view of system events. Its core logic handles log filtering based on severity levels and manages the expansion state for viewing detailed stack traces."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#OmegaLoggerPanelComponent",
+      "label": "Class",
+      "name": "OmegaLoggerPanelComponent",
+      "signature": "class OmegaLoggerPanelComponent implements OnInit, OnDestroy"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#LogEntry",
+      "label": "Interface",
+      "name": "LogEntry",
+      "signature": "interface LogEntry { level: string; message: string; timestamp: number; }"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private cdr: ChangeDetectorRef)"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit()"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy()"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#refreshLogs",
+      "label": "Method",
+      "name": "refreshLogs",
+      "signature": "private refreshLogs()"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#filteredLogs",
+      "label": "Getter",
+      "name": "filteredLogs",
+      "signature": "public get filteredLogs()"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#clearLogs",
+      "label": "Method",
+      "name": "clearLogs",
+      "signature": "public clearLogs()"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#toggleExpand",
+      "label": "Method",
+      "name": "toggleExpand",
+      "signature": "public toggleExpand(index: number)"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#hasStackTrace",
+      "label": "Method",
+      "name": "hasStackTrace",
+      "signature": "public hasStackTrace(message: string): boolean"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#getLogSummary",
+      "label": "Method",
+      "name": "getLogSummary",
+      "signature": "public getLogSummary(message: string): string"
+    },
+    {
+      "id": "/editor/components/problems-panel/problems-panel.ts#getStackTrace",
+      "label": "Method",
+      "name": "getStackTrace",
+      "signature": "public getStackTrace(message: string): string"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/problems-panel/problems-panel.ts",
+      "target": "/src/engine/logger.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/problems-panel/problems-panel.ts",
+      "target": "/@angular/core.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/problems-panel/problems-panel.ts",
+      "target": "/@angular/common.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common"
+    ],
+    "has_side_effects": true
+  }
+}

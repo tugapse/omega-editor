@@ -1,0 +1,167 @@
+{
+  "component": {
+    "name": "TopBar",
+    "source_path": "/editor/components/top-bar/top-bar.ts",
+    "doc_path": "/editor/components/top-bar/top-bar.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The TopBar component acts as the primary control panel for the editor interface, orchestrating core functionalities like scene playback, view switching (assets/code), and user session management. It consumes state from EditorStateService and communicates commands to EditorService based on user interactions. It manages authentication status via AuthService and displays user details retrieved from UserService, providing a centralized control hub for the editing experience."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#TopBar",
+      "label": "Class",
+      "name": "TopBar",
+      "signature": "class TopBar implements OnInit"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#showAssets",
+      "label": "Method",
+      "name": "showAssets",
+      "signature": "showAssets(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#isAssetsActive",
+      "label": "Method",
+      "name": "isAssetsActive",
+      "signature": "isAssetsActive(): boolean"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#onPlay",
+      "label": "Method",
+      "name": "onPlay",
+      "signature": "onPlay(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#onPause",
+      "label": "Method",
+      "name": "onPause",
+      "signature": "onPause(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#onStop",
+      "label": "Method",
+      "name": "onStop",
+      "signature": "onStop(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#onCodeEditor",
+      "label": "Method",
+      "name": "onCodeEditor",
+      "signature": "onCodeEditor(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#isLoggedIn",
+      "label": "Method",
+      "name": "isLoggedIn",
+      "signature": "isLoggedIn(): boolean"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#onLogout",
+      "label": "Method",
+      "name": "onLogout",
+      "signature": "onLogout(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#inspectCamera",
+      "label": "Method",
+      "name": "inspectCamera",
+      "signature": "inspectCamera(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#goHome",
+      "label": "Method",
+      "name": "goHome",
+      "signature": "goHome(): void"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.ts#user",
+      "label": "Variable",
+      "name": "user",
+      "signature": "public user: UserResponse | undefined;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/editor-state.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/app/api/services/user.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/app/api/models/omega-api.models.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/editor-state.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/app/api/services/user.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.ts",
+      "target": "/editor/services/editor-state.service.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common",
+      "@angular/router"
+    ],
+    "has_side_effects": true
+  }
+}

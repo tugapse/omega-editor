@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "CubeHelper",
+    "source_path": "/editor/behaviours/scene-editor/cube.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/cube.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "CubeHelper is a class responsible for managing the geometric representation of a standard 3D cube primitive within the scene editor. It encapsulates the necessary vertex and index data, initializing and uploading this raw geometry to WebGL2 buffers for both rendering and picking shaders. Its primary role is to provide a reusable, pre-configured mesh object that can be drawn using specified transformations and materials within the rendering pipeline."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#CubeHelper",
+      "label": "Class",
+      "name": "CubeHelper",
+      "signature": "constructor(private _gl: WebGL2RenderingContext, private shader: Shader, private pickingShader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#initialize",
+      "label": "Method",
+      "name": "initialize",
+      "signature": "private initialize()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#bind",
+      "label": "Method",
+      "name": "bind",
+      "signature": "private bind(shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#createMesh",
+      "label": "Method",
+      "name": "createMesh",
+      "signature": "private createMesh(size = 0.2): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "public draw(transformMatrix: mat4, color: Color, shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/cube.helper.ts#mesh",
+      "label": "Variable",
+      "name": "mesh",
+      "signature": "public mesh!: Mesh;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/cube.helper.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix"
+    ],
+    "has_side_effects": true
+  }
+}

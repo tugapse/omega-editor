@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "EnumInspector",
+    "source_path": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts",
+    "doc_path": "/editor/inspectors/enum-inspector/enum-inspector.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This file constitutes the unit test suite for the EnumInspector component, verifying its correct initialization within an Angular testing environment. It utilizes TestBed to configure a controlled module, ensuring the component instance is successfully created and available. The primary function is to validate the component's existence and structural integrity upon instantiation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#EnumInspector",
+      "label": "Class",
+      "name": "EnumInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('EnumInspector', () => {})"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => {})"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => {})"
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": ""
+    },
+    {
+      "id": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts",
+      "target": "/editor/inspectors/enum-inspector/enum-inspector.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

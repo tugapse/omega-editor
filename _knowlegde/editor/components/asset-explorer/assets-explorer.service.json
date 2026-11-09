@@ -1,0 +1,116 @@
+{
+  "component": {
+    "name": "AssetsExplorerService",
+    "source_path": "/editor/components/asset-explorer/assets-explorer.service.ts",
+    "doc_path": "/editor/components/asset-explorer/assets-explorer.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetsExplorerService acts as the centralized state manager for the editor's asset browsing experience. It is responsible for fetching, structuring, and maintaining the state of all project assets, managing operations like creation, renaming, and deletion. It orchestrates data flow by consuming asset data from AssetService and synchronizing UI state via EditorStateService."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#AssetsExplorerService",
+      "label": "Class",
+      "name": "AssetsExplorerService",
+      "signature": "class AssetsExplorerService"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#treeData",
+      "label": "Variable",
+      "name": "treeData",
+      "signature": "readonly treeData = signal<IAsset | null>(null)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#selectedNodeId",
+      "label": "Variable",
+      "name": "selectedNodeId",
+      "signature": "readonly selectedNodeId = signal<string | null>(null)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#expandedNodes",
+      "label": "Variable",
+      "name": "expandedNodes",
+      "signature": "readonly expandedNodes = signal<Set<string>>(new Set<string>())"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#activeFolder",
+      "label": "Variable",
+      "name": "activeFolder",
+      "signature": "readonly activeFolder = signal<IAsset | null>(null)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#loadProjectAssets",
+      "label": "Method",
+      "name": "loadProjectAssets",
+      "signature": "loadProjectAssets(projectId: string, projectName: string = 'Project Root'): Observable<any>"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#selectNode",
+      "label": "Method",
+      "name": "selectNode",
+      "signature": "selectNode(node: IAsset): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#activateFolder",
+      "label": "Method",
+      "name": "activateFolder",
+      "signature": "activateFolder(node: IAsset): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#toggleExpand",
+      "label": "Method",
+      "name": "toggleExpand",
+      "signature": "toggleExpand(node: IAsset): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#createAsset",
+      "label": "Method",
+      "name": "createAsset",
+      "signature": "createAsset(projectId: string, actionType: string, name: string): Observable<any> | null"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#renameAsset",
+      "label": "Method",
+      "name": "renameAsset",
+      "signature": "renameAsset(projectId: string, node: IAsset, newName: string): Observable<any>"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#deleteAsset",
+      "label": "Method",
+      "name": "deleteAsset",
+      "signature": "deleteAsset(projectId: string, node: IAsset): Observable<any>"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#findNodeByPath",
+      "label": "Method",
+      "name": "findNodeByPath",
+      "signature": "findNodeByPath(root: IAsset, path: string): IAsset | null"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.service.ts#buildAssetTree",
+      "label": "Method",
+      "name": "buildAssetTree",
+      "signature": "buildAssetTree(assets: AssetResponse[], project: { id: string; name: string }): IAsset"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.service.ts",
+      "target": "/app/api/services/asset.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.service.ts",
+      "target": "/editor/components/asset-explorer/editor-state.service.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

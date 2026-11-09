@@ -1,0 +1,49 @@
+{
+  "component": {
+    "name": "AddBehaviourMenuComponent",
+    "source_path": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts",
+    "doc_path": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component implements a specialized UI element for the editor, inheriting from SearchableMenuComponent to provide a searchable catalog of available behaviors. Its primary role is to filter a list of ClassMetadata based on user input across name, description, or type. It manages the selection process by emitting a 'behaviourSelected' event upon user interaction."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts#AddBehaviourMenuComponent",
+      "label": "Class",
+      "name": "AddBehaviourMenuComponent",
+      "signature": "extends SearchableMenuComponent"
+    },
+    {
+      "id": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts#behaviours",
+      "label": "Variable",
+      "name": "behaviours",
+      "signature": "ClassMetadata[]"
+    },
+    {
+      "id": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts#behaviourSelected",
+      "label": "Variable",
+      "name": "behaviourSelected",
+      "signature": "EventEmitter<ClassMetadata>"
+    },
+    {
+      "id": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts#filteredBehaviours",
+      "label": "Method",
+      "name": "filteredBehaviours",
+      "signature": "get filteredBehaviours(): ClassMetadata[]"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/add-scene-entity-menu/add-scene-entity-menu.ts",
+      "target": "/editor/components/searchable-menu/searchable-menu.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "component": {
+    "name": "LoadingService",
+    "source_path": "/app/services/loading.service.ts",
+    "doc_path": "/app/services/loading.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "The LoadingService is a core utility service responsible for managing a global, application-wide loading indicator state. It encapsulates reactive state using Angular Signals (`visible` and `message`) to signal when asynchronous operations are in progress. Its primary role is to provide a centralized API for other parts of the application to trigger the display and subsequent hiding of the loading overlay, ensuring UI stability during busy periods."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/services/loading.service.ts#LoadingService",
+      "label": "Class",
+      "name": "LoadingService",
+      "signature": ""
+    },
+    {
+      "id": "/app/services/loading.service.ts#visible",
+      "label": "Variable",
+      "name": "visible",
+      "signature": "signal<boolean>"
+    },
+    {
+      "id": "/app/services/loading.service.ts#message",
+      "label": "Variable",
+      "name": "message",
+      "signature": "signal<string>"
+    },
+    {
+      "id": "/app/services/loading.service.ts#show",
+      "label": "Method",
+      "name": "show",
+      "signature": "show(displayMessage: string = 'Loading Workspace Environment...'): void"
+    },
+    {
+      "id": "/app/services/loading.service.ts#hide",
+      "label": "Method",
+      "name": "hide",
+      "signature": "hide(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/services/loading.service.ts",
+      "target": "/app/services/loading.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}
