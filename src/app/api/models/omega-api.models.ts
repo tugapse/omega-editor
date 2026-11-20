@@ -9,8 +9,8 @@
  */
 export interface UserPreferences {
   theme: 'dark' | 'light';
-  notifications_enabled: boolean;
-  editor_settings: Record<string, string>;
+  notificationsEnabled: boolean;
+  editorSettings: Record<string, string>;
 }
 
 // --- Request Schemas ---
@@ -91,8 +91,8 @@ export interface UpdateProjectRequest {
  * Corresponds to `PATCH /api/projects/{project_id}/assets/{asset_id}`.
  */
 export interface UpdateAssetRequest {
-  virtual_path?: string;
-  asset_type?: 'code' | 'image' | 'audio' | 'text' | 'raw' | 'scene';
+  virtualPath?: string;
+  assetType?: 'code' | 'image' | 'audio' | 'text' | 'raw' | 'scene';
 }
 
 /**
@@ -120,8 +120,8 @@ export interface UserResponse {
   username: string;
   email: string;
   preferences: UserPreferences;
-  created_at: string; // ISO-8601
-  updated_at: string; // ISO-8601
+  createdAt: string; // ISO-8601
+  updatedAt: string; // ISO-8601
 }
 
 /**
@@ -131,7 +131,7 @@ export interface UserResponse {
 export interface ProjectResponse {
   id: string; // UUID
   slug: string;
-  owner_id: string; // UUID
+  ownerId: string; // UUID
   name: string;
   description: string | null;
   status: 'active' | 'archived' | 'maintenance';
@@ -139,8 +139,8 @@ export interface ProjectResponse {
     environment: 'development' | 'staging' | 'production';
     version: string;
   };
-  created_at: string; // ISO-8601
-  updated_at: string; // ISO-8601
+  createdAt: string; // ISO-8601
+  updatedAt: string; // ISO-8601
 }
 
 /**
@@ -165,9 +165,9 @@ export interface AssetResponse {
  * Corresponds to the `ProjectAssetIndexResponse` schema.
  */
 export interface ProjectAssetIndexResponse {
-  project_id: string; // UUID
-  total_assets: number;
-  total_size_bytes: number;
+  projectId: string; // UUID
+  totalAssets: number;
+  totalSizeBytes: number;
   assets: AssetResponse[];
 }
 
