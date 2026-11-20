@@ -2,7 +2,10 @@
   <div class="project-details">
     <div class="project-header">
       <h2>{{ editableProject.name }}</h2>
-      <button [routerLink]="['/editor', editableProject.id]" class="btn btn-secondary">Go to Editor</button>
+      <div class="header-actions">
+        <button [routerLink]="['/code', editableProject.id]" class="btn btn-secondary">Code Editor</button>
+        <button [routerLink]="['/editor', editableProject.id]" class="btn btn-secondary">Go to Editor</button>
+      </div>
     </div>
 
     <div class="details-grid">
