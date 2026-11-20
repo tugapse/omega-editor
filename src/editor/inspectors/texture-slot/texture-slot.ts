@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, inject, Input, Output, signal } from '@angular/core';
-import { Texture } from 'omega-game-engine';
+import { Camera, renderTextureUri, Texture } from 'omega-game-engine';
+import { EditorService } from '@editor/services/editor.service';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { EditorStateService } from '@editor/services/editor-state.service';
 import { EditorResourceLoader } from '@editor/services/editor-resource-loader.service';
@@ -28,6 +29,7 @@ export class TextureSlot {
   private assetService = inject(AssetService);
   private editorState = inject(EditorStateService);
   private resourceLoader = inject(EditorResourceLoader);
+  private editorService = inject(EditorService);
 
   @Input() label = 'Texture';
   @Input() texture: Texture | null | undefined = null;
@@ -38,6 +40,8 @@ export class TextureSlot {
   isLoading = signal(false);
   search = signal('');
   projectTextures = signal<TextureChoice[]>([]);
+  /** Textures the scene's cameras render into (`Camera.targetTexture`). */
+  cameraTextures = signal<TextureChoice[]>([]);
   readonly builtinTextures = BUILTIN_TEXTURES;
 
   /** Asset names by id, to show "wall.png" instead of "asset://<uuid>". */
@@ -81,6 +85,7 @@ export class TextureSlot {
     this.search.set('');
     this.isOpen.set(true);
     this.loadProjectTextures();
+    this.loadCameraTextures();
   }
 
   choose(choice: TextureChoice | null, event?: MouseEvent) {
@@ -133,6 +138,14 @@ export class TextureSlot {
       },
       error: () => this.isLoading.set(false),
     });
+  }
+
+  private loadCameraTextures() {
+    const objects = this.editorService.scene?.objects ?? [];
+    const names = new Set(
+      objects.filter((o): o is Camera => o instanceof Camera && !!o.targetTexture).map((c) => c.targetTexture),
+    );
+    this.cameraTextures.set([...names].sort().map((name) => ({ uri: renderTextureUri(name), name })));
   }
 
   /** Loads the project's asset names once per project, for the slot labels. */

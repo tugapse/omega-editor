@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- The texture picker lists a "Cameras" group: the render textures of the scene's cameras (`Camera.targetTexture`, needs the engine's render to texture). The camera's `targetTexture`, `targetWidth` and `targetHeight` show in its inspector.
+
 ## 0.1.0 (2026-11-20)
 
 Needs `omega-game-engine` 4.0.0. Until it is published to npm, install the local engine with `npm install --no-save ../omega-engine`.

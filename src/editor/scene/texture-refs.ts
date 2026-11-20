@@ -24,7 +24,7 @@ export interface DraggedAsset {
 }
 
 export interface TextureChoice {
-  /** URI saved in the scene: `asset://<id>` or `builtin://<name>`. */
+  /** URI saved in the scene: `asset://<id>`, `builtin://<name>` or `rendertexture://<camera texture>`. */
   uri: string;
   name: string;
   /** URL usable in an <img> for the picker thumbnail (built-ins only). */

@@ -47,6 +47,16 @@
           }
         }
 
+        @if (filtered(cameraTextures()).length) {
+          <div class="picker-group">Cameras</div>
+          @for (t of filtered(cameraTextures()); track t.uri) {
+            <div class="picker-item" (click)="choose(t, $event)">
+              <span class="thumb asset"></span>
+              <span>{{ t.name }}</span>
+            </div>
+          }
+        }
+
         <div class="picker-group">Built-in</div>
         @for (t of filtered(builtinTextures); track t.uri) {
           <div class="picker-item" (click)="choose(t, $event)">

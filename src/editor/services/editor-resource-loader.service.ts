@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { builtinTextureUrl, LoadedImage, ResourceLoader, Resources } from 'omega-game-engine';
+import { builtinTextureUrl, isRenderTextureUri, LoadedImage, ResourceLoader, Resources } from 'omega-game-engine';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { EditorStateService } from './editor-state.service';
 import { assetIdFromUri } from '../scene/texture-refs';
@@ -47,6 +47,8 @@ export class EditorResourceLoader implements ResourceLoader {
   previewUrl(uri: string | null | undefined): string | null {
     if (!uri) return null;
     if (assetIdFromUri(uri)) return this.previews.get(uri) ?? null;
+    // A camera's render texture has no image file to show.
+    if (isRenderTextureUri(uri)) return null;
     return builtinTextureUrl(uri) ?? uri;
   }
 
