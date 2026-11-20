@@ -24,6 +24,7 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | E14 | Medium | Inspector | Clicking the chevron of the "Shader" panel inside MeshRendererBehaviour does not expand it (also with a real mouse click), so the material and its texture slots cannot be reached. | `inpector-toggle-panel` inside `shader-inspector` / `behaviour-inspector` |
 | E15 | Low | Debug | Leftover `debugger;` statements: `AssetService.listAssets`, `TextureInspector.onTextureEnumChange`, `Editor.handleEngineReloaded` catch. They pause the app whenever DevTools is open. | `src/app/api/services/asset.service.ts`, `src/editor/inspectors/texture-inspector/texture-inspector.ts`, `src/editor/editor.ts` |
 | E16 | High | Setup | The editor now needs the engine from `omega-engine` branch `feature/uri-resolver-stable` (`EngineCache.setUriResolver`). It is linked locally with `npm install --no-save ../omega-engine`; `package.json` still says `omega-game-engine@^3.0.3`, so a fresh `npm install` breaks the build until a new engine version is published. | `package.json` |
+| E17 | Medium | Home | The project page's "Go to Editor" button links to `/editor/:project`, but the only route is `/editor/:project/:scene`, so it shows Not Found. You must open a scene from the Scenes list instead. | `src/app/components/project-details/project-details.html`, `app.routes.ts` |
 
 ## Omega API (`omega-api-cs`)
 
