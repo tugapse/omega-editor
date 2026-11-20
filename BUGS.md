@@ -23,7 +23,7 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | E13 | Low | Config | `APISettings.apiHost` in `src/editor/configs/editor.ts` hard-codes `http://localhost:5000/api/` next to `environment.apiUrl`. | `src/editor/configs/editor.ts` |
 | E14 | Medium | Inspector | Clicking the chevron of the "Shader" panel inside MeshRendererBehaviour does not expand it (also with a real mouse click), so the material and its texture slots cannot be reached. | `inpector-toggle-panel` inside `shader-inspector` / `behaviour-inspector` |
 | E15 | Low | Debug | Leftover `debugger;` statements: `AssetService.listAssets`, `TextureInspector.onTextureEnumChange`, `Editor.handleEngineReloaded` catch. They pause the app whenever DevTools is open. | `src/app/api/services/asset.service.ts`, `src/editor/inspectors/texture-inspector/texture-inspector.ts`, `src/editor/editor.ts` |
-| E16 | High | Setup | The editor now needs the engine from `omega-engine` branch `feature/uri-resolver` (`EngineCache.setUriResolver`). It is linked locally with `npm install --no-save ../omega-engine`; `package.json` still says `omega-game-engine@^3.0.3`, so a fresh `npm install` breaks the build until a new engine version is published. | `package.json` |
+| E16 | High | Setup | The editor now needs the engine from `omega-engine` branch `feature/uri-resolver-stable` (`EngineCache.setUriResolver`). It is linked locally with `npm install --no-save ../omega-engine`; `package.json` still says `omega-game-engine@^3.0.3`, so a fresh `npm install` breaks the build until a new engine version is published. | `package.json` |
 
 ## Omega API (`omega-api-cs`)
 
@@ -46,4 +46,5 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | :-- | :-- | :-- | :-- |
 | G1 | Low | `PlanePrimitive` is not registered in `DependencyManager.registerDependencies()`, unlike the other primitives. | `managers/dependency-manager` |
 | G2 | Medium | `SceneManager.loadScene` does not restore the parent/child hierarchy: the saved `transform.parent` uuid is never linked because `prepareTransforms` is not called. **Worked around in the editor** by `src/editor/scene/scene-loader.ts`; remove that wrapper once the engine calls `prepareTransforms` after instantiating the objects. | `managers/scene-manager` `instaciateSceneObjects` |
+| G3 | Medium | The engine loads its own resources (default white/black/normal textures, shader sources) from relative `assets/...` paths, i.e. from the **host app's** folder (`omega-editor/src/assets`). Engine resources should ship with the engine, not live in the editor. | `core/engineCache` (`getWhiteTexture`…), shaders |
 
