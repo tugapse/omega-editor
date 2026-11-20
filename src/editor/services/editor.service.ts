@@ -11,6 +11,7 @@ import { BehaviorSubject } from "rxjs";
 import { GizmoMode } from "../behaviours/scene-editor/gizmo-mode.enum";
 import { TransformSpace } from "../behaviours/scene-editor/transform-space.enum";
 import { EditorStateService } from "./editor-state.service";
+import { AssetUriResolverService } from "./asset-uri-resolver.service";
 import { API_URL } from "src/app/api/api-url.token";
 
 @Injectable({ providedIn: "root" })
@@ -76,6 +77,8 @@ export class EditorService {
     // needs them, and they were otherwise only registered when a project's
     // compiled bundle loaded, so projects without scripts could not load scenes.
     new DependencyManager().registerDependencies();
+    // Lets the engine load project textures stored as asset://<id>.
+    inject(AssetUriResolverService).register();
     this.initializeEditorCamera();
     this.onRenderingContextCreated.subscribe(
       this.onGlContextCreated.bind(this),

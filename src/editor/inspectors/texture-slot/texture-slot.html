@@ -1,0 +1,60 @@
+<div class="texture-slot" [class.drag-over]="isDragOver()">
+  <span class="slot-label">{{ label }}</span>
+  <button
+    type="button"
+    class="slot-field"
+    [class.empty]="isEmpty"
+    [title]="'Click to choose, or drop a texture from the Asset Explorer'"
+    (click)="toggle($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (drop)="onDrop($event)"
+  >
+    @if (previewUrl) {
+      <img class="thumb" [src]="previewUrl" alt="" />
+    } @else {
+      <span class="thumb"></span>
+    }
+    <span class="slot-name">{{ displayName }}</span>
+  </button>
+
+  @if (isOpen()) {
+    <div class="picker" (click)="$event.stopPropagation()">
+      <input
+        class="picker-search"
+        type="text"
+        placeholder="Search texture..."
+        [value]="search()"
+        (input)="search.set($any($event.target).value)"
+      />
+      <div class="picker-list">
+        <div class="picker-item" (click)="choose(null, $event)">
+          <img class="thumb" src="assets/images/default/error.jpg" alt="" />
+          <span>None</span>
+        </div>
+
+        <div class="picker-group">Project</div>
+        @if (isLoading()) {
+          <div class="picker-empty">Loading…</div>
+        } @else {
+          @for (t of filtered(projectTextures()); track t.uri) {
+            <div class="picker-item" (click)="choose(t, $event)">
+              <span class="thumb asset"></span>
+              <span>{{ t.name }}</span>
+            </div>
+          } @empty {
+            <div class="picker-empty">No textures in this project.</div>
+          }
+        }
+
+        <div class="picker-group">Built-in</div>
+        @for (t of filtered(bundledTextures); track t.uri) {
+          <div class="picker-item" (click)="choose(t, $event)">
+            <img class="thumb" [src]="t.previewUrl" alt="" />
+            <span>{{ t.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

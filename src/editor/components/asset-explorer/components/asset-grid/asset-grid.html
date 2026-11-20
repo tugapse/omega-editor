@@ -7,6 +7,8 @@
         (click)="itemClick.emit(item)"
         (dblclick)="itemDoubleClick.emit(item)"
         (contextmenu)="contextMenu.emit({ e: $event, node: item })"
+        [draggable]="item.type !== 'folder'"
+        (dragstart)="onDragStart($event, item)"
       >
         <div class="grid-item-icon">
           <app-icon

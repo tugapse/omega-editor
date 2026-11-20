@@ -31,6 +31,12 @@ export class TextureInspector extends ObjectInspector {
     return this._selectedObject?.property as Texture;
   }
 
+  /** The loaded image URL (an object URL for asset:// textures), not the saved URI. */
+  get previewUrl(): string {
+    const image = (this.texture as unknown as { image?: HTMLImageElement })?.image;
+    return image?.src || this.texture?.textureUri || '';
+  }
+
   constructor() {
     super();
     this._enums["minFilter"] = this.convertEnumToObject(TextureFilterMode);
