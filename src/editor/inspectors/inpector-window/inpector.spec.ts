@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { testProviders } from '../../../testing/test-providers';
 
 import { EditorInpector } from './inpector';
 
@@ -8,7 +9,8 @@ describe('Inpector', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditorInpector]
+      imports: [EditorInpector],
+      providers: testProviders
     })
     .compileComponents();
 

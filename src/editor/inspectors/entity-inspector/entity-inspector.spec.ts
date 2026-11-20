@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { testProviders } from '../../../testing/test-providers';
 
 import { EntityInspector } from './entity-inspector';
 
@@ -8,7 +9,8 @@ describe('EntityInspector', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EntityInspector]
+      imports: [EntityInspector],
+      providers: testProviders
     })
     .compileComponents();
 

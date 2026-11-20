@@ -44,16 +44,19 @@ Browser ──► Omega Editor (:4200)
 ```
 
 * The editor **only ever talks to the API**. It never calls the code service directly.
-* The API writes project and asset folders to the storage root. The code service reads and writes the same folders for scripts and builds. **Both services must use the same storage root**: see [Shared storage](#3-shared-storage-required).
+* The API writes project and asset folders to the storage root. The code service reads and writes the same folders for scripts and builds. Both default to `~/omega-storage`; see [Shared storage](#3-shared-storage).
 
 ## ✨ Key Features
 
 * **Entity-Component-System (ECS) and live inspection:** granular control over entities through a modular behaviour system. The editor lets you inspect and change entities, their components and raw engine code in real time.
-* **Advanced WebGL rendering:** custom shaders, complex material properties, dynamic lighting (ambient, directional, spot) and real-time shadow mapping.
+* **WebGL2 rendering:** a forward pipeline with an off-screen scene target, HDR and tone mapping, a post-effect stack, custom shaders and materials, ambient/directional/point/spot lights and real-time shadows for directional, spot and point lights (one shadow atlas).
 * **Custom user logic and scripting:** user TypeScript is edited in Monaco, compiled server-side by the code service and run live in the engine. The day/night cycle in the screenshots (with configurable moon phases and shadow transitions) is one example of a custom behaviour.
 * **Editor tooling:**
   * Interactive 3D transform gizmos (translate, rotate, scale).
   * Real-time performance profiling (FPS, Update, Render and Idle ms).
+  * Projects created from templates: **Empty** or **Sample** (a scene with lights, primitives and textures). User files live in the project, never in the editor.
+  * Scene tree with an add menu (empty object, cube, sphere, plane, quad, cylinder, torus) and drag-and-drop parenting and ordering.
+  * Inspector docked on the right, with Unity-style texture slots (pick from the project or drop from the Asset Explorer; empty slots show magenta).
   * Integrated asset and project management.
   * UI theming (e.g. "Autumn Rust" and "Default").
 
