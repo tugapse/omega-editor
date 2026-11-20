@@ -45,7 +45,8 @@ export class TreeNodeComponent<T> {
   onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    // Measure the node row itself, not the icon/label under the pointer.
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
     const y = event.clientY - rect.top;
 
     this.isDropAbove = false;
@@ -75,7 +76,7 @@ export class TreeNodeComponent<T> {
       const draggedNode = JSON.parse(
         event.dataTransfer.getData('application/json'),
       );
-      if (draggedNode && draggedNode.name !== this.node.name) {
+      if (draggedNode && draggedNode.id !== this.node.id) {
         const dropPosition = this.isDropAbove
           ? 'above'
           : this.isDropBelow

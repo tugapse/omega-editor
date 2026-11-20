@@ -74,7 +74,6 @@ export class TextureInspector extends ObjectInspector {
     key: "wrap" | "filter",
     menuItem: DropdownItem,
   ) {
-    debugger;
     if (key === "filter") {
       this.texture.setMagFilter(+menuItem.value);
       this.texture.setMinFilter(+menuItem.value);

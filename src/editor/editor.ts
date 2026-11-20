@@ -157,7 +157,6 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
               this.editorService.requestCanvasResize();
             })
             .catch((error) => {
-              debugger;
               EngineLogger.error("Error loading the Scene", error);
               this.loadingservice.hide();
             });

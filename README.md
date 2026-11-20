@@ -24,7 +24,7 @@ The editor is one of four pieces. To use it locally you need **three processes r
 | **Omega Code Service** | [`tugapse/omega-code-service`](https://github.com/tugapse/omega-code-service) | Node.js, Express 5, esbuild, TypeScript API | `3000` | User script workspaces: file I/O, compile to `bundle.js`, emit `.d.ts` typings |
 | **Omega Engine** | npm [`omega-game-engine`](https://www.npmjs.com/package/omega-game-engine) | TypeScript, WebGL | – | Rendering and ECS core; a dependency of both the editor and the code service |
 
-> The older Python [`omega-api`](https://github.com/tugapse/omega-api) backend has been replaced by `omega-api-cs`. The `npm run run-dev` script in this repo still points at it and no longer applies.
+> The older Python [`omega-api`](https://github.com/tugapse/omega-api) backend has been replaced by `omega-api-cs`.
 
 ### How the pieces talk
 
@@ -175,7 +175,7 @@ All routes are on the API (`:5000`). All except auth and health need `Authorizat
 | Auth | `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout` |
 | Health | `GET /api/health` |
 | User | `GET`/`PATCH /api/users/me`, `GET`/`PUT /api/users/me/preferences` |
-| Projects | `GET`/`POST /api/projects`, `GET`/`PATCH`/`DELETE /api/projects/{id}` |
+| Projects | `GET`/`POST /api/projects` (optional `template`), `GET`/`PATCH`/`DELETE /api/projects/{id}`, `GET /api/project-templates` |
 | Assets | `GET`/`POST /api/projects/{id}/assets`, `GET`/`PATCH`/`DELETE …/assets/{assetId}`, `GET`/`PUT …/assets/{assetId}/text` |
 | Code (proxied to the code service) | `GET …/code/tree`, `GET`/`POST`/`PUT`/`DELETE …/code/files`, `GET …/code/engine-typings`, `GET …/code/workspace-typings`, `POST …/code/compile`, `GET …/code/bundle` |
 
@@ -184,8 +184,9 @@ All routes are on the API (`:5000`). All except auth and health need `Authorizat
 ## ⚠️ Known issues
 
 * **Engine typings path:** `omega-game-engine@3.0.3` ships `dist/index.d.ts`, not the single-file `dist/omega-game-engine.d.ts` the code service expects. Until a bundled `.d.ts` is published, `GET …/code/engine-typings` fails and compilation has no engine types. `compiler.ts` hard-codes this path, so setting `OMEGA_ENGINE_TYPINGS_PATH` only fixes the typings endpoint, not the compiler.
-* **Hard-coded URLs:** the API's code-service URL and the editor's `APISettings.apiHost` are constants, not configuration.
-* **`npm run run-dev`** still starts the old Python `omega-api`.
+* **Hard-coded URLs:** the API's code-service URL is a constant, not configuration.
+
+The full, current list is in the bugs sheet (see `BUGS.md`).
 
 ---
 
@@ -197,7 +198,6 @@ All routes are on the API (`:5000`). All except auth and health need `Authorizat
 | `npm run build` | Production build into `dist/` |
 | `npm run watch` | Development build in watch mode |
 | `npm test` | Unit tests (Karma + Jasmine) |
-| `npm run build-shaders` | Regenerates shader sources (`generate-shaders.js`) |
 | `npm run build-docs` | TypeDoc API docs into `docs/` |
 
 `AgentDocs/` holds per-file architecture notes, written for AI agents and newcomers.

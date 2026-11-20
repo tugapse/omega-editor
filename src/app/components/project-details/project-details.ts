@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, injec
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { Scene } from 'omega-game-engine';
+import { createDefaultScene } from '@editor/scene/default-scene';
 import { AssetService } from '../../api/services/asset.service';
 import { EngineAssetType } from '@editor/models/asset-types';
 import { ProjectResponse } from '../../api/models/omega-api.models';
@@ -64,8 +64,7 @@ export class ProjectDetails implements OnChanges {
 
   private createDefaultScene(projectId: string): void {
     const sceneName = 'Main Scene.scene';
-    const scene = new Scene();
-    scene.name = sceneName;
+    const scene = createDefaultScene('Main Scene');
     const file = new File([JSON.stringify(scene.toJsonObject())], sceneName, {
       type: 'application/json',
     });

@@ -46,9 +46,6 @@ export class SceneTree {
     this.sceneTreeService.onEntitySelected.subscribe((entity) => {
       this.selectedUuid = entity?.uuid;
     });
-    this.editorService.onSceneUpdated.subscribe((scene) => {
-      this.targetScene = scene;
-    });
   }
 
   objectsToDraw: SceneEntity[] = [];
@@ -136,67 +133,43 @@ export class SceneTree {
     return result;
   }
 
+  /**
+   * Applies a drop to the scene itself (parent and order), then rebuilds the
+   * tree from it. Nodes are matched by entity uuid, never by name.
+   */
   handleNodeDropped(event: {
     draggedNode: TreeNode<string>;
     targetNode: TreeNode<string>;
     dropPosition: 'above' | 'below' | 'inside';
   }) {
     const { draggedNode, targetNode, dropPosition } = event;
+    const dragged = this.treeNodeMap[draggedNode.id];
+    const target = this.treeNodeMap[targetNode.id];
+    if (!this.scene || !dragged || !target || dragged === target) return;
+    // An entity can't move under one of its own descendants.
+    if (this.isDescendantOf(target, dragged)) return;
 
-    const { node: foundDraggedNode, parent: draggedParent } =
-      this.findNodeAndParent(this.sceneTreeNodes, draggedNode.name);
-    const { node: foundTargetNode, parent: targetParent } =
-      this.findNodeAndParent(this.sceneTreeNodes, targetNode.name);
-
-    if (!foundDraggedNode) return;
-
-    // Remove the dragged node from its original location
-    if (draggedParent) {
-      draggedParent.children = draggedParent.children?.filter(
-        (n) => n.name !== foundDraggedNode.name,
-      );
-    } else {
-      this.sceneTreeNodes = this.sceneTreeNodes.filter(
-        (n) => n.name !== foundDraggedNode.name,
-      );
+    const newParent = dropPosition === 'inside' ? target.transform : target.transform.parent;
+    if (dragged.transform.parent !== newParent) {
+      dragged.transform.setParent(newParent ?? null);
     }
 
-    const childEntity = this.treeNodeMap[foundDraggedNode.id];
-    // Insert the dragged node into the new location based on dropPosition
-    if (dropPosition === 'inside' && foundTargetNode) {
-      if (!foundTargetNode.children) {
-        foundTargetNode.children = [];
-      }
-      foundTargetNode.children.push(foundDraggedNode);
-      const parentEntity = this.treeNodeMap[foundTargetNode.id];
-      childEntity.transform.setParent(parentEntity.transform);
-    } else if (dropPosition === 'above' && targetParent) {
-      const index =
-        targetParent.children?.findIndex(
-          (n) => n.name === foundTargetNode?.name,
-        ) || 0;
-      targetParent.children?.splice(index, 0, foundDraggedNode);
-    } else if (dropPosition === 'below' && targetParent) {
-      const index =
-        targetParent.children?.findIndex(
-          (n) => n.name === foundTargetNode?.name,
-        ) || 0;
-      targetParent.children?.splice(index + 1, 0, foundDraggedNode);
-    } else {
-      // Handles dropping above/below a root node
-      const index = this.sceneTreeNodes.findIndex(
-        (n) => n.name === foundTargetNode?.name,
-      );
-      if (index !== -1 && index !== undefined) {
-        if (dropPosition === 'above') {
-          this.sceneTreeNodes.splice(index, 0, foundDraggedNode);
-        } else {
-          this.sceneTreeNodes.splice(index + 1, 0, foundDraggedNode);
-        }
-      }
+    // Sibling order follows the scene's object order.
+    if (dropPosition !== 'inside') {
+      const objects = this.scene.objects;
+      objects.splice(objects.indexOf(dragged), 1);
+      const targetIndex = objects.indexOf(target);
+      objects.splice(dropPosition === 'above' ? targetIndex : targetIndex + 1, 0, dragged);
     }
 
-    this.sceneTreeNodes = [...this.sceneTreeNodes]; // Trigger change detection
+    this.editorService.onSceneUpdated.emit(this.scene);
+  }
+
+  private isDescendantOf(entity: SceneEntity, ancestor: SceneEntity): boolean {
+    for (let t = entity.transform.parent; t; t = t.parent) {
+      if (t === ancestor.transform) return true;
+    }
+    return false;
   }
 
   onNodeDeleted(node: TreeNode<string>) {
@@ -220,26 +193,6 @@ export class SceneTree {
       this.deleteEntityAndChildren(child);
     }
     this.scene.removeEntity(entity);
-  }
-
-  // Helper function to find a node and its direct parent
-  private findNodeAndParent(
-    nodes: TreeNode<string>[],
-    name: string,
-    parent: TreeNode<string> | null = null,
-  ): { node: TreeNode<string> | null; parent: TreeNode<string> | null } {
-    for (const node of nodes) {
-      if (node.name === name) {
-        return { node, parent };
-      }
-      if (node.children) {
-        const found = this.findNodeAndParent(node.children, name, node);
-        if (found.node) {
-          return found;
-        }
-      }
-    }
-    return { node: null, parent: null };
   }
 
   onNodeSelected(node: TreeNode<string>) {
