@@ -88,22 +88,15 @@ git clone https://github.com/tugapse/omega-editor.git
 (cd omega-api-cs && dotnet restore)
 ```
 
-### 3. Shared storage (required)
+### 3. Shared storage
 
-The API and the code service each have their **own default** storage folder, and the defaults do not match:
-
-| Service | Default when `OMEGA_PROJECTS_STORAGE_ROOT` is unset |
-| :--- | :--- |
-| omega-api-cs | `omega-api-cs/storage` |
-| omega-code-service | `omega-code-service/storage/projects` |
-
-If you leave the defaults, scripts created in the editor land in a different folder from the project the API created. Export **one** absolute path in every shell that starts a service:
+The API and the code service must read and write the same project folders. Both default to `~/omega-storage`, so nothing is needed for local development. To use another folder, export the same value for both services:
 
 ```bash
-export OMEGA_PROJECTS_STORAGE_ROOT="$HOME/omega-storage"
+export OMEGA_PROJECTS_STORAGE_ROOT="$HOME/omega-storage"   # ~ and $HOME are expanded by both
 ```
 
-The API also expands a leading `~` or `$HOME` in this value. The code service does not, so use an absolute path.
+The code service also needs the engine's single-file typings, which `omega-game-engine@3.0.3` on npm doesn't have yet: run `npm install --no-save ../omega-engine` in `omega-code-service` (see its README).
 
 ### 4. Start the services (one terminal each)
 
@@ -143,7 +136,6 @@ In Development mode, the API also serves Swagger UI at `http://localhost:5000/sw
 | Where | Setting | Default |
 | :--- | :--- | :--- |
 | `src/environment.ts` | `apiUrl`: API base URL (the app appends `/api`) | `http://localhost:5000` |
-| `src/editor/configs/editor.ts` | `APISettings.apiHost`: legacy setting, also hard-coded | `http://localhost:5000/api/` |
 
 ### Omega API (`omega-api-cs`)
 
@@ -153,16 +145,16 @@ In Development mode, the API also serves Swagger UI at `http://localhost:5000/sw
 | `appsettings.json` → `DatabaseProvider` | `SQLite` or `PostgreSQL` | `SQLite` |
 | `appsettings.json` → `ConnectionStrings` | SQLite file / PostgreSQL connection | `Data/database.db` (created on first run) |
 | `appsettings.json` → `JwtSettings` | `SecretKey`, `Issuer`, `Audience`, `ExpirationMinutes` | dev key, 7 days. **Change `SecretKey` outside local dev.** |
-| env `OMEGA_PROJECTS_STORAGE_ROOT` | Storage root | `./storage` |
-| `Services/AssetCodeService.cs`, `Services/Omega*Service.cs`, `Controllers/AssetCodeController.cs` | Code service URL (**hard-coded**) | `http://localhost:3000/api` |
+| env `OMEGA_PROJECTS_STORAGE_ROOT` | Storage root | `~/omega-storage` |
+| `appsettings.json` → `CodeService:BaseUrl` | Code service URL | `http://localhost:3000/api` |
 
 ### Omega Code Service
 
 | Env variable | Description | Default |
 | :--- | :--- | :--- |
-| `PORT` | Listen port. If you change it, the hard-coded URL in the API must change too. | `3000` |
-| `OMEGA_PROJECTS_STORAGE_ROOT` | Storage root (must match the API) | `./storage/projects` |
-| `OMEGA_ENGINE_TYPINGS_PATH` | Engine `.d.ts` served to Monaco | `node_modules/omega-game-engine/dist/omega-game-engine.d.ts` |
+| `PORT` | Listen port (update the API's `CodeService:BaseUrl` to match) | `3000` |
+| `OMEGA_PROJECTS_STORAGE_ROOT` | Storage root (must match the API) | `~/omega-storage` |
+| `OMEGA_ENGINE_TYPINGS_PATH` | Single-file engine typings | `dist/omega-game-engine.d.ts` of the installed engine |
 
 ---
 
@@ -182,9 +174,6 @@ All routes are on the API (`:5000`). All except auth and health need `Authorizat
 ---
 
 ## ⚠️ Known issues
-
-* **Engine typings path:** `omega-game-engine@3.0.3` ships `dist/index.d.ts`, not the single-file `dist/omega-game-engine.d.ts` the code service expects. Until a bundled `.d.ts` is published, `GET …/code/engine-typings` fails and compilation has no engine types. `compiler.ts` hard-codes this path, so setting `OMEGA_ENGINE_TYPINGS_PATH` only fixes the typings endpoint, not the compiler.
-* **Hard-coded URLs:** the API's code-service URL is a constant, not configuration.
 
 The full, current list is in the bugs sheet (see `BUGS.md`).
 
