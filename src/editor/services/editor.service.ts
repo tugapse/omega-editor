@@ -1,5 +1,6 @@
 import { EventEmitter, inject, Injectable } from "@angular/core";
 import {
+  DependencyManager,
   Camera,
   CameraFlyBehaviour,
   CanvasViewport,
@@ -71,6 +72,10 @@ export class EditorService {
   private currentScene!: Scene;
   private _camera!: Camera;
   constructor() {
+    // Register the engine's core classes up front. Loading a saved scene
+    // needs them, and they were otherwise only registered when a project's
+    // compiled bundle loaded, so projects without scripts could not load scenes.
+    new DependencyManager().registerDependencies();
     this.initializeEditorCamera();
     this.onRenderingContextCreated.subscribe(
       this.onGlContextCreated.bind(this),
