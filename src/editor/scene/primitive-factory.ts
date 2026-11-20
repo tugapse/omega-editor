@@ -1,6 +1,7 @@
 import {
   CubePrimitive,
-  EngineCache,
+  BuiltinTextures,
+  Resources,
   LitMaterial,
   LitShader,
   Mesh,
@@ -45,12 +46,12 @@ export const PRIMITIVES: PrimitiveDefinition[] = [
   {
     name: 'Cylinder',
     description: 'A cylinder (bundled .obj).',
-    meshData: () => EngineCache.getMeshDataFromObj('assets/primitives/cilinder.obj'),
+    meshData: () => Resources.for().getMesh('assets/primitives/cilinder.obj'),
   },
   {
     name: 'Torus',
     description: 'A torus (bundled .obj).',
-    meshData: () => EngineCache.getMeshDataFromObj('assets/primitives/torus.obj'),
+    meshData: () => Resources.for().getMesh('assets/primitives/torus.obj'),
   },
 ];
 
@@ -69,7 +70,7 @@ export async function createPrimitiveEntity(
   mesh.meshData = await primitive.meshData();
 
   const material = new LitMaterial();
-  material.mainTex = await EngineCache.getWhiteTexture(gl);
+  material.mainTex = await Resources.for(gl).getTexture(BuiltinTextures.white);
 
   const renderer = new MeshRendererBehaviour(gl);
   renderer.mesh = mesh;

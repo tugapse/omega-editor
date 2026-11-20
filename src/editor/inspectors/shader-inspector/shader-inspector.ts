@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { InpectorTogglePanel } from '@editor/components/inpector-toggle-panel/inpector-toggle-panel';
 import {
   Color,
-  EngineCache,
   NumberRange,
   Shader,
   ShaderSources,

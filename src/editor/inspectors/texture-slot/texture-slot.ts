@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, inject, Input, Output, signal } 
 import { Texture } from 'omega-game-engine';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { EditorStateService } from '@editor/services/editor-state.service';
+import { EditorResourceLoader } from '@editor/services/editor-resource-loader.service';
 import {
   BUNDLED_TEXTURES,
   DraggedAsset,
@@ -26,6 +27,7 @@ import {
 export class TextureSlot {
   private assetService = inject(AssetService);
   private editorState = inject(EditorStateService);
+  private resourceLoader = inject(EditorResourceLoader);
 
   @Input() label = 'Texture';
   @Input() texture: Texture | null | undefined = null;
@@ -42,13 +44,16 @@ export class TextureSlot {
   private static assetNames = new Map<string, string>();
 
   get isEmpty(): boolean {
-    return !this.texture?.textureUri || this.texture.textureUri === MISSING_TEXTURE_URI;
+    const uri = this.texture?.textureUri;
+    return !uri || textureDisplayName(uri) === 'None';
   }
 
+  /** Thumbnail of the current texture (the magenta one when empty). */
   get previewUrl(): string | null {
-    if (this.isEmpty) return MISSING_TEXTURE_URI;
-    return (this.texture as unknown as { image?: HTMLImageElement })?.image?.src || null;
+    return this.resourceLoader.previewUrl(this.isEmpty ? MISSING_TEXTURE_URI : this.texture?.textureUri);
   }
+
+  readonly missingPreview = this.resourceLoader.previewUrl(MISSING_TEXTURE_URI);
 
   get displayName(): string {
     const uri = this.texture?.textureUri;

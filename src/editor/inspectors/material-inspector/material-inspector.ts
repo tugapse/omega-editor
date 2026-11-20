@@ -5,7 +5,7 @@ import {
   ITargetProperty,
   ObjectInspector,
 } from '../object-inspector/object-inspector';
-import { Color, ColorMaterial, EngineCache, NumberRange, Texture } from 'omega-game-engine';
+import { Color, ColorMaterial, NumberRange, ResourceHandle, Resources, Texture } from 'omega-game-engine';
 import { TextureSlot } from '../texture-slot/texture-slot';
 import { MISSING_TEXTURE_URI, TextureChoice } from '@editor/scene/texture-refs';
 import { TextureInspector } from '../texture-inspector/texture-inspector';
@@ -64,13 +64,19 @@ export class MaterialInspector extends ObjectInspector {
     return value instanceof Texture ? value : null;
   }
 
+  /** Textures this inspector assigned, per material and slot, so it can let go of them. */
+  private static held = new WeakMap<object, Map<string, ResourceHandle<Texture>>>();
+
   /** Assigns the chosen texture; "None" uses the magenta missing texture. */
   async onTextureSelected(key: string, choice: TextureChoice | null) {
     const uri = choice?.uri ?? MISSING_TEXTURE_URI;
     try {
-      const texture = await EngineCache.getTexture2D(uri, this.editorService.gl);
-      await texture.load();
-      (this._material as any)[key] = texture;
+      const handle = await Resources.for(this.editorService.gl).textures.acquire(uri);
+      let slots = MaterialInspector.held.get(this._material);
+      if (!slots) MaterialInspector.held.set(this._material, (slots = new Map()));
+      slots.get(key)?.release(); // the texture this slot showed before
+      slots.set(key, handle);
+      (this._material as any)[key] = handle.value;
       this.loadProperties();
       this.updateScene();
     } catch (error) {

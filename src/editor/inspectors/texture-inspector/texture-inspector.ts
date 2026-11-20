@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject } from "@angular/core";
+import { EditorResourceLoader } from "@editor/services/editor-resource-loader.service";
 import {
   Color,
   NumberRange,
@@ -31,10 +32,11 @@ export class TextureInspector extends ObjectInspector {
     return this._selectedObject?.property as Texture;
   }
 
-  /** The loaded image URL (an object URL for asset:// textures), not the saved URI. */
+  private resourceLoader = inject(EditorResourceLoader);
+
+  /** A URL an <img> can show for this texture (not the saved asset:// URI). */
   get previewUrl(): string {
-    const image = (this.texture as unknown as { image?: HTMLImageElement })?.image;
-    return image?.src || this.texture?.textureUri || '';
+    return this.resourceLoader.previewUrl(this.texture?.textureUri) ?? '';
   }
 
   constructor() {

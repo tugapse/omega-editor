@@ -29,7 +29,7 @@
       />
       <div class="picker-list">
         <div class="picker-item" (click)="choose(null, $event)">
-          <img class="thumb" src="assets/images/default/error.jpg" alt="" />
+          <img class="thumb" [src]="missingPreview" alt="" />
           <span>None</span>
         </div>
 

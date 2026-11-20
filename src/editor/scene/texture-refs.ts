@@ -1,3 +1,5 @@
+import { BuiltinTextures, builtinTextureUrl } from 'omega-game-engine';
+
 /**
  * Texture references used by the editor.
  *
@@ -12,7 +14,7 @@ export const ASSET_URI_PREFIX = 'asset://';
 export const OMEGA_ASSET_DRAG_TYPE = 'application/x-omega-asset';
 
 /** Shown in an empty texture slot, like Unity's magenta "missing" texture. */
-export const MISSING_TEXTURE_URI = 'assets/images/default/error.jpg';
+export const MISSING_TEXTURE_URI: string = BuiltinTextures.missing;
 
 export interface DraggedAsset {
   id: string;
@@ -55,15 +57,16 @@ export const BUNDLED_TEXTURES: TextureChoice[] = [
   'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_albedo.jpeg',
   'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_normal.jpeg',
   'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_roughness.jpeg',
-  'assets/images/default/white.jpg',
-  'assets/images/default/black.jpg',
-  'assets/images/default/normal.jpg',
+  BuiltinTextures.white,
+  BuiltinTextures.black,
+  BuiltinTextures.normal,
   'assets/images/default/grid.png',
-].map((uri) => ({ uri, name: uri.split('/').pop()!, previewUrl: uri }));
+].map((uri) => ({ uri, name: textureDisplayName(uri), previewUrl: builtinTextureUrl(uri) ?? uri }));
 
 /** Readable name for a texture URI (bundled file name, or the asset id). */
 export function textureDisplayName(uri: string | undefined | null): string {
   if (!uri) return 'None';
-  if (uri === MISSING_TEXTURE_URI) return 'None';
+  if (uri === MISSING_TEXTURE_URI || uri === 'assets/images/default/error.jpg') return 'None';
+  if (uri.startsWith('builtin://')) return uri.slice('builtin://'.length);
   return uri.split('/').pop() || uri;
 }

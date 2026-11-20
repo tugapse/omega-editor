@@ -13,7 +13,7 @@ import {
   Colors,
   CubePrimitive,
   DirectionalLight,
-  EngineCache,
+  Resources,
   Light,
   LitMaterial,
   LitShader,
@@ -140,7 +140,7 @@ export class App implements OnDestroy, AfterViewInit {
   }
 
   private async otherObjetcs(scene: Scene) {
-    const torusPrimitive = await EngineCache.getMeshDataFromObj(
+    const torusPrimitive = await Resources.for().getMesh(
       "assets/primitives/torus.obj",
     );
     const torus = await this.createEntity(
@@ -188,14 +188,8 @@ export class App implements OnDestroy, AfterViewInit {
     const renderer = new MeshRendererBehaviour(this.gl);
     renderer.castShadows = false;
 
-    material.mainTex = await EngineCache.getTexture2D(
-      "assets/images/wood-texture.jpg",
-      this.gl,
-    );
-    material.normalTex = await EngineCache.getTexture2D(
-      "assets/images/wood-normal1.jpg",
-      this.gl,
-    );
+    material.mainTex = await Resources.for(this.gl).getTexture("assets/images/wood-texture.jpg");
+    material.normalTex = await Resources.for(this.gl).getTexture("assets/images/wood-normal1.jpg");
 
     renderer.castShadows = false;
     renderer.shader = shader;
@@ -206,7 +200,7 @@ export class App implements OnDestroy, AfterViewInit {
     planeEntity.transform.translate(0, -1, 0);
     planeEntity.addBehaviour(renderer);
     scene.addEntity(planeEntity);
-    // material.mainTex = await EngineCache.getWhiteTexture(this.gl);
+    // material.mainTex = await Resources.for(this.gl).getTexture(BuiltinTextures.white);
   }
 
   private async createLights(scene: Scene) {
@@ -231,7 +225,7 @@ export class App implements OnDestroy, AfterViewInit {
   }
 
   private async addMonkeyObj(scene: Scene) {
-    const monkeyObj = await EngineCache.getMeshDataFromObj(
+    const monkeyObj = await Resources.for().getMesh(
       "assets/objs/monkey.obj",
     );
     const monkeyEntity = await this.createEntity(
@@ -271,14 +265,8 @@ export class App implements OnDestroy, AfterViewInit {
     } else if (shader?.material) material = shader.material as LitMaterial;
 
     if (material) {
-      const wallstoneTexture = await EngineCache.getTexture2D(
-        "assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_albedo.jpeg",
-        this.gl,
-      );
-      const wallNormalTexture = await EngineCache.getTexture2D(
-        "assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_normal.jpeg",
-        this.gl,
-      );
+      const wallstoneTexture = await Resources.for(this.gl).getTexture("assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_albedo.jpeg");
+      const wallNormalTexture = await Resources.for(this.gl).getTexture("assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_normal.jpeg");
 
       material.mainTex = wallstoneTexture;
       material.normalTex = wallNormalTexture;
@@ -314,10 +302,10 @@ export class App implements OnDestroy, AfterViewInit {
     //   back: "assets/images/skybox/blue/back.jpeg"
 
     // }
-    // const texture = await EngineCache.getTextureCube(skyboxTextures, this.gl);
+    // const texture = await Resources.for(this.gl).getCubemap(skyboxTextures);
     // material.mainTex = texture;
 
-    material.mainTex = await EngineCache.getWhiteTextureCube(this.gl);
+    material.mainTex = await Resources.for(this.gl).getWhiteCubemap();
     const skyboxEntity = new SceneEntity("Skybox");
 
     skyboxEntity.addBehaviour(renderer);

@@ -63,7 +63,7 @@ export class ObjectInspector {
 
   // Inputs
   @Input() allowProperties: string[] = [];
-  @Input() denyProperties: string[] = ['meshData', 'gl', 'mesh'];
+  @Input() denyProperties: string[] = ['meshData', 'gl', 'mesh', 'loader'];
   @Input() validTypes: string[] = [
     'string',
     'boolean',
