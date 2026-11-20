@@ -4,7 +4,7 @@
       <h2>{{ editableProject.name }}</h2>
       <div class="header-actions">
         <button [routerLink]="['/code', editableProject.id]" class="btn btn-secondary">Code Editor</button>
-        <button [routerLink]="['/editor', editableProject.id]" class="btn btn-secondary">Go to Editor</button>
+        <button (click)="goToEditor()" [disabled]="openingEditor" class="btn btn-secondary">Go to Editor</button>
       </div>
     </div>
 
