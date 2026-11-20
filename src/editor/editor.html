@@ -26,7 +26,9 @@
       ></editor-canvas>
     </div>
 
-    <div rightSidebar></div>
+    <div rightSidebar class="inspector-dock">
+      <editor-inpector [targetEntity]="inspectorSelectedEntity"></editor-inpector>
+    </div>
 
     <div footer>
       <editor-problems-panel></editor-problems-panel>
@@ -40,8 +42,6 @@
       (closeRequested)="isEngineStatsVisible = false"
     ></editor-engine-stats>
   }
-
-  <editor-inpector [targetEntity]="inspectorSelectedEntity"></editor-inpector>
 
   @if (toastMessage) {
     <div class="toast-notification">

@@ -41,7 +41,13 @@ export class TextureSlot {
   readonly builtinTextures = BUILTIN_TEXTURES;
 
   /** Asset names by id, to show "wall.png" instead of "asset://<uuid>". */
-  private static assetNames = new Map<string, string>();
+  private static assetNames = signal(new Map<string, string>());
+  /** The project whose asset names are loaded (or loading). */
+  private static namesProjectId: string | null = null;
+
+  constructor() {
+    this.loadAssetNames();
+  }
 
   get isEmpty(): boolean {
     const uri = this.texture?.textureUri;
@@ -58,7 +64,7 @@ export class TextureSlot {
   get displayName(): string {
     const uri = this.texture?.textureUri;
     const id = uri?.startsWith('asset://') ? uri.slice(8) : null;
-    return (id && TextureSlot.assetNames.get(id)) || textureDisplayName(uri);
+    return (id && TextureSlot.assetNames().get(id)) || textureDisplayName(uri);
   }
 
   filtered(list: TextureChoice[]): TextureChoice[] {
@@ -109,7 +115,7 @@ export class TextureSlot {
       console.warn(`[TextureSlot] "${asset.name}" is not an image and cannot be used as a texture.`);
       return;
     }
-    TextureSlot.assetNames.set(asset.id, asset.name);
+    TextureSlot.rememberNames([[asset.id, asset.name]]);
     this.choose({ uri: toAssetUri(asset.id), name: asset.name });
   }
 
@@ -119,14 +125,31 @@ export class TextureSlot {
     this.isLoading.set(true);
     this.assetService.listAssets(projectId).subscribe({
       next: (index) => {
-        const textures = index.assets.filter((a) => isTextureAsset(a)).map((a) => {
-          TextureSlot.assetNames.set(a.id, a.filename);
-          return { uri: toAssetUri(a.id), name: a.filename };
-        });
+        const images = index.assets.filter((a) => isTextureAsset(a));
+        TextureSlot.rememberNames(images.map((a) => [a.id, a.filename]));
+        const textures = images.map((a) => ({ uri: toAssetUri(a.id), name: a.filename }));
         this.projectTextures.set(textures);
         this.isLoading.set(false);
       },
       error: () => this.isLoading.set(false),
     });
+  }
+
+  /** Loads the project's asset names once per project, for the slot labels. */
+  private loadAssetNames() {
+    const projectId = this.editorState.activeProject()?.id;
+    if (!projectId || TextureSlot.namesProjectId === projectId) return;
+    TextureSlot.namesProjectId = projectId;
+    TextureSlot.assetNames.set(new Map());
+    this.assetService.listAssets(projectId).subscribe({
+      next: (index) => TextureSlot.rememberNames(index.assets.map((a) => [a.id, a.filename])),
+      error: () => (TextureSlot.namesProjectId = null),
+    });
+  }
+
+  private static rememberNames(entries: [string, string][]) {
+    const names = new Map(TextureSlot.assetNames());
+    for (const [id, name] of entries) names.set(id, name);
+    TextureSlot.assetNames.set(names);
   }
 }

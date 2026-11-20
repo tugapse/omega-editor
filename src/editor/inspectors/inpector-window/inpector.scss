@@ -1,23 +1,17 @@
 :host {
-  z-index: 15;
+  display: block;
+  height: 100%;
+
+  // Docked in the workspace's right panel, like Unity's Inspector.
   .inspector {
     display: flex;
-    height: 100%;
-    width: 350px;
-    min-width: 200px;
-    box-sizing: border-box;
-    display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
     background: var(--editor-panel-background);
     color: var(--editor-panel-color);
-    border: var(--editor-panel-border);
-    box-shadow: var(--editor-panel-box-shadow);
-    position: absolute;
-    height: 90%;
-    transform: translateX(12vw) translateY(5vh);
-    top: 0;
-    left: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .inspector .footer {
