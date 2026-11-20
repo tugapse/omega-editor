@@ -1,25 +1,34 @@
 <div class="register-container">
-  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form" novalidate>
     <h2>Create Account</h2>
     <div class="form-field">
       <label for="username">Username</label>
-      <input id="username" type="text" formControlName="username" placeholder="your_username">
+      <input id="username" type="text" formControlName="username" placeholder="your_username" autocomplete="username">
+      <small class="field-hint" [class.field-error]="showError('username')">
+        {{ rules.USERNAME_MIN }}–{{ rules.USERNAME_MAX }} characters: letters, numbers and _
+      </small>
     </div>
     <div class="form-field">
       <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" placeholder="user@example.com">
+      <input id="email" type="email" formControlName="email" placeholder="user@example.com" autocomplete="email">
+      <small *ngIf="showError('email')" class="field-hint field-error">Enter a valid email address</small>
     </div>
     <div class="form-field">
       <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password" placeholder="********">
+      <input id="password" type="password" formControlName="password" placeholder="********" autocomplete="new-password">
+      <small class="field-hint" [class.field-error]="showError('password')">
+        At least {{ rules.PASSWORD_MIN }} characters
+      </small>
     </div>
-    <div *ngIf="registerError()" class="error-message">
-      {{ registerError() }}
+    <div *ngIf="registerError().length" class="error-message">
+      <div *ngFor="let msg of registerError()">{{ msg }}</div>
     </div>
     <div *ngIf="registerSuccess()" class="success-message">
       {{ registerSuccess() }}
     </div>
-    <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+    <button type="submit" [disabled]="registerForm.invalid || submitting()">
+      {{ submitting() ? 'Signing up…' : 'Sign Up' }}
+    </button>
     <div class="login-link">
         Already have an account? <a routerLink="/login">Log in</a>
     </div>
