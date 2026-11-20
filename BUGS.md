@@ -41,3 +41,4 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | # | Severity | Bug | Where |
 | :-- | :-- | :-- | :-- |
 | G1 | Low | `PlanePrimitive` is not registered in `DependencyManager.registerDependencies()`, unlike the other primitives. | `managers/dependency-manager` |
+| G2 | Medium | `SceneManager.loadScene` does not restore the parent/child hierarchy: the saved `transform.parent` uuid is never linked because `prepareTransforms` is not called. **Worked around in the editor** by `src/editor/scene/scene-loader.ts`; remove that wrapper once the engine calls `prepareTransforms` after instantiating the objects. | `managers/scene-manager` `instaciateSceneObjects` |

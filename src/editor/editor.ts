@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { loadSceneWithHierarchy } from './scene/scene-loader';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -151,7 +152,7 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
           try {
             const sceneData = JSON.parse(textContent) as JsonSerializedData;
 
-            SceneManager.loadScene(this.gl, sceneData)
+            loadSceneWithHierarchy(this.gl, sceneData)
               .then((scene) => {
                 this.editorService.loadScene(scene);
                 this.editorService.requestCanvasResize();
@@ -221,7 +222,7 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
     scene.destroy();
 
     if (this.sceneState) {
-      const newScene = await SceneManager.loadScene(this.gl, this.sceneState);
+      const newScene = await loadSceneWithHierarchy(this.gl, this.sceneState);
       this.editorService.loadScene(newScene);
       this.sceneState = null;
     }
