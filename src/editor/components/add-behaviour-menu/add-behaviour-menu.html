@@ -3,7 +3,7 @@
     <div class="menu-search">
       <input
         type="text"
-        placeholder="Search behaviour..."
+        [placeholder]="searchPlaceholder"
         [value]="searchQuery"
         (input)="onSearch($event)"
       />
@@ -22,7 +22,7 @@
         </div>
       }
       @if (filteredBehaviours.length === 0) {
-        <div class="menu-empty">No behaviours found.</div>
+        <div class="menu-empty">{{ emptyText }}</div>
       }
     </div>
   </div>

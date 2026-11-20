@@ -266,23 +266,60 @@ export class SceneTree {
     this.menuY = rect.bottom + 5;
     this.menuX = rect.left;
     const hiddenentities = ['SceneEntity', 'Scene'];
-    this.availableEntities = ObjectInstanciator.getMetadata([
+    const registered = ObjectInstanciator.getMetadata([
       ClassType.Entity,
       ClassType.Light,
     ]).filter((meta) => !hiddenentities.includes(meta.name));
+    this.availableEntities = [
+      ...this.builtInEntities.map((b) => b.metadata),
+      ...registered,
+    ];
     this.isAddEntityMenuOpen = true;
+  }
+
+  /**
+   * Entries the editor always offers in the "+" menu, before the entities
+   * registered in the engine. Each one builds its entity directly.
+   */
+  private readonly builtInEntities: {
+    metadata: ClassMetadata;
+    create: () => SceneEntity;
+  }[] = [
+    {
+      metadata: {
+        name: 'Empty Object',
+        type: ClassType.Entity,
+        path: 'Built-in',
+        description: 'An entity with only a transform. Use it as a group or to attach behaviours.',
+      },
+      create: () => SceneEntity.instanciate(this.uniqueEntityName('Empty Object')),
+    },
+  ];
+
+  /** "Empty Object", then "Empty Object (1)", "Empty Object (2)"... */
+  private uniqueEntityName(base: string): string {
+    const names = new Set(this.scene.objects.map((e) => e.name));
+    if (!names.has(base)) return base;
+    let i = 1;
+    while (names.has(`${base} (${i})`)) i++;
+    return `${base} (${i})`;
   }
 
   onEntitySelected(entityMetadata: ClassMetadata) {
     if (!this.scene) return;
-    const instance = ObjectInstanciator.instanciateObjectFromJsonData(
-      entityMetadata.name,
-      ['New ' + entityMetadata.name],
+    const builtIn = this.builtInEntities.find(
+      (b) => b.metadata === entityMetadata,
     );
+    const instance = builtIn
+      ? builtIn.create()
+      : ObjectInstanciator.instanciateObjectFromJsonData<SceneEntity>(
+          entityMetadata.name,
+          ['New ' + entityMetadata.name],
+        );
     if (instance) {
-      this.scene.addEntity(instance as SceneEntity);
+      this.scene.addEntity(instance);
       this.editorService.onSceneUpdated.emit(this.scene);
-      this.sceneTreeService.onEntitySelected.emit(instance as SceneEntity);
+      this.sceneTreeService.onEntitySelected.emit(instance);
     }
   }
 
