@@ -15,6 +15,7 @@ import { EditorService } from '@editor/services/editor.service';
 import { TreeNode } from './scene-node';
 import { TreeNodeComponent } from './tree-node/tree-node';
 import { AddBehaviourMenuComponent } from '../../components/add-behaviour-menu/add-behaviour-menu';
+import { PRIMITIVES, createPrimitiveEntity } from '@editor/scene/primitive-factory';
 
 @Component({
   selector: 'app-scene-tree',
@@ -283,7 +284,7 @@ export class SceneTree {
    */
   private readonly builtInEntities: {
     metadata: ClassMetadata;
-    create: () => SceneEntity;
+    create: () => SceneEntity | Promise<SceneEntity>;
   }[] = [
     {
       metadata: {
@@ -294,6 +295,20 @@ export class SceneTree {
       },
       create: () => SceneEntity.instanciate(this.uniqueEntityName('Empty Object')),
     },
+    ...PRIMITIVES.map((primitive) => ({
+      metadata: {
+        name: primitive.name,
+        type: ClassType.Entity,
+        path: 'Primitives',
+        description: primitive.description,
+      },
+      create: () =>
+        createPrimitiveEntity(
+          this.editorService.gl,
+          primitive,
+          this.uniqueEntityName(primitive.name),
+        ),
+    })),
   ];
 
   /** "Empty Object", then "Empty Object (1)", "Empty Object (2)"... */
@@ -305,13 +320,13 @@ export class SceneTree {
     return `${base} (${i})`;
   }
 
-  onEntitySelected(entityMetadata: ClassMetadata) {
+  async onEntitySelected(entityMetadata: ClassMetadata) {
     if (!this.scene) return;
     const builtIn = this.builtInEntities.find(
       (b) => b.metadata === entityMetadata,
     );
     const instance = builtIn
-      ? builtIn.create()
+      ? await builtIn.create()
       : ObjectInstanciator.instanciateObjectFromJsonData<SceneEntity>(
           entityMetadata.name,
           ['New ' + entityMetadata.name],
