@@ -1,0 +1,463 @@
+{
+  "component": {
+    "name": "GizmosBoxBehaviour",
+    "source_path": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+    "doc_path": "/editor/behaviours/scene-editor/gizmos-behaviour.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "GizmosBoxBehaviour manages the rendering and interactive manipulation of scene entity gizmos (translation, rotation, scaling) within the editor viewport. It utilizes raycasting and a picking texture to determine user interaction with specific gizmo handles. The component handles complex geometric transformations, updating the entity's Transform component directly upon user drag events, while subscribing to editor state changes like GizmoMode and TransformSpace."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#GizmosBoxBehaviour",
+      "label": "Class",
+      "name": "GizmosBoxBehaviour",
+      "signature": "constructor(gl: WebGL2RenderingContext, private editorService: EditorService)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#mouseClaimed",
+      "label": "Variable",
+      "name": "mouseClaimed",
+      "signature": "public mouseClaimed: Boolean"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#hoveredBoundingBoxColor",
+      "label": "Variable",
+      "name": "hoveredBoundingBoxColor",
+      "signature": "public hoveredBoundingBoxColor: Color"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#hoveredBoundingBoxLineWidth",
+      "label": "Variable",
+      "name": "hoveredBoundingBoxLineWidth",
+      "signature": "public hoveredBoundingBoxLineWidth: Number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#hoveredBoundingBox",
+      "label": "Variable",
+      "name": "hoveredBoundingBox",
+      "signature": "public hoveredBoundingBox!: BoundingBox | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#hoveredEntity",
+      "label": "Variable",
+      "name": "hoveredEntity",
+      "signature": "private hoveredEntity!: SceneEntity"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#selectedBoundingBoxColor",
+      "label": "Variable",
+      "name": "selectedBoundingBoxColor",
+      "signature": "public selectedBoundingBoxColor: Color"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#selectedBoundingBoxLineWidth",
+      "label": "Variable",
+      "name": "selectedBoundingBoxLineWidth",
+      "signature": "public selectedBoundingBoxLineWidth: Number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#selectedBoundingBox",
+      "label": "Variable",
+      "name": "selectedBoundingBox",
+      "signature": "public selectedBoundingBox!: BoundingBox | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#selectedEntity",
+      "label": "Variable",
+      "name": "selectedEntity",
+      "signature": "private selectedEntity!: SceneEntity"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#gizmoMode",
+      "label": "Variable",
+      "name": "gizmoMode",
+      "signature": "private gizmoMode: GizmoMode"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#transformSpace",
+      "label": "Variable",
+      "name": "transformSpace",
+      "signature": "private transformSpace: TransformSpace"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#activeHandle",
+      "label": "Variable",
+      "name": "activeHandle",
+      "signature": "private activeHandle: string | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#hoveredHandle",
+      "label": "Variable",
+      "name": "hoveredHandle",
+      "signature": "private hoveredHandle: string | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragStartPoint",
+      "label": "Variable",
+      "name": "dragStartPoint",
+      "signature": "private dragStartPoint = vec3.create()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragStartEntityPosition",
+      "label": "Variable",
+      "name": "dragStartEntityPosition",
+      "signature": "private dragStartEntityPosition = vec3.create()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragStartEntityScale",
+      "label": "Variable",
+      "name": "dragStartEntityScale",
+      "signature": "private dragStartEntityScale = vec3.create()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragStartEntityRotation",
+      "label": "Variable",
+      "name": "dragStartEntityRotation",
+      "signature": "private dragStartEntityRotation = quat.create()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#lastMousePosition",
+      "label": "Variable",
+      "name": "lastMousePosition",
+      "signature": "private lastMousePosition = { x: 0, y: 0 }"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#lastHoverMouseX",
+      "label": "Variable",
+      "name": "lastHoverMouseX",
+      "signature": "private lastHoverMouseX = -1"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#lastHoverMouseY",
+      "label": "Variable",
+      "name": "lastHoverMouseY",
+      "signature": "private lastHoverMouseY = -1"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#isDragging",
+      "label": "Variable",
+      "name": "isDragging",
+      "signature": "private isDragging = false"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragThreshold",
+      "label": "Variable",
+      "name": "dragThreshold",
+      "signature": "private dragThreshold = 3"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#gizmoSize",
+      "label": "Variable",
+      "name": "gizmoSize",
+      "signature": "private gizmoSize = 1.0"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#gizmoScale",
+      "label": "Variable",
+      "name": "gizmoScale",
+      "signature": "private gizmoScale = 1.5"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#handlePointSize",
+      "label": "Variable",
+      "name": "handlePointSize",
+      "signature": "private handlePointSize = 30.0"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#coneHelper",
+      "label": "Variable",
+      "name": "coneHelper",
+      "signature": "private coneHelper: ConeHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#cubeHelper",
+      "label": "Variable",
+      "name": "cubeHelper",
+      "signature": "private cubeHelper: CubeHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#planeHelper",
+      "label": "Variable",
+      "name": "planeHelper",
+      "signature": "private planeHelper: PlaneHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#visualTorusHelper",
+      "label": "Variable",
+      "name": "visualTorusHelper",
+      "signature": "private visualTorusHelper: TorusHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#pickingTorusHelper",
+      "label": "Variable",
+      "name": "pickingTorusHelper",
+      "signature": "private pickingTorusHelper: TorusHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#scaleBoxHelper",
+      "label": "Variable",
+      "name": "scaleBoxHelper",
+      "signature": "private scaleBoxHelper: ScaleBoxHelper"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#pickingTexture",
+      "label": "Variable",
+      "name": "pickingTexture",
+      "signature": "private pickingTexture: Texture"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#pickingShader",
+      "label": "Variable",
+      "name": "pickingShader",
+      "signature": "private pickingShader: Shader"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_X",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_X",
+      "signature": "1"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_Y",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_Y",
+      "signature": "2"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_Z",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_Z",
+      "signature": "3"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_SCALE_X",
+      "label": "Constant",
+      "name": "HANDLE_ID_SCALE_X",
+      "signature": "4"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_SCALE_Y",
+      "label": "Constant",
+      "name": "HANDLE_ID_SCALE_Y",
+      "signature": "5"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_SCALE_Z",
+      "label": "Constant",
+      "name": "HANDLE_ID_SCALE_Z",
+      "signature": "6"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_ROTATE_X",
+      "label": "Constant",
+      "name": "HANDLE_ID_ROTATE_X",
+      "signature": "7"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_ROTATE_Y",
+      "label": "Constant",
+      "name": "HANDLE_ID_ROTATE_Y",
+      "signature": "8"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_ROTATE_Z",
+      "label": "Constant",
+      "name": "HANDLE_ID_ROTATE_Z",
+      "signature": "9"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_XY",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_XY",
+      "signature": "10"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_XZ",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_XZ",
+      "signature": "11"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#HANDLE_ID_TRANSLATE_YZ",
+      "label": "Constant",
+      "name": "HANDLE_ID_TRANSLATE_YZ",
+      "signature": "12"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#createMesh",
+      "label": "Method",
+      "name": "createMesh",
+      "signature": "protected createMesh()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#setTargetEntity",
+      "label": "Method",
+      "name": "setTargetEntity",
+      "signature": "public setTargetEntity(entity: SceneEntity | null)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#setHoveredEntity",
+      "label": "Method",
+      "name": "setHoveredEntity",
+      "signature": "public setHoveredEntity(entity: SceneEntity | null)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "public override draw(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#updateEditor",
+      "label": "Method",
+      "name": "updateEditor",
+      "signature": "public override updateEditor(elapsed: number): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#handleKeyboardInput",
+      "label": "Method",
+      "name": "handleKeyboardInput",
+      "signature": "private handleKeyboardInput()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawGizmo",
+      "label": "Method",
+      "name": "drawGizmo",
+      "signature": "private drawGizmo()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawTranslateGizmo",
+      "label": "Method",
+      "name": "drawTranslateGizmo",
+      "signature": "private drawTranslateGizmo(gizmoTransform: mat4)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawScaleGizmo",
+      "label": "Method",
+      "name": "drawScaleGizmo",
+      "signature": "private drawScaleGizmo(gizmoTransform: mat4)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawRotateGizmo",
+      "label": "Method",
+      "name": "drawRotateGizmo",
+      "signature": "private drawRotateGizmo(gizmoTransform: mat4)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#handleGizmoInteraction",
+      "label": "Method",
+      "name": "handleGizmoInteraction",
+      "signature": "private handleGizmoInteraction()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#setDragStartPoint",
+      "label": "Method",
+      "name": "setDragStartPoint",
+      "signature": "private setDragStartPoint()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawPickingGizmo",
+      "label": "Method",
+      "name": "drawPickingGizmo",
+      "signature": "private drawPickingGizmo(gizmoTransform: mat4): number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragTranslateEntity",
+      "label": "Method",
+      "name": "dragTranslateEntity",
+      "signature": "private dragTranslateEntity()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragScaleEntity",
+      "label": "Method",
+      "name": "dragScaleEntity",
+      "signature": "private dragScaleEntity()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#dragRotateEntity",
+      "label": "Method",
+      "name": "dragRotateEntity",
+      "signature": "private dragRotateEntity()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#setCameraMatrices",
+      "label": "Method",
+      "name": "setCameraMatrices",
+      "signature": "protected override setCameraMatrices(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#setMatrices",
+      "label": "Method",
+      "name": "setMatrices",
+      "signature": "setMatrices(transform: Transform, modelMatrix?: mat4, shader: Shader = this.shader!)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#drawBoundingBox",
+      "label": "Method",
+      "name": "drawBoundingBox",
+      "signature": "drawBoundingBox(boundingBox: BoundingBox, spacing = 0.1)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos-behaviour.ts#refreshTexture",
+      "label": "Method",
+      "name": "refreshTexture",
+      "signature": "private refreshTexture()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/cone.helper.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/cube.helper.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/plane.helper.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/raycast.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/torus.helper.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/editor/behaviours/scene-editor/scale-box.helper.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/../../services/editor.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos-behaviour.ts",
+      "target": "/omega-game-engine.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix"
+    ],
+    "has_side_effects": true
+  }
+}

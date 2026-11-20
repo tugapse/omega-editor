@@ -1,0 +1,105 @@
+{
+  "component": {
+    "name": "ProjectService",
+    "source_path": "/app/api/services/project.service.ts",
+    "doc_path": "/app/api/services/project.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "ProjectService encapsulates all business logic for project management, acting as the dedicated service layer for CRUD operations. It abstracts HTTP communication by utilizing Angular's HttpClient to interact with the backend RESTful API endpoints under the /projects path. The service manages data flow by serializing requests and responses using models defined in omega-api.models.md. It provides methods for creating, listing, retrieving, updating, and deleting project entities."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/services/project.service.ts#ProjectService",
+      "label": "Class",
+      "name": "ProjectService",
+      "signature": "class ProjectService"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#createProject",
+      "label": "Method",
+      "name": "createProject",
+      "signature": "createProject(payload: CreateProjectRequest): Observable<ProjectResponse>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#listProjects",
+      "label": "Method",
+      "name": "listProjects",
+      "signature": "listProjects(): Observable<ProjectResponse[]>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#getProjectById",
+      "label": "Method",
+      "name": "getProjectById",
+      "signature": "getProjectById(projectId: string): Observable<ProjectResponse>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#getProjectAssets",
+      "label": "Method",
+      "name": "getProjectAssets",
+      "signature": "getProjectAssets(projectId: string): Observable<ProjectAssetIndexResponse>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#updateProject",
+      "label": "Method",
+      "name": "updateProject",
+      "signature": "updateProject(projectId: string, payload: UpdateProjectRequest): Observable<ProjectResponse>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#deleteProject",
+      "label": "Method",
+      "name": "deleteProject",
+      "signature": "deleteProject(projectId: string): Observable<MessageResponse>"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#http",
+      "label": "Variable",
+      "name": "http",
+      "signature": "private readonly http = inject(HttpClient);"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#apiUrl",
+      "label": "Variable",
+      "name": "apiUrl",
+      "signature": "private readonly apiUrl = inject(API_URL);"
+    },
+    {
+      "id": "/app/api/services/project.service.ts#projectsUrl",
+      "label": "Variable",
+      "name": "projectsUrl",
+      "signature": "private readonly projectsUrl = `${this.apiUrl}/projects`;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/services/project.service.ts",
+      "target": "/app/api/services/project.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/api/services/project.service.ts",
+      "target": "/app/api/services/project.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/api/services/project.service.ts",
+      "target": "/app/api/services/project.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/api/services/project.service.ts",
+      "target": "/app/models/omega-api.models.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "API_URL"
+    ],
+    "external_dependencies": [
+      "@angular/common/http",
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

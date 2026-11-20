@@ -1,0 +1,24 @@
+@if (activeFolder()) {
+  <div class="grid-container">
+    @for (item of activeFolder()?.children; track item.id) {
+      <div
+        class="grid-item"
+        [class.selected]="item.id === selectedNodeId()"
+        (click)="itemClick.emit(item)"
+        (dblclick)="itemDoubleClick.emit(item)"
+        (contextmenu)="contextMenu.emit({ e: $event, node: item })"
+        [draggable]="item.type !== 'folder'"
+        (dragstart)="onDragStart($event, item)"
+      >
+        <div class="grid-item-icon">
+          <app-icon
+            [iconName]="icons[item.type]"
+            [iconSize]="32"
+            [isButton]="false"
+          ></app-icon>
+        </div>
+        <div class="grid-item-name" [title]="item.name">{{ item.name }}</div>
+      </div>
+    }
+  </div>
+}

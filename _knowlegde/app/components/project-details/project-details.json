@@ -1,0 +1,61 @@
+{
+  "component": {
+    "name": "ProjectDetails",
+    "source_path": "/app/components/project-details/project-details.ts",
+    "doc_path": "/app/components/project-details/project-details.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "ProjectDetails is an Angular presentation layer component responsible for displaying and allowing interactive modification of a ProjectResponse object. It consumes the immutable project data via an @Input and manages a mutable internal copy for editing. Changes are propagated upwards to the parent component via the @Output 'save' event emitter upon user confirmation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/project-details/project-details.ts#ProjectDetails",
+      "label": "Class",
+      "name": "ProjectDetails",
+      "signature": "class ProjectDetails implements OnChanges"
+    },
+    {
+      "id": "/app/components/project-details/project-details.ts#project",
+      "label": "Input",
+      "name": "project",
+      "signature": "@Input({ required: true }) project!: ProjectResponse;"
+    },
+    {
+      "id": "/app/components/project-details/project-details.ts#save",
+      "label": "Output",
+      "name": "save",
+      "signature": "@Output() save = new EventEmitter<ProjectResponse>();"
+    },
+    {
+      "id": "/app/components/project-details/project-details.ts#editableProject",
+      "label": "Variable",
+      "name": "editableProject",
+      "signature": "editableProject!: ProjectResponse;"
+    },
+    {
+      "id": "/app/components/project-details/project-details.ts#ngOnChanges",
+      "label": "Method",
+      "name": "ngOnChanges",
+      "signature": "ngOnChanges(changes: SimpleChanges): void"
+    },
+    {
+      "id": "/app/components/project-details/project-details.ts#onSave",
+      "label": "Method",
+      "name": "onSave",
+      "signature": "onSave(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/project-details/project-details.ts",
+      "target": "/api/models/omega-api.models.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

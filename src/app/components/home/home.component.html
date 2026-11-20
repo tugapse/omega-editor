@@ -1,0 +1,119 @@
+@if (isModalOpen) {
+  <div class="modal-overlay">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Create New Project</h3>
+      </div>
+
+      <form (ngSubmit)="createProject()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input
+              type="text"
+              id="projectName"
+              name="projectName"
+              class="form-input"
+              [(ngModel)]="newProjectName"
+              placeholder="Enter project name..."
+              required
+            />
+          </div>
+
+          @if (templates.length > 1) {
+            <div class="form-group">
+              <label>Template</label>
+              <div class="template-list">
+                @for (t of templates; track t.id) {
+                  <label class="template-card" [class.selected]="newProjectTemplate === t.id">
+                    <input
+                      type="radio"
+                      name="projectTemplate"
+                      [value]="t.id"
+                      [(ngModel)]="newProjectTemplate"
+                    />
+                    <span class="template-name">{{ t.name }}</span>
+                    @if (t.description) {
+                      <span class="template-description">{{ t.description }}</span>
+                    }
+                  </label>
+                }
+              </div>
+            </div>
+          }
+
+          @if (createError) {
+            <div class="form-error">{{ createError }}</div>
+          }
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!newProjectName.trim()"
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<div class="home-container">
+  <aside class="project-list">
+    <div class="sidebar-header">
+      <h2>Projects</h2>
+      <app-icon
+        class="icon-button"
+        iconName="fa-plus"
+        [isButton]="true"
+        (click)="openNewProjectModal()"
+        title="Create New Project"
+      ></app-icon>
+    </div>
+
+    <ul class="list-wrapper">
+      @for (project of projects; track project) {
+        <li
+          (click)="selectProject(project)"
+          [class.selected]="project === selectedProject"
+          class="project-item"
+        >
+          <span class="fa fa-chart-gantt"></span>
+          <span class="project-name">{{ project.name }}</span>
+        </li>
+      }
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <app-user-bar class="user-bar"></app-user-bar>
+
+    @if (selectedProject) {
+      <div class="top">
+        <app-scene-list [project]="selectedProject"></app-scene-list>
+        <app-project-details
+          [project]="selectedProject"
+          (save)="handleProjectUpdate($event)"
+        ></app-project-details>
+      </div>
+
+      <!-- <app-assets-explorer
+        class="assets-explorer"
+        [projectId]="selectedProject.id"
+      ></app-assets-explorer> -->
+    } @else {
+      <app-dashboard-welcome></app-dashboard-welcome>
+    }
+    <app-background-visualization></app-background-visualization>
+  </main>
+</div>

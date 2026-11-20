@@ -1,0 +1,82 @@
+@if (entity) {
+  <editor-inpector-toggle-panel [title]="'Entity: ' + entity.name">
+    @if (!_isScene) {
+      <section class="line-item">
+        <span>Update in Editor</span
+        ><app-toggle
+          [active]="entity.updateInEditor"
+          (change)="entity.updateInEditor = !entity.updateInEditor"
+        ></app-toggle>
+      </section>
+
+      <editor-text-input-inspector
+        label="Name"
+        [isNumber]="false"
+        [value]="entity.name"
+        (change)="onNameChanged($event)"
+      ></editor-text-input-inspector>
+      <editor-text-input-inspector
+        label="Tag"
+        [ngClass]="{ tag: objectsToshow.length > 2 }"
+        [isNumber]="false"
+        [value]="entity.tag"
+        (change)="onTagChanged($event)"
+      ></editor-text-input-inspector>
+    }
+
+    @for (entityProperty of objectsToshow; track $index) {
+      @switch (entityProperty.type) {
+        @case ("object") {
+          <editor-object-inspector
+            [label]="entityProperty.key.capitalize()"
+            [targetObject]="entityProperty"
+          ></editor-object-inspector>
+        }
+        @default {
+          <editor-default-inspector
+            [item]="entityProperty"
+            (change)="onDefaultChanged(entityProperty, $event)"
+          ></editor-default-inspector>
+        }
+      }
+    }
+  </editor-inpector-toggle-panel>
+
+  @if (!_isScene) {
+    <editor-transform-inspector
+      [entity]="entity"
+      [collapsed]="true"
+    ></editor-transform-inspector>
+
+    <div class="behaviours-header-container">
+      <h4 class="behaviours-header">Behaviours</h4>
+      <app-icon
+        class="icon"
+        iconName="fa-add"
+        [isButton]="true"
+        (click)="onAddBehaviourRequested($event)"
+      ></app-icon>
+      <editor-add-behaviour-menu
+        [isOpen]="isAddBehaviourMenuOpen"
+        [behaviours]="availableBehaviours"
+        [menuX]="menuX"
+        [menuY]="menuY"
+        (behaviourSelected)="onBehaviourSelected($event)"
+        (closeMenu)="isAddBehaviourMenuOpen = false"
+      >
+      </editor-add-behaviour-menu>
+    </div>
+
+    @if (entity.behaviours.length > 0) {
+      @for (behaviour of entity.behaviours; track $index) {
+        <editor-behaviour-inspector
+          [behaviour]="behaviour"
+          [label]="
+            behaviour.className.capitalize() +
+            (behaviour.name ? ': ' + behaviour.name : '')
+          "
+        ></editor-behaviour-inspector>
+      }
+    }
+  }
+}

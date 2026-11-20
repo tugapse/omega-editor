@@ -1,9 +1,46 @@
+@use "./theme.scss";
+
 /* You can add global styles to this file, and also import other style files */
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--global-background-color);
+  width: 100vw;
+  height: 100vh;
+  overflow: clip;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.icon-button {
+  font-size: 2rem;
+  cursor: pointer;
 }
 
-h5,h4,h3,h2,h1{
-  margin: 8px 2px;
+.no-select {
+  user-select: none;
+  /* Standard property */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+
+.editor-inspector-line-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }

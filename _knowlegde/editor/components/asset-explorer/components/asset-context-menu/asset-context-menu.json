@@ -1,0 +1,67 @@
+{
+  "component": {
+    "name": "AssetContextMenuComponent",
+    "source_path": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts",
+    "doc_path": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component renders the context menu for assets within the asset explorer view. It acts as a presentation layer, consuming configuration data like visibility and the target asset node. Its primary responsibility is to expose user actionsrenaming or deleting the assetby emitting specific events to parent components for state mutation. It utilizes browser native prompts and confirmations, introducing side effects for user interaction."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#AssetContextMenuComponent",
+      "label": "Class",
+      "name": "AssetContextMenuComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#config",
+      "label": "Input",
+      "name": "config",
+      "signature": "config(): { visible: boolean; x: number; y: number; targetNode: IAsset | null; }"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#rename",
+      "label": "Output",
+      "name": "rename",
+      "signature": "rename: output<string>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#delete",
+      "label": "Output",
+      "name": "delete",
+      "signature": "delete: output<IAsset>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#onRename",
+      "label": "Method",
+      "name": "onRename",
+      "signature": "onRename(): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#onDelete",
+      "label": "Method",
+      "name": "onDelete",
+      "signature": "onDelete(): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts#IAsset",
+      "label": "Interface",
+      "name": "IAsset",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.ts",
+      "target": "/editor/interfaces/asset.interface.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "HealthService",
+    "source_path": "/app/api/services/health.service.ts",
+    "doc_path": "/app/api/services/health.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "HealthService is a dedicated service responsible for executing system health checks against the backend API. It utilizes the injected HttpClient to perform a GET request to the derived /health endpoint. The service constructs the full URL by stripping the /api/v1 prefix from the configured API_URL. It returns an Observable stream containing the structured HealthStatusResponse, encapsulating the application's operational status."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/services/health.service.ts#HealthService",
+      "label": "Class",
+      "name": "HealthService",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/health.service.ts#http",
+      "label": "Variable",
+      "name": "http",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/health.service.ts#apiUrl",
+      "label": "Variable",
+      "name": "apiUrl",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/health.service.ts#baseUrl",
+      "label": "Variable",
+      "name": "baseUrl",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/health.service.ts#checkHealth",
+      "label": "Method",
+      "name": "checkHealth",
+      "signature": "checkHealth(): Observable<HealthStatusResponse>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/services/health.service.ts",
+      "target": "/app/api/services/api-url.token.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/api/services/health.service.ts",
+      "target": "/app/models/omega-api.models.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "HttpClient",
+      "Observable"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "component": {
+    "name": "AudioService",
+    "source_path": "/editor/services/audio.service.ts",
+    "doc_path": "/editor/services/audio.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "AudioService acts as the centralized service layer for managing all audio processing within the application, leveraging the omega-game-engine. It encapsulates the Web Audio API context, clock, cache, and voice factory, providing high-level interfaces for synthesis and timing. Its primary role is to abstract low-level audio implementation details, ensuring controlled initialization via user gestures."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/audio.service.ts#AudioService",
+      "label": "Class",
+      "name": "AudioService",
+      "signature": "class AudioService"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#clockConfig",
+      "label": "Variable",
+      "name": "clockConfig",
+      "signature": "clockConfig: ClockConfig"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#engine",
+      "label": "Variable",
+      "name": "engine",
+      "signature": "engine: AudioEngine"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#cache",
+      "label": "Variable",
+      "name": "cache",
+      "signature": "cache: AudioCache"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#clock",
+      "label": "Variable",
+      "name": "clock",
+      "signature": "clock: SequencerClock"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#factory",
+      "label": "Variable",
+      "name": "factory",
+      "signature": "factory: VoiceFactory"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#init",
+      "label": "Method",
+      "name": "init",
+      "signature": "init(): void"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#getAudioContext",
+      "label": "Method",
+      "name": "getAudioContext",
+      "signature": "getAudioContext(): AudioContext"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#getAnalyserNode",
+      "label": "Method",
+      "name": "getAnalyserNode",
+      "signature": "getAnalyserNode(): AnalyserNode"
+    },
+    {
+      "id": "/editor/services/audio.service.ts#getMasterGainNode",
+      "label": "Method",
+      "name": "getMasterGainNode",
+      "signature": "getMasterGainNode(): GainNode"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/audio.service.ts",
+      "target": "/omega-game-engine#AudioEngine",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/audio.service.ts",
+      "target": "/omega-game-engine#AudioCache",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/audio.service.ts",
+      "target": "/omega-game-engine#SequencerClock",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/audio.service.ts",
+      "target": "/omega-game-engine#VoiceFactory",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

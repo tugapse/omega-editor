@@ -1,0 +1,62 @@
+{
+  "component": {
+    "name": "main",
+    "source_path": "/main.ts",
+    "doc_path": "/main.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as the primary bootstrap controller for the Angular application. Its core responsibilities include extending the native String prototype with a 'capitalize' method and initializing the Angular application using appConfig. It also integrates the external 'omega-game-engine' library into the global window scope. Error handling is implemented via a catch block on the bootstrap process."
+  },
+  "graph_nodes": [
+    {
+      "id": "/main.ts#String.prototype.capitalize",
+      "label": "Method",
+      "name": "capitalize",
+      "signature": "capitalize(): string"
+    },
+    {
+      "id": "/main.ts#bootstrapApplication",
+      "label": "Function",
+      "name": "bootstrapApplication",
+      "signature": "bootstrapApplication(App, appConfig)"
+    },
+    {
+      "id": "/main.ts#App",
+      "label": "Class",
+      "name": "App",
+      "signature": ""
+    },
+    {
+      "id": "/main.ts#appConfig",
+      "label": "Variable",
+      "name": "appConfig",
+      "signature": ""
+    },
+    {
+      "id": "/main.ts#OmegaEngine",
+      "label": "Variable",
+      "name": "OmegaEngine",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/main.ts",
+      "target": "/src/app/app.config.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/main.ts",
+      "target": "/src/app/app.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

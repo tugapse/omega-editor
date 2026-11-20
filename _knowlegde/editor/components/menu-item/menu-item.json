@@ -1,0 +1,94 @@
+{
+  "component": {
+    "name": "MenuItemComponent",
+    "source_path": "/editor/components/menu-item/menu-item.ts",
+    "doc_path": "/editor/components/menu-item/menu-item.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "MenuItemComponent is a core Angular UI component responsible for rendering a single, interactive item within a hierarchical menu structure. It manages the visibility state of sub-menus using hover events and implements a debounced closing mechanism. Its primary function is to emit an onItemClick event when a final, non-parent item is selected, allowing parent components to handle the resulting action."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#MenuItem",
+      "label": "Interface",
+      "name": "MenuItem",
+      "signature": "id: string; label: string; items?: MenuItem[]"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#MenuItemComponent",
+      "label": "Class",
+      "name": "MenuItemComponent",
+      "signature": "class MenuItemComponent"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#item",
+      "label": "Input",
+      "name": "item",
+      "signature": "input.required<MenuItem>()"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#isRoot",
+      "label": "Input",
+      "name": "isRoot",
+      "signature": "input<boolean>(false)"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#onItemClick",
+      "label": "Output",
+      "name": "onItemClick",
+      "signature": "output<MenuItem>()"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#isOpen",
+      "label": "Signal",
+      "name": "isOpen",
+      "signature": "signal<boolean>(false)"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#leaveTimeout",
+      "label": "Variable",
+      "name": "leaveTimeout",
+      "signature": "any"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#_debounceTime",
+      "label": "Variable",
+      "name": "_debounceTime",
+      "signature": "250"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#onMouseEnter",
+      "label": "Method",
+      "name": "onMouseEnter",
+      "signature": "onMouseEnter()"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#onMouseLeave",
+      "label": "Method",
+      "name": "onMouseLeave",
+      "signature": "onMouseLeave()"
+    },
+    {
+      "id": "/editor/components/menu-item/menu-item.ts#onItemClickHandler",
+      "label": "Method",
+      "name": "onItemClickHandler",
+      "signature": "onItemClickHandler(clickedItem: MenuItem)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/menu-item/menu-item.ts",
+      "target": "/editor/components/menu-item/menu-item.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "component": {
+    "name": "RotateBehaviour",
+    "source_path": "/editor/behaviours/rotate.ts",
+    "doc_path": "/editor/behaviours/rotate.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "RotateBehaviour is a runtime controller inheriting from EntityBehaviour responsible for continuously modifying an entity's spatial orientation. It achieves this by applying rotational changes to the entity's transform matrix during every frame update, driven by a configurable speed and rotation vector. The component manages its state via serialization methods, ensuring persistence of the rotation angle and speed across game sessions."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/rotate.ts#RotateBehaviour",
+      "label": "Class",
+      "name": "RotateBehaviour",
+      "signature": "class RotateBehaviour extends EntityBehaviour"
+    },
+    {
+      "id": "/editor/behaviours/rotate.ts#rotationAngle",
+      "label": "Variable",
+      "name": "rotationAngle",
+      "signature": "rotationAngle: Vector3 = new Vector3(0, 1, 0)"
+    },
+    {
+      "id": "/editor/behaviours/rotate.ts#speed",
+      "label": "Variable",
+      "name": "speed",
+      "signature": "speed = 0.005"
+    },
+    {
+      "id": "/editor/behaviours/rotate.ts#update",
+      "label": "Method",
+      "name": "update",
+      "signature": "public override update(ellapsed: number): void"
+    },
+    {
+      "id": "/editor/behaviours/rotate.ts#toJsonObject",
+      "label": "Method",
+      "name": "toJsonObject",
+      "signature": "public override toJsonObject(): JsonSerializedData"
+    },
+    {
+      "id": "/editor/behaviours/rotate.ts#fromJson",
+      "label": "Method",
+      "name": "fromJson",
+      "signature": "public override fromJson(jsonObject: JsonSerializedData): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/rotate.ts",
+      "target": "/editor/behaviours/entitybehaviour.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/rotate.ts",
+      "target": "/omega-game-engine/vector3.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/rotate.ts",
+      "target": "/omega-game-engine/jsonserializeddata.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/rotate.ts",
+      "target": "/omega-game-engine/objectinstanciator.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/rotate.ts",
+      "target": "/omega-game-engine/classtype.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

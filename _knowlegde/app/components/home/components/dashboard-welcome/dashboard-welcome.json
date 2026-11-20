@@ -1,0 +1,27 @@
+{
+  "component": {
+    "name": "DashboardWelcome",
+    "source_path": "/app/components/home/components/dashboard-welcome/dashboard-welcome.ts",
+    "doc_path": "/app/components/home/components/dashboard-welcome/dashboard-welcome.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component, DashboardWelcome, serves as the primary landing page for the application's main dashboard area. It functions purely as a presentation layer UI component, responsible for displaying a welcome view to the user upon initial access. Architecturally, it is designed to be self-contained, relying solely on its associated HTML and SCSS files for rendering and styling without complex state management dependencies."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/home/components/dashboard-welcome/dashboard-welcome.ts#DashboardWelcome",
+      "label": "Class",
+      "name": "DashboardWelcome",
+      "signature": "class DashboardWelcome {}"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

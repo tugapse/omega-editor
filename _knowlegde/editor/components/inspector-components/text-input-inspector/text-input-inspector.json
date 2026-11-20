@@ -1,0 +1,79 @@
+{
+  "component": {
+    "name": "TextInputInspector",
+    "source_path": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+    "doc_path": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "TextInputInspector is a presentation layer Angular component designed to manage interactive text or numerical input within an editor's inspector panel. It accepts configuration via @Input() properties like 'label', 'value', and 'isNumber', and communicates state changes via the 'change' @Output(). It supports two primary interaction modes: standard text input via onChange and numerical manipulation via drag gestures handled by onDrag, ensuring data integrity through scaling and precision rounding."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#TextInputInspector",
+      "label": "Class",
+      "name": "TextInputInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#label",
+      "label": "Variable",
+      "name": "label",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#value",
+      "label": "Variable",
+      "name": "value",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#isNumber",
+      "label": "Variable",
+      "name": "isNumber",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#dragScale",
+      "label": "Variable",
+      "name": "dragScale",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#numberDecimals",
+      "label": "Variable",
+      "name": "numberDecimals",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#change",
+      "label": "Interface",
+      "name": "change",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#onChange",
+      "label": "Method",
+      "name": "onChange",
+      "signature": "onChange($event: Event)"
+    },
+    {
+      "id": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts#onDrag",
+      "label": "Method",
+      "name": "onDrag",
+      "signature": "onDrag($event: DragEventData)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+      "target": "/editor/directives/mouse-drag.directive.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

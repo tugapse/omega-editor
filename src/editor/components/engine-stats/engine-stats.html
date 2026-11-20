@@ -1,0 +1,41 @@
+<div
+  class="engine-stats-panel"
+  appMovable
+  movableHandleId="header"
+  [showResize]="false"
+  *ngIf="stats"
+>
+  <div id="header" class="stat-row fps-row">
+    <span class="label">FPS</span>
+    <span class="value" [class.warning]="stats.fps < 50">{{ stats.fps }}</span>
+    <app-icon
+      iconName="fa-close"
+      [isButton]="true"
+      (click)="closeRequested.emit()"
+    ></app-icon>
+  </div>
+
+  <div class="stat-row">
+    <span class="label">Update</span>
+    <span class="value">{{ stats.updateTimeMs | number: "1.2-2" }} ms</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="label">Render</span>
+    <span class="value">{{ stats.renderTimeMs | number: "1.2-2" }} ms</span>
+  </div>
+
+  <div class="stat-row">
+    <span class="label">Frame</span>
+    <span class="value">{{ stats.frameTimeMs | number: "1.2-2" }} ms</span>
+  </div>
+
+  <div class="stat-row">
+    <span
+      class="label"
+      title="This will include the Browser API, GC, And Idle time taken by the browser untill next frame."
+      >idle</span
+    >
+    <span class="value">{{ stats.browserTimeMs | number: "1.2-2" }} ms</span>
+  </div>
+</div>

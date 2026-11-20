@@ -1,0 +1,208 @@
+<div class="mixer-layout">
+  <aside class="mixer-sidebar">
+    <div class="sidebar-brand">
+      <h1 class="brand-title">Sound <span class="brand-tag">Mixer</span></h1>
+      <p class="brand-subtitle">Drag sounds to the timeline</p>
+    </div>
+
+    <app-preset-list
+      [presets]="presets()"
+      (dragStart)="onDragStartPreset($event.event, $event.preset)"
+      (preview)="playback.previewPreset($event)"
+      (edit)="openDesigner($event)"
+      (add)="openDesigner()"
+    ></app-preset-list>
+
+    <app-oscilloscope></app-oscilloscope>
+  </aside>
+
+  <main class="mixer-workspace">
+    <header class="workspace-toolbar">
+      <div class="toolbar-group-left">
+        <button
+          (click)="triggerPlay()"
+          class="btn-transport btn-play"
+          [class.active-ring]="playback.isPlaying() && !playback.isPaused()"
+        >
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg> Play
+        </button>
+        <button
+          (click)="playback.pauseSequence()"
+          class="btn-transport btn-pause"
+          [class.active-ring]="playback.isPaused()"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+          Pause
+        </button>
+        <button
+          (click)="playback.stopSequence()"
+          class="btn-transport btn-stop"
+        >
+          <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z" /></svg> Stop
+        </button>
+        <div class="toolbar-divider"></div>
+        <div class="zoom-control">
+          <label>Zoom</label>
+          <input
+            type="range"
+            min="50"
+            max="300"
+            [value]="pixelsPerSecond()"
+            (input)="updateZoom($event)"
+          />
+        </div>
+      </div>
+
+      <div class="toolbar-group-right">
+        <button
+          (click)="playback.exportWav()"
+          [disabled]="playback.isExporting()"
+          class="btn-export"
+        >
+          @if (playback.isExporting()) {
+            <span class="animate-pulse">Rendering...</span>
+          } @else {
+            <span>Export WAV</span>
+          }
+        </button>
+        <div class="toolbar-divider"></div>
+        <div class="demo-selector-container">
+          <select #demoSelect>
+            <option value="techno">Techno Matrix Groove</option>
+            <option value="synthwave">Cyberpunk Octave Arp</option>
+            <option value="ambient">Reflective Ambient Chill</option>
+            <option value="house">Deep House Jack</option>
+            <option value="trance">Epic Trance Anthem</option>
+            <option value="dnb">Liquid Drum & Bass Break</option>
+            <option value="lofi">Lo-Fi Hip Hop Chill</option>
+            <option value="synthpop">Retro Synth-Pop Wave</option>
+          </select>
+          <button
+            (click)="playback.loadDemoSong(demoSelect.value, presets(), 15.0)"
+            class="btn-text-action sky"
+          >
+            Load
+          </button>
+        </div>
+        <button (click)="clearTimeline()" class="btn-text-action rose">
+          Clear All
+        </button>
+      </div>
+    </header>
+
+    <div
+      #timelineContainer
+      class="timeline-viewport"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()"
+      (drop)="onDrop($event)"
+    >
+      <div class="timeline-canvas-area" [style.width.px]="timelineWidth()">
+        <div
+          class="timeline-grid-overlay"
+          [style.background-image]="gridPattern()"
+          [style.background-size.px]="pixelsPerSecond() * snapResolution"
+        ></div>
+
+        <div
+          (click)="onRulerClick($event)"
+          class="timeline-ruler"
+          [style.width.px]="timelineWidth()"
+        >
+          <div class="ruler-axis-header" (click)="$event.stopPropagation()">
+            <span>Time</span>
+          </div>
+          <div class="ruler-ticks-container" [style.left.px]="trackHeaderWidth">
+            @for (tick of rulerTicks(); track tick) {
+              <div
+                class="ruler-tick"
+                [style.left.px]="tick * pixelsPerSecond()"
+              >
+                <span>{{ tick }}s</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        @for (track of tracks; track track.id; let i = $index) {
+          <div
+            class="track-row"
+            [style.top.px]="i * trackHeight + rulerHeight"
+            [style.height.px]="trackHeight"
+          >
+            <div class="track-header">
+              <span>Track {{ i + 1 }}</span>
+            </div>
+          </div>
+        }
+
+        @for (note of playback.sequence(); track note.id) {
+          <div
+            draggable="true"
+            (dragstart)="onDragStartExistingNote($event, note)"
+            (click)="
+              openDesignerForTimelineNote(note); $event.stopPropagation()
+            "
+            class="note-block"
+            [class]="note.colorClass"
+            [style.left.px]="
+              note.startTime * pixelsPerSecond() + trackHeaderWidth
+            "
+            [style.top.px]="note.trackIndex * trackHeight + rulerHeight + 6"
+            [style.height.px]="trackHeight - 12"
+            [style.width.px]="note.duration * pixelsPerSecond()"
+          >
+            <div class="note-header">
+              <span class="note-title">{{ note.name }}</span>
+
+              <app-icon
+                (click)="removeNote(note.id); $event.stopPropagation()"
+                class="btn-note-delete"
+                title="Delete Note"
+              >
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </app-icon>
+            </div>
+            <div class="note-waveform-decorator"></div>
+          </div>
+        }
+
+        @if (dragIndicator(); as indicator) {
+          <div
+            class="drag-drop-landing-indicator"
+            [style.left.px]="indicator.left"
+            [style.top.px]="indicator.top"
+            [style.width.px]="indicator.width"
+            [style.height.px]="trackHeight"
+          ></div>
+        }
+
+        <div #playhead class="playhead-line" [style.left.px]="trackHeaderWidth">
+          <div class="playhead-marker"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  @if (isDesignerOpen()) {
+    <app-sound-designer
+      [title]="designerTitle()"
+      [preset]="designerDraft()"
+      [isEditingTimelineNote]="!!editingTimelineNoteId()"
+      [isEditingPreset]="!!editingPresetId()"
+      [presetColors]="presetColors"
+      (close)="closeDesigner()"
+      (save)="savePreset($event)"
+      (preview)="playback.previewPreset($event)"
+    ></app-sound-designer>
+  }
+</div>

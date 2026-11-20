@@ -1,0 +1,57 @@
+{
+  "component": {
+    "name": "ProjectDetails",
+    "source_path": "/app/components/project-details/project-details.spec.ts",
+    "doc_path": "/app/components/project-details/project-details.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as the unit test suite for the ProjectDetails component, ensuring its correct initialization within an isolated testing environment. It utilizes Angular's TestBed to configure a minimal testing module, verifying that the component instance is successfully created and truthy after setup. Its primary role is quality assurance for the component's basic instantiation logic."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/project-details/project-details.spec.ts#ProjectDetails",
+      "label": "Class",
+      "name": "ProjectDetails",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/project-details/project-details.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/project-details/project-details.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/project-details/project-details.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "async () => {}"
+    },
+    {
+      "id": "/app/components/project-details/project-details.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "() => {}"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/project-details/project-details.spec.ts",
+      "target": "/app/components/project-details/project-details.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

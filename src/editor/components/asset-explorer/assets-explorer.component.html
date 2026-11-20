@@ -1,0 +1,50 @@
+<div class="assets-explorer-container" (click)="onDocumentClick()">
+  <header class="explorer-header">
+    <div class="header-actions">
+      <button class="create-btn" (click)="toggleCreateMenu($event)">
+        + Upload
+      </button>
+      @if (createMenuOpen()) {
+        <app-asset-create-menu
+          (create)="handleCreateAsset($event)"
+        ></app-asset-create-menu>
+      }
+    </div>
+    <div class="header-title">Assets</div>
+  </header>
+
+  <div class="explorer-layout">
+    <aside class="explorer-sidebar">
+      @if (explorerState.treeData()) {
+        <app-asset-tree
+          [treeData]="explorerState.treeData()"
+          [expandedNodes]="explorerState.expandedNodes()"
+          [selectedNodeId]="explorerState.selectedNodeId()"
+          (nodeClick)="handleNodeSelection($event)"
+          (contextMenu)="openContextMenu($event)"
+        >
+        </app-asset-tree>
+      }
+    </aside>
+
+    <main class="explorer-main">
+      <app-asset-grid
+        [activeFolder]="explorerState.activeFolder()"
+        [selectedNodeId]="explorerState.selectedNodeId()"
+        (itemClick)="handleNodeSelection($event)"
+        (itemDoubleClick)="handleFolderActivation($event)"
+        (contextMenu)="openContextMenu($event)"
+      >
+      </app-asset-grid>
+    </main>
+  </div>
+
+  @if (contextMenu().visible) {
+    <app-asset-context-menu
+      [config]="contextMenu()"
+      (rename)="handleRenameAsset($event)"
+      (delete)="handleDeleteAsset($event)"
+    >
+    </app-asset-context-menu>
+  }
+</div>

@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "OmegaEngineService",
+    "source_path": "/app/services/omega-engine.service.ts",
+    "doc_path": "/app/services/omega-engine.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "OmegaEngineService is a core service responsible for managing the lifecycle of a dynamically loaded game engine instance. It acts as a bridge, handling the asynchronous fetching and instantiation of game modules from a remote backend based on a project ID. It manages state via internal flags and emits events to signal reload requests and completion status. The service relies on network interaction via dynamic imports and reads authentication tokens from localStorage to facilitate module loading."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/services/omega-engine.service.ts#OmegaEngineService",
+      "label": "Class",
+      "name": "OmegaEngineService",
+      "signature": ""
+    },
+    {
+      "id": "/app/services/omega-engine.service.ts#isReloadingEngine",
+      "label": "Getter",
+      "name": "isReloadingEngine",
+      "signature": "get isReloadingEngine(): boolean"
+    },
+    {
+      "id": "/app/services/omega-engine.service.ts#currentEngine",
+      "label": "Getter",
+      "name": "currentEngine",
+      "signature": "get currentEngine(): Engine | null"
+    },
+    {
+      "id": "/app/services/omega-engine.service.ts#reloadEngineRequested",
+      "label": "EventEmitter",
+      "name": "reloadEngineRequested",
+      "signature": ""
+    },
+    {
+      "id": "/app/services/omega-engine.service.ts#engineReloaded",
+      "label": "EventEmitter",
+      "name": "engineReloaded",
+      "signature": ""
+    },
+    {
+      "id": "/app/services/omega-engine.service.ts#onReloadEngine",
+      "label": "Method",
+      "name": "onReloadEngine",
+      "signature": "protected async onReloadEngine(projectId: string): Promise<Engine | null>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/services/omega-engine.service.ts",
+      "target": "/app/api/api-url.token",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/services/omega-engine.service.ts",
+      "target": "/app/services/omega-engine.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

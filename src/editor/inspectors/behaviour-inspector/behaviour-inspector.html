@@ -1,0 +1,82 @@
+@if (behaviour) {
+  <editor-inpector-toggle-panel
+    [title]="label"
+    [rightAlign]="true"
+    [collapsed]="true"
+  >
+    <div class="header-content" header-content>
+      <app-boolean-inspector
+        align="right"
+        [active]="behaviour.active"
+        (change)="behaviour.active = !behaviour.active"
+      ></app-boolean-inspector>
+      <app-icon
+        class="icon"
+        iconName="fa-trash"
+        (click)="onRemoveBehaviourRequested()"
+      ></app-icon>
+    </div>
+
+    @for (item of _properties; track $index) {
+      @switch (item.type) {
+        @case ("entity") {
+          <editor-text-input-inspector
+            [label]="item.key.capitalize()"
+            [value]="behaviour[item.key].uuid"
+            readonly
+          ></editor-text-input-inspector>
+        }
+        @case ("object") {
+          <editor-object-inspector
+            [isChild]="true"
+            [label]="item.value?.name || item.key.capitalize()"
+            [targetObject]="{
+              key: item.key,
+              type: item.type,
+              property: item.value,
+            }"
+          ></editor-object-inspector>
+        }
+        @case ("shader") {
+          <editor-shader-inspector
+            [isChild]="true"
+            [label]="item.value?.name || item.key.capitalize()"
+            [shader]="item.value"
+          >
+          </editor-shader-inspector>
+        }
+
+        @default {
+          <editor-default-inspector
+            [item]="item"
+            (change)="onDefaultChanged(item, $event)"
+          ></editor-default-inspector>
+        }
+      }
+    }
+
+    @if (_renderProperties.length > 0) {
+      <editor-inpector-toggle-panel
+        [title]="'Render Settings'"
+        [isChild]="true"
+        [collapsed]="true"
+      >
+        @for (item of _renderEnable; track $index) {
+          <app-boolean-inspector
+            [label]="item.key.capitalize()"
+            [active]="behaviour[item.key]"
+            (change)="onValueChanged(item, $event)"
+          ></app-boolean-inspector>
+        }
+        @for (item of _renderProperties; track $index) {
+          <editor-enum-inspector
+            [label]="item.key"
+            [items]="item.property"
+            [selected]="item.value.value"
+            (change)="onEnumChanged(item, $event)"
+          ></editor-enum-inspector>
+        }
+      </editor-inpector-toggle-panel>
+    }
+  </editor-inpector-toggle-panel>
+}

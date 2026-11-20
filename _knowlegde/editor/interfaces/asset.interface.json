@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "IAsset",
+    "source_path": "/editor/interfaces/asset.interface.ts",
+    "doc_path": "/editor/interfaces/asset.interface.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This interface defines the canonical data structure for any asset managed within the editor system. It serves as a core contract, ensuring all assets possess consistent metadata for traversal and identification. It models assets as having a unique ID, name, virtual path, and type, while optionally supporting a hierarchy via children. This component is fundamental to the editor's content management architecture."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/interfaces/asset.interface.ts#IAsset",
+      "label": "Interface",
+      "name": "IAsset",
+      "signature": "export interface IAsset { id: string; name: string; virtualPath: string; type: 'file' | 'folder' | string; projectId: string; children?: IAsset[]; }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

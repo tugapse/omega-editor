@@ -1,0 +1,55 @@
+{
+  "component": {
+    "name": "Raycast",
+    "source_path": "/editor/behaviours/scene-editor/raycast.ts",
+    "doc_path": "/editor/behaviours/scene-editor/raycast.json",
+    "type": "utility"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Raycast utility class provides core mathematical services for 3D scene interaction within the editor. It handles the transformation of 2D screen coordinates into normalized 3D ray directions using inverse projection and view matrices. Furthermore, it implements a standard line-plane intersection algorithm to precisely calculate where a ray intersects an infinite plane, crucial for object selection and collision detection."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/raycast.ts#Raycast",
+      "label": "Class",
+      "name": "Raycast",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/raycast.ts#screenPointToRay",
+      "label": "Method",
+      "name": "screenPointToRay",
+      "signature": "screenPointToRay(camera: Camera, game: { webgl: WebGL2RenderingContext }, position: { x: number; y: number } = Mouse.mousePosition): vec3"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/raycast.ts#intersectRayWithPlane",
+      "label": "Method",
+      "name": "intersectRayWithPlane",
+      "signature": "intersectRayWithPlane(rayOrigin: vec3, rayDirection: vec3, planeOrigin: vec3, planeNormal: vec3): vec3 | null"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/raycast.ts",
+      "target": "/editor/behaviours/scene-editor/camera.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/raycast.ts",
+      "target": "/editor/behaviours/scene-editor/canvas-viewport.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/raycast.ts",
+      "target": "/editor/behaviours/scene-editor/mouse.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix"
+    ],
+    "has_side_effects": false
+  }
+}

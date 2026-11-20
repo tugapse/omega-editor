@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "AssetsUploadTriggerService",
+    "source_path": "/editor/components/asset-explorer/assets-upload-triger.service.ts",
+    "doc_path": "/editor/components/asset-explorer/assets-upload-triger.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "This service acts as a dedicated controller layer within the asset explorer, managing the lifecycle of the OmegaUploadModalComponent. Its primary role is to programmatically instantiate this modal, configure it with a target virtual path, and manage the asynchronous communication flow. It exposes a public API, `openUploadDialog`, which returns an Observable emitting staged asset results upon successful user confirmation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#AssetsUploadTriggerService",
+      "label": "Class",
+      "name": "AssetsUploadTriggerService",
+      "signature": "class AssetsUploadTriggerService"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#openUploadDialog",
+      "label": "Method",
+      "name": "openUploadDialog",
+      "signature": "openUploadDialog(targetVirtualPath: string): Observable<StagedAssetResult[]>"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#destroyModal",
+      "label": "Method",
+      "name": "destroyModal",
+      "signature": "destroyModal(componentRef: ComponentRef<OmegaUploadModalComponent>): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#appRef",
+      "label": "Variable",
+      "name": "appRef",
+      "signature": "private readonly appRef: ApplicationRef"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#injector",
+      "label": "Variable",
+      "name": "injector",
+      "signature": "private readonly injector: EnvironmentInjector"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-upload-triger.service.ts#result$",
+      "label": "Variable",
+      "name": "result$",
+      "signature": "private readonly result$: Subject<StagedAssetResult[]>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/assets-upload-triger.service.ts",
+      "target": "/editor/components/omega-upload-modal.component.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

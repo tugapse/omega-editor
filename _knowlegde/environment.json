@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "environment",
+    "source_path": "/environment.ts",
+    "doc_path": "/environment.json",
+    "type": "module"
+  },
+  "vector_memory": {
+    "semantic_summary": "This module serves as the central configuration repository for the application, defining global runtime parameters. It exports a single constant object, 'environment', which dictates the operational context. Specifically, it holds boolean flags for production mode and the base URL for API interactions. This component acts as a foundational utility layer, ensuring consistent access to environment-specific constants across all consuming services."
+  },
+  "graph_nodes": [
+    {
+      "id": "/environment.ts#environment",
+      "label": "Variable",
+      "name": "environment",
+      "signature": "const environment = { production: false, apiUrl: 'http://localhost:5000' }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

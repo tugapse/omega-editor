@@ -1,0 +1,215 @@
+{
+  "component": {
+    "name": "Editor",
+    "source_path": "/editor/editor.ts",
+    "doc_path": "/editor/editor.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Editor component acts as the primary orchestrator for the entire editor application interface, managing the lifecycle of the editing environment. It integrates core services like EditorService and EditorSettingsService to handle scene loading, state persistence, and UI coordination. It manages rendering loops, handles user interactions like saving, and coordinates specialized behaviors such as Gizmos and Entity Pickers."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/editor.ts#Editor",
+      "label": "Class",
+      "name": "Editor",
+      "signature": "class Editor implements OnDestroy, AfterViewInit, OnInit"
+    },
+    {
+      "id": "/editor/editor.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/editor/editor.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/editor/editor.ts#handleEngineReloaded",
+      "label": "Method",
+      "name": "handleEngineReloaded",
+      "signature": "handleEngineReloaded(projectId: string, sceneId: string, engine: Engine | null): void"
+    },
+    {
+      "id": "/editor/editor.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/editor/editor.ts#onGlContextCreated",
+      "label": "Method",
+      "name": "onGlContextCreated",
+      "signature": "onGlContextCreated(gl: WebGL2RenderingContext): void"
+    },
+    {
+      "id": "/editor/editor.ts#onSceneLoaded",
+      "label": "Method",
+      "name": "onSceneLoaded",
+      "signature": "onSceneLoaded(scene: Scene): void"
+    },
+    {
+      "id": "/editor/editor.ts#onScenePlay",
+      "label": "Method",
+      "name": "onScenePlay",
+      "signature": "onScenePlay(scene: Scene): void"
+    },
+    {
+      "id": "/editor/editor.ts#onScenePause",
+      "label": "Method",
+      "name": "onScenePause",
+      "signature": "onScenePause(scene: Scene): void"
+    },
+    {
+      "id": "/editor/editor.ts#onSceneStop",
+      "label": "Method",
+      "name": "onSceneStop",
+      "signature": "onSceneStop(scene: Scene): Promise<void>"
+    },
+    {
+      "id": "/editor/editor.ts#onSceneTreeEntitySelected",
+      "label": "Method",
+      "name": "onSceneTreeEntitySelected",
+      "signature": "onSceneTreeEntitySelected(entity: SceneEntity): void"
+    },
+    {
+      "id": "/editor/editor.ts#subscribeEvents",
+      "label": "Method",
+      "name": "subscribeEvents",
+      "signature": "subscribeEvents(): void"
+    },
+    {
+      "id": "/editor/editor.ts#onCanvasResize",
+      "label": "Method",
+      "name": "onCanvasResize",
+      "signature": "onCanvasResize(size: { width: number; height: number }): void"
+    },
+    {
+      "id": "/editor/editor.ts#onRenderFrame",
+      "label": "Method",
+      "name": "onRenderFrame",
+      "signature": "onRenderFrame(): void"
+    },
+    {
+      "id": "/editor/editor.ts#onUpdateFrame",
+      "label": "Method",
+      "name": "onUpdateFrame",
+      "signature": "onUpdateFrame(ellapsed: number): void"
+    },
+    {
+      "id": "/editor/editor.ts#onEditorSaveInStorage",
+      "label": "Method",
+      "name": "onEditorSaveInStorage",
+      "signature": "onEditorSaveInStorage(): void"
+    },
+    {
+      "id": "/editor/editor.ts#loadFromStorage",
+      "label": "Method",
+      "name": "loadFromStorage",
+      "signature": "loadFromStorage(): void"
+    },
+    {
+      "id": "/editor/editor.ts#clearStorage",
+      "label": "Method",
+      "name": "clearStorage",
+      "signature": "clearStorage(): void"
+    },
+    {
+      "id": "/editor/editor.ts#createEditorBehaviours",
+      "label": "Method",
+      "name": "createEditorBehaviours",
+      "signature": "createEditorBehaviours(): void"
+    },
+    {
+      "id": "/editor/editor.ts#addEditorBehaviours",
+      "label": "Method",
+      "name": "addEditorBehaviours",
+      "signature": "addEditorBehaviours(): void"
+    },
+    {
+      "id": "/editor/editor.ts#updateEditorSettings",
+      "label": "Method",
+      "name": "updateEditorSettings",
+      "signature": "updateEditorSettings(newSettings: EditorSettings): void"
+    },
+    {
+      "id": "/editor/editor.ts#onFpsUpdated",
+      "label": "Method",
+      "name": "onFpsUpdated",
+      "signature": "onFpsUpdated(stats: EngineStats): void"
+    },
+    {
+      "id": "/editor/editor.ts#onKeydownHandler",
+      "label": "Method",
+      "name": "onKeydownHandler",
+      "signature": "onKeydownHandler(event: Event): void"
+    },
+    {
+      "id": "/editor/editor.ts#saveSceneToApi",
+      "label": "Method",
+      "name": "saveSceneToApi",
+      "signature": "saveSceneToApi(): void"
+    },
+    {
+      "id": "/editor/editor.ts#showToast",
+      "label": "Method",
+      "name": "showToast",
+      "signature": "showToast(message: string): void"
+    },
+    {
+      "id": "/editor/editor.ts#toggleFullscreen",
+      "label": "Method",
+      "name": "toggleFullscreen",
+      "signature": "toggleFullscreen(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/editor.ts",
+      "target": "/editor/editor.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs",
+      "angular/core",
+      "angular/router"
+    ],
+    "has_side_effects": true
+  }
+}

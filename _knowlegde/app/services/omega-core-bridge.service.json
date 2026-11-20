@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "OmegaCoreBridgeService",
+    "source_path": "/app/services/omega-core-bridge.service.ts",
+    "doc_path": "/app/services/omega-core-bridge.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "OmegaCoreBridgeService acts as the critical integration layer connecting the Angular application to the external .NET WebAssembly runtime. Its primary function is managing the lifecycle of the runtime, including dynamic loading of dotnet.js and configuration of necessary assemblies like omega-engine-core.dll. It provides typed, promise-based access to engine functionalities, such as calculateTransform, abstracting complex asynchronous loading for the rest of the application."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#OmegaEngineExports",
+      "label": "Interface",
+      "name": "OmegaEngineExports",
+      "signature": "interface OmegaEngineExports { OmegaCore?: { EngineMath?: { CalculateTransform: (x: number, y: number, scale: number) => number; Ping: () => string; }; }; [key: string]: any; }"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#OmegaCoreBridgeService",
+      "label": "Class",
+      "name": "OmegaCoreBridgeService",
+      "signature": "class OmegaCoreBridgeService { ... }"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#initializeEngine",
+      "label": "Method",
+      "name": "initializeEngine",
+      "signature": "async initializeEngine(): Promise<OmegaEngineExports>"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#runTestCalculation",
+      "label": "Method",
+      "name": "runTestCalculation",
+      "signature": "async runTestCalculation(): Promise<any>"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#calculateTransform",
+      "label": "Method",
+      "name": "calculateTransform",
+      "signature": "async calculateTransform(x: number, y: number, scale: number): Promise<number>"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#dotNetExports",
+      "label": "Variable",
+      "name": "dotNetExports",
+      "signature": "private dotNetExports: OmegaEngineExports | null = null;"
+    },
+    {
+      "id": "/app/services/omega-core-bridge.service.ts#isInitialized",
+      "label": "Variable",
+      "name": "isInitialized",
+      "signature": "private isInitialized = false;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/services/omega-core-bridge.service.ts",
+      "target": "/app/services/omega-core-bridge.service.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

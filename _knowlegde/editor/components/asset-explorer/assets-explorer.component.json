@@ -1,0 +1,192 @@
+{
+  "component": {
+    "name": "AssetsExplorerComponent",
+    "source_path": "/editor/components/asset-explorer/assets-explorer.component.ts",
+    "doc_path": "/editor/components/asset-explorer/assets-explorer.component.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetsExplorerComponent acts as the primary UI controller for managing digital assets within the editor. It orchestrates asset browsing, selection, and manipulation by coordinating state changes via EditorStateService. It handles user interactions like context menu activation and asset creation, delegating persistence and loading tasks to AssetService and AssetsExplorerService. Its core function is synchronizing the UI view with the application's project state."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#AssetsExplorerComponent",
+      "label": "Class",
+      "name": "AssetsExplorerComponent",
+      "signature": "class AssetsExplorerComponent implements AfterViewInit"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#projectId",
+      "label": "Input",
+      "name": "projectId",
+      "signature": "projectId?: string"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#explorerState",
+      "label": "Variable",
+      "name": "explorerState",
+      "signature": "public explorerState = inject(AssetsExplorerService);"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#loadingService",
+      "label": "Variable",
+      "name": "loadingService",
+      "signature": "private loadingService: LoadingService = inject(LoadingService);"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#assetsUploadTrigger",
+      "label": "Variable",
+      "name": "assetsUploadTrigger",
+      "signature": "private assetsUploadTrigger = inject(AssetsUploadTriggerService);"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#apiAssetService",
+      "label": "Variable",
+      "name": "apiAssetService",
+      "signature": "private apiAssetService = inject(AssetService);"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#createMenuOpen",
+      "label": "Signal",
+      "name": "createMenuOpen",
+      "signature": "createMenuOpen = signal<boolean>(false);"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#contextMenu",
+      "label": "Signal",
+      "name": "contextMenu",
+      "signature": "contextMenu = signal({ visible: false, x: 0, y: 0, targetNode: null as IAsset | null });"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#onDocumentClick",
+      "label": "Method",
+      "name": "onDocumentClick",
+      "signature": "onDocumentClick()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#refreshTree",
+      "label": "Method",
+      "name": "refreshTree",
+      "signature": "refreshTree()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#handleNodeSelection",
+      "label": "Method",
+      "name": "handleNodeSelection",
+      "signature": "handleNodeSelection(node: IAsset)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#handleFolderActivation",
+      "label": "Method",
+      "name": "handleFolderActivation",
+      "signature": "handleFolderActivation(node: IAsset)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#openContextMenu",
+      "label": "Method",
+      "name": "openContextMenu",
+      "signature": "openContextMenu(event: { e: MouseEvent; node: IAsset })"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#closeContextMenu",
+      "label": "Method",
+      "name": "closeContextMenu",
+      "signature": "closeContextMenu()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#toggleCreateMenu",
+      "label": "Method",
+      "name": "toggleCreateMenu",
+      "signature": "toggleCreateMenu(event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#handleCreateAsset",
+      "label": "Method",
+      "name": "handleCreateAsset",
+      "signature": "handleCreateAsset(actionType: string)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#handleRenameAsset",
+      "label": "Method",
+      "name": "handleRenameAsset",
+      "signature": "handleRenameAsset(newName: string)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/assets-explorer.component.ts#handleDeleteAsset",
+      "label": "Method",
+      "name": "handleDeleteAsset",
+      "signature": "handleDeleteAsset(node: IAsset)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/services/editor-state.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/interfaces/asset.interface.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/assets-explorer.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/components/asset-context-menu/asset-context-menu.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/components/asset-grid/asset-grid.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/components/asset-tree/asset-tree.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/editor/components/asset-explorer/assets-upload-triger.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/src/app/services/loading.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/assets-explorer.component.ts",
+      "target": "/src/app/api/services/asset.service.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "component": {
+    "name": "ToastService",
+    "source_path": "/editor/services/toastr.service.ts",
+    "doc_path": "/editor/services/toastr.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "ToastService is a core Angular service responsible for managing and displaying transient notification messages (toasts) across the application. It maintains an observable state of active toasts using an internal signal, allowing decoupled components to trigger UI feedback. It provides high-level methods like success, error, and info to simplify notification triggering, ensuring toasts are automatically removed after a set duration."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/toastr.service.ts#ToastMessage",
+      "label": "Interface",
+      "name": "ToastMessage",
+      "signature": "id: number, message: string, type: 'success' | 'error' | 'info'"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#ToastService",
+      "label": "Class",
+      "name": "ToastService",
+      "signature": "class ToastService"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#show",
+      "label": "Method",
+      "name": "show",
+      "signature": "show(message: string, type: 'success' | 'error' | 'info' = 'info', duration: number = 4000): void"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#success",
+      "label": "Method",
+      "name": "success",
+      "signature": "success(msg: string): void"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#error",
+      "label": "Method",
+      "name": "error",
+      "signature": "error(msg: string): void"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#info",
+      "label": "Method",
+      "name": "info",
+      "signature": "info(msg: string): void"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#toasts",
+      "label": "Variable",
+      "name": "toasts",
+      "signature": "public toasts = signal<ToastMessage[]>([]);"
+    },
+    {
+      "id": "/editor/services/toastr.service.ts#nextId",
+      "label": "Variable",
+      "name": "nextId",
+      "signature": "private nextId = 0;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/toastr.service.ts",
+      "target": "/editor/services/toastr.service.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "PlanarQuadHelper",
+    "source_path": "/editor/behaviours/scene-editor/planar-quad.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/planar-quad.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "PlanarQuadHelper is a low-level rendering utility responsible for managing and drawing a fixed L-shaped quad bracket geometry within the scene editor. It initializes by pre-calculating and uploading vertex and index data for the shape into dedicated WebGL buffers. The public draw method utilizes a provided Shader instance to render this geometry by binding the buffers and executing gl.drawElements, acting as a specialized geometry primitive manager."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#PlanarQuadHelper",
+      "label": "Class",
+      "name": "PlanarQuadHelper",
+      "signature": "constructor(gl: WebGL2RenderingContext)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#init",
+      "label": "Method",
+      "name": "init",
+      "signature": "private init()"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "public draw(shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#gl",
+      "label": "Variable",
+      "name": "gl",
+      "signature": "private gl: WebGL2RenderingContext"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#positionBuffer",
+      "label": "Variable",
+      "name": "positionBuffer",
+      "signature": "private positionBuffer: WebGLBuffer | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/planar-quad.helper.ts#indexBuffer",
+      "label": "Variable",
+      "name": "indexBuffer",
+      "signature": "private indexBuffer: WebGLBuffer | null"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/planar-quad.helper.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix"
+    ],
+    "has_side_effects": true
+  }
+}

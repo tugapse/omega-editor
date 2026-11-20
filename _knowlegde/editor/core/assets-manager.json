@@ -1,0 +1,31 @@
+{
+  "component": {
+    "name": "AssetsManager",
+    "source_path": "/editor/core/assets-manager.ts",
+    "doc_path": "/editor/core/assets-manager.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The AssetsManager component serves as the core service layer for managing all editor resources, including textures, sounds, and models. Its primary role is to abstract resource loading complexities by providing a centralized repository for assets. It encapsulates logic for efficient loading, caching, and retrieval of necessary resources throughout the application lifecycle."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/core/assets-manager.ts#AssetsManager",
+      "label": "Class",
+      "name": "AssetsManager",
+      "signature": ""
+    },
+    {
+      "id": "/editor/core/assets-manager.ts#createTexture2D",
+      "label": "Method",
+      "name": "createTexture2D",
+      "signature": "createTexture2D(uri: string, name: string = \"\")"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

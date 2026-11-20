@@ -1,0 +1,129 @@
+{
+  "component": {
+    "name": "SceneList",
+    "source_path": "/app/components/scene-list/scene-list.ts",
+    "doc_path": "/app/components/scene-list/scene-list.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "SceneList is a controller component responsible for managing the display and lifecycle of scenes within a project context. It fetches existing scene assets from the backend via AssetService upon project input change. It provides UI methods to open a creation modal and handles the logic for uploading new scene files to the server, ensuring the scene list is refreshed upon successful creation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/scene-list/scene-list.ts#SceneList",
+      "label": "Class",
+      "name": "SceneList",
+      "signature": "class SceneList implements OnChanges"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#ngOnChanges",
+      "label": "Method",
+      "name": "ngOnChanges",
+      "signature": "ngOnChanges(changes: SimpleChanges): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#loadScenes",
+      "label": "Method",
+      "name": "loadScenes",
+      "signature": "private loadScenes(): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#navigateToEditor",
+      "label": "Method",
+      "name": "navigateToEditor",
+      "signature": "navigateToEditor(scene: AssetResponse): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#openNewSceneModal",
+      "label": "Method",
+      "name": "openNewSceneModal",
+      "signature": "openNewSceneModal(): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#closeModal",
+      "label": "Method",
+      "name": "closeModal",
+      "signature": "closeModal(): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#createScene",
+      "label": "Method",
+      "name": "createScene",
+      "signature": "createScene(): void"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#assetService",
+      "label": "Variable",
+      "name": "assetService",
+      "signature": "private readonly assetService = inject(AssetService);"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#router",
+      "label": "Variable",
+      "name": "router",
+      "signature": "private readonly router = inject(Router);"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#project",
+      "label": "Variable",
+      "name": "project",
+      "signature": "@Input() project: ProjectResponse | null = null;"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#scenes",
+      "label": "Variable",
+      "name": "scenes",
+      "signature": "scenes: AssetResponse[] = [];"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#isModalOpen",
+      "label": "Variable",
+      "name": "isModalOpen",
+      "signature": "isModalOpen = false;"
+    },
+    {
+      "id": "/app/components/scene-list/scene-list.ts#newSceneName",
+      "label": "Variable",
+      "name": "newSceneName",
+      "signature": "newSceneName = \"\";"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/scene-list/scene-list.ts",
+      "target": "/app/components/scene-list/asset.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/scene-list/scene-list.ts",
+      "target": "/app/api/models/omega-api.models.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/scene-list/scene-list.ts",
+      "target": "/app/api/models/omega-api.models.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/scene-list/scene-list.ts",
+      "target": "/app/components/icon/icon.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/scene-list/scene-list.ts",
+      "target": "/app/editor/models/asset-types.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common",
+      "@angular/forms",
+      "omega-game-engine",
+      "@angular/router"
+    ],
+    "has_side_effects": true
+  }
+}

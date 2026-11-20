@@ -1,0 +1,90 @@
+{
+  "component": {
+    "name": "AssetCreateMenuComponent",
+    "source_path": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts",
+    "doc_path": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component is responsible for dynamically generating a hierarchical menu structure listing all available asset types within the project. It introspects metadata from ObjectInstanciator, filters out internal types, and builds a structured IAsset tree. It acts as a presentation layer, consuming engine state to expose a 'create' output emitter for triggering asset creation actions."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#AssetCreateMenuComponent",
+      "label": "Class",
+      "name": "AssetCreateMenuComponent",
+      "signature": "class AssetCreateMenuComponent implements AfterViewInit"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#create",
+      "label": "Output",
+      "name": "create",
+      "signature": "output<string>()"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#assetsService",
+      "label": "Variable",
+      "name": "assetsService",
+      "signature": "inject(AssetsExplorerService)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#menuData",
+      "label": "Variable",
+      "name": "menuData",
+      "signature": "menuData!: IAsset;"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#handleAction",
+      "label": "Method",
+      "name": "handleAction",
+      "signature": "handleAction(event: MouseEvent, action?: string)"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#buildAssetTree",
+      "label": "Method",
+      "name": "buildAssetTree",
+      "signature": "buildAssetTree(data: Record<string, any[]>, project: { id: string; name: string }): IAsset"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#ensureFolder",
+      "label": "Function",
+      "name": "ensureFolder",
+      "signature": "ensureFolder(folderPath: string): IAsset"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#IMenuAction",
+      "label": "Interface",
+      "name": "IMenuAction",
+      "signature": "interface IMenuAction { label: string; icon?: string; action?: string; children?: IMenuAction[]; }"
+    },
+    {
+      "id": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts#IAsset",
+      "label": "Interface",
+      "name": "IAsset",
+      "signature": "interface IAsset { id: string; name: string; type: string; virtualPath: string; projectId: string; children?: IAsset[]; }"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts",
+      "target": "/editor/components/asset-explorer/assets-explorer.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/asset-explorer/components/asset-create-menu/asset-create-menu.ts",
+      "target": "/omega-game-engine#ObjectInstanciator",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

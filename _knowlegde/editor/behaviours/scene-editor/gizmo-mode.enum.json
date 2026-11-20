@@ -1,0 +1,54 @@
+{
+  "component": {
+    "name": "GizmoMode",
+    "source_path": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts",
+    "doc_path": "/editor/behaviours/scene-editor/gizmo-mode.enum.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the GizmoMode enumeration, which serves as a strongly typed constant set for the scene editor's gizmo interface. It dictates the specific transformation operationtranslation, rotation, or scalingthat a user intends to perform on a selected entity. It is a fundamental data type consumed by the logic that interprets user input on the gizmo widget to dispatch the correct transformation handler within the scene editor system."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts#GizmoMode",
+      "label": "Type",
+      "name": "GizmoMode",
+      "signature": "enum GizmoMode"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts#Translate",
+      "label": "Type",
+      "name": "Translate",
+      "signature": "Translate = 'translate'"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts#Rotate",
+      "label": "Type",
+      "name": "Rotate",
+      "signature": "Rotate = 'rotate'"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts#Scale",
+      "label": "Type",
+      "name": "Scale",
+      "signature": "Scale = 'scale'"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts",
+      "target": "/editor/behaviours/scene-editor/scene-editor.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/gizmo-mode.enum.ts",
+      "target": "/editor/behaviours/scene-editor/gizmo-controller.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

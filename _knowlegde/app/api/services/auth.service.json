@@ -1,0 +1,100 @@
+{
+  "component": {
+    "name": "AuthService",
+    "source_path": "/app/api/services/auth.service.ts",
+    "doc_path": "/app/api/services/auth.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "AuthService is the dedicated service layer component responsible for managing all user authentication lifecycle events, including registration, login, and logout. It acts as an intermediary, utilizing HttpClient to communicate with external authentication endpoints defined by API_URL. Key responsibilities involve persisting the authentication token in localStorage upon successful login and clearing it upon logout or error."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/services/auth.service.ts#AuthService",
+      "label": "Class",
+      "name": "AuthService",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#register",
+      "label": "Method",
+      "name": "register",
+      "signature": "register(payload: AuthRegisterRequest): Observable<UserResponse>"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#login",
+      "label": "Method",
+      "name": "login",
+      "signature": "login(payload: AuthLoginRequest): Observable<LoginResponse>"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#logout",
+      "label": "Method",
+      "name": "logout",
+      "signature": "logout(payload: AuthLogoutRequest = {}): Observable<MessageResponse>"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#getToken",
+      "label": "Method",
+      "name": "getToken",
+      "signature": "getToken(): string | null"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#isLoggedIn",
+      "label": "Method",
+      "name": "isLoggedIn",
+      "signature": "isLoggedIn(): boolean"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#clearLocalSession",
+      "label": "Method",
+      "name": "clearLocalSession",
+      "signature": "clearLocalSession(): void"
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#http",
+      "label": "Variable",
+      "name": "http",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#apiUrl",
+      "label": "Variable",
+      "name": "apiUrl",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#authUrl",
+      "label": "Variable",
+      "name": "authUrl",
+      "signature": ""
+    },
+    {
+      "id": "/app/api/services/auth.service.ts#TOKEN_KEY",
+      "label": "Variable",
+      "name": "TOKEN_KEY",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/services/auth.service.ts",
+      "target": "/app/api/services/auth.service.ts",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/api/services/auth.service.ts",
+      "target": "/app/api/services/auth.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "HttpClient",
+      "Observable",
+      "tap"
+    ],
+    "has_side_effects": true
+  }
+}

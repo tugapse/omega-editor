@@ -1,0 +1,261 @@
+{
+  "component": {
+    "name": "ColorPickerComponent",
+    "source_path": "/app/components/color-picker/color-picker.ts",
+    "doc_path": "/app/components/color-picker/color-picker.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "ColorPickerComponent is a specialized Angular UI component responsible for providing an interactive color selection interface. It manages color state using HSV, deriving RGB, Hex, CMYK, and HSL values from user interactions across a color area, hue slider, and alpha slider. It emits color changes via an EventEmitter, utilizing NgZone and ResizeObserver to ensure accurate DOM event handling and responsive pointer positioning."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/color-picker/color-picker.ts#ColorPickerComponent",
+      "label": "Class",
+      "name": "ColorPickerComponent",
+      "signature": "class ColorPickerComponent implements OnInit, AfterViewInit, OnDestroy"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#color",
+      "label": "Input",
+      "name": "color",
+      "signature": "set color(value: { r: number, g: number, b: number, a: number })"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#colorChange",
+      "label": "Output",
+      "name": "colorChange",
+      "signature": "colorChange = new EventEmitter<{ rgba: { r: number, g: number, b: number, a: number }, hex: string }>()"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#hue",
+      "label": "Variable",
+      "name": "hue",
+      "signature": "public hue: number = 286"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#saturation",
+      "label": "Variable",
+      "name": "saturation",
+      "signature": "public saturation: number = 0.41"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#value",
+      "label": "Variable",
+      "name": "value",
+      "signature": "public value: number = 0.50"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#alpha",
+      "label": "Variable",
+      "name": "alpha",
+      "signature": "public alpha: number = 1"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgba",
+      "label": "Variable",
+      "name": "rgba",
+      "signature": "public rgba: { r: number, g: number, b: number, a: number } = { r: 0, g: 0, b: 0, a: 1 }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb255",
+      "label": "Variable",
+      "name": "rgb255",
+      "signature": "public rgb255: { r: number, g: number, b: number } = { r: 0, g: 0, b: 0 }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#hex",
+      "label": "Variable",
+      "name": "hex",
+      "signature": "public hex: string = '#000000'"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#cmyk",
+      "label": "Variable",
+      "name": "cmyk",
+      "signature": "public cmyk: { c: number, m: number, y: number, k: number } = { c: 0, m: 0, y: 0, k: 1 }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#hsl",
+      "label": "Variable",
+      "name": "hsl",
+      "signature": "public hsl: { h: number, s: number, l: number } = { h: 0, s: 0, l: 0 }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#isColorAreaDragging",
+      "label": "Variable",
+      "name": "isColorAreaDragging",
+      "signature": "public isColorAreaDragging: boolean = false"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#isHueSliderDragging",
+      "label": "Variable",
+      "name": "isHueSliderDragging",
+      "signature": "public isHueSliderDragging: boolean = false"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#isAlphaSliderDragging",
+      "label": "Variable",
+      "name": "isAlphaSliderDragging",
+      "signature": "public isAlphaSliderDragging: boolean = false"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#resizeObserver",
+      "label": "Variable",
+      "name": "resizeObserver",
+      "signature": "private resizeObserver: ResizeObserver | null = null"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#onColorAreaMousedown",
+      "label": "Method",
+      "name": "onColorAreaMousedown",
+      "signature": "onColorAreaMousedown(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#onHueSliderMousedown",
+      "label": "Method",
+      "name": "onHueSliderMousedown",
+      "signature": "onHueSliderMousedown(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#onAlphaSliderMousedown",
+      "label": "Method",
+      "name": "onAlphaSliderMousedown",
+      "signature": "onAlphaSliderMousedown(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#onMouseMove",
+      "label": "Method",
+      "name": "onMouseMove",
+      "signature": "@HostListener('document:mousemove', ['$event']) onMouseMove(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "@HostListener('document:mouseup', ['$event']) onMouseUp(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#setupResizeObserver",
+      "label": "Method",
+      "name": "setupResizeObserver",
+      "signature": "private setupResizeObserver(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateColorFromColorArea",
+      "label": "Method",
+      "name": "updateColorFromColorArea",
+      "signature": "private updateColorFromColorArea(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateHueFromHueSlider",
+      "label": "Method",
+      "name": "updateHueFromHueSlider",
+      "signature": "private updateHueFromHueSlider(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateAlphaFromAlphaSlider",
+      "label": "Method",
+      "name": "updateAlphaFromAlphaSlider",
+      "signature": "private updateAlphaFromAlphaSlider(event: MouseEvent): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateColorPointerPosition",
+      "label": "Method",
+      "name": "updateColorPointerPosition",
+      "signature": "private updateColorPointerPosition(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateHuePointerPosition",
+      "label": "Method",
+      "name": "updateHuePointerPosition",
+      "signature": "private updateHuePointerPosition(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateAlphaPointerPosition",
+      "label": "Method",
+      "name": "updateAlphaPointerPosition",
+      "signature": "private updateAlphaPointerPosition(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#updateAllColors",
+      "label": "Method",
+      "name": "updateAllColors",
+      "signature": "private updateAllColors(): void"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#hsvToRgb01",
+      "label": "Method",
+      "name": "hsvToRgb01",
+      "signature": "private hsvToRgb01(h: number, s: number, v: number, a: number): { r: number, g: number, b: number, a: number }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb01ToHsv",
+      "label": "Method",
+      "name": "rgb01ToHsv",
+      "signature": "private rgb01ToHsv(r: number, g: number, b: number): { h: number, s: number, v: number }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb01ToRgb255",
+      "label": "Method",
+      "name": "rgb01ToRgb255",
+      "signature": "private rgb01ToRgb255(r: number, g: number, b: number): { r: number, g: number, b: number }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb255ToHex",
+      "label": "Method",
+      "name": "rgb255ToHex",
+      "signature": "private rgb255ToHex(r: number, g: number, b: number): string"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb255ToCmyk",
+      "label": "Method",
+      "name": "rgb255ToCmyk",
+      "signature": "private rgb255ToCmyk(r: number, g: number, b: number): { c: number, m: number, y: number, k: number }"
+    },
+    {
+      "id": "/app/components/color-picker/color-picker.ts#rgb01ToHsl",
+      "label": "Method",
+      "name": "rgb01ToHsl",
+      "signature": "private rgb01ToHsl(r: number, g: number, b: number): { h: number, s: number, l: number }"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/color-picker/color-picker.ts",
+      "target": "/app/components/color-picker/color-picker.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/color-picker/color-picker.ts",
+      "target": "/app/components/color-picker/color-picker.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/common",
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

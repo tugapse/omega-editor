@@ -1,0 +1,147 @@
+{
+  "component": {
+    "name": "TreeNodeComponent",
+    "source_path": "/editor/components/scene-tree/tree-node/tree-node.ts",
+    "doc_path": "/editor/components/scene-tree/tree-node/tree-node.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "TreeNodeComponent is a presentation layer UI component responsible for rendering a single node within the scene tree visualization. It manages node data via an @Input() and communicates user interactions like selection, deletion, and structural modifications via @Output() events. It implements complex drag-and-drop logic, determining drop intent ('above', 'below', 'inside') based on mouse position relative to the node's bounding box."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#TreeNodeComponent",
+      "label": "Class",
+      "name": "TreeNodeComponent",
+      "signature": "class TreeNodeComponent<T>"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#node",
+      "label": "Variable",
+      "name": "node",
+      "signature": "@Input() node!: TreeNode<T>"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#selectedNodeId",
+      "label": "Variable",
+      "name": "selectedNodeId",
+      "signature": "@Input() selectedNodeId: string = ''"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#nodeDropped",
+      "label": "Variable",
+      "name": "nodeDropped",
+      "signature": "@Output() nodeDropped = new EventEmitter<{ draggedNode: TreeNode<T>; targetNode: TreeNode<T>; dropPosition: 'above' | 'below' | 'inside'; }>()"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#visibilityChange",
+      "label": "Variable",
+      "name": "visibilityChange",
+      "signature": "@Output() visibilityChange = new EventEmitter<TreeNode<T>>()"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#nodeSelected",
+      "label": "Variable",
+      "name": "nodeSelected",
+      "signature": "@Output() nodeSelected = new EventEmitter<TreeNode<T>>()"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#nodeDeleted",
+      "label": "Variable",
+      "name": "nodeDeleted",
+      "signature": "@Output() nodeDeleted = new EventEmitter<TreeNode<T>>()"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#isDropAbove",
+      "label": "Variable",
+      "name": "isDropAbove",
+      "signature": "isDropAbove = false"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#isDropBelow",
+      "label": "Variable",
+      "name": "isDropBelow",
+      "signature": "isDropBelow = false"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#isDropInside",
+      "label": "Variable",
+      "name": "isDropInside",
+      "signature": "isDropInside = false"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onDeleteClick",
+      "label": "Method",
+      "name": "onDeleteClick",
+      "signature": "onDeleteClick(node: TreeNode<T>, event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onChildDeleted",
+      "label": "Method",
+      "name": "onChildDeleted",
+      "signature": "onChildDeleted(node: TreeNode<T>)"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onDragStart",
+      "label": "Method",
+      "name": "onDragStart",
+      "signature": "onDragStart(event: DragEvent): void"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onDragOver",
+      "label": "Method",
+      "name": "onDragOver",
+      "signature": "onDragOver(event: DragEvent): void"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onDragLeave",
+      "label": "Method",
+      "name": "onDragLeave",
+      "signature": "onDragLeave(event: DragEvent): void"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onDrop",
+      "label": "Method",
+      "name": "onDrop",
+      "signature": "onDrop(event: DragEvent): void"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onChildDropped",
+      "label": "Method",
+      "name": "onChildDropped",
+      "signature": "onChildDropped(event: { draggedNode: TreeNode<T>; targetNode: TreeNode<T>; dropPosition: 'above' | 'below' | 'inside'; })"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onNodeClick",
+      "label": "Method",
+      "name": "onNodeClick",
+      "signature": "onNodeClick(node: TreeNode<T>)"
+    },
+    {
+      "id": "/editor/components/scene-tree/tree-node/tree-node.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "onMouseUp(node: TreeNode<T>, event: any)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/scene-tree/tree-node/tree-node.ts",
+      "target": "/editor/components/icon/icon.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/scene-tree/tree-node/tree-node.ts",
+      "target": "/editor/components/scene-tree/tree-node/tree-node.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "DragEvent",
+      "MouseEvent"
+    ],
+    "has_side_effects": true
+  }
+}

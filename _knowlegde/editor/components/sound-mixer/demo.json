@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "DemoSongs",
+    "source_path": "/editor/components/sound-mixer/demo.ts",
+    "doc_path": "/editor/components/sound-mixer/demo.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The DemoSongs class serves as a container within the sound mixer module, designed to encapsulate predefined song data or instances for demonstration purposes. It functions as a simple data model or service provider, allowing other components to reference a static set of resources for testing audio playback. Its primary role is to showcase functionality without requiring complex external data loading or logic."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/demo.ts#DemoSongs",
+      "label": "Class",
+      "name": "DemoSongs",
+      "signature": "class DemoSongs"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

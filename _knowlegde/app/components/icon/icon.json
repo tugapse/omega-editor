@@ -1,0 +1,55 @@
+{
+  "component": {
+    "name": "Icon",
+    "source_path": "/app/components/icon/icon.ts",
+    "doc_path": "/app/components/icon/icon.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Icon component serves as a reusable presentation layer element responsible for rendering standardized icons across the application. It abstracts icon display logic by consuming configuration inputs such as iconName and iconSize. It acts as a flexible building block, allowing other UI components to easily inject specific visual representations without managing underlying library details."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/icon/icon.ts#Icon",
+      "label": "Class",
+      "name": "Icon",
+      "signature": "class Icon"
+    },
+    {
+      "id": "/app/components/icon/icon.ts#iconName",
+      "label": "Variable",
+      "name": "iconName",
+      "signature": "string = 'fa-file-invoice-dollar'"
+    },
+    {
+      "id": "/app/components/icon/icon.ts#iconSize",
+      "label": "Variable",
+      "name": "iconSize",
+      "signature": "number = 12"
+    },
+    {
+      "id": "/app/components/icon/icon.ts#isButton",
+      "label": "Variable",
+      "name": "isButton",
+      "signature": "boolean"
+    },
+    {
+      "id": "/app/components/icon/icon.ts#isSelected",
+      "label": "Variable",
+      "name": "isSelected",
+      "signature": "boolean"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/icon/icon.ts",
+      "target": "/app/components/icon/icon.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

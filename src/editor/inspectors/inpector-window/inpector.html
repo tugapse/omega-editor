@@ -1,0 +1,18 @@
+@if (targetEntity) {
+  <div class="inspector">
+    <editor-inspector-header
+      id="header"
+      [entity]="targetEntity"
+    ></editor-inspector-header>
+
+    <div class="content">
+      <editor-entity-inspector
+        [targetEntity]="targetEntity"
+      ></editor-entity-inspector>
+    </div>
+
+    <section class="footer">
+      <span>Inspector {{ targetEntity.name }}</span>
+    </section>
+  </div>
+}

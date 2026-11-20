@@ -1,0 +1,117 @@
+{
+  "component": {
+    "name": "AssetExplorerWindow",
+    "source_path": "/editor/components/window/window.ts",
+    "doc_path": "/editor/components/window/window.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetExplorerWindow is a primary UI component responsible for rendering and managing the visual lifecycle of a dynamic editor window. It acts as a container, accepting inputs like title, icon, and footer content to construct a fully interactive element. It delegates global state management, such as focusing or closing, to the WindowService, while integrating directives for interactivity like movement and icon display."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/window/window.ts#AssetExplorerWindow",
+      "label": "Class",
+      "name": "AssetExplorerWindow",
+      "signature": "class AssetExplorerWindow"
+    },
+    {
+      "id": "/editor/components/window/window.ts#windowId",
+      "label": "Variable",
+      "name": "windowId",
+      "signature": "@Input() windowId!: string"
+    },
+    {
+      "id": "/editor/components/window/window.ts#windowtitle",
+      "label": "Variable",
+      "name": "windowtitle",
+      "signature": "@Input() windowtitle = ''"
+    },
+    {
+      "id": "/editor/components/window/window.ts#windowIconName",
+      "label": "Variable",
+      "name": "windowIconName",
+      "signature": "@Input() windowIconName = ''"
+    },
+    {
+      "id": "/editor/components/window/window.ts#windowFooter",
+      "label": "Variable",
+      "name": "windowFooter",
+      "signature": "@Input() windowFooter = ''"
+    },
+    {
+      "id": "/editor/components/window/window.ts#childComponentType",
+      "label": "Variable",
+      "name": "childComponentType",
+      "signature": "@Input() childComponentType!: Type<any>"
+    },
+    {
+      "id": "/editor/components/window/window.ts#childInputs",
+      "label": "Variable",
+      "name": "childInputs",
+      "signature": "@Input() childInputs?: Record<string, unknown>"
+    },
+    {
+      "id": "/editor/components/window/window.ts#isActive",
+      "label": "Variable",
+      "name": "isActive",
+      "signature": "@Input() isActive = false"
+    },
+    {
+      "id": "/editor/components/window/window.ts#isMaximized",
+      "label": "Variable",
+      "name": "isMaximized",
+      "signature": "@Input() isMaximized = false"
+    },
+    {
+      "id": "/editor/components/window/window.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private windowService: WindowService)"
+    },
+    {
+      "id": "/editor/components/window/window.ts#onWindowClick",
+      "label": "Method",
+      "name": "onWindowClick",
+      "signature": "onWindowClick()"
+    },
+    {
+      "id": "/editor/components/window/window.ts#closeWindow",
+      "label": "Method",
+      "name": "closeWindow",
+      "signature": "closeWindow()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/window/window.ts",
+      "target": "/editor/directives/moveable.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/window/window.ts",
+      "target": "/editor/services/window.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/window/window.ts",
+      "target": "/app/components/icon/icon.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/window/window.ts",
+      "target": "/editor/components/window/window.html",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/window/window.ts",
+      "target": "/editor/components/window/window.scss",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

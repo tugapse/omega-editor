@@ -1,0 +1,74 @@
+{
+  "component": {
+    "name": "CircleHelper",
+    "source_path": "/editor/behaviours/scene-editor/circle.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/circle.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "CircleHelper is a specialized rendering utility responsible for managing the WebGL geometry (vertices and indices) required to draw a circle shape within the scene editor. It encapsulates the low-level buffer creation and manipulation, allowing higher-level systems to request rendering without geometry calculation overhead. Its primary methods, draw and destroy, handle the rendering pipeline execution and resource cleanup, respectively, relying on the WebGL2RenderingContext."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#CircleHelper",
+      "label": "Class",
+      "name": "CircleHelper",
+      "signature": "constructor(_gl: WebGL2RenderingContext)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "draw(shader: Shader, pointSize: number = 1.0, asPoints: boolean = false): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#destroy",
+      "label": "Method",
+      "name": "destroy",
+      "signature": "destroy(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#createCircleGeometry",
+      "label": "Function",
+      "name": "createCircleGeometry",
+      "signature": "createCircleGeometry(radius: number = 1.0, segments: number = 64): { vertices: number[], indices: number[] }"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#vertexBuffer",
+      "label": "Variable",
+      "name": "vertexBuffer",
+      "signature": "private vertexBuffer: WebGLBuffer"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#indexBuffer",
+      "label": "Variable",
+      "name": "indexBuffer",
+      "signature": "private indexBuffer: WebGLBuffer"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/circle.helper.ts#indexCount",
+      "label": "Variable",
+      "name": "indexCount",
+      "signature": "private indexCount: number"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/circle.helper.ts",
+      "target": "/omega-game-engine#Shader",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/circle.helper.ts",
+      "target": "/omega-game-engine#ShaderUniformsEnum",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

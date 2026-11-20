@@ -1,0 +1,33 @@
+{
+  "component": {
+    "name": "Modal",
+    "source_path": "/app/components/modal/modal.ts",
+    "doc_path": "/app/components/modal/modal.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component, Modal, is responsible for rendering and managing a modal dialog interface within the application. It serves as a core UI element in the presentation layer, designed to overlay the main view to demand immediate user attention or input. It is intended to be highly reusable across various parts of the application structure."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/modal/modal.ts#Modal",
+      "label": "Class",
+      "name": "Modal",
+      "signature": "class Modal"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/modal/modal.ts",
+      "target": "/app/components/modal/modal-content.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

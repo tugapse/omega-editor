@@ -1,0 +1,33 @@
+{
+  "component": {
+    "name": "API_URL",
+    "source_path": "/app/api/api-url.token.ts",
+    "doc_path": "/app/api/api-url.token.json",
+    "type": "utility"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines an Angular InjectionToken named API_URL, which serves as a configuration mechanism for the Omega API base URL. Its primary role is to decouple the API endpoint configuration from the service logic, enabling easy environment switching (e.g., staging to production). It expects and provides a string value representing the application's base URL within Angular's dependency injection system."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/api-url.token.ts#API_URL",
+      "label": "Variable",
+      "name": "API_URL",
+      "signature": "new InjectionToken<string>('app.api.url')"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/api-url.token.ts",
+      "target": "/app/api/api-url.token.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

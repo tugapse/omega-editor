@@ -1,0 +1,33 @@
+:host {
+  section {
+    display: block;
+    margin: 4px;
+    & > .title {
+      // font-size: 12px;
+      font-weight: 500;
+    }
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .line-item > span {
+    &:hover {
+      cursor: col-resize;
+    }
+  }
+
+  .line-item .text-input {
+    min-width: 32px;
+    width: 100%;
+    background: transparent;
+    color: var(--editor-panel-text-input-color);
+    border: var(--editor-panel-text-input-border);
+    padding: 4px;
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "component": {
+    "name": "SoundMixerPlaybackService",
+    "source_path": "/editor/components/sound-mixer/sound-mixer.service.ts",
+    "doc_path": "/editor/components/sound-mixer/sound-mixer.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "SoundMixerPlaybackService is the central controller for audio playback within the editor, managing the entire lifecycle from single-note previews to complex sequence rendering. It abstracts low-level audio engine interactions, synchronizing musical data (SynthNote[]) with the SequencerClock. Key responsibilities include state management via Angular signals, handling playback control (play, pause, stop, seek), and performing offline WAV file exports using OfflineAudioContext."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#SoundMixerPlaybackService",
+      "label": "Class",
+      "name": "SoundMixerPlaybackService",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#sequence",
+      "label": "Signal",
+      "name": "sequence",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#isPlaying",
+      "label": "Signal",
+      "name": "isPlaying",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#isPaused",
+      "label": "Signal",
+      "name": "isPaused",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#isExporting",
+      "label": "Signal",
+      "name": "isExporting",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#playbackTime",
+      "label": "Signal",
+      "name": "playbackTime",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#totalDuration",
+      "label": "Computed",
+      "name": "totalDuration",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#previewPreset",
+      "label": "Method",
+      "name": "previewPreset",
+      "signature": "previewPreset(preset: SynthPreset)"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#playSequence",
+      "label": "Method",
+      "name": "playSequence",
+      "signature": "playSequence(onFrameUpdate: (time: number) => void)"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#pauseSequence",
+      "label": "Method",
+      "name": "pauseSequence",
+      "signature": "pauseSequence()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#stopSequence",
+      "label": "Method",
+      "name": "stopSequence",
+      "signature": "stopSequence()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#seekTo",
+      "label": "Method",
+      "name": "seekTo",
+      "signature": "seekTo(time: number, onFrameUpdate: (time: number) => void)"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#exportWav",
+      "label": "Method",
+      "name": "exportWav",
+      "signature": "exportWav()"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#loadDemoSong",
+      "label": "Method",
+      "name": "loadDemoSong",
+      "signature": "loadDemoSong(type: string, presets: SynthPreset[], targetDuration: number = 8.0)"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#initAudio",
+      "label": "Method",
+      "name": "initAudio",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#cleanupActivePlayback",
+      "label": "Method",
+      "name": "cleanupActivePlayback",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#animatePlayhead",
+      "label": "Method",
+      "name": "animatePlayhead",
+      "signature": "animatePlayhead(startTime: number, onFrameUpdate: (time: number) => void)"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#getReverbIR",
+      "label": "Method",
+      "name": "getReverbIR",
+      "signature": "getReverbIR(ctx: BaseAudioContext): AudioBuffer"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-mixer.service.ts#audioBufferToWav",
+      "label": "Method",
+      "name": "audioBufferToWav",
+      "signature": "audioBufferToWav(abuffer: AudioBuffer): Blob"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.service.ts",
+      "target": "/editor/services/audio.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.service.ts",
+      "target": "/editor/models/synth.types.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-mixer.service.ts",
+      "target": "/editor/models/synth.types.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "omega-game-engine"
+    ],
+    "has_side_effects": true
+  }
+}

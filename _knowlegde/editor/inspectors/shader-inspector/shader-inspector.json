@@ -1,0 +1,87 @@
+{
+  "component": {
+    "name": "ShaderInspector",
+    "source_path": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+    "doc_path": "/editor/inspectors/shader-inspector/shader-inspector.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "The ShaderInspector component extends ObjectInspector to provide specialized UI control for Shader objects within the editor. It manages shader properties, specifically exposing dropdowns for selecting fragment and vertex shader URIs. Its core logic involves loading properties, handling user input via onDefaultChanged, and triggering shader recompilation upon URI selection via onShaderSelected."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#ShaderInspector",
+      "label": "Class",
+      "name": "ShaderInspector",
+      "signature": "extends ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#selectedFrag",
+      "label": "Getter",
+      "name": "selectedFrag",
+      "signature": "get selectedFrag(): DropdownItem | undefined"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#selectedVert",
+      "label": "Getter",
+      "name": "selectedVert",
+      "signature": "get selectedVert(): DropdownItem | undefined"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#shader",
+      "label": "Getter/Setter",
+      "name": "shader",
+      "signature": "get shader(): Shader; set shader(value: Shader)"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#loadProperties",
+      "label": "Method",
+      "name": "loadProperties",
+      "signature": "protected override loadProperties(): void"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#onDefaultChanged",
+      "label": "Method",
+      "name": "onDefaultChanged",
+      "signature": "onDefaultChanged(item: ITargetProperty, value: string | number | boolean | NumberRange | Color): void"
+    },
+    {
+      "id": "/editor/inspectors/shader-inspector/shader-inspector.ts#onShaderSelected",
+      "label": "Method",
+      "name": "onShaderSelected",
+      "signature": "onShaderSelected(shaderIndex: number, $event: DropdownItem): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "extends"
+    },
+    {
+      "source": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "target": "/editor/components/dropdown/dropdown.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "target": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

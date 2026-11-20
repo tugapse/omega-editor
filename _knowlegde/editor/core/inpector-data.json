@@ -1,0 +1,43 @@
+{
+  "component": {
+    "name": "InspectorMapData",
+    "source_path": "/editor/core/inpector-data.ts",
+    "doc_path": "/editor/core/inpector-data.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "InspectorMapData is a core data model within the editor's inspection system, designed to encapsulate metadata required for rendering and configuring object inspection panels. It holds configuration details such as a list of properties to inspect, their associated types, and keys that should be ignored during inspection. This class acts as a configuration payload, dictating the behavior of the presentation layer when viewing a specific class instance."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/core/inpector-data.ts#InspectorMapData",
+      "label": "Class",
+      "name": "InspectorMapData",
+      "signature": ""
+    },
+    {
+      "id": "/editor/core/inpector-data.ts#blckedKeys",
+      "label": "Variable",
+      "name": "blckedKeys",
+      "signature": ""
+    },
+    {
+      "id": "/editor/core/inpector-data.ts#targetClassName",
+      "label": "Variable",
+      "name": "targetClassName",
+      "signature": ""
+    },
+    {
+      "id": "/editor/core/inpector-data.ts#properties",
+      "label": "Variable",
+      "name": "properties",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

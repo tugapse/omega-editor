@@ -1,0 +1,59 @@
+<div class="top-bar-container">
+  <div class="top-bar">
+    <div class="left-menu">
+      <span class="item" (click)="goHome()">
+        <app-icon iconName="fa-home"></app-icon> Back to Home</span
+      >
+      <ng-content></ng-content>
+      <!-- <span class="item" (click)="inspectCamera()">
+        <app-icon iconName="fa-camera"></app-icon> Editor Camera</span
+      > -->
+    </div>
+    <div class="center-menu">
+      <app-icon
+        class="icon"
+        iconName="fa-play"
+        (click)="onPlay()"
+        [isButton]="true"
+        [isSelected]="scene && scene.isRunning"
+        title="Play Scene (Ctrl + P)"
+      ></app-icon>
+      <app-icon
+        class="icon"
+        iconName="fa-pause"
+        (click)="onPause()"
+        [isButton]="true"
+        [isSelected]="isEditorPaused"
+        title="Pause Scene (Ctrl + P)"
+      ></app-icon>
+      <app-icon
+        class="icon"
+        iconName="fa-stop"
+        (click)="onStop()"
+        [isButton]="true"
+        [isSelected]="scene && !scene.isRunning && !isEditorPaused"
+        title="Stop Scene (Ctrl + O)"
+      ></app-icon>
+      <span class="item separator"></span>
+      <span class="separator"></span>
+      <span class="separator"></span>
+      <app-icon
+        class="icon"
+        iconName="fa-code"
+        (click)="onCodeEditor()"
+        [isButton]="true"
+        title="Code Editor"
+      ></app-icon>
+    </div>
+    <div class="right-menu">
+      <app-icon
+        iconName="fa-maximize"
+        [isButton]="true"
+        class="maximize"
+        (click)="toggleFullscreen.emit()"
+      ></app-icon>
+
+      <editor-theme-selector></editor-theme-selector>
+    </div>
+  </div>
+</div>

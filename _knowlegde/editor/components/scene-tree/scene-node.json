@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "TreeNode",
+    "source_path": "/editor/components/scene-tree/scene-node.ts",
+    "doc_path": "/editor/components/scene-tree/scene-node.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the TreeNode interface, which serves as the core data model for representing nodes within a hierarchical scene tree structure. It encapsulates essential metadata for scene elements, including a unique ID, display name, and an associated icon. Its primary role is to dictate the shape of data passed throughout the scene management system, enabling structured traversal and rendering of scene entities."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/scene-tree/scene-node.ts#TreeNode",
+      "label": "Interface",
+      "name": "TreeNode",
+      "signature": "export interface TreeNode<T> {"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

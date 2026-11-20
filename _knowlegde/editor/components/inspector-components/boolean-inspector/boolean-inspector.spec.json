@@ -1,0 +1,63 @@
+{
+  "component": {
+    "name": "BooleanInspector",
+    "source_path": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts",
+    "doc_path": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script contains unit tests for the BooleanInspector component, verifying its correct initialization within an Angular testing environment. It utilizes TestBed to configure the testing module, compile the component, and create a fixture. The primary assertion confirms that the component instance is successfully created and truthy after the testing lifecycle completes."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#BooleanInspector",
+      "label": "Class",
+      "name": "BooleanInspector",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('BooleanInspector', () => { ... })"
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => { ... })"
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => { ... })"
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts",
+      "target": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

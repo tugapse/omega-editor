@@ -1,0 +1,65 @@
+import { Component, inject, signal } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
+import { Router, RouterModule } from "@angular/router";
+import { AuthService } from "../../api/services/auth.service";
+import { BackgroundVisualizationComponent } from "../background-visualization/background-visualization.component";
+import { LoadingService } from "src/app/services/loading.service";
+
+/**
+ * Component responsible for handling user authentication via the login form.
+ */
+@Component({
+  selector: "app-login",
+  templateUrl: "./login.html",
+  styleUrls: ["./login.scss"],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    RouterModule,
+    CommonModule,
+    BackgroundVisualizationComponent,
+  ],
+})
+export class LoginComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly loadingService = inject(LoadingService);
+
+  public loginForm: FormGroup;
+  public loginError = signal<string | null>(null);
+
+  constructor() {
+    this.loginForm = this.fb.group({
+      username: ["", [Validators.required]],
+      password: ["", Validators.required],
+    });
+  }
+
+  /**
+   * Submits the login form.
+   * If valid, attempts to authenticate the user and redirects to the editor upon success.
+   * Displays an error message if the authentication fails.
+   */
+  public login(): void {
+    if (this.loginForm.valid) {
+      this.loadingService.show("Authenticating...");
+      this.authService.login(this.loginForm.value).subscribe({
+        next: () => {
+          this.loginError.set(null);
+          this.router.navigate(["/home"]);
+        },
+        error: (err: any) => {
+          this.loginError.set(err.error?.message || "Login failed");
+          this.loadingService.hide();
+        },
+      });
+    }
+  }
+}

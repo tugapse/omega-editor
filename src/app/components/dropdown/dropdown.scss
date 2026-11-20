@@ -1,0 +1,95 @@
+:host {
+  margin: var(--editor-panel-outer-padding, 4px);
+
+  .dropdown-container {
+    position: static;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    min-width: 150px;
+  }
+
+  .dropdown-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: var(--editor-panel-border);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Kept subtle inner shadow for depth */
+    background-color: var(--editor-panel-background-50);
+    // font-size: 0.875rem;
+    font-weight: 500;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+
+  .dropdown-button.selected {
+    color: var(--editor-panel-header-title-color);
+  }
+
+  .dropdown-button:not(.selected) {
+    color: var(--editor-panel-color);
+  }
+
+  .dropdown-button:hover {
+    background-color: var(--editor-panel-background-10);
+  }
+
+  .dropdown-button:focus {
+    outline: none;
+    box-shadow: var(--editor-focus-shadow);
+  }
+
+  .dropdown-icon {
+    margin-left: 0.5rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    transition: transform 0.2s;
+    color: var(--editor-panel-chevron-color);
+  }
+
+  .dropdown-icon.open {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: relative;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    box-shadow: var(--editor-panel-box-shadow);
+    z-index: 10;
+  }
+
+  .dropdown-items-wrapper {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    position: fixed;
+    background-color: var(--editor-panel-background);
+    border: var(--editor-panel-border);
+    max-width: 150px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .dropdown-item {
+    color: var(--editor-panel-text-input-color);
+    display: block;
+    padding: 0.5rem 1rem;
+    // font-size: 0.875rem;
+    cursor: pointer;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--editor-icon-button-hover-background) !important;
+    color: var(--editor-icon-button-hover-color);
+  }
+}

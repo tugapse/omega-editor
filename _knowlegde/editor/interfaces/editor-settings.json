@@ -1,0 +1,100 @@
+{
+  "component": {
+    "name": "EditorSettings",
+    "source_path": "/editor/interfaces/editor-settings.ts",
+    "doc_path": "/editor/interfaces/editor-settings.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorSettings is a core data model class responsible for encapsulating all configurable parameters governing the editor's appearance and behavior. It manages visual settings like viewport and grid colors, alongside structural preferences for panels. By inheriting from JsonSerializable, it ensures the entire configuration state can be reliably persisted and loaded across application sessions."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/interfaces/editor-settings.ts#EditorSettings",
+      "label": "Class",
+      "name": "EditorSettings",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#viewportClearColor",
+      "label": "Variable",
+      "name": "viewportClearColor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#gridColor",
+      "label": "Variable",
+      "name": "gridColor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#selectedBoundingBoxColor",
+      "label": "Variable",
+      "name": "selectedBoundingBoxColor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#hoveredBoundingBoxColor",
+      "label": "Variable",
+      "name": "hoveredBoundingBoxColor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#workspace",
+      "label": "Variable",
+      "name": "workspace",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#viewport",
+      "label": "Variable",
+      "name": "viewport",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#toJsonObject",
+      "label": "Method",
+      "name": "toJsonObject",
+      "signature": "override toJsonObject(): JsonSerializedData"
+    },
+    {
+      "id": "/editor/interfaces/editor-settings.ts#fromJson",
+      "label": "Method",
+      "name": "fromJson",
+      "signature": "override fromJson(jsonObject: JsonSerializedData): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/interfaces/editor-settings.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/interfaces/editor-settings.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/interfaces/editor-settings.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/interfaces/editor-settings.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}
