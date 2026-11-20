@@ -21,6 +21,9 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | E11 | Low | Boot | Every page load logs one 404 near the .NET WebAssembly runtime start (file not identified yet). | `index.html` / WASM loader |
 | E12 | Low | Tooling | `npm run run-dev` starts the old Python `omega-api`, which was replaced by `omega-api-cs`. | `package.json` |
 | E13 | Low | Config | `APISettings.apiHost` in `src/editor/configs/editor.ts` hard-codes `http://localhost:5000/api/` next to `environment.apiUrl`. | `src/editor/configs/editor.ts` |
+| E14 | Medium | Inspector | Clicking the chevron of the "Shader" panel inside MeshRendererBehaviour does not expand it (also with a real mouse click), so the material and its texture slots cannot be reached. | `inpector-toggle-panel` inside `shader-inspector` / `behaviour-inspector` |
+| E15 | Low | Debug | Leftover `debugger;` statements: `AssetService.listAssets`, `TextureInspector.onTextureEnumChange`, `Editor.handleEngineReloaded` catch. They pause the app whenever DevTools is open. | `src/app/api/services/asset.service.ts`, `src/editor/inspectors/texture-inspector/texture-inspector.ts`, `src/editor/editor.ts` |
+| E16 | High | Setup | The editor now needs the engine from `omega-engine` branch `feature/uri-resolver` (`EngineCache.setUriResolver`). It is linked locally with `npm install --no-save ../omega-engine`; `package.json` still says `omega-game-engine@^3.0.3`, so a fresh `npm install` breaks the build until a new engine version is published. | `package.json` |
 
 ## Omega API (`omega-api-cs`)
 
@@ -28,6 +31,7 @@ Severity: **High** blocks a workflow · **Medium** wrong behaviour with a workar
 | :-- | :-- | :-- | :-- |
 | A1 | High | The default storage root (`./storage`) differs from the code service's (`./storage/projects`). Without the same `OMEGA_PROJECTS_STORAGE_ROOT` in both, scripts land outside the project folder. | `Services/PathResolveService.cs` |
 | A2 | Low | The code-service URL `http://localhost:3000/api` is hard-coded in three places instead of coming from configuration. | `Services/AssetCodeService.cs`, `Services/OmegaCompilerService.cs`, `Services/OmegaScritpService.cs`, `Controllers/AssetCodeController.cs` |
+| A3 | Low | Uploading with `virtual_path` set to a folder (e.g. `Textures`) fails with a misleading "Access to the path … is denied". It expects the full file path (`Textures/wood.jpg`). | `Services/AssetsService.cs` `UploadAssetAsync` |
 
 ## Omega Code Service
 
