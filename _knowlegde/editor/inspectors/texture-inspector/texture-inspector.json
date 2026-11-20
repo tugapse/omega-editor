@@ -1,0 +1,86 @@
+{
+  "component": {
+    "name": "TextureInspector",
+    "source_path": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+    "doc_path": "/editor/inspectors/texture-inspector/texture-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "TextureInspector is a specialized UI component extending ObjectInspector, dedicated to managing and displaying parameters for Texture objects within the editor. It handles texture-specific controls like filtering and wrapping modes using EnumInspector. Its core logic involves updating the texture state via setters and triggering a canvas resize upon parameter modification, ensuring UI synchronization with the underlying asset."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#TextureInspector",
+      "label": "Class",
+      "name": "TextureInspector",
+      "signature": "class TextureInspector extends ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#texture",
+      "label": "Property",
+      "name": "texture",
+      "signature": "get texture(): Texture"
+    },
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit()"
+    },
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#onDefaultChanged",
+      "label": "Method",
+      "name": "onDefaultChanged",
+      "signature": "onDefaultChanged(targetProperty: ITargetProperty, $event: string | number | boolean | NumberRange | Color)"
+    },
+    {
+      "id": "/editor/inspectors/texture-inspector/texture-inspector.ts#onTextureEnumChange",
+      "label": "Method",
+      "name": "onTextureEnumChange",
+      "signature": "onTextureEnumChange(key: \"wrap\" | \"filter\", menuItem: DropdownItem)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "extends"
+    },
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/editor/inspectors/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/editor/inspectors/enum-inspector/enum-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "target": "/src/app/components/dropdown/dropdown.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

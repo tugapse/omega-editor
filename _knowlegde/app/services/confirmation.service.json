@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "ConfirmationService",
+    "source_path": "/app/services/confirmation.service.ts",
+    "doc_path": "/app/services/confirmation.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "This service acts as a centralized utility mediator for managing user confirmation prompts within the application. It abstracts the UI interaction by providing an observable stream for requests and a mechanism to resolve the current prompt's result. It relies on RxJS Subjects to manage asynchronous state flow, ensuring a standardized request/response pattern for confirmation dialogs."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/services/confirmation.service.ts#ConfirmationRequest",
+      "label": "Interface",
+      "name": "ConfirmationRequest",
+      "signature": "title: string, message: string, confirmText?: string, cancelText?: string"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#ConfirmationService",
+      "label": "Class",
+      "name": "ConfirmationService",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#confirmationRequestSubject",
+      "label": "Variable",
+      "name": "confirmationRequestSubject",
+      "signature": "new Subject<ConfirmationRequest>()"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#currentResultSubject",
+      "label": "Variable",
+      "name": "currentResultSubject",
+      "signature": "Subject<boolean> | null"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#confirmationRequest$",
+      "label": "Observable",
+      "name": "confirmationRequest$",
+      "signature": "this.confirmationRequestSubject.asObservable()"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#confirm",
+      "label": "Method",
+      "name": "confirm",
+      "signature": "confirm(request: ConfirmationRequest): Observable<boolean>"
+    },
+    {
+      "id": "/app/services/confirmation.service.ts#respond",
+      "label": "Method",
+      "name": "respond",
+      "signature": "respond(result: boolean): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/services/confirmation.service.ts",
+      "target": "/app/services/confirmation.service.ts",
+      "relation": "uses"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": false
+  }
+}

@@ -19,6 +19,32 @@
               required
             />
           </div>
+
+          @if (templates.length > 1) {
+            <div class="form-group">
+              <label>Template</label>
+              <div class="template-list">
+                @for (t of templates; track t.id) {
+                  <label class="template-card" [class.selected]="newProjectTemplate === t.id">
+                    <input
+                      type="radio"
+                      name="projectTemplate"
+                      [value]="t.id"
+                      [(ngModel)]="newProjectTemplate"
+                    />
+                    <span class="template-name">{{ t.name }}</span>
+                    @if (t.description) {
+                      <span class="template-description">{{ t.description }}</span>
+                    }
+                  </label>
+                }
+              </div>
+            </div>
+          }
+
+          @if (createError) {
+            <div class="form-error">{{ createError }}</div>
+          }
         </div>
 
         <div class="modal-footer">

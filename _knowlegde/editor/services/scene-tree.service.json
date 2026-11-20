@@ -1,0 +1,44 @@
+{
+  "component": {
+    "name": "SceneTreeService",
+    "source_path": "/editor/services/scene-tree.service.ts",
+    "doc_path": "/editor/services/scene-tree.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "SceneTreeService is a core Angular service responsible for managing the scene hierarchy within the application. Its primary architectural role is to act as a centralized event broadcaster, specifically notifying subscribers when an entity is selected within the scene view. It encapsulates entity selection logic, allowing decoupled components to react to changes in the active scene entity without direct knowledge of the scene graph implementation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/scene-tree.service.ts#SceneTreeService",
+      "label": "Class",
+      "name": "SceneTreeService",
+      "signature": "class SceneTreeService"
+    },
+    {
+      "id": "/editor/services/scene-tree.service.ts#onEntitySelected",
+      "label": "Variable",
+      "name": "onEntitySelected",
+      "signature": "public onEntitySelected = new EventEmitter<SceneEntity>()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/scene-tree.service.ts",
+      "target": "/omega-game-engine/scene-entity.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/services/scene-tree.service.ts",
+      "target": "/omega-game-engine/scene.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

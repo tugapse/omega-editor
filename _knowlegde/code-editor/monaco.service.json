@@ -1,0 +1,93 @@
+{
+  "component": {
+    "name": "MonacoService",
+    "source_path": "/code-editor/monaco.service.ts",
+    "doc_path": "/code-editor/monaco.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "MonacoService encapsulates the entire lifecycle management for the Monaco Editor within an Angular application. It handles asynchronous dependency loading, initializes the editor instance with custom theming, and manages specialized features like custom GLSL language support and context-aware IntelliSense completions. Its core role is abstracting the complex Monaco API, providing clean methods for model manipulation, marker tracking, and resource disposal."
+  },
+  "graph_nodes": [
+    {
+      "id": "/code-editor/monaco.service.ts#MonacoService",
+      "label": "Class",
+      "name": "MonacoService",
+      "signature": "class MonacoService"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#loadDependencies",
+      "label": "Method",
+      "name": "loadDependencies",
+      "signature": "loadDependencies(onReady: () => void): void"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#createEditor",
+      "label": "Method",
+      "name": "createEditor",
+      "signature": "createEditor(container: HTMLElement, onSave: () => void, onMarkerChange: (errors: number, warnings: number) => void): any"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#setModel",
+      "label": "Method",
+      "name": "setModel",
+      "signature": "setModel(model: any): void"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#getModelValue",
+      "label": "Method",
+      "name": "getModelValue",
+      "signature": "getModelValue(): string"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#clearAllModelMarkers",
+      "label": "Method",
+      "name": "clearAllModelMarkers",
+      "signature": "clearAllModelMarkers(source: string): void"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#setModelMarkers",
+      "label": "Method",
+      "name": "setModelMarkers",
+      "signature": "setModelMarkers(source: string, errorMarkers: any[]): void"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#createOrGetModel",
+      "label": "Method",
+      "name": "createOrGetModel",
+      "signature": "createOrGetModel(path: string, content: string, language: string): any"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#updateIntelliSenseDefinitions",
+      "label": "Method",
+      "name": "updateIntelliSenseDefinitions",
+      "signature": "updateIntelliSenseDefinitions(filePath: string, declarationContent: string): void"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#isEditorReady",
+      "label": "Method",
+      "name": "isEditorReady",
+      "signature": "isEditorReady(): boolean"
+    },
+    {
+      "id": "/code-editor/monaco.service.ts#disposeEditor",
+      "label": "Method",
+      "name": "disposeEditor",
+      "signature": "disposeEditor(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/code-editor/monaco.service.ts",
+      "target": "/code-editor/monaco.service.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

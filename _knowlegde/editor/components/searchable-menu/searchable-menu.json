@@ -1,0 +1,64 @@
+{
+  "component": {
+    "name": "SearchableMenuComponent",
+    "source_path": "/editor/components/searchable-menu/searchable-menu.ts",
+    "doc_path": "/editor/components/searchable-menu/searchable-menu.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component implements a UI element for filtering and displaying a list of menu items based on user input. It acts as a presentation layer, consuming an array of MenuItem objects and managing its visibility state via inputs. Its core logic dynamically filters items based on name, description, or type, and it handles dismissal via a document-level click listener."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#MenuItem",
+      "label": "Interface",
+      "name": "MenuItem",
+      "signature": "id: string; type: string; path: string; name: string; description: string;"
+    },
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#SearchableMenuComponent",
+      "label": "Class",
+      "name": "SearchableMenuComponent",
+      "signature": "constructor(private elementRef: ElementRef)"
+    },
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#filteredItems",
+      "label": "Getter",
+      "name": "filteredItems",
+      "signature": "get filteredItems(): MenuItem[]"
+    },
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#onSearch",
+      "label": "Method",
+      "name": "onSearch",
+      "signature": "onSearch(event: Event): void"
+    },
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#onDocumentClick",
+      "label": "Method",
+      "name": "onDocumentClick",
+      "signature": "@HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/components/searchable-menu/searchable-menu.ts#selectItem",
+      "label": "Method",
+      "name": "selectItem",
+      "signature": "selectItem(item: MenuItem, event: MouseEvent): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/searchable-menu/searchable-menu.ts",
+      "target": "/editor/components/searchable-menu/searchable-menu.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/common",
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

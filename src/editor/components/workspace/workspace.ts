@@ -15,7 +15,7 @@ export class WorkspaceComponent {
   @Input() showFooter = true;
 
   leftWidth = 250;
-  rightWidth = 250;
+  rightWidth = 340;
   footerHeight = 200;
 
   private resizing: 'left' | 'right' | 'footer' | null = null;

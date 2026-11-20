@@ -43,7 +43,6 @@ export class AssetService {
     if (dir) {
       params = params.set('dir', dir);
     }
-    debugger;
     const url = `${this.baseUrl}/${projectId}/assets`;
     return this.http.get<ProjectAssetIndexResponse>(url, { params });
   }

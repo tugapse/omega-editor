@@ -1,0 +1,73 @@
+{
+  "component": {
+    "name": "InpectorTogglePanel",
+    "source_path": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+    "doc_path": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "InpectorTogglePanel is a presentation layer UI component designed to render a collapsible panel within an editor interface. Its core responsibility is managing the visibility state of its content via a toggle mechanism. It accepts configuration inputs like 'title' and 'collapsed' and communicates state changes externally by emitting a 'toggle' event. It relies on the internal Icon component for visual representation."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#InpectorTogglePanel",
+      "label": "Class",
+      "name": "InpectorTogglePanel",
+      "signature": "class InpectorTogglePanel"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#title",
+      "label": "Variable",
+      "name": "title",
+      "signature": "title: string = 'NoName'"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#collapsed",
+      "label": "Variable",
+      "name": "collapsed",
+      "signature": "collapsed: boolean = false"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#isAbleToCollapse",
+      "label": "Variable",
+      "name": "isAbleToCollapse",
+      "signature": "isAbleToCollapse: boolean = true"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#isChild",
+      "label": "Variable",
+      "name": "isChild",
+      "signature": "isChild: boolean = false"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#rightAlign",
+      "label": "Variable",
+      "name": "rightAlign",
+      "signature": "rightAlign = false"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#toggle",
+      "label": "Variable",
+      "name": "toggle",
+      "signature": "toggle = new EventEmitter<boolean>()"
+    },
+    {
+      "id": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts#onToggle",
+      "label": "Method",
+      "name": "onToggle",
+      "signature": "onToggle()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "target": "/src/app/components/icon/icon.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

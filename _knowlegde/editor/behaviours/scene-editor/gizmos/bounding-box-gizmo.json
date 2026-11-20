@@ -1,0 +1,55 @@
+{
+  "component": {
+    "name": "BoundingBoxGizmo",
+    "source_path": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts",
+    "doc_path": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "BoundingBoxGizmo is a presentation layer component responsible for visualizing the wireframe of a 3D bounding box within the scene editor. It translates the mathematical properties of a BoundingBox object into visible lines using the RendererBehaviour. Its core logic involves calculating the eight corner points and drawing the twelve connecting edges, optionally applying spacing for visual padding."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts#BoundingBoxGizmo",
+      "label": "Class",
+      "name": "BoundingBoxGizmo",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts#selectedBoundingBoxColor",
+      "label": "Variable",
+      "name": "selectedBoundingBoxColor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts#selectedBoundingBoxLineWidth",
+      "label": "Variable",
+      "name": "selectedBoundingBoxLineWidth",
+      "signature": ""
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private renderer: RendererBehaviour)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts#drawBoundingBox",
+      "label": "Method",
+      "name": "drawBoundingBox",
+      "signature": "drawBoundingBox(boundingBox: BoundingBox, spacing = 0.1)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/gizmos/bounding-box-gizmo.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

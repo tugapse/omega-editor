@@ -1,0 +1,61 @@
+{
+  "component": {
+    "name": "TorusHelper",
+    "source_path": "/editor/behaviours/scene-editor/torus.helper.ts",
+    "doc_path": "/editor/behaviours/scene-editor/torus.helper.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "TorusHelper is a low-level geometry utility responsible for generating and managing the vertex and index data required to render a torus shape in a 3D scene. It calculates complex 3D coordinates based on user-defined radii and segment counts, populating WebGL buffers. Its primary function is to provide pre-calculated mesh data to other scene components for rendering via a provided Shader."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#TorusHelper",
+      "label": "Class",
+      "name": "TorusHelper",
+      "signature": "constructor(gl: WebGL2RenderingContext, radius: number = 1.0, tubeRadius: number = 0.02, radialSegments: number = 64, tubularSegments: number = 16)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#init",
+      "label": "Method",
+      "name": "init",
+      "signature": "init(radius: number, tube: number, radialSegments: number, tubularSegments: number)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "draw(shader: Shader)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#positionBuffer",
+      "label": "Variable",
+      "name": "positionBuffer",
+      "signature": "private positionBuffer: WebGLBuffer | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#indexBuffer",
+      "label": "Variable",
+      "name": "indexBuffer",
+      "signature": "private indexBuffer: WebGLBuffer | null"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/torus.helper.ts#indexCount",
+      "label": "Variable",
+      "name": "indexCount",
+      "signature": "private indexCount = 0"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/torus.helper.ts",
+      "target": "/omega-game-engine.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

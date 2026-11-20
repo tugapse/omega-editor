@@ -1,0 +1,296 @@
+{
+  "component": {
+    "name": "Canvas",
+    "source_path": "/editor/components/canvas/canvas.ts",
+    "doc_path": "/editor/components/canvas/canvas.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Canvas component manages the primary WebGL2 rendering surface for the editor's 3D scene, acting as the core bridge between high-level editor state and low-level graphics APIs. It orchestrates the rendering lifecycle using requestAnimationFrame, handling updates and frame rendering based on editor focus and tab activity. It subscribes to global editor events for state synchronization, such as resizing and resetting the rendering context."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/canvas/canvas.ts#Canvas",
+      "label": "Class",
+      "name": "Canvas",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#onGlContextCreated",
+      "label": "Output",
+      "name": "onGlContextCreated",
+      "signature": "new EventEmitter<WebGL2RenderingContext>()"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#stats",
+      "label": "Output",
+      "name": "stats",
+      "signature": "new EventEmitter<EngineStats>()"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#gl",
+      "label": "Variable",
+      "name": "gl",
+      "signature": "WebGL2RenderingContext | null"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#lastTime",
+      "label": "Variable",
+      "name": "lastTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#lastDrawTime",
+      "label": "Variable",
+      "name": "lastDrawTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#lastFpsUpdateTime",
+      "label": "Variable",
+      "name": "lastFpsUpdateTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#frameCount",
+      "label": "Variable",
+      "name": "frameCount",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#animationFrameId",
+      "label": "Variable",
+      "name": "animationFrameId",
+      "signature": "number | null"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#accumulatedFrameTime",
+      "label": "Variable",
+      "name": "accumulatedFrameTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#accumulatedUpdateTime",
+      "label": "Variable",
+      "name": "accumulatedUpdateTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#accumulatedRenderTime",
+      "label": "Variable",
+      "name": "accumulatedRenderTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#lastRafEndTime",
+      "label": "Variable",
+      "name": "lastRafEndTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#accumulatedBrowserTime",
+      "label": "Variable",
+      "name": "accumulatedBrowserTime",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#rafCount",
+      "label": "Variable",
+      "name": "rafCount",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#targetFps",
+      "label": "Variable",
+      "name": "targetFps",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#frameInterval",
+      "label": "Variable",
+      "name": "frameInterval",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#destroy$",
+      "label": "Variable",
+      "name": "destroy$",
+      "signature": "Subject<void>"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#defaultClearColor",
+      "label": "Variable",
+      "name": "defaultClearColor",
+      "signature": "Colors"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#gizmoMode",
+      "label": "Variable",
+      "name": "gizmoMode",
+      "signature": "GizmoMode"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#TransformSpace",
+      "label": "Type",
+      "name": "TransformSpace",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#transformSpace",
+      "label": "Variable",
+      "name": "transformSpace",
+      "signature": "TransformSpace"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(editorService: EditorService, editorSettings: EditorSettingsService, ngZone: NgZone, renderer: Renderer2)"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#shouldRender",
+      "label": "Method",
+      "name": "shouldRender",
+      "signature": "shouldRender(): boolean"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#render",
+      "label": "Method",
+      "name": "render",
+      "signature": "render(timestamp: number): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#trackBrowserOverhead",
+      "label": "Method",
+      "name": "trackBrowserOverhead",
+      "signature": "trackBrowserOverhead(): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#executeRenderPass",
+      "label": "Method",
+      "name": "executeRenderPass",
+      "signature": "executeRenderPass(): number"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#emitAndResetStats",
+      "label": "Method",
+      "name": "emitAndResetStats",
+      "signature": "emitAndResetStats(timestamp: number): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#loopNextFrame",
+      "label": "Method",
+      "name": "loopNextFrame",
+      "signature": "loopNextFrame(): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#setupWindowEvents",
+      "label": "Method",
+      "name": "setupWindowEvents",
+      "signature": "setupWindowEvents(): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#initWebGL",
+      "label": "Method",
+      "name": "initWebGL",
+      "signature": "initWebGL(): Promise<void>"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#disposeWebGL",
+      "label": "Method",
+      "name": "disposeWebGL",
+      "signature": "disposeWebGL(): Promise<void>"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#resizeCanvas",
+      "label": "Method",
+      "name": "resizeCanvas",
+      "signature": "resizeCanvas(force: boolean): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#updateCameraAspectRatio",
+      "label": "Method",
+      "name": "updateCameraAspectRatio",
+      "signature": "updateCameraAspectRatio(displayWidth: number, displayHeight: number): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#setGizmoMode",
+      "label": "Method",
+      "name": "setGizmoMode",
+      "signature": "setGizmoMode(mode: GizmoMode): void"
+    },
+    {
+      "id": "/editor/components/canvas/canvas.ts#toggleTransformSpace",
+      "label": "Method",
+      "name": "toggleTransformSpace",
+      "signature": "toggleTransformSpace(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/editor/services/editor.settings.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/src/app/components/icon/icon.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/editor/behaviours/scene-editor/gizmo-mode.enum",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/editor/behaviours/scene-editor/transform-space.enum",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/omega-game-engine/Camera",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/omega-game-engine/CanvasViewport",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/omega-game-engine/Engine",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/canvas/canvas.ts",
+      "target": "/omega-game-engine/Scene",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs",
+      "performance"
+    ],
+    "has_side_effects": true
+  }
+}

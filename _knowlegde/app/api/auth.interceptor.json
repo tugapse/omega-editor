@@ -1,0 +1,52 @@
+{
+  "component": {
+    "name": "AuthInterceptor",
+    "source_path": "/app/api/auth.interceptor.ts",
+    "doc_path": "/app/api/auth.interceptor.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "AuthInterceptor is an Angular HttpInterceptor responsible for securing API communications by automatically injecting the user's authentication token into every outgoing request via the Authorization: Bearer header. It functions as a critical middleware layer within the HTTP client pipeline. A key responsibility is handling 401 Unauthorized responses by clearing the local session and redirecting the user to the login page."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/auth.interceptor.ts#AuthInterceptor",
+      "label": "Class",
+      "name": "AuthInterceptor",
+      "signature": "class AuthInterceptor implements HttpInterceptor"
+    },
+    {
+      "id": "/app/api/auth.interceptor.ts#intercept",
+      "label": "Method",
+      "name": "intercept",
+      "signature": "intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>>"
+    },
+    {
+      "id": "/app/api/auth.interceptor.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private authService: AuthService, private router: Router)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/auth.interceptor.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/api/auth.interceptor.ts",
+      "target": "/app/api/router.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/common/http",
+      "@angular/core",
+      "@angular/router"
+    ],
+    "has_side_effects": true
+  }
+}

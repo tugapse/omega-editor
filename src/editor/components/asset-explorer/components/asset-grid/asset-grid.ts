@@ -5,6 +5,7 @@ import {
   output,
 } from '@angular/core';
 import { IAsset } from '@editor/interfaces/asset.interface';
+import { DraggedAsset, OMEGA_ASSET_DRAG_TYPE } from '@editor/scene/texture-refs';
 import { AssetIcons } from '../../icons';
 import { Icon } from 'src/app/components/icon/icon';
 
@@ -23,5 +24,14 @@ export class AssetGridComponent {
   itemClick = output<IAsset>();
   itemDoubleClick = output<IAsset>();
   contextMenu = output<{ e: MouseEvent; node: IAsset }>();
+
+  /** Lets assets be dropped on inspector fields (e.g. texture slots). */
+  onDragStart(event: DragEvent, item: IAsset) {
+    if (!event.dataTransfer || item.type === 'folder') return;
+    const payload: DraggedAsset = { id: item.id, name: item.name, type: item.type };
+    event.dataTransfer.setData(OMEGA_ASSET_DRAG_TYPE, JSON.stringify(payload));
+    event.dataTransfer.setData('text/plain', item.name);
+    event.dataTransfer.effectAllowed = 'copy';
+  }
   icons = AssetIcons;
 }

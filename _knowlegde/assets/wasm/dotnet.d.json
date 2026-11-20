@@ -1,0 +1,181 @@
+{
+  "component": {
+    "name": "dotnet.d",
+    "source_path": "/assets/wasm/dotnet.d.ts",
+    "doc_path": "/assets/wasm/dotnet.d.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This TypeScript declaration file defines the public interface for the .NET runtime compiled to WebAssembly (Wasm). It acts as a critical bridge, providing type safety for JavaScript interactions with the low-level Wasm runtime. It exposes complex types like DotnetHostBuilder and RuntimeAPI, enabling configuration and execution of .NET applications in a browser context."
+  },
+  "graph_nodes": [
+    {
+      "id": "/assets/wasm/dotnet.d.ts#NativePointer",
+      "label": "Interface",
+      "name": "NativePointer",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#VoidPtr",
+      "label": "Interface",
+      "name": "VoidPtr",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#CharPtr",
+      "label": "Interface",
+      "name": "CharPtr",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#Int32Ptr",
+      "label": "Interface",
+      "name": "Int32Ptr",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#EmscriptenModule",
+      "label": "Interface",
+      "name": "EmscriptenModule",
+      "signature": "_malloc(size: number): VoidPtr"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#DotnetHostBuilder",
+      "label": "Interface",
+      "name": "DotnetHostBuilder",
+      "signature": "withConfig(config: MonoConfig): DotnetHostBuilder"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#MonoConfig",
+      "label": "Type",
+      "name": "MonoConfig",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#ResourceGroups",
+      "label": "Interface",
+      "name": "ResourceGroups",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#ResourceList",
+      "label": "Type",
+      "name": "ResourceList",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#LoadBootResourceCallback",
+      "label": "Type",
+      "name": "LoadBootResourceCallback",
+      "signature": "(type: WebAssemblyBootResourceType, name: string, defaultUri: string, integrity: string, behavior: AssetBehaviors) => string | Promise<Response> | null | undefined"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#LoadingResource",
+      "label": "Interface",
+      "name": "LoadingResource",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#AssetEntry",
+      "label": "Interface",
+      "name": "AssetEntry",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#SingleAssetBehaviors",
+      "label": "Type",
+      "name": "SingleAssetBehaviors",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#AssetBehaviors",
+      "label": "Type",
+      "name": "AssetBehaviors",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#GlobalizationMode",
+      "label": "Enum",
+      "name": "GlobalizationMode",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#DotnetModuleConfig",
+      "label": "Type",
+      "name": "DotnetModuleConfig",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#APIType",
+      "label": "Type",
+      "name": "APIType",
+      "signature": "runMain(mainAssemblyName: string, args: string[]): Promise<number>"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#RuntimeAPI",
+      "label": "Type",
+      "name": "RuntimeAPI",
+      "signature": "Module: EmscriptenModule"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#ModuleAPI",
+      "label": "Type",
+      "name": "ModuleAPI",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#IDisposable",
+      "label": "Interface",
+      "name": "IDisposable",
+      "signature": "dispose(): void"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#IMemoryView",
+      "label": "Interface",
+      "name": "IMemoryView",
+      "signature": "set(source: TypedArray, targetOffset?: number): void"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#mono_exit",
+      "label": "Function",
+      "name": "mono_exit",
+      "signature": "mono_exit(exit_code: number, reason?: any): void"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#dotnet",
+      "label": "Constant",
+      "name": "dotnet",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#exit",
+      "label": "Constant",
+      "name": "exit",
+      "signature": ""
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#getDotnetRuntime",
+      "label": "Function",
+      "name": "getDotnetRuntime",
+      "signature": "getDotnetRuntime(runtimeId: number): RuntimeAPI | undefined"
+    },
+    {
+      "id": "/assets/wasm/dotnet.d.ts#createDotnetRuntime",
+      "label": "Function",
+      "name": "createDotnetRuntime",
+      "signature": "(moduleFactory: DotnetModuleConfig | ((api: RuntimeAPI) => DotnetModuleConfig)) => Promise<RuntimeAPI>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/assets/wasm/dotnet.d.ts",
+      "target": "/assets/wasm/dotnet.d.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

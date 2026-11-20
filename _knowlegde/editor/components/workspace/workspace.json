@@ -1,0 +1,130 @@
+{
+  "component": {
+    "name": "WorkspaceComponent",
+    "source_path": "/editor/components/workspace/workspace.ts",
+    "doc_path": "/editor/components/workspace/workspace.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "WorkspaceComponent manages the primary layout of the editing environment, controlling the visibility and dimensions of side panels and a footer. It implements interactive drag-and-drop resizing using HostListener hooks on the document to adjust internal width and height properties. Upon completion of a resize operation, it notifies the EditorService to trigger a canvas resize, ensuring the UI reflects the new layout state."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/workspace/workspace.ts#WorkspaceComponent",
+      "label": "Class",
+      "name": "WorkspaceComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#showLeft",
+      "label": "Input",
+      "name": "showLeft",
+      "signature": "showLeft: boolean"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#showRight",
+      "label": "Input",
+      "name": "showRight",
+      "signature": "showRight: boolean"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#showFooter",
+      "label": "Input",
+      "name": "showFooter",
+      "signature": "showFooter: boolean"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#leftWidth",
+      "label": "Variable",
+      "name": "leftWidth",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#rightWidth",
+      "label": "Variable",
+      "name": "rightWidth",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#footerHeight",
+      "label": "Variable",
+      "name": "footerHeight",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#resizing",
+      "label": "Variable",
+      "name": "resizing",
+      "signature": "resizing: 'left' | 'right' | 'footer' | null"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startX",
+      "label": "Variable",
+      "name": "startX",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startY",
+      "label": "Variable",
+      "name": "startY",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startLeftWidth",
+      "label": "Variable",
+      "name": "startLeftWidth",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startRightWidth",
+      "label": "Variable",
+      "name": "startRightWidth",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startFooterHeight",
+      "label": "Variable",
+      "name": "startFooterHeight",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private editorService: EditorService)"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#startResize",
+      "label": "Method",
+      "name": "startResize",
+      "signature": "startResize(panel: 'left' | 'right' | 'footer', event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#onMouseMove",
+      "label": "Method",
+      "name": "onMouseMove",
+      "signature": "onMouseMove(event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/workspace/workspace.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "onMouseUp()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/workspace/workspace.ts",
+      "target": "/editor/services/editor.service.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common"
+    ],
+    "has_side_effects": true
+  }
+}

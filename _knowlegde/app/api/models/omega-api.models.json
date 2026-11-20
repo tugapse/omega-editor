@@ -1,0 +1,121 @@
+{
+  "component": {
+    "name": "omega-api.models",
+    "source_path": "/app/api/models/omega-api.models.ts",
+    "doc_path": "/app/api/models/omega-api.models.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component serves as the centralized definition repository for all data structures, schemas, and interfaces used across the Omega API. It enforces strict type contracts for data flowing into and out of API endpoints, defining the shape of requests (e.g., AuthRegisterRequest) and responses (e.g., UserResponse). Architecturally, it acts as the core data model layer, providing a single source of truth for data representation across the entire backend system."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/models/omega-api.models.ts#UserPreferences",
+      "label": "Interface",
+      "name": "UserPreferences",
+      "signature": "interface UserPreferences { theme: 'dark' | 'light'; notifications_enabled: boolean; editor_settings: Record<string, string>; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#AuthRegisterRequest",
+      "label": "Interface",
+      "name": "AuthRegisterRequest",
+      "signature": "interface AuthRegisterRequest { username: string; email: string; password: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#AuthLoginRequest",
+      "label": "Interface",
+      "name": "AuthLoginRequest",
+      "signature": "interface AuthLoginRequest { username: string; password: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#AuthLogoutRequest",
+      "label": "Interface",
+      "name": "AuthLogoutRequest",
+      "signature": "interface AuthLogoutRequest {}"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#UpdateUserRequest",
+      "label": "Interface",
+      "name": "UpdateUserRequest",
+      "signature": "interface UpdateUserRequest { username?: string; email?: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#CreateProjectRequest",
+      "label": "Interface",
+      "name": "CreateProjectRequest",
+      "signature": "interface CreateProjectRequest { name: string; description?: string; settings?: { environment?: 'development' | 'staging' | 'production'; version?: string; }; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#UpdateProjectRequest",
+      "label": "Interface",
+      "name": "UpdateProjectRequest",
+      "signature": "interface UpdateProjectRequest { name?: string; description?: string; settings?: { environment?: 'development' | 'staging' | 'production'; version?: string; }; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#UpdateAssetRequest",
+      "label": "Interface",
+      "name": "UpdateAssetRequest",
+      "signature": "interface UpdateAssetRequest { virtual_path?: string; asset_type?: 'code' | 'image' | 'audio' | 'text' | 'raw' | 'scene'; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#UpdateAssetTextRequest",
+      "label": "Interface",
+      "name": "UpdateAssetTextRequest",
+      "signature": "interface UpdateAssetTextRequest { text: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#SceneData",
+      "label": "Interface",
+      "name": "SceneData",
+      "signature": "interface SceneData extends Record<string, any> {}"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#UserResponse",
+      "label": "Interface",
+      "name": "UserResponse",
+      "signature": "interface UserResponse { id: string; username: string; email: string; preferences: UserPreferences; created_at: string; updated_at: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#ProjectResponse",
+      "label": "Interface",
+      "name": "ProjectResponse",
+      "signature": "interface ProjectResponse { id: string; slug: string; owner_id: string; name: string; description: string | null; status: 'active' | 'archived' | 'maintenance'; settings: { environment: 'development' | 'staging' | 'production'; version: string; }; created_at: string; updated_at: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#AssetResponse",
+      "label": "Interface",
+      "name": "AssetResponse",
+      "signature": "interface AssetResponse { id: string; filename: string; virtualPath: string; assetType: 'code' | 'image' | 'audio' | 'text' | 'raw' | 'scene'; mimeType: string; sizeBytes: number; sha256: string; previewUrl?: string; createdAt: string; updatedAt: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#ProjectAssetIndexResponse",
+      "label": "Interface",
+      "name": "ProjectAssetIndexResponse",
+      "signature": "interface ProjectAssetIndexResponse { project_id: string; total_assets: number; total_size_bytes: number; assets: AssetResponse[]; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#LoginResponse",
+      "label": "Interface",
+      "name": "LoginResponse",
+      "signature": "interface LoginResponse { token: string; accessToken: string; tokenType: 'bearer'; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#HealthStatusResponse",
+      "label": "Interface",
+      "name": "HealthStatusResponse",
+      "signature": "interface HealthStatusResponse { status: string; }"
+    },
+    {
+      "id": "/app/api/models/omega-api.models.ts#MessageResponse",
+      "label": "Interface",
+      "name": "MessageResponse",
+      "signature": "interface MessageResponse { message: string; }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

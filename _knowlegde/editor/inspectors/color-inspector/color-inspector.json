@@ -1,0 +1,54 @@
+{
+  "component": {
+    "name": "ColorInspector",
+    "source_path": "/editor/inspectors/color-inspector/color-inspector.ts",
+    "doc_path": "/editor/inspectors/color-inspector/color-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "ColorInspector is a specialized Angular component designed to manage and display a selected color value within an editor's inspection panel. It consumes a Color object via an @Input and emits updates through a colorChange @Output, coordinating interaction with ColorPickerComponent. Its core logic includes a textColor getter that uses the YIQ formula to ensure high-contrast text display against the background color."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/color-inspector/color-inspector.ts#ColorInspector",
+      "label": "Class",
+      "name": "ColorInspector",
+      "signature": "class ColorInspector implements OnInit"
+    },
+    {
+      "id": "/editor/inspectors/color-inspector/color-inspector.ts#textColor",
+      "label": "Getter",
+      "name": "textColor",
+      "signature": "get textColor(): string"
+    },
+    {
+      "id": "/editor/inspectors/color-inspector/color-inspector.ts#onColorChanged",
+      "label": "Method",
+      "name": "onColorChanged",
+      "signature": "onColorChanged($event: { rgba: { r: number; g: number; b: number; a: number }; hex: string; })"
+    },
+    {
+      "id": "/editor/inspectors/color-inspector/color-inspector.ts#updateLocalStrings",
+      "label": "Method",
+      "name": "updateLocalStrings",
+      "signature": "private updateLocalStrings(r: number, g: number, b: number, a: number): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/color-inspector/color-inspector.ts",
+      "target": "/src/app/components/color-picker/color-picker.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/color-inspector/color-inspector.ts",
+      "target": "/editor/inspectors/color-inspector/components/inpector-toggle-panel/inpector-toggle-panel.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

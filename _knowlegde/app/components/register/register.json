@@ -1,0 +1,96 @@
+{
+  "component": {
+    "name": "RegisterComponent",
+    "source_path": "/app/components/register/register.ts",
+    "doc_path": "/app/components/register/register.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "The RegisterComponent acts as the UI controller for user registration, managing the entire flow from form submission to post-registration redirection. It utilizes Angular's reactive forms to capture username, email, and password, validating inputs before submitting them to the AuthService. Upon successful registration, it triggers a 2-second delay before navigating the user to the login page, while robustly handling potential API errors."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/register/register.ts#RegisterComponent",
+      "label": "Class",
+      "name": "RegisterComponent",
+      "signature": "class RegisterComponent"
+    },
+    {
+      "id": "/app/components/register/register.ts#fb",
+      "label": "Variable",
+      "name": "fb",
+      "signature": "inject(FormBuilder)"
+    },
+    {
+      "id": "/app/components/register/register.ts#authService",
+      "label": "Variable",
+      "name": "authService",
+      "signature": "inject(AuthService)"
+    },
+    {
+      "id": "/app/components/register/register.ts#router",
+      "label": "Variable",
+      "name": "router",
+      "signature": "inject(Router)"
+    },
+    {
+      "id": "/app/components/register/register.ts#registerForm",
+      "label": "Variable",
+      "name": "registerForm",
+      "signature": "FormGroup"
+    },
+    {
+      "id": "/app/components/register/register.ts#registerError",
+      "label": "Variable",
+      "name": "registerError",
+      "signature": "signal<string | null>"
+    },
+    {
+      "id": "/app/components/register/register.ts#registerSuccess",
+      "label": "Variable",
+      "name": "registerSuccess",
+      "signature": "signal<string | null>"
+    },
+    {
+      "id": "/app/components/register/register.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/app/components/register/register.ts#register",
+      "label": "Method",
+      "name": "register",
+      "signature": "register()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/register/register.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/app/components/register/register.ts",
+      "target": "/app/components/register/register.html",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/register/register.ts",
+      "target": "/app/components/register/register.scss",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/register/register.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

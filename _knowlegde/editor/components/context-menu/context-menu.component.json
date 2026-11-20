@@ -1,0 +1,72 @@
+{
+  "component": {
+    "name": "ContextMenuComponent",
+    "source_path": "/editor/components/context-menu/context-menu.component.ts",
+    "doc_path": "/editor/components/context-menu/context-menu.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component manages the display and interaction lifecycle of a context menu within the editor UI. It consumes its state via a reactive 'model' input, which dictates visibility and position, and emits an 'actionExecuted' event upon user selection. It implements a crucial 'click-outside' dismissal mechanism by listening to global document events to ensure proper UI behavior."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#ContextMenuComponent",
+      "label": "Class",
+      "name": "ContextMenuComponent",
+      "signature": "class ContextMenuComponent"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#ContextMenuState",
+      "label": "Interface",
+      "name": "ContextMenuState",
+      "signature": "interface ContextMenuState { isVisible: boolean; x: number; y: number; node: FileNode | null; actions: ContextMenuAction[]; }"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#actionExecuted",
+      "label": "EventEmitter",
+      "name": "actionExecuted",
+      "signature": "actionExecuted = new EventEmitter<{ action: ContextMenuAction; node: FileNode }>()"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#state",
+      "label": "Variable",
+      "name": "state",
+      "signature": "readonly state = model.required<ContextMenuState>()"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#onDocumentClick",
+      "label": "Method",
+      "name": "onDocumentClick",
+      "signature": "onDocumentClick(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#onActionClick",
+      "label": "Method",
+      "name": "onActionClick",
+      "signature": "onActionClick(event: MouseEvent, action: ContextMenuAction): void"
+    },
+    {
+      "id": "/editor/components/context-menu/context-menu.component.ts#close",
+      "label": "Method",
+      "name": "close",
+      "signature": "private close(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/context-menu/context-menu.component.ts",
+      "target": "/editor/components/file-explorer/file-explorer.model.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/context-menu/context-menu.component.ts",
+      "target": "/common/common.module.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

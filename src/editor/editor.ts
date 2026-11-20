@@ -35,6 +35,7 @@ import {
   SceneEntity,
   JsonSerializedData,
   SceneManager,
+  Resources,
   Colors,
   Engine,
 } from "omega-game-engine";
@@ -144,35 +145,34 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
     sceneId: string,
     engine: Engine | null,
   ) {
-    if (!this.route.snapshot.queryParamMap.get("write-scene")) {
-      this.assetService
-        .getTextAssetContent(projectId, sceneId)
-        .subscribe((textContent) => {
-          try {
-            const sceneData = JSON.parse(textContent) as JsonSerializedData;
+    this.assetService
+      .getTextAssetContent(projectId, sceneId)
+      .subscribe((textContent) => {
+        try {
+          const sceneData = JSON.parse(textContent) as JsonSerializedData;
 
-            SceneManager.loadScene(this.gl, sceneData)
-              .then((scene) => {
-                this.editorService.loadScene(scene);
-                this.editorService.requestCanvasResize();
-              })
-              .catch((error) => {
-                debugger;
-                EngineLogger.error("Error loading the Scene", error);
-                this.loadingservice.hide();
-              });
-          } catch (error) {
-            EngineLogger.error("Error", error);
-            this.loadingservice.hide();
-          }
-        });
-    }
+          SceneManager.loadScene(this.gl, sceneData)
+            .then((scene) => {
+              this.editorService.loadScene(scene);
+              this.editorService.requestCanvasResize();
+            })
+            .catch((error) => {
+              EngineLogger.error("Error loading the Scene", error);
+              this.loadingservice.hide();
+            });
+        } catch (error) {
+          EngineLogger.error("Error", error);
+          this.loadingservice.hide();
+        }
+      });
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
     this.editorService.gameEngine?.destroy();
+    // Free the textures/meshes loaded for this view's WebGL context.
+    if (this.gl) Resources.releaseContext(this.gl);
   }
 
   onGlContextCreated(gl: WebGL2RenderingContext): void {

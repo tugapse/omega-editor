@@ -1,0 +1,93 @@
+{
+  "component": {
+    "name": "EditorVectorGizmoComponent",
+    "source_path": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts",
+    "doc_path": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorVectorGizmoComponent provides an interactive UI gizmo rendered on an HTML Canvas for manipulating 3D vector properties (X, Y, Z) within an editor inspector. It supports two interaction modes: 'trackball' for X/Y manipulation via mouse drag, and 'roll' for Z rotation based on mouse angle change. The component translates raw mouse events into structured data changes emitted via the valueChange EventEmitter, acting as a presentation layer for data model updates."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#EditorVectorGizmoComponent",
+      "label": "Class",
+      "name": "EditorVectorGizmoComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#x",
+      "label": "Input",
+      "name": "x",
+      "signature": "x: number"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#y",
+      "label": "Input",
+      "name": "y",
+      "signature": "y: number"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#z",
+      "label": "Input",
+      "name": "z",
+      "signature": "z: number"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#valueChange",
+      "label": "Output",
+      "name": "valueChange",
+      "signature": "valueChange = new EventEmitter<{ index: number, value: number }>()"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#ngOnChanges",
+      "label": "Method",
+      "name": "ngOnChanges",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#onMouseDown",
+      "label": "Method",
+      "name": "onMouseDown",
+      "signature": "onMouseDown(event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#onMouseMove",
+      "label": "Method",
+      "name": "onMouseMove",
+      "signature": "@HostListener('window:mousemove', ['$event']) onMouseMove(event: MouseEvent)"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "@HostListener('window:mouseup') onMouseUp()"
+    },
+    {
+      "id": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts#drawGizmo",
+      "label": "Method",
+      "name": "drawGizmo",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts",
+      "target": "/editor/components/inspector-components/vector-inspector/component/vector-gizmo.ts",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

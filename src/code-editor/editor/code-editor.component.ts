@@ -22,7 +22,7 @@ import {
 import { EditorStateService } from "@editor/services/editor-state.service";
 import { Subscription } from "rxjs";
 import { LoadingService } from "src/app/services/loading.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MonacoService } from "../monaco.service";
 import { WorkspaceComponent } from "@editor/components/workspace/workspace";
 
@@ -57,6 +57,7 @@ export class CodeWorkspaceComponent
   private cdr = inject(ChangeDetectorRef);
   private loadingService = inject(LoadingService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   private subscriptions = new Subscription();
   public projectId!: string;
@@ -118,6 +119,20 @@ export class CodeWorkspaceComponent
 
   ngOnInit(): void {
     this.loadingService.show();
+
+    // Opened directly at /code/:project (e.g. from the project page): the
+    // active project is otherwise only set by the scene editor.
+    const routeProjectId = this.route.snapshot.paramMap.get("project");
+    const active = this.editorState.activeProject();
+    if (routeProjectId && active?.id !== routeProjectId) {
+      this.editorState.setActiveProject({
+        id: routeProjectId,
+        scene: "",
+        config: {},
+      });
+    } else if (!routeProjectId && !active?.id) {
+      this.loadingService.hide();
+    }
   }
 
   ngAfterViewInit(): void {

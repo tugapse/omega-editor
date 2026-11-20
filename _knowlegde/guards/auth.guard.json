@@ -1,0 +1,43 @@
+{
+  "component": {
+    "name": "authGuard",
+    "source_path": "/guards/auth.guard.ts",
+    "doc_path": "/guards/auth.guard.json",
+    "type": "utility"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component implements an Angular CanActivateFn guard responsible for enforcing route-level authentication. It injects AuthService to check the user's login status via isLoggedIn(). If the user is authenticated, navigation proceeds; otherwise, it programmatically redirects the user to the '/login' route using the Router service. It acts as a critical gatekeeper for protected application routes."
+  },
+  "graph_nodes": [
+    {
+      "id": "/guards/auth.guard.ts#authGuard",
+      "label": "Function",
+      "name": "authGuard",
+      "signature": "export const authGuard: CanActivateFn = (route, state): boolean | UrlTree =>"
+    },
+    {
+      "id": "/guards/auth.guard.ts#authService",
+      "label": "Variable",
+      "name": "authService",
+      "signature": "const authService = inject(AuthService);"
+    },
+    {
+      "id": "/guards/auth.guard.ts#router",
+      "label": "Variable",
+      "name": "router",
+      "signature": "const router = inject(Router);"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/guards/auth.guard.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

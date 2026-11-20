@@ -1,0 +1,81 @@
+{
+  "component": {
+    "name": "WindowConfig",
+    "source_path": "/editor/interfaces/window.ts",
+    "doc_path": "/editor/interfaces/window.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This interface, WindowConfig, serves as the definitive data contract for configuring an editor window within the application. It encapsulates all necessary metadata required for window instantiation, including a unique ID, display title, icon name, and footer content. It dictates the structure for passing standardized properties, such as the component type and associated input data, to the window management system."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/interfaces/window.ts#WindowConfig",
+      "label": "Interface",
+      "name": "WindowConfig",
+      "signature": "interface WindowConfig {"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#id",
+      "label": "Variable",
+      "name": "id",
+      "signature": "id: string"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#title",
+      "label": "Variable",
+      "name": "title",
+      "signature": "title: string"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#iconName",
+      "label": "Variable",
+      "name": "iconName",
+      "signature": "iconName: string"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#footer",
+      "label": "Variable",
+      "name": "footer",
+      "signature": "footer: string"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#isMaximized",
+      "label": "Variable",
+      "name": "isMaximized",
+      "signature": "isMaximized?: boolean"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": "component: Type<any>"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#inputs",
+      "label": "Variable",
+      "name": "inputs",
+      "signature": "inputs?: Record<string, unknown>"
+    },
+    {
+      "id": "/editor/interfaces/window.ts#zIndex",
+      "label": "Variable",
+      "name": "zIndex",
+      "signature": "zIndex: number"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/interfaces/window.ts",
+      "target": "/editor/interfaces/window.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": false
+  }
+}

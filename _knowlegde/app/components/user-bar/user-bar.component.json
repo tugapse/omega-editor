@@ -1,0 +1,75 @@
+{
+  "component": {
+    "name": "UserBarComponent",
+    "source_path": "/app/components/user-bar/user-bar.component.ts",
+    "doc_path": "/app/components/user-bar/user-bar.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "UserBarComponent is a presentation layer component responsible for displaying authenticated user information within the application's user bar. It manages the user session state by interacting with AuthService to check login status and UserService to fetch user details upon initialization. It provides public methods to check login status and initiate a controlled logout process, which includes session invalidation and navigation to the login route."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/user-bar/user-bar.component.ts#UserBarComponent",
+      "label": "Class",
+      "name": "UserBarComponent",
+      "signature": "class UserBarComponent implements OnInit"
+    },
+    {
+      "id": "/app/components/user-bar/user-bar.component.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/app/components/user-bar/user-bar.component.ts#isLoggedIn",
+      "label": "Method",
+      "name": "isLoggedIn",
+      "signature": "isLoggedIn(): boolean"
+    },
+    {
+      "id": "/app/components/user-bar/user-bar.component.ts#onLogout",
+      "label": "Method",
+      "name": "onLogout",
+      "signature": "onLogout(): void"
+    },
+    {
+      "id": "/app/components/user-bar/user-bar.component.ts#user",
+      "label": "Variable",
+      "name": "user",
+      "signature": "public user: UserResponse | undefined;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/user-bar/user-bar.component.ts",
+      "target": "/app/api/services/auth.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/user-bar/user-bar.component.ts",
+      "target": "/app/api/services/user.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/user-bar/user-bar.component.ts",
+      "target": "/app/api/models/omega-api.models.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/user-bar/user-bar.component.ts",
+      "target": "/app/components/icon/icon.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/user-bar/user-bar.component.ts",
+      "target": "/app/components/theme-selector/theme-selector.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

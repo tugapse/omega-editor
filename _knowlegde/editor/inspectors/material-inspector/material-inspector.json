@@ -1,0 +1,75 @@
+{
+  "component": {
+    "name": "MaterialInspector",
+    "source_path": "/editor/inspectors/material-inspector/material-inspector.ts",
+    "doc_path": "/editor/inspectors/material-inspector/material-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "MaterialInspector is a specialized UI component extending ObjectInspector, designed to provide a dedicated inspection panel for editing ColorMaterial properties within the editor. It consumes a ColorMaterial object via its @Input() setter, which triggers property loading and state initialization. The component separates material properties into texture-based and general categories before populating the internal property list for user interaction."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/material-inspector/material-inspector.ts#MaterialInspector",
+      "label": "Class",
+      "name": "MaterialInspector",
+      "signature": "class MaterialInspector extends ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/material-inspector/material-inspector.ts#material",
+      "label": "Setter",
+      "name": "material",
+      "signature": "set material(value: ColorMaterial)"
+    },
+    {
+      "id": "/editor/inspectors/material-inspector/material-inspector.ts#_material",
+      "label": "Variable",
+      "name": "_material",
+      "signature": "!"
+    },
+    {
+      "id": "/editor/inspectors/material-inspector/material-inspector.ts#loadProperties",
+      "label": "Method",
+      "name": "loadProperties",
+      "signature": "protected override loadProperties(): void"
+    },
+    {
+      "id": "/editor/inspectors/material-inspector/material-inspector.ts#onDefaultChanged",
+      "label": "Method",
+      "name": "onDefaultChanged",
+      "signature": "onDefaultChanged(item: ITargetProperty, value: string | number | boolean | NumberRange | Color)"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "extends"
+    },
+    {
+      "source": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/material-inspector/material-inspector.ts",
+      "target": "/editor/inspectors/texture-inspector/texture-inspector.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

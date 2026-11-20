@@ -1,0 +1,31 @@
+{
+  "component": {
+    "name": "synth.types",
+    "source_path": "/editor/models/synth.types.ts",
+    "doc_path": "/editor/models/synth.types.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the core data structures for musical synthesis parameters and note events. It establishes the blueprint for SynthPreset, encapsulating sonic characteristics like waveform, frequency, and modulation depths. SynthNote extends this by adding temporal scheduling data (startTime) and positional context (trackIndex). These interfaces serve as the foundational, type-safe data model for the audio engine and sequencer components."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/models/synth.types.ts#SynthPreset",
+      "label": "Interface",
+      "name": "SynthPreset",
+      "signature": "interface SynthPreset {"
+    },
+    {
+      "id": "/editor/models/synth.types.ts#SynthNote",
+      "label": "Interface",
+      "name": "SynthNote",
+      "signature": "interface SynthNote extends SynthPreset {"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

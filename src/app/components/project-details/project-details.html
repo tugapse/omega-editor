@@ -2,7 +2,10 @@
   <div class="project-details">
     <div class="project-header">
       <h2>{{ editableProject.name }}</h2>
-      <button [routerLink]="['/editor', editableProject.id]" class="btn btn-secondary">Go to Editor</button>
+      <div class="header-actions">
+        <button [routerLink]="['/code', editableProject.id]" class="btn btn-secondary">Code Editor</button>
+        <button (click)="goToEditor()" [disabled]="openingEditor" class="btn btn-secondary">Go to Editor</button>
+      </div>
     </div>
 
     <div class="details-grid">
@@ -12,7 +15,7 @@
           <div class="meta-item"><strong>ID:</strong> <span>{{ editableProject.id }}</span></div>
           <div class="meta-item"><strong>Slug:</strong> <span>{{ editableProject.slug }}</span></div>
           <div class="meta-item"><strong>Status:</strong> <span class="status-badge status-{{ editableProject.status }}">{{ editableProject.status }}</span></div>
-          <div class="meta-item"><strong>Last Modified:</strong> <span>{{ editableProject.updated_at | date: 'medium' }}</span></div>
+          <div class="meta-item"><strong>Last Modified:</strong> <span>{{ editableProject.updatedAt | date: 'medium' }}</span></div>
         </div>
       </div>
 

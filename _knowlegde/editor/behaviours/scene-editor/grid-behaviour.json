@@ -1,0 +1,85 @@
+{
+  "component": {
+    "name": "EditorGridBehaviour",
+    "source_path": "/editor/behaviours/scene-editor/grid-behaviour.ts",
+    "doc_path": "/editor/behaviours/scene-editor/grid-behaviour.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "EditorGridBehaviour is a specialized RendererBehaviour responsible for rendering a persistent, structured grid overlay within the scene editor. It utilizes a custom shader and mesh pipeline to draw horizontal and vertical lines across the rendering surface. Its primary function is to provide users with a spatial reference system, operating in the RenderLayer.POST_SCENE to ensure visibility over scene geometry."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#EditorGridBehaviour",
+      "label": "Class",
+      "name": "EditorGridBehaviour",
+      "signature": "constructor(gl: WebGL2RenderingContext)"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#gridColor",
+      "label": "Variable",
+      "name": "gridColor",
+      "signature": "Color"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#gridLineWidt",
+      "label": "Variable",
+      "name": "gridLineWidt",
+      "signature": "number"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#createMesh",
+      "label": "Method",
+      "name": "createMesh",
+      "signature": "protected createMesh(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#createGridVertices",
+      "label": "Method",
+      "name": "createGridVertices",
+      "signature": "protected createGridVertices(): vec3[]"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#draw",
+      "label": "Method",
+      "name": "draw",
+      "signature": "override draw(): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#drawVerticalLines",
+      "label": "Method",
+      "name": "drawVerticalLines",
+      "signature": "protected drawVerticalLines(count: number = 10): void"
+    },
+    {
+      "id": "/editor/behaviours/scene-editor/grid-behaviour.ts#drawHorizontalLines",
+      "label": "Method",
+      "name": "drawHorizontalLines",
+      "signature": "protected drawHorizontalLines(count: number = 10): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/behaviours/scene-editor/grid-behaviour.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/grid-behaviour.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/editor/behaviours/scene-editor/grid-behaviour.ts",
+      "target": "/omega-game-engine.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix"
+    ],
+    "has_side_effects": true
+  }
+}

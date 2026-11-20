@@ -1,0 +1,86 @@
+{
+  "component": {
+    "name": "TopBar",
+    "source_path": "/editor/components/top-bar/top-bar.spec.ts",
+    "doc_path": "/editor/components/top-bar/top-bar.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as a unit test suite for the TopBar component, validating its basic instantiation and structure within an Angular testing environment. It configures the TestBed to compile the necessary modules and then creates an instance of TopBar. The primary function is to assert that the component instance is successfully created and truthy, acting as a quality gate for component rendering."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#TopBar",
+      "label": "Class",
+      "name": "TopBar",
+      "signature": "N/A"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe(description: string, fn: () => void)"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(fn: () => Promise<void>)"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it(description: string, fn: () => void)"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#TestBed",
+      "label": "Class",
+      "name": "TestBed",
+      "signature": "N/A"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#configureTestingModule",
+      "label": "Method",
+      "name": "configureTestingModule",
+      "signature": "configureTestingModule(options: any)"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#compileComponents",
+      "label": "Method",
+      "name": "compileComponents",
+      "signature": "compileComponents(): Promise<void>"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#createComponent",
+      "label": "Method",
+      "name": "createComponent",
+      "signature": "createComponent(): ComponentFixture<TopBar>"
+    },
+    {
+      "id": "/editor/components/top-bar/top-bar.spec.ts#detectChanges",
+      "label": "Method",
+      "name": "detectChanges",
+      "signature": "detectChanges(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/top-bar/top-bar.spec.ts",
+      "target": "/editor/components/top-bar/top-bar.spec.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/top-bar/top-bar.spec.ts",
+      "target": "/editor/components/top-bar/top-bar.spec.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing"
+    ],
+    "has_side_effects": false
+  }
+}

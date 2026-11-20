@@ -1,0 +1,152 @@
+{
+  "component": {
+    "name": "DragHandleDirective",
+    "source_path": "/editor/directives/mouse-drag.directive.ts",
+    "doc_path": "/editor/directives/mouse-drag.directive.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "DragHandleDirective implements low-level drag-and-drop functionality by listening to mouse events on a host element. It translates raw DOM events into structured DragEventData, applying movement restrictions based on the configured dragMode ('horizontal', 'vertical', or 'both'). Architecturally, it acts as a bridge, emitting events that allow parent components to manage the state of a larger draggable element, while managing global document listeners for precise tracking."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#DragMode",
+      "label": "Type",
+      "name": "DragMode",
+      "signature": "type DragMode = 'horizontal' | 'vertical' | 'both'"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#DragEventData",
+      "label": "Interface",
+      "name": "DragEventData",
+      "signature": "interface DragEventData { deltaX: number; deltaY: number; distanceX: number; distanceY: number; }"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#DragHandleDirective",
+      "label": "Class",
+      "name": "DragHandleDirective",
+      "signature": "class DragHandleDirective implements OnDestroy"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#movementThreshold",
+      "label": "Variable",
+      "name": "movementThreshold",
+      "signature": "@Input() movementThreshold: number = 0;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#scale",
+      "label": "Variable",
+      "name": "scale",
+      "signature": "@Input() scale: number = 0.8;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#dragMode",
+      "label": "Variable",
+      "name": "dragMode",
+      "signature": "@Input() dragMode: DragMode = 'horizontal';"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#dragCursor",
+      "label": "Variable",
+      "name": "dragCursor",
+      "signature": "@Input() dragCursor: string = 'grabbing';"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#drag",
+      "label": "Output",
+      "name": "drag",
+      "signature": "@Output() drag = new EventEmitter<DragEventData>();"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#isDragging",
+      "label": "Variable",
+      "name": "isDragging",
+      "signature": "private isDragging = false;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#startX",
+      "label": "Variable",
+      "name": "startX",
+      "signature": "private startX = 0;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#startY",
+      "label": "Variable",
+      "name": "startY",
+      "signature": "private startY = 0;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#currentSpanRef",
+      "label": "Variable",
+      "name": "currentSpanRef",
+      "signature": "private currentSpanRef: HTMLElement | null = null;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#unlistenMouseMove",
+      "label": "Variable",
+      "name": "unlistenMouseMove",
+      "signature": "private unlistenMouseMove: (() => void) | null = null;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#unlistenMouseUp",
+      "label": "Variable",
+      "name": "unlistenMouseUp",
+      "signature": "private unlistenMouseUp: (() => void) | null = null;"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#originalCursor",
+      "label": "Variable",
+      "name": "originalCursor",
+      "signature": "private originalCursor: string = '';"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private el: ElementRef, private renderer: Renderer2) {}"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#onMouseDown",
+      "label": "Method",
+      "name": "onMouseDown",
+      "signature": "@HostListener('mousedown', ['$event']) onMouseDown(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#onMouseMove",
+      "label": "Method",
+      "name": "onMouseMove",
+      "signature": "onMouseMove(event: MouseEvent): void"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#onMouseUp",
+      "label": "Method",
+      "name": "onMouseUp",
+      "signature": "onMouseUp(): void"
+    },
+    {
+      "id": "/editor/directives/mouse-drag.directive.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": "ngOnDestroy(): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/directives/mouse-drag.directive.ts",
+      "target": "/editor/directives/mouse-drag.directive.ts",
+      "relation": "implements"
+    },
+    {
+      "source": "/editor/directives/mouse-drag.directive.ts",
+      "target": "/editor/directives/mouse-drag.directive.ts",
+      "relation": "uses"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

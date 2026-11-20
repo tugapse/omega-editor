@@ -1,0 +1,59 @@
+{
+  "component": {
+    "name": "Toggle",
+    "source_path": "/app/components/toggle/toggle.spec.ts",
+    "doc_path": "/app/components/toggle/toggle.spec.json",
+    "type": "script"
+  },
+  "vector_memory": {
+    "semantic_summary": "This script serves as the unit test suite for the Toggle component, verifying its correct initialization within an Angular testing environment. It configures the testing module, creates a ComponentFixture, and triggers change detection to ensure the component instance is successfully created. Its primary role is contract verification, not production logic execution."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/toggle/toggle.spec.ts#describe",
+      "label": "Function",
+      "name": "describe",
+      "signature": "describe('Toggle', () => {})"
+    },
+    {
+      "id": "/app/components/toggle/toggle.spec.ts#beforeEach",
+      "label": "Function",
+      "name": "beforeEach",
+      "signature": "beforeEach(async () => {})"
+    },
+    {
+      "id": "/app/components/toggle/toggle.spec.ts#it",
+      "label": "Function",
+      "name": "it",
+      "signature": "it('should create', () => {})"
+    },
+    {
+      "id": "/app/components/toggle/toggle.spec.ts#component",
+      "label": "Variable",
+      "name": "component",
+      "signature": "let component: Toggle;"
+    },
+    {
+      "id": "/app/components/toggle/toggle.spec.ts#fixture",
+      "label": "Variable",
+      "name": "fixture",
+      "signature": "let fixture: ComponentFixture<Toggle>;"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/toggle/toggle.spec.ts",
+      "target": "/app/components/toggle/toggle.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core/testing",
+      "TestBed",
+      "ComponentFixture"
+    ],
+    "has_side_effects": false
+  }
+}

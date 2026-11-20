@@ -1,0 +1,83 @@
+{
+  "component": {
+    "name": "UserService",
+    "source_path": "/app/api/services/user.service.ts",
+    "doc_path": "/app/api/services/user.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "UserService encapsulates all business logic for interacting with the authenticated user's profile and preferences via the backend API. It acts as a dedicated service layer, abstracting HTTP requests by utilizing an injected HttpClient. Its primary responsibilities include retrieving and updating user data, handling both profile details and specific preferences endpoints. It relies on RxJS Observables for asynchronous data flow."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/services/user.service.ts#UserService",
+      "label": "Class",
+      "name": "UserService",
+      "signature": "class UserService"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#http",
+      "label": "Variable",
+      "name": "http",
+      "signature": "private readonly http: HttpClient"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#apiUrl",
+      "label": "Variable",
+      "name": "apiUrl",
+      "signature": "private readonly apiUrl: API_URL"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#userUrl",
+      "label": "Variable",
+      "name": "userUrl",
+      "signature": "private readonly userUrl: string"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#getMe",
+      "label": "Method",
+      "name": "getMe",
+      "signature": "getMe(): Observable<UserResponse>"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#updateMe",
+      "label": "Method",
+      "name": "updateMe",
+      "signature": "updateMe(payload: UpdateUserRequest): Observable<UserResponse>"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#getPreferences",
+      "label": "Method",
+      "name": "getPreferences",
+      "signature": "getPreferences(): Observable<UserPreferences>"
+    },
+    {
+      "id": "/app/api/services/user.service.ts#updatePreferences",
+      "label": "Method",
+      "name": "updatePreferences",
+      "signature": "updatePreferences(payload: UserPreferences): Observable<UserPreferences>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/services/user.service.ts",
+      "target": "/app/api/services/user.service.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/api/services/user.service.ts",
+      "target": "/app/api/services/user.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "API_URL"
+    ],
+    "external_dependencies": [
+      "@angular/common/http",
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

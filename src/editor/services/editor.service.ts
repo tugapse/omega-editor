@@ -1,5 +1,6 @@
 import { EventEmitter, inject, Injectable } from "@angular/core";
 import {
+  DependencyManager,
   Camera,
   CameraFlyBehaviour,
   CanvasViewport,
@@ -10,13 +11,16 @@ import { BehaviorSubject } from "rxjs";
 import { GizmoMode } from "../behaviours/scene-editor/gizmo-mode.enum";
 import { TransformSpace } from "../behaviours/scene-editor/transform-space.enum";
 import { EditorStateService } from "./editor-state.service";
+import { EditorResourceLoader } from "./editor-resource-loader.service";
 import { API_URL } from "src/app/api/api-url.token";
+import { AuthService } from "src/app/api/services/auth.service";
 
 @Injectable({ providedIn: "root" })
 export class EditorService {
   private _gameEngine!: Engine | null;
   private editorStateService: EditorStateService = inject(EditorStateService);
   apiUrl = inject(API_URL);
+  private authService = inject(AuthService);
 
   public onSceneLoaded = new EventEmitter<Scene>();
   public onScenePlay = new EventEmitter<Scene>();
@@ -71,6 +75,12 @@ export class EditorService {
   private currentScene!: Scene;
   private _camera!: Camera;
   constructor() {
+    // Register the engine's core classes up front. Loading a saved scene
+    // needs them, and they were otherwise only registered when a project's
+    // compiled bundle loaded, so projects without scripts could not load scenes.
+    new DependencyManager().registerDependencies();
+    // Lets the engine load project files stored as asset://<id> (with the JWT).
+    inject(EditorResourceLoader).register();
     this.initializeEditorCamera();
     this.onRenderingContextCreated.subscribe(
       this.onGlContextCreated.bind(this),
@@ -151,41 +161,45 @@ export class EditorService {
       ? this.apiUrl
       : `${this.apiUrl}/api`;
 
-    const authToken =
-      localStorage.getItem("omega-auth-token") ||
-      sessionStorage.getItem("token") ||
-      "";
-    const bundleUrl = `${baseGateway}/projects/${project.id}/code/bundle?token=${encodeURIComponent(authToken)}&t=${new Date().getTime()}`;
-
-    try {
-      const gameModule = await import(/* @vite-ignore */ bundleUrl);
-
-      if (!gameModule.Game) {
-        console.error(
-          "Linker error: The module loaded, but failed to locate an exported 'Game' class.",
-        );
-        return null;
-      }
-
-      this._gameEngine = new gameModule.Game();
-      if (this._gameEngine && this._gameEngine instanceof Engine) {
-        this._gameEngine.registerDependencies();
-        console.log(
-          `🚀 Successfully loaded and booted engine instance for project: ${project.id}`,
-        );
-        return this._gameEngine;
-      } else {
-        console.error(
-          `Linker error: The module loaded, but the exported 'Game' class is not an instance of Engine.`,
-        );
-        return null;
-      }
-    } catch (error) {
-      console.error(
-        `CRITICAL: Dynamic runtime execution injection fault for project ${project.id}:`,
-        error,
-      );
+    // Fetch with the JWT in the header (never in the URL), then import the
+    // code from a blob URL. 404 means the project has no compiled scripts yet.
+    const response = await fetch(`${baseGateway}/projects/${project.id}/code/bundle`, {
+      headers: { Authorization: `Bearer ${this.authService.getToken() ?? ""}` },
+      cache: "no-store",
+    });
+    if (response.status === 404) {
+      console.info(`Project ${project.id} has no compiled scripts yet.`);
       return null;
+    }
+    if (!response.ok) {
+      console.error(`Could not load the scripts of project ${project.id} (HTTP ${response.status}).`);
+      return null;
+    }
+
+    const moduleUrl = URL.createObjectURL(
+      new Blob([await response.text()], { type: "text/javascript" }),
+    );
+    try {
+      const gameModule = await import(/* @vite-ignore */ moduleUrl);
+      if (!gameModule.Game) {
+        console.error("The project's scripts don't export a 'Game' class.");
+        return null;
+      }
+
+      const engine = new gameModule.Game();
+      if (!(engine instanceof Engine)) {
+        console.error("The project's exported 'Game' class does not extend Engine.");
+        return null;
+      }
+
+      engine.registerDependencies();
+      this._gameEngine = engine;
+      return engine;
+    } catch (error) {
+      console.error(`The scripts of project ${project.id} failed to run:`, error);
+      return null;
+    } finally {
+      URL.revokeObjectURL(moduleUrl);
     }
   }
 }

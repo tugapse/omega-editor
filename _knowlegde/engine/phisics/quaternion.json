@@ -1,0 +1,237 @@
+{
+  "component": {
+    "name": "Quaternion",
+    "source_path": "/engine/phisics/quaternion.ts",
+    "doc_path": "/engine/phisics/quaternion.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The Quaternion class provides a robust, object-oriented wrapper around the gl-matrix quaternion type for 3D rotation representation. It encapsulates core mathematical operations such as multiplication, normalization, and interpolation (LERP/SLERP). Architecturally, it functions as a core data model within the physics engine, supporting state persistence via JsonSerializable interfaces."
+  },
+  "graph_nodes": [
+    {
+      "id": "/engine/phisics/quaternion.ts#Quaternion",
+      "label": "Class",
+      "name": "Quaternion",
+      "signature": "constructor(x: number = 0, y: number = 0, z: number = 0, w: number = 1)"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#internalQuat",
+      "label": "Variable",
+      "name": "internalQuat",
+      "signature": "get internalQuat(): quat"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#x",
+      "label": "Property",
+      "name": "x",
+      "signature": "get x(): number; set x(value: number)"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#y",
+      "label": "Property",
+      "name": "y",
+      "signature": "get y(): number; set y(value: number)"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#z",
+      "label": "Property",
+      "name": "z",
+      "signature": "get z(): number; set z(value: number)"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#w",
+      "label": "Property",
+      "name": "w",
+      "signature": "get w(): number; set w(value: number)"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#Instanciate",
+      "label": "Method",
+      "name": "Instanciate",
+      "signature": "static Instanciate(): Quaternion"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#fromAxisAngle",
+      "label": "Method",
+      "name": "fromAxisAngle",
+      "signature": "static fromAxisAngle(axis: Vector3, angle: number): Quaternion"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#fromEuler",
+      "label": "Method",
+      "name": "fromEuler",
+      "signature": "static fromEuler(x: number, y: number, z: number): Quaternion"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#fromMat3",
+      "label": "Method",
+      "name": "fromMat3",
+      "signature": "static fromMat3(m: mat3): Quaternion"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#identity",
+      "label": "Method",
+      "name": "identity",
+      "signature": "identity(): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#set",
+      "label": "Method",
+      "name": "set",
+      "signature": "set(x: number, y: number, z: number, w: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#copy",
+      "label": "Method",
+      "name": "copy",
+      "signature": "copy(q: Quaternion): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#clone",
+      "label": "Method",
+      "name": "clone",
+      "signature": "clone(): Quaternion"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#setAxisAngle",
+      "label": "Method",
+      "name": "setAxisAngle",
+      "signature": "setAxisAngle(axis: Vector3, angle: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#getAxisAngle",
+      "label": "Method",
+      "name": "getAxisAngle",
+      "signature": "getAxisAngle(axis: Vector3): number"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#add",
+      "label": "Method",
+      "name": "add",
+      "signature": "add(q: Quaternion): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#multiply",
+      "label": "Method",
+      "name": "multiply",
+      "signature": "multiply(q: Quaternion): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#scale",
+      "label": "Method",
+      "name": "scale",
+      "signature": "scale(s: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#dot",
+      "label": "Method",
+      "name": "dot",
+      "signature": "dot(q: Quaternion): number"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#lerp",
+      "label": "Method",
+      "name": "lerp",
+      "signature": "lerp(to: Quaternion, t: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#slerp",
+      "label": "Method",
+      "name": "slerp",
+      "signature": "slerp(to: Quaternion, t: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#invert",
+      "label": "Method",
+      "name": "invert",
+      "signature": "invert(): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#conjugate",
+      "label": "Method",
+      "name": "conjugate",
+      "signature": "conjugate(): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#length",
+      "label": "Method",
+      "name": "length",
+      "signature": "length(): number"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#squaredLength",
+      "label": "Method",
+      "name": "squaredLength",
+      "signature": "squaredLength(): number"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#normalize",
+      "label": "Method",
+      "name": "normalize",
+      "signature": "normalize(): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#rotateX",
+      "label": "Method",
+      "name": "rotateX",
+      "signature": "rotateX(rad: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#rotateY",
+      "label": "Method",
+      "name": "rotateY",
+      "signature": "rotateY(rad: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#rotateZ",
+      "label": "Method",
+      "name": "rotateZ",
+      "signature": "rotateZ(rad: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#fromEuler",
+      "label": "Method",
+      "name": "fromEuler",
+      "signature": "fromEuler(x: number, y: number, z: number): this"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#toString",
+      "label": "Method",
+      "name": "toString",
+      "signature": "toString(): string"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#fromJson",
+      "label": "Method",
+      "name": "fromJson",
+      "signature": "fromJson(jsonObject: JsonSerializedData): void"
+    },
+    {
+      "id": "/engine/phisics/quaternion.ts#toJsonObject",
+      "label": "Method",
+      "name": "toJsonObject",
+      "signature": "toJsonObject(): JsonSerializedData"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/engine/phisics/quaternion.ts",
+      "target": "/engine/phisics/vector3.md",
+      "relation": "depends_on"
+    },
+    {
+      "source": "/engine/phisics/quaternion.ts",
+      "target": "/engine/phisics/quaternion.json",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "gl-matrix",
+      "omega-game-engine"
+    ],
+    "has_side_effects": false
+  }
+}

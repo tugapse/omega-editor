@@ -1,0 +1,75 @@
+{
+  "component": {
+    "name": "InspectorHeader",
+    "source_path": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+    "doc_path": "/editor/components/inspector-components/inspector-header/inspector-header.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "InspectorHeader is a presentation layer UI component responsible for rendering the header of the Inspector panel. It consumes the selected SceneEntity and windowTitle via @Input() properties. Its primary function is to manage panel dismissal by coordinating state changes through EditorService and SceneTreeService, ensuring UI consistency upon closing."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/inspector-header/inspector-header.ts#InspectorHeader",
+      "label": "Class",
+      "name": "InspectorHeader",
+      "signature": "class InspectorHeader"
+    },
+    {
+      "id": "/editor/components/inspector-components/inspector-header/inspector-header.ts#entity",
+      "label": "Variable",
+      "name": "entity",
+      "signature": "@Input() entity!: SceneEntity | null"
+    },
+    {
+      "id": "/editor/components/inspector-components/inspector-header/inspector-header.ts#windowTitle",
+      "label": "Variable",
+      "name": "windowTitle",
+      "signature": "@Input() windowTitle = 'Inspector'"
+    },
+    {
+      "id": "/editor/components/inspector-components/inspector-header/inspector-header.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor(private readonly editorService: EditorService, private readonly sceneTreeService: SceneTreeService)"
+    },
+    {
+      "id": "/editor/components/inspector-components/inspector-header/inspector-header.ts#onClose",
+      "label": "Method",
+      "name": "onClose",
+      "signature": "onClose()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+      "target": "/common/common.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+      "target": "/editor/services/editor.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+      "target": "/editor/services/scene-tree.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+      "target": "/components/icon/icon.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/inspector-components/inspector-header/inspector-header.ts",
+      "target": "/components/toggle/toggle.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

@@ -5,8 +5,3 @@ export const EditorSettings = {
     gridColor: Colors.silver,
   },
 };
-
-export const APISettings = {
-  apiHost: 'http://localhost:5000/api/',
-  apiVersion: 'v1',
-};

@@ -1,0 +1,53 @@
+{
+  "component": {
+    "name": "LoadingOverlayComponent",
+    "source_path": "/app/components/loading/loading.component.ts",
+    "doc_path": "/app/components/loading/loading.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component, LoadingOverlayComponent, serves as a presentation layer UI element responsible for displaying a visual overlay during asynchronous operations. It controls its rendering state entirely via the required 'visible' input signal. It provides optional custom status text through the 'message' input, ensuring immediate user feedback while resources load."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/components/loading/loading.component.ts#LoadingOverlayComponent",
+      "label": "Class",
+      "name": "LoadingOverlayComponent",
+      "signature": ""
+    },
+    {
+      "id": "/app/components/loading/loading.component.ts#visible",
+      "label": "Variable",
+      "name": "visible",
+      "signature": "input.required<boolean>()"
+    },
+    {
+      "id": "/app/components/loading/loading.component.ts#message",
+      "label": "Variable",
+      "name": "message",
+      "signature": "input<string>('Loading Workspace Environment...')"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/components/loading/loading.component.ts",
+      "target": "/app/components/loading/loading.component.html",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/loading/loading.component.ts",
+      "target": "/app/components/loading/loading.component.scss",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/components/loading/loading.component.ts",
+      "target": "/angular/common.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "component": {
+    "name": "SoundDesignerComponent",
+    "source_path": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts",
+    "doc_path": "/editor/components/sound-mixer/sound-designer/sound-designer.component.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component serves as a complex UI controller for designing and tweaking synthesizer sound presets. It manages the mutable state of a SynthPreset draft using Angular Signals, synchronizing with external inputs via ngOnChanges. Its primary role is to aggregate user interactions from various controls (sliders, selectors) and emit finalized or previewed SynthPreset objects through dedicated @Output events."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#SoundDesignerComponent",
+      "label": "Class",
+      "name": "SoundDesignerComponent",
+      "signature": "class SoundDesignerComponent implements OnChanges"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#preset",
+      "label": "Input",
+      "name": "preset",
+      "signature": "SynthPreset"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#title",
+      "label": "Input",
+      "name": "title",
+      "signature": "string"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#isEditingTimelineNote",
+      "label": "Input",
+      "name": "isEditingTimelineNote",
+      "signature": "boolean"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#isEditingPreset",
+      "label": "Input",
+      "name": "isEditingPreset",
+      "signature": "boolean"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#presetColors",
+      "label": "Input",
+      "name": "presetColors",
+      "signature": "string[]"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#save",
+      "label": "Output",
+      "name": "save",
+      "signature": "EventEmitter<SynthPreset>"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#close",
+      "label": "Output",
+      "name": "close",
+      "signature": "EventEmitter<void>"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#preview",
+      "label": "Output",
+      "name": "preview",
+      "signature": "EventEmitter<SynthPreset>"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#designerDraft",
+      "label": "Signal",
+      "name": "designerDraft",
+      "signature": "signal<SynthPreset>"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#ngOnChanges",
+      "label": "Method",
+      "name": "ngOnChanges",
+      "signature": "ngOnChanges(changes: SimpleChanges): void"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#updateDraft",
+      "label": "Method",
+      "name": "updateDraft",
+      "signature": "updateDraft(key: keyof SynthPreset, event: Event): void"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#updateDraftNumber",
+      "label": "Method",
+      "name": "updateDraftNumber",
+      "signature": "updateDraftNumber(key: keyof SynthPreset, event: Event): void"
+    },
+    {
+      "id": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts#updateDraftValue",
+      "label": "Method",
+      "name": "updateDraftValue",
+      "signature": "updateDraftValue(key: keyof SynthPreset, value: any): void"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts",
+      "target": "/editor/models/synth.types.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/components/sound-mixer/sound-designer/sound-designer.component.ts",
+      "target": "/editor/components/sound-mixer/sound-designer/sound-designer.component.scss",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "@angular/core",
+      "@angular/common"
+    ],
+    "has_side_effects": true
+  }
+}

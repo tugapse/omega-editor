@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, inject } from "@angular/core";
+import { EditorResourceLoader } from "@editor/services/editor-resource-loader.service";
 import {
   Color,
   NumberRange,
@@ -29,6 +30,13 @@ import { DropdownItem } from "src/app/components/dropdown/dropdown";
 export class TextureInspector extends ObjectInspector {
   get texture() {
     return this._selectedObject?.property as Texture;
+  }
+
+  private resourceLoader = inject(EditorResourceLoader);
+
+  /** A URL an <img> can show for this texture (not the saved asset:// URI). */
+  get previewUrl(): string {
+    return this.resourceLoader.previewUrl(this.texture?.textureUri) ?? '';
   }
 
   constructor() {
@@ -66,7 +74,6 @@ export class TextureInspector extends ObjectInspector {
     key: "wrap" | "filter",
     menuItem: DropdownItem,
   ) {
-    debugger;
     if (key === "filter") {
       this.texture.setMagFilter(+menuItem.value);
       this.texture.setMinFilter(+menuItem.value);

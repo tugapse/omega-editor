@@ -21,6 +21,8 @@ export class AddBehaviourMenuComponent {
   @Input() isOpen = false;
   @Input() menuX = 0;
   @Input() menuY = 0;
+  @Input() searchPlaceholder = 'Search behaviour...';
+  @Input() emptyText = 'No behaviours found.';
 
   @Output() behaviourSelected = new EventEmitter<ClassMetadata>();
   @Output() closeMenu = new EventEmitter<void>();

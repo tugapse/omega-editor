@@ -60,8 +60,22 @@ button {
   }
 
   &:disabled {
-    background-color: var(--editor-icon-button-background);
+    // Same button, dimmed: the theme's button background can be transparent.
+    background-color: var(--editor-icon-button-selected-background);
+    opacity: 0.45;
     cursor: not-allowed;
+  }
+}
+
+.field-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+
+  &.field-error {
+    color: #ff4d4d;
+    opacity: 1;
   }
 }
 

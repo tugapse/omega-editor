@@ -1,0 +1,238 @@
+{
+  "component": {
+    "name": "CodeWorkspaceComponent",
+    "source_path": "/code-editor/editor/code-editor.component.ts",
+    "doc_path": "/code-editor/editor/code-editor.component.json",
+    "type": "controller"
+  },
+  "vector_memory": {
+    "semantic_summary": "CodeWorkspaceComponent is the primary controller managing the entire code editing environment, orchestrating the display of files, active editor instances, and workspace state. It integrates services like AssetCodeService and MonacoService to handle file loading, tab management, and persistence. Its core responsibilities include managing user interactions like context menus, handling unsaved changes, and triggering full workspace compilations with visual error feedback."
+  },
+  "graph_nodes": [
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#CodeWorkspaceComponent",
+      "label": "Class",
+      "name": "CodeWorkspaceComponent",
+      "signature": "class CodeWorkspaceComponent implements AfterViewInit, OnInit, OnDestroy"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#EditorTab",
+      "label": "Interface",
+      "name": "EditorTab",
+      "signature": "interface EditorTab { file: FileContentResult; isDirty: boolean; model: any; listener: any; }"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#ToastMessage",
+      "label": "Interface",
+      "name": "ToastMessage",
+      "signature": "interface ToastMessage { id: number; message: string; type: \"success\" | \"error\" | \"info\"; }"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#onGlobalContextMenu",
+      "label": "Method",
+      "name": "onGlobalContextMenu",
+      "signature": "onGlobalContextMenu(event: MouseEvent): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#closeContextMenu",
+      "label": "Method",
+      "name": "closeContextMenu",
+      "signature": "closeContextMenu(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#unloadNotification",
+      "label": "Method",
+      "name": "unloadNotification",
+      "signature": "unloadNotification(event: BeforeUnloadEvent): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#ngOnInit",
+      "label": "Method",
+      "name": "ngOnInit",
+      "signature": "ngOnInit(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": "ngAfterViewInit(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#showToast",
+      "label": "Method",
+      "name": "showToast",
+      "signature": "showToast(message: string, type: \"success\" | \"error\" | \"info\" = \"info\"): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#initMonacoInstance",
+      "label": "Method",
+      "name": "initMonacoInstance",
+      "signature": "initMonacoInstance(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#loadIntelliSenseDefinitions",
+      "label": "Method",
+      "name": "loadIntelliSenseDefinitions",
+      "signature": "loadIntelliSenseDefinitions(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#loadWorkspaceTree",
+      "label": "Method",
+      "name": "loadWorkspaceTree",
+      "signature": "loadWorkspaceTree(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#handleNodeClick",
+      "label": "Method",
+      "name": "handleNodeClick",
+      "signature": "handleNodeClick(node: WorkspaceNode): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#createNewTab",
+      "label": "Method",
+      "name": "createNewTab",
+      "signature": "createNewTab(fileResult: FileContentResult): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#selectTab",
+      "label": "Method",
+      "name": "selectTab",
+      "signature": "selectTab(tab: EditorTab): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#closeTab",
+      "label": "Method",
+      "name": "closeTab",
+      "signature": "closeTab(event: MouseEvent, tabToClose: EditorTab): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#forceCloseTab",
+      "label": "Method",
+      "name": "forceCloseTab",
+      "signature": "forceCloseTab(tabToClose: EditorTab): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#closeAllTabsWithoutCheck",
+      "label": "Method",
+      "name": "closeAllTabsWithoutCheck",
+      "signature": "closeAllTabsWithoutCheck(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#hasUnsavedChanges",
+      "label": "Method",
+      "name": "hasUnsavedChanges",
+      "signature": "hasUnsavedChanges(): boolean"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#triggerGoBack",
+      "label": "Method",
+      "name": "triggerGoBack",
+      "signature": "triggerGoBack(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#openContextMenu",
+      "label": "Method",
+      "name": "openContextMenu",
+      "signature": "openContextMenu(event: MouseEvent, node: WorkspaceNode): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#triggerCreateFileAtRoot",
+      "label": "Method",
+      "name": "triggerCreateFileAtRoot",
+      "signature": "triggerCreateFileAtRoot(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#triggerCreateFileInFolder",
+      "label": "Method",
+      "name": "triggerCreateFileInFolder",
+      "signature": "triggerCreateFileInFolder(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#triggerDeleteNode",
+      "label": "Method",
+      "name": "triggerDeleteNode",
+      "signature": "triggerDeleteNode(event: MouseEvent | null, node: WorkspaceNode): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#triggerDeleteNodeFromMenu",
+      "label": "Method",
+      "name": "triggerDeleteNodeFromMenu",
+      "signature": "triggerDeleteNodeFromMenu(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#saveCurrentChanges",
+      "label": "Method",
+      "name": "saveCurrentChanges",
+      "signature": "saveCurrentChanges(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#executeWorkspaceCompilation",
+      "label": "Method",
+      "name": "executeWorkspaceCompilation",
+      "signature": "executeWorkspaceCompilation(): void"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#calculatePadding",
+      "label": "Method",
+      "name": "calculatePadding",
+      "signature": "calculatePadding(path: string): number"
+    },
+    {
+      "id": "/code-editor/editor/code-editor.component.ts#findFirstFile",
+      "label": "Method",
+      "name": "findFirstFile",
+      "signature": "findFirstFile(node: WorkspaceNode): WorkspaceNode | null"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/asset-code/asset-code.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/editor/services/editor-state.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/app/services/loading.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/angular/router.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/monaco/monaco.service.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/editor/components/workspace/workspace.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/code-editor/editor/code-editor.component.ts",
+      "target": "/asset-code/asset-code.models.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs",
+      "@angular/core"
+    ],
+    "has_side_effects": true
+  }
+}

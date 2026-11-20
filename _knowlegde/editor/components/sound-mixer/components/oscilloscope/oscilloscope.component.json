@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "OscilloscopeComponent",
+    "source_path": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts",
+    "doc_path": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "The OscilloscopeComponent is a specialized Angular UI visualization layer responsible for rendering real-time audio waveforms using the HTML Canvas API. It consumes time-domain audio data from the AudioService's AnalyserNode to draw a dynamic line graph representing the signal's amplitude over time. It manages its lifecycle by setting up and tearing down the requestAnimationFrame loop and handling canvas resizing events."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#OscilloscopeComponent",
+      "label": "Class",
+      "name": "OscilloscopeComponent",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#canvasRef",
+      "label": "Variable",
+      "name": "canvasRef",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#audioService",
+      "label": "Variable",
+      "name": "audioService",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#animationId",
+      "label": "Variable",
+      "name": "animationId",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#analyser",
+      "label": "Variable",
+      "name": "analyser",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#constructor",
+      "label": "Method",
+      "name": "constructor",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#ngAfterViewInit",
+      "label": "Method",
+      "name": "ngAfterViewInit",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#ngOnDestroy",
+      "label": "Method",
+      "name": "ngOnDestroy",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#initAnalyser",
+      "label": "Method",
+      "name": "initAnalyser",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#resizeCanvas",
+      "label": "Method",
+      "name": "resizeCanvas",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#start",
+      "label": "Method",
+      "name": "start",
+      "signature": ""
+    },
+    {
+      "id": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts#draw",
+      "label": "Function",
+      "name": "draw",
+      "signature": ""
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/sound-mixer/components/oscilloscope/oscilloscope.component.ts",
+      "target": "/editor/services/audio.service.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

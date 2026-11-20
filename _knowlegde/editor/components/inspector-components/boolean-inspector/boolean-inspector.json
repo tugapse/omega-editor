@@ -1,0 +1,49 @@
+{
+  "component": {
+    "name": "BooleanInspector",
+    "source_path": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts",
+    "doc_path": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "BooleanInspector is a dedicated Angular component designed to provide a UI element for toggling a boolean state within an inspector panel. It encapsulates the logic to display a boolean value and emits a change event upon user interaction. It relies on the internal Toggle component for its visual representation and state management."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts#BooleanInspector",
+      "label": "Class",
+      "name": "BooleanInspector",
+      "signature": "class BooleanInspector"
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts#active",
+      "label": "Variable",
+      "name": "active",
+      "signature": "active: boolean = false"
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts#label",
+      "label": "Variable",
+      "name": "label",
+      "signature": "label: string = \"\""
+    },
+    {
+      "id": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts#change",
+      "label": "Variable",
+      "name": "change",
+      "signature": "change: EventEmitter<boolean> = new EventEmitter()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts",
+      "target": "/editor/components/inspector-components/toggle/toggle.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

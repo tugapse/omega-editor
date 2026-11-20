@@ -7,6 +7,7 @@ import {
   MessageResponse,
   ProjectAssetIndexResponse,
   ProjectResponse,
+  ProjectTemplate,
   UpdateProjectRequest,
 } from '../models/omega-api.models';
 
@@ -30,6 +31,14 @@ export class ProjectService {
    */
   createProject(payload: CreateProjectRequest): Observable<ProjectResponse> {
     return this.http.post<ProjectResponse>(this.projectsUrl, payload);
+  }
+
+  /**
+   * Lists the templates a project can be created from.
+   * Corresponds to GET /api/project-templates
+   */
+  listTemplates(): Observable<ProjectTemplate[]> {
+    return this.http.get<ProjectTemplate[]>(`${this.apiUrl}/project-templates`);
   }
 
   /**

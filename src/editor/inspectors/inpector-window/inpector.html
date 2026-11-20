@@ -1,10 +1,5 @@
 @if (targetEntity) {
-  <div
-    class="inspector"
-    appMovable
-    movableHandleId="header"
-    resizeHandleId="resize-handle"
-  >
+  <div class="inspector">
     <editor-inspector-header
       id="header"
       [entity]="targetEntity"
@@ -17,8 +12,7 @@
     </div>
 
     <section class="footer">
-      <span>Inspector {{ targetEntity.name }}</span
-      ><app-icon id="resize-handle" iconName="fa-sort"></app-icon>
+      <span>Inspector {{ targetEntity.name }}</span>
     </section>
   </div>
 }

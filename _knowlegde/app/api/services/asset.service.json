@@ -1,0 +1,97 @@
+{
+  "component": {
+    "name": "AssetService",
+    "source_path": "/app/api/services/asset.service.ts",
+    "doc_path": "/app/api/services/asset.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "AssetService is the dedicated service layer responsible for abstracting all client-side HTTP communication related to project assets. It provides strongly-typed methods for CRUD operations, including listing, uploading, updating metadata, and streaming raw binary or text content. It consumes HttpClient and relies on models defined in omega-api.models to structure API interactions against the project asset endpoints."
+  },
+  "graph_nodes": [
+    {
+      "id": "/app/api/services/asset.service.ts#AssetService",
+      "label": "Class",
+      "name": "AssetService",
+      "signature": "class AssetService"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#listAssets",
+      "label": "Method",
+      "name": "listAssets",
+      "signature": "listAssets(projectId: string, type?: EngineAssetType, dir?: string): Observable<ProjectAssetIndexResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#uploadAsset",
+      "label": "Method",
+      "name": "uploadAsset",
+      "signature": "uploadAsset(projectId: string, file: File, virtualPath?: string, assetType?: string): Observable<AssetResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#updateAsset",
+      "label": "Method",
+      "name": "updateAsset",
+      "signature": "updateAsset(projectId: string, assetId: string, payload: UpdateAssetRequest): Observable<AssetResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#deleteAsset",
+      "label": "Method",
+      "name": "deleteAsset",
+      "signature": "deleteAsset(projectId: string, assetId: string): Observable<MessageResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#getRawAssetContent",
+      "label": "Method",
+      "name": "getRawAssetContent",
+      "signature": "getRawAssetContent(projectId: string, assetId: string): Observable<Blob>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#getTextAssetContent",
+      "label": "Method",
+      "name": "getTextAssetContent",
+      "signature": "getTextAssetContent(projectId: string, assetId: string): Observable<string>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#updateRawAssetContent",
+      "label": "Method",
+      "name": "updateRawAssetContent",
+      "signature": "updateRawAssetContent(projectId: string, assetId: string, payload: UpdateAssetTextRequest): Observable<AssetResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#updateBinaryAssetContent",
+      "label": "Method",
+      "name": "updateBinaryAssetContent",
+      "signature": "updateBinaryAssetContent(projectId: string, assetId: string, file: File): Observable<AssetResponse>"
+    },
+    {
+      "id": "/app/api/services/asset.service.ts#saveSceneAsset",
+      "label": "Method",
+      "name": "saveSceneAsset",
+      "signature": "saveSceneAsset(projectId: string, assetId: string, sceneData: SceneData): Observable<AssetResponse>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/app/api/services/asset.service.ts",
+      "target": "/src/models/omega-api.models.md",
+      "relation": "imports"
+    },
+    {
+      "source": "/app/api/services/asset.service.ts",
+      "target": "/@editor/models/asset-types.md",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [
+      "API_URL"
+    ],
+    "external_dependencies": [
+      "HttpClient",
+      "HttpParams",
+      "Observable",
+      "FormData"
+    ],
+    "has_side_effects": true
+  }
+}

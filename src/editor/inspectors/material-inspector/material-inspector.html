@@ -3,6 +3,20 @@
     [title]="_selectedObject.property.name || 'Material'"
     [collapsed]="true"
   >
+    @for (key of textureKeys; track key) {
+      <editor-texture-slot
+        [label]="key.capitalize()"
+        [texture]="textureOf(key)"
+        (textureSelected)="onTextureSelected(key, $event)"
+      ></editor-texture-slot>
+      @if (textureOf(key); as tex) {
+        <editor-texture-inspector
+          [label]="key.capitalize() + ' ' + tex.name"
+          [isChild]="true"
+          [targetObject]="{ key: key, type: 'texture', property: tex }"
+        ></editor-texture-inspector>
+      }
+    }
     @for (item of _properties; track $index) {
       @switch (item.type) {
         @case ("texture") {

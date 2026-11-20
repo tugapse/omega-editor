@@ -1,0 +1,25 @@
+{
+  "component": {
+    "name": "project.interface",
+    "source_path": "/editor/interfaces/project.interface.ts",
+    "doc_path": "/editor/interfaces/project.interface.json",
+    "type": "interface"
+  },
+  "vector_memory": {
+    "semantic_summary": "This component defines the IProject interface, serving as a foundational contract for any project entity within the editor system. It standardizes the structure required for project data, mandating a unique ID and the associated scene file path. It also allows for optional metadata like a name and configuration data, making it central to project state management across the application."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/interfaces/project.interface.ts#IProject",
+      "label": "Interface",
+      "name": "IProject",
+      "signature": "interface IProject { id: string; scene: string; name?:string; config: any; }"
+    }
+  ],
+  "graph_edges": [],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": false
+  }
+}

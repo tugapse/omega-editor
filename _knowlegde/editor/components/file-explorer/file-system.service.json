@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "FileSystemService",
+    "source_path": "/editor/components/file-explorer/file-system.service.ts",
+    "doc_path": "/editor/components/file-explorer/file-system.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "FileSystemService acts as the dedicated data access layer for the file explorer, abstracting complex file system interactions. It manages the state of the currently viewed directory using a BehaviorSubject, providing observable streams for directory contents. Its core responsibilities include navigating the mock file structure and asynchronously retrieving the content of specific files, simulating I/O latency."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#FileSystemService",
+      "label": "Class",
+      "name": "FileSystemService",
+      "signature": "constructor()"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#currentDirectory$",
+      "label": "Observable",
+      "name": "currentDirectory$",
+      "signature": "Observable<FileNode[]>"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#navigateToDirectory",
+      "label": "Method",
+      "name": "navigateToDirectory",
+      "signature": "navigateToDirectory(path: string): void"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#getFileContent",
+      "label": "Method",
+      "name": "getFileContent",
+      "signature": "getFileContent(path: string): Observable<string>"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#findNodeByPath",
+      "label": "Method",
+      "name": "findNodeByPath",
+      "signature": "findNodeByPath(root: FileNode, path: string): FileNode | undefined"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#MOCK_FILE_SYSTEM",
+      "label": "Variable",
+      "name": "MOCK_FILE_SYSTEM",
+      "signature": "FileNode"
+    },
+    {
+      "id": "/editor/components/file-explorer/file-system.service.ts#currentDirectorySubject",
+      "label": "Variable",
+      "name": "currentDirectorySubject",
+      "signature": "BehaviorSubject<FileNode[]>"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/components/file-explorer/file-system.service.ts",
+      "target": "/editor/components/file-explorer/file-explorer.model.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

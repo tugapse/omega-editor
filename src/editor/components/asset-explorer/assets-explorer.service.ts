@@ -167,7 +167,7 @@ export class AssetsExplorerService {
     pathParts.pop();
     const newVirtualPath = [...pathParts, newName].join('/');
     return this.assetService.updateAsset(projectId, node.id, {
-      virtual_path: newVirtualPath,
+      virtualPath: newVirtualPath,
     });
   }
 

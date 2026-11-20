@@ -1,0 +1,69 @@
+{
+  "component": {
+    "name": "WindowService",
+    "source_path": "/editor/services/window.service.ts",
+    "doc_path": "/editor/services/window.service.json",
+    "type": "service"
+  },
+  "vector_memory": {
+    "semantic_summary": "WindowService acts as the central state management utility for managing editor windows within the application. It maintains the canonical list of active windows and tracks the currently focused window ID. Its core responsibilities include providing methods to open new windows, focus existing ones by updating their z-index, and safely closing windows while managing the focus transition to the next highest-stacked element."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/services/window.service.ts#WindowService",
+      "label": "Class",
+      "name": "WindowService",
+      "signature": "class WindowService"
+    },
+    {
+      "id": "/editor/services/window.service.ts#windows$",
+      "label": "Observable",
+      "name": "windows$",
+      "signature": "windows$: Observable<WindowConfig[]>"
+    },
+    {
+      "id": "/editor/services/window.service.ts#activeWindowId$",
+      "label": "Observable",
+      "name": "activeWindowId$",
+      "signature": "activeWindowId$: Observable<string | null>"
+    },
+    {
+      "id": "/editor/services/window.service.ts#open",
+      "label": "Method",
+      "name": "open",
+      "signature": "open(config: Omit<WindowConfig, 'id' | 'zIndex'>): void"
+    },
+    {
+      "id": "/editor/services/window.service.ts#focus",
+      "label": "Method",
+      "name": "focus",
+      "signature": "focus(id: string): void"
+    },
+    {
+      "id": "/editor/services/window.service.ts#close",
+      "label": "Method",
+      "name": "close",
+      "signature": "close(id: string): void"
+    },
+    {
+      "id": "/editor/services/window.service.ts#zIndexCounter",
+      "label": "Variable",
+      "name": "zIndexCounter",
+      "signature": "zIndexCounter: number"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/services/window.service.ts",
+      "target": "/editor/interfaces/window.md",
+      "relation": "depends_on"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [
+      "rxjs"
+    ],
+    "has_side_effects": true
+  }
+}

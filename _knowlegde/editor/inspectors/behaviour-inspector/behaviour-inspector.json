@@ -1,0 +1,120 @@
+{
+  "component": {
+    "name": "BehaviourInspector",
+    "source_path": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+    "doc_path": "/editor/inspectors/behaviour-inspector/behaviour-inspector.json",
+    "type": "class"
+  },
+  "vector_memory": {
+    "semantic_summary": "BehaviourInspector is a specialized UI controller extending ObjectInspector, designed to provide an interactive inspection panel for EntityBehaviour instances within the editor. It aggregates and renders properties from the behaviour object, distinguishing between standard properties and rendering enums/booleans. It manages state mutation via property setters and handles critical operations like removal through a confirmation service."
+  },
+  "graph_nodes": [
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#BehaviourInspector",
+      "label": "Class",
+      "name": "BehaviourInspector",
+      "signature": "class BehaviourInspector extends ObjectInspector"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#drawingEnums",
+      "label": "Variable",
+      "name": "drawingEnums",
+      "signature": "protected drawingEnums: { [key: string]: { key: string; value: number }[] }"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#renderBooleans",
+      "label": "Variable",
+      "name": "renderBooleans",
+      "signature": "protected renderBooleans = ['enableCullFace', 'enableDephTest', 'enableBlend', 'writeToDephBuffer']"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#denyProperties",
+      "label": "Variable",
+      "name": "denyProperties",
+      "signature": "override denyProperties: string[]"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#behaviour",
+      "label": "Getter/Setter",
+      "name": "behaviour",
+      "signature": "set behaviour(value: EntityBehaviour)"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#get behaviour",
+      "label": "Getter",
+      "name": "behaviour",
+      "signature": "get behaviour()"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#loadProperties",
+      "label": "Method",
+      "name": "loadProperties",
+      "signature": "protected override loadProperties(): void"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#onEnumChanged",
+      "label": "Method",
+      "name": "onEnumChanged",
+      "signature": "onEnumChanged(item: ITargetProperty, $event: DropdownItem)"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#onDefaultChanged",
+      "label": "Method",
+      "name": "onDefaultChanged",
+      "signature": "onDefaultChanged(item: ITargetProperty, value: string | number | boolean | NumberRange | Color)"
+    },
+    {
+      "id": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts#onRemoveBehaviourRequested",
+      "label": "Method",
+      "name": "onRemoveBehaviourRequested",
+      "signature": "onRemoveBehaviourRequested()"
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/inspectors/object-inspector/object-inspector.ts",
+      "relation": "extends"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/components/inpector-toggle-panel/inpector-toggle-panel.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/components/inspector-components/boolean-inspector/boolean-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/components/inspector-components/text-input-inspector/text-input-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/inspectors/enum-inspector/enum-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/inspectors/shader-inspector/shader-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/editor/inspectors/default-inspector/default-inspector.ts",
+      "relation": "imports"
+    },
+    {
+      "source": "/editor/inspectors/behaviour-inspector/behaviour-inspector.ts",
+      "target": "/src/app/services/confirmation.service.ts",
+      "relation": "imports"
+    }
+  ],
+  "metadata": {
+    "environment_variables": [],
+    "external_dependencies": [],
+    "has_side_effects": true
+  }
+}

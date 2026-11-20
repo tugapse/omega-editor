@@ -17,6 +17,8 @@
       [behaviours]="availableEntities"
       [menuX]="menuX"
       [menuY]="menuY"
+      searchPlaceholder="Search entity..."
+      emptyText="No entities found."
       (behaviourSelected)="onEntitySelected($event)"
       (closeMenu)="isAddEntityMenuOpen = false"
     >

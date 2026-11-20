@@ -12,7 +12,7 @@ import {
   AssetResponse,
   ProjectResponse,
 } from "../../api/models/omega-api.models";
-import { Scene } from "omega-game-engine";
+import { createDefaultScene } from "@editor/scene/default-scene";
 import { Router } from "@angular/router";
 import { Icon } from "../icon/icon";
 import { EngineAssetType } from "@editor/models/asset-types";
@@ -89,8 +89,7 @@ export class SceneList implements OnChanges {
       ? this.newSceneName.trim()
       : `${this.newSceneName.trim()}.scene`;
 
-    const sceneObject = new Scene();
-    sceneObject.name = sceneName;
+    const sceneObject = createDefaultScene(sceneName.replace(/\.scene$/, ""));
 
     const virtualPath = `/Scenes/${sceneName}`;
     const sceneContent = JSON.stringify(sceneObject.toJsonObject());
