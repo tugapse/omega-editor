@@ -61,6 +61,16 @@ export interface CreateProjectRequest {
     environment?: 'development' | 'staging' | 'production';
     version?: string; // Regex ^\d+\.\d+\.\d+$
   };
+  /** Project template id (GET /api/project-templates). Defaults to "empty". */
+  template?: string;
+}
+
+/** A starting point for new projects, served by GET /api/project-templates. */
+export interface ProjectTemplate {
+  id: string;
+  name: string;
+  description?: string;
+  order: number;
 }
 
 /**

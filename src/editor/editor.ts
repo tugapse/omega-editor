@@ -146,29 +146,27 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
     sceneId: string,
     engine: Engine | null,
   ) {
-    if (!this.route.snapshot.queryParamMap.get("write-scene")) {
-      this.assetService
-        .getTextAssetContent(projectId, sceneId)
-        .subscribe((textContent) => {
-          try {
-            const sceneData = JSON.parse(textContent) as JsonSerializedData;
+    this.assetService
+      .getTextAssetContent(projectId, sceneId)
+      .subscribe((textContent) => {
+        try {
+          const sceneData = JSON.parse(textContent) as JsonSerializedData;
 
-            loadSceneWithHierarchy(this.gl, sceneData)
-              .then((scene) => {
-                this.editorService.loadScene(scene);
-                this.editorService.requestCanvasResize();
-              })
-              .catch((error) => {
-                debugger;
-                EngineLogger.error("Error loading the Scene", error);
-                this.loadingservice.hide();
-              });
-          } catch (error) {
-            EngineLogger.error("Error", error);
-            this.loadingservice.hide();
-          }
-        });
-    }
+          loadSceneWithHierarchy(this.gl, sceneData)
+            .then((scene) => {
+              this.editorService.loadScene(scene);
+              this.editorService.requestCanvasResize();
+            })
+            .catch((error) => {
+              debugger;
+              EngineLogger.error("Error loading the Scene", error);
+              this.loadingservice.hide();
+            });
+        } catch (error) {
+          EngineLogger.error("Error", error);
+          this.loadingservice.hide();
+        }
+      });
   }
 
   ngOnDestroy(): void {

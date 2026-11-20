@@ -48,7 +48,7 @@
         }
 
         <div class="picker-group">Built-in</div>
-        @for (t of filtered(bundledTextures); track t.uri) {
+        @for (t of filtered(builtinTextures); track t.uri) {
           <div class="picker-item" (click)="choose(t, $event)">
             <img class="thumb" [src]="t.previewUrl" alt="" />
             <span>{{ t.name }}</span>

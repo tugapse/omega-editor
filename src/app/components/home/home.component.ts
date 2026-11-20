@@ -9,6 +9,7 @@ import { ProjectService } from "../../api/services/project.service";
 import {
   ProjectResponse,
   CreateProjectRequest,
+  ProjectTemplate,
   UpdateProjectRequest,
 } from "../../api/models/omega-api.models";
 import { EditorService } from "@editor/services/editor.service";
@@ -43,6 +44,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   isModalOpen = false;
   newProjectName = "";
+  newProjectTemplate = "empty";
+  templates: ProjectTemplate[] = [];
+  createError = "";
 
   constructor(private editorService: EditorService) {}
 
@@ -75,11 +79,17 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   openNewProjectModal(): void {
     this.isModalOpen = true;
+    this.projectService.listTemplates().subscribe({
+      next: (templates) => (this.templates = templates),
+      error: (err) => console.error("Failed to load project templates", err),
+    });
   }
 
   closeModal(): void {
     this.isModalOpen = false;
     this.newProjectName = "";
+    this.newProjectTemplate = "empty";
+    this.createError = "";
   }
 
   createProject(): void {
@@ -89,16 +99,19 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
     const payload: CreateProjectRequest = {
       name: this.newProjectName.trim(),
+      template: this.newProjectTemplate,
     };
 
+    this.createError = "";
     this.projectService.createProject(payload).subscribe({
-      next: () => {
+      next: (project) => {
         this.closeModal();
-        this.loadProjects(); // Refresh the list
+        this.projects = [...this.projects, project];
+        this.selectedProject = project;
       },
       error: (err) => {
         console.error("Failed to create project", err);
-        // Optionally, show an error message in the UI
+        this.createError = err?.error?.detail ?? "Could not create the project.";
       },
     });
   }

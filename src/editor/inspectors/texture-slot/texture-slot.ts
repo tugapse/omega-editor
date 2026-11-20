@@ -4,7 +4,7 @@ import { AssetService } from 'src/app/api/services/asset.service';
 import { EditorStateService } from '@editor/services/editor-state.service';
 import { EditorResourceLoader } from '@editor/services/editor-resource-loader.service';
 import {
-  BUNDLED_TEXTURES,
+  BUILTIN_TEXTURES,
   DraggedAsset,
   isTextureAsset,
   MISSING_TEXTURE_URI,
@@ -16,7 +16,7 @@ import {
 
 /**
  * Unity-style texture field: thumbnail + name. Click to pick a project or
- * bundled texture, or drop a texture from the Asset Explorer.
+ * built-in texture, or drop a texture from the Asset Explorer.
  * Emits the chosen texture, or `null` for "None".
  */
 @Component({
@@ -38,7 +38,7 @@ export class TextureSlot {
   isLoading = signal(false);
   search = signal('');
   projectTextures = signal<TextureChoice[]>([]);
-  readonly bundledTextures = BUNDLED_TEXTURES;
+  readonly builtinTextures = BUILTIN_TEXTURES;
 
   /** Asset names by id, to show "wall.png" instead of "asset://<uuid>". */
   private static assetNames = new Map<string, string>();

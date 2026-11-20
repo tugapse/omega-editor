@@ -3,9 +3,10 @@ import { BuiltinTextures, builtinTextureUrl } from 'omega-game-engine';
 /**
  * Texture references used by the editor.
  *
- * - Project textures are stored in scenes as `asset://<assetId>` and resolved
- *   at load time by AssetUriResolverService (download with the JWT, object URL).
- * - Textures bundled with the editor keep their relative path (`assets/images/...`).
+ * - Project textures are stored in scenes as `asset://<assetId>` and loaded by
+ *   EditorResourceLoader (download with the JWT). The editor ships no textures
+ *   of its own: user content lives in the project (see the API's templates).
+ * - Engine built-ins are `builtin://white|black|normal|missing`.
  */
 
 export const ASSET_URI_PREFIX = 'asset://';
@@ -23,10 +24,10 @@ export interface DraggedAsset {
 }
 
 export interface TextureChoice {
-  /** URI saved in the scene: `asset://<id>` or a bundled path. */
+  /** URI saved in the scene: `asset://<id>` or `builtin://<name>`. */
   uri: string;
   name: string;
-  /** URL usable in an <img> for the picker thumbnail (bundled textures only). */
+  /** URL usable in an <img> for the picker thumbnail (built-ins only). */
   previewUrl?: string;
 }
 
@@ -49,24 +50,17 @@ export function isTextureAsset(asset: { type?: string; assetType?: string; name?
   return IMAGE_EXTENSIONS.includes(ext);
 }
 
-/** Textures shipped with the editor (src/assets/images). */
-export const BUNDLED_TEXTURES: TextureChoice[] = [
-  'assets/images/wood-texture.jpg',
-  'assets/images/wood-normal.jpg',
-  'assets/images/wood-normal1.jpg',
-  'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_albedo.jpeg',
-  'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_normal.jpeg',
-  'assets/images/brick-wall/TCom_Wall_Stone3_2x2_512_roughness.jpeg',
+/** Engine built-in textures, always available in the picker. */
+export const BUILTIN_TEXTURES: TextureChoice[] = [
   BuiltinTextures.white,
   BuiltinTextures.black,
   BuiltinTextures.normal,
-  'assets/images/default/grid.png',
 ].map((uri) => ({ uri, name: textureDisplayName(uri), previewUrl: builtinTextureUrl(uri) ?? uri }));
 
-/** Readable name for a texture URI (bundled file name, or the asset id). */
+/** Readable name for a texture URI (built-in name, or the last path segment). */
 export function textureDisplayName(uri: string | undefined | null): string {
   if (!uri) return 'None';
-  if (uri === MISSING_TEXTURE_URI || uri === 'assets/images/default/error.jpg') return 'None';
+  if (uri === MISSING_TEXTURE_URI) return 'None';
   if (uri.startsWith('builtin://')) return uri.slice('builtin://'.length);
   return uri.split('/').pop() || uri;
 }

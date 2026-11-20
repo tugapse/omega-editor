@@ -12,14 +12,15 @@ import {
   SceneEntity,
   SpherePrimitive,
 } from 'omega-game-engine';
+import { CylinderPrimitive, TorusPrimitive } from './procedural-primitives';
 
 /** A primitive the editor can add to a scene from the scene tree "+" menu. */
 export interface PrimitiveDefinition {
   /** Menu label and base name of the created entity. */
   name: string;
   description: string;
-  /** Builds the mesh data (engine primitive or a bundled .obj). */
-  meshData: () => Promise<MeshData> | MeshData;
+  /** Builds the mesh data. */
+  meshData: () => MeshData;
 }
 
 export const PRIMITIVES: PrimitiveDefinition[] = [
@@ -45,13 +46,13 @@ export const PRIMITIVES: PrimitiveDefinition[] = [
   },
   {
     name: 'Cylinder',
-    description: 'A cylinder (bundled .obj).',
-    meshData: () => Resources.for().getMesh('assets/primitives/cilinder.obj'),
+    description: 'A capped cylinder along Y.',
+    meshData: () => new CylinderPrimitive(),
   },
   {
     name: 'Torus',
-    description: 'A torus (bundled .obj).',
-    meshData: () => Resources.for().getMesh('assets/primitives/torus.obj'),
+    description: 'A torus on the XZ plane.',
+    meshData: () => new TorusPrimitive(),
   },
 ];
 
@@ -67,7 +68,7 @@ export async function createPrimitiveEntity(
   const entity = SceneEntity.instanciate(entityName);
 
   const mesh = new Mesh();
-  mesh.meshData = await primitive.meshData();
+  mesh.meshData = primitive.meshData();
 
   const material = new LitMaterial();
   material.mainTex = await Resources.for(gl).getTexture(BuiltinTextures.white);

@@ -442,3 +442,48 @@
     cursor: not-allowed;
   }
 }
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.template-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  padding: 8px 10px;
+  border: var(--editor-panel-text-input-border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--editor-panel-color);
+
+  input {
+    grid-row: span 2;
+    margin: 2px 0 0;
+  }
+
+  &:hover {
+    background-color: var(--editor-icon-button-hover-background);
+  }
+
+  &.selected {
+    border-left: 3px solid var(--editor-icon-button-selected-background);
+  }
+}
+
+.template-name {
+  font-weight: 600;
+}
+
+.template-description {
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+.form-error {
+  margin-top: 8px;
+  color: #e06c75;
+  font-size: 0.9em;
+}

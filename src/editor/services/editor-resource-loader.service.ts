@@ -42,7 +42,7 @@ export class EditorResourceLoader implements ResourceLoader {
 
   /**
    * A URL an <img> can show for a texture URI: the preview of a downloaded
-   * project image, a built-in texture's data URL, or the bundled path itself.
+   * project image, or a built-in texture's data URL.
    */
   previewUrl(uri: string | null | undefined): string | null {
     if (!uri) return null;
