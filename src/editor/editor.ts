@@ -36,6 +36,7 @@ import {
   SceneEntity,
   JsonSerializedData,
   SceneManager,
+  EngineCache,
   Colors,
   Engine,
 } from "omega-game-engine";
@@ -174,6 +175,8 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
     this.destroy$.next();
     this.destroy$.complete();
     this.editorService.gameEngine?.destroy();
+    // Free the textures/meshes loaded for this view's WebGL context.
+    if (this.gl) EngineCache.releaseContext(this.gl);
   }
 
   onGlContextCreated(gl: WebGL2RenderingContext): void {
