@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- Demo: the sky no longer shows streaked stars or banded clouds on phones (engine skybox in `highp`, noise hashes without `sin()`).
 - `SunBehaviour` and `RotateBehaviour` now live in the engine (removed from the editor), so scenes keep them outside the editor too.
 - `SunBehaviour` and `RotateBehaviour` are registered again (they were only imported by the demo generator removed in 0.1.0). Scenes using them lost them when loaded, and saving such a scene dropped them for good.
 - `SunBehaviour` fades the sun's own shadow (`Light.shadowStrength`) with the time of day, instead of the scene-wide strength the engine no longer has. The day strength defaults to 0.75.
