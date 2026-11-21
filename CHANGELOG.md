@@ -10,7 +10,7 @@
 
 ### Added
 
-- Double-clicking an FBX file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations), on the ground 4 m in front of the camera.
+- Double-clicking an FBX or COLLADA (.dae) file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations), on the ground 4 m in front of the camera. A COLLADA model's textures are found among the project's assets by file name.
 - Scene tree branches can be collapsed; branches with more than 10 descendants (a skeleton) start collapsed.
 
 - The texture picker lists a "Cameras" group: the render textures of the scene's cameras (`Camera.targetTexture`, needs the engine's render to texture). The camera's `targetTexture`, `targetWidth` and `targetHeight` show in its inspector.

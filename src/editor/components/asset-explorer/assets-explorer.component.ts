@@ -99,9 +99,28 @@ export class AssetsExplorerComponent implements AfterViewInit {
     this.explorerState.activateFolder(node);
   }
 
-  /** Model files the engine can place in a scene (binary FBX for now). */
+  /** Model files the engine can place in a scene (FBX, COLLADA). */
   static isModel(node: IAsset): boolean {
-    return node.type !== 'folder' && node.type !== 'project' && /\.fbx$/i.test(node.name);
+    return node.type !== 'folder' && node.type !== 'project' && /\.(fbx|dae)$/i.test(node.name);
+  }
+
+  /**
+   * A COLLADA model's textures are separate files ("textures/body.png"):
+   * find a project asset with the same file name, preferring one whose
+   * folder path also matches.
+   */
+  private resolveProjectImage(path: string): string | undefined {
+    const name = path.split(/[\\/]/).pop()!.toLowerCase();
+    const files: IAsset[] = [];
+    const walk = (n: IAsset | null | undefined) => {
+      if (!n) return;
+      if (n.children) n.children.forEach(walk);
+      else if (n.name.toLowerCase() === name) files.push(n);
+    };
+    walk(this.explorerState.treeData());
+    const tail = path.replace(/\\/g, '/').toLowerCase();
+    const best = files.find((f) => f.virtualPath.toLowerCase().endsWith(tail)) ?? files[0];
+    return best ? `asset://${best.id}` : undefined;
   }
 
   /** Puts a new model on the ground (y = 0), 4 m in front of the editor camera. */
@@ -121,8 +140,9 @@ export class AssetsExplorerComponent implements AfterViewInit {
     this.loadingService.show(`A importar ${node.name}...`);
     try {
       const { root } = await instantiateModel((scene as any).gl, `asset://${node.id}`, {
-        name: node.name.replace(/\.fbx$/i, ''),
+        name: node.name.replace(/\.(fbx|dae)$/i, ''),
         scene,
+        resolveImage: (path) => this.resolveProjectImage(path),
       });
       this.placeInFrontOfCamera(root);
       this.editorService.onSceneUpdated.emit(scene);
