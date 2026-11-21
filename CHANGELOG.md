@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Fixed
+
+- `SunBehaviour` and `RotateBehaviour` are registered again (they were only imported by the demo generator removed in 0.1.0). Scenes using them lost them when loaded, and saving such a scene dropped them for good.
+- The "+" menu describes the cube and plane with their real sizes (2×2×2 and 10×10).
+
 ### Added
 
 - The texture picker lists a "Cameras" group: the render textures of the scene's cameras (`Camera.targetTexture`, needs the engine's render to texture). The camera's `targetTexture`, `targetWidth` and `targetHeight` show in its inspector.
