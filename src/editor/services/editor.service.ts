@@ -1,5 +1,3 @@
-// Registers the editor behaviours (SunBehaviour, RotateBehaviour) before any scene loads.
-import "@editor/behaviours";
 import { EventEmitter, inject, Injectable } from "@angular/core";
 import {
   DependencyManager,

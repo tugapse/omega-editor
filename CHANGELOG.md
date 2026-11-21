@@ -4,12 +4,14 @@
 
 ### Fixed
 
+- `SunBehaviour` and `RotateBehaviour` now live in the engine (removed from the editor), so scenes keep them outside the editor too.
 - `SunBehaviour` and `RotateBehaviour` are registered again (they were only imported by the demo generator removed in 0.1.0). Scenes using them lost them when loaded, and saving such a scene dropped them for good.
 - `SunBehaviour` fades the sun's own shadow (`Light.shadowStrength`) with the time of day, instead of the scene-wide strength the engine no longer has. The day strength defaults to 0.75.
 - The "+" menu describes the cube and plane with their real sizes (2×2×2 and 10×10).
 
 ### Added
 
+- Engine demo: the sky now shows its stars, clouds and moon (the `SunBehaviour` comes from the engine now), and a "Time of day" slider replaces the Sun intensity slider (the behaviour sets the sun's colour). The ring spins with its own `RotateBehaviour`, stopped by "Lights and ring move".
 - Engine demo: a Performance section with a quality preset (Auto picks Low on phones: half resolution with dynamic resolution, 1024² shadow atlas, 4-tap shadows, no point-light shadows), live render scale and shadow-cache counters, `?quality=low|medium|high` in the URL. The canvas no longer asks for MSAA (the scene is drawn off-screen, so it only cost). "Lights and ring move" now also stops the ring, so a still stage redraws no shadows.
 - Double-clicking an FBX or COLLADA (.dae) file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations), on the ground 4 m in front of the camera. A COLLADA model's textures are found among the project's assets by file name.
 - Scene tree branches can be collapsed; branches with more than 10 descendants (a skeleton) start collapsed.
