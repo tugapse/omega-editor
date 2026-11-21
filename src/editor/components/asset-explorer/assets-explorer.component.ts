@@ -20,6 +20,9 @@ import { AssetsUploadTriggerService } from './assets-upload-triger.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { combineLatest } from 'rxjs';
+import { instantiateModel, SceneEntity } from 'omega-game-engine';
+import { EditorService } from '../../services/editor.service';
+import { SceneTreeService } from '../../services/scene-tree.service';
 
 @Component({
   selector: 'app-assets-explorer',
@@ -45,6 +48,8 @@ export class AssetsExplorerComponent implements AfterViewInit {
   private loadingService: LoadingService = inject(LoadingService);
   private assetsUploadTrigger = inject(AssetsUploadTriggerService);
   private apiAssetService = inject(AssetService);
+  private editorService = inject(EditorService);
+  private sceneTreeService = inject(SceneTreeService);
 
   private _projectId = this.editorState.activeProject;
 
@@ -87,7 +92,67 @@ export class AssetsExplorerComponent implements AfterViewInit {
   }
 
   handleFolderActivation(node: IAsset) {
+    if (AssetsExplorerComponent.isModel(node)) {
+      this.addModelToScene(node);
+      return;
+    }
     this.explorerState.activateFolder(node);
+  }
+
+  /** Model files the engine can place in a scene (FBX, COLLADA). */
+  static isModel(node: IAsset): boolean {
+    return node.type !== 'folder' && node.type !== 'project' && /\.(fbx|dae)$/i.test(node.name);
+  }
+
+  /**
+   * A COLLADA model's textures are separate files ("textures/body.png"):
+   * find a project asset with the same file name, preferring one whose
+   * folder path also matches.
+   */
+  private resolveProjectImage(path: string): string | undefined {
+    const name = path.split(/[\\/]/).pop()!.toLowerCase();
+    const files: IAsset[] = [];
+    const walk = (n: IAsset | null | undefined) => {
+      if (!n) return;
+      if (n.children) n.children.forEach(walk);
+      else if (n.name.toLowerCase() === name) files.push(n);
+    };
+    walk(this.explorerState.treeData());
+    const tail = path.replace(/\\/g, '/').toLowerCase();
+    const best = files.find((f) => f.virtualPath.toLowerCase().endsWith(tail)) ?? files[0];
+    return best ? `asset://${best.id}` : undefined;
+  }
+
+  /** Puts a new model on the ground (y = 0), 4 m in front of the editor camera. */
+  private placeInFrontOfCamera(root: SceneEntity): void {
+    const camera = this.editorService.camera;
+    if (!camera) return;
+    const eye = camera.transform.worldPosition;
+    const f = camera.transform.forward;
+    const flat = Math.hypot(f[0], f[2]) || 1;
+    root.transform.setLocalPosition(eye[0] + (f[0] / flat) * 4, 0, eye[2] + (f[2] / flat) * 4);
+  }
+
+  /** Places a model in the open scene as an entity tree and selects its root. */
+  private async addModelToScene(node: IAsset): Promise<void> {
+    const scene = this.editorService.scene;
+    if (!scene) return;
+    this.loadingService.show(`A importar ${node.name}...`);
+    try {
+      const { root } = await instantiateModel((scene as any).gl, `asset://${node.id}`, {
+        name: node.name.replace(/\.(fbx|dae)$/i, ''),
+        scene,
+        resolveImage: (path) => this.resolveProjectImage(path),
+      });
+      this.placeInFrontOfCamera(root);
+      this.editorService.onSceneUpdated.emit(scene);
+      this.sceneTreeService.onEntitySelected.emit(root);
+    } catch (error) {
+      console.error(`Cannot place ${node.name} in the scene`, error);
+      alert(`Não foi possível abrir ${node.name}: ${(error as Error).message}`);
+    } finally {
+      this.loadingService.hide();
+    }
   }
 
   openContextMenu(event: { e: MouseEvent; node: IAsset }) {

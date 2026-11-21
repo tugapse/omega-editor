@@ -22,6 +22,29 @@ export class TreeNodeComponent<T> {
   @Output() nodeSelected = new EventEmitter<TreeNode<T>>();
   @Output() nodeDeleted = new EventEmitter<TreeNode<T>>();
 
+  /** Collapsed state by node id; kept here because the tree is rebuilt on every scene change. */
+  private static collapsedById = new Map<string, boolean>();
+  /** Branches bigger than this (a model's skeleton) start collapsed. */
+  static readonly AUTO_COLLAPSE_DESCENDANTS = 10;
+
+  get hasChildren(): boolean {
+    return !!this.node.children?.length;
+  }
+
+  get collapsed(): boolean {
+    const stored = TreeNodeComponent.collapsedById.get(this.node.id);
+    return stored ?? TreeNodeComponent.descendants(this.node) > TreeNodeComponent.AUTO_COLLAPSE_DESCENDANTS;
+  }
+
+  toggleCollapsed(event: MouseEvent): void {
+    event.stopPropagation();
+    TreeNodeComponent.collapsedById.set(this.node.id, !this.collapsed);
+  }
+
+  private static descendants(node: TreeNode<unknown>): number {
+    return (node.children ?? []).reduce((n, c) => n + 1 + TreeNodeComponent.descendants(c), 0);
+  }
+
   isDropAbove = false;
   isDropBelow = false;
   isDropInside = false;

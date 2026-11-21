@@ -10,7 +10,7 @@ import { assetIdFromUri } from '../scene/texture-refs';
  *
  * Project files (`asset://<id>`) are behind the API's JWT, so they are
  * downloaded with the authenticated HttpClient: text as text, images as an
- * ImageBitmap for the GPU. Everything else uses the engine's default loader.
+ * ImageBitmap for the GPU, models as bytes. Everything else uses the engine's default loader.
  * Scenes keep saving `asset://<id>`, never a URL or a token.
  */
 @Injectable({ providedIn: 'root' })
@@ -30,6 +30,12 @@ export class EditorResourceLoader implements ResourceLoader {
     const assetId = assetIdFromUri(uri);
     if (!assetId) return Resources.defaultLoader.loadText(uri);
     return (await this.download(assetId)).text();
+  }
+
+  async loadBinary(uri: string): Promise<ArrayBuffer> {
+    const assetId = assetIdFromUri(uri);
+    if (!assetId) return Resources.defaultLoader.loadBinary!(uri);
+    return (await this.download(assetId)).arrayBuffer();
   }
 
   async loadImage(uri: string): Promise<LoadedImage> {
