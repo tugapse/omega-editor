@@ -108,7 +108,7 @@ export class SunBehaviour extends EntityBehaviour {
     /** The strength of shadows at night (e.g., from the moon). */
     nightStrength: new NumberRange(0.2, 0, 1, 0.01),
     /** The strength of shadows during the day (e.g., from the sun). */
-    dayStrength: new NumberRange(0.5, 0, 1, 0.01),
+    dayStrength: new NumberRange(0.75, 0, 1, 0.01),
     /** The duration of the shadow fade-in/out transition in hours (e.g., 0.5 for 30 minutes). */
     fadeDuration: new NumberRange(1.2, 0, 2, 0.1),
   };
@@ -414,13 +414,11 @@ export class SunBehaviour extends EntityBehaviour {
       light.color.a = sunAlpha;
     }
 
-    const shadowRenderer = this.parent.scene.shadowmap;
-    if (shadowRenderer) {
-      shadowRenderer.shadowstrength.value = this._calculateShadowStrength(
-        time,
-        this.shadows.dayStrength.value,
-      );
-    }
+    // The sun's own shadow fades with the time of day.
+    light.shadowStrength = this._calculateShadowStrength(
+      time,
+      this.shadows.dayStrength.value,
+    );
     this.updateSceneColors(light.color);
 
     if (time > this.hours.night - 0.5 && time < this.hours.night) {

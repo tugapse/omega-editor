@@ -5,6 +5,7 @@
 ### Fixed
 
 - `SunBehaviour` and `RotateBehaviour` are registered again (they were only imported by the demo generator removed in 0.1.0). Scenes using them lost them when loaded, and saving such a scene dropped them for good.
+- `SunBehaviour` fades the sun's own shadow (`Light.shadowStrength`) with the time of day, instead of the scene-wide strength the engine no longer has. The day strength defaults to 0.75.
 - The "+" menu describes the cube and plane with their real sizes (2×2×2 and 10×10).
 
 ### Added
