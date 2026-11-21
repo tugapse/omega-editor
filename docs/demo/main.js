@@ -182,7 +182,6 @@ function frame(now) {
     };
     swing(lights.magenta, 0, 3.2, 2.2);
     swing(lights.cyan, Math.PI, 3.2, 2.2);
-    if (lights.ring) lights.ring.transform.rotate(0, dt * 20, 0);
   }
 
   engine.update(dt);
@@ -260,25 +259,32 @@ function bindControls() {
   lights.magenta = find('Magenta light');
   lights.cyan = find('Cyan light');
   lights.ring = find('Ring');
-  const sun = find('Directional light');
-  const sunColor = sun ? [sun.color.r, sun.color.g, sun.color.b] : null;
+  // The sun's SunBehaviour drives the sky (colours, clouds, stars, moon) from the time of day.
+  const sun = find('Directional light')?.getBehaviour(E.SunBehaviour);
+  const ringSpin = lights.ring?.getBehaviour(E.RotateBehaviour);
+  const timeInput = document.getElementById('time-of-day');
+  if (sun) timeInput.value = sun.dayCycleSettings.timeOfDay.value;
   const settings = scene.renderPipeline.settings;
 
-  const slider = (id, apply) => {
+  const slider = (id, apply, format = (v) => v.toFixed(2)) => {
     const input = document.getElementById(id);
     const out = input.parentElement.querySelector('output');
-    const update = () => { apply(Number(input.value)); if (out) out.textContent = Number(input.value).toFixed(2); };
+    const update = () => { apply(Number(input.value)); if (out) out.textContent = format(Number(input.value)); };
     input.addEventListener('input', update);
     update();
   };
   slider('exposure', (v) => { settings.exposure.value = v; });
   slider('saturation', (v) => { settings.saturation.value = v; });
   slider('contrast', (v) => { settings.contrast.value = v; });
-  slider('sun', (v) => { if (sun && sunColor) sun.color = new E.Color(sunColor[0] * v, sunColor[1] * v, sunColor[2] * v, 1); });
+  const clock = (v) => `${String(Math.floor(v) % 24).padStart(2, '0')}:${String(Math.round((v % 1) * 60) % 60).padStart(2, '0')}`;
+  slider('time-of-day', (v) => { if (sun) sun.dayCycleSettings.timeOfDay.value = v; }, clock);
   document.getElementById('tonemap').addEventListener('change', (e) => { settings.toneMapping = Number(e.target.value); });
   document.getElementById('shadows').addEventListener('change', (e) => { settings.shadowsEnabled = e.target.checked; });
   document.getElementById('quality').addEventListener('change', (e) => applyQuality(e.target.value));
-  document.getElementById('orbit-lights').addEventListener('change', (e) => { orbitLights = e.target.checked; });
+  document.getElementById('orbit-lights').addEventListener('change', (e) => {
+    orbitLights = e.target.checked;
+    if (ringSpin) ringSpin.active = e.target.checked;
+  });
   document.getElementById('auto-rotate').addEventListener('change', (e) => { orbit.auto = e.target.checked; });
   const panel = document.getElementById('panel');
   document.getElementById('toggle-panel').addEventListener('click', () => panel.classList.toggle('open'));
