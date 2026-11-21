@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Omega Engine Demo</title>
+  <link rel="icon" href="data:,">
+  <meta name="description" content="The Omega game engine running in the browser: skinned characters from FBX and COLLADA, animation crossfades, shadows from every light type, linear HDR colour and render to texture.">
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: rgba(16, 19, 27, 0.82);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #e8eaf0;
+      --muted: #9aa1b2;
+      --accent: #7aa2ff;
+      --accent-soft: rgba(122, 162, 255, 0.16);
+      --radius: 12px;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+    #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+    #view:active { cursor: grabbing; }
+
+    header { position: fixed; top: 16px; left: 16px; right: 16px; display: flex; align-items: center; gap: 12px; pointer-events: none; }
+    header h1 { margin: 0; white-space: nowrap; font-size: 18px; font-weight: 650; letter-spacing: 0.2px; }
+    header .tag { font-size: 12px; color: var(--muted); }
+    header .stats { margin-left: auto; font: 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); background: var(--panel); border: 1px solid var(--border); padding: 7px 10px; border-radius: 999px; backdrop-filter: blur(10px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    #panel { position: fixed; top: 64px; right: 16px; bottom: 16px; width: 320px; overflow-y: auto; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); backdrop-filter: blur(14px); padding: 6px 16px 16px; }
+    #panel section { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    #panel section:last-child { border-bottom: 0; }
+    #panel h2 { margin: 0 0 8px; font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    #panel h3 { margin: 0 0 6px; font-size: 14px; font-weight: 600; }
+    #panel h3 small { font-weight: 400; color: var(--muted); }
+    .clips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; }
+    button { font: inherit; color: var(--text); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+    button:hover { border-color: rgba(255, 255, 255, 0.25); }
+    button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: #fff; }
+    .row { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+    .row label { flex: 0 0 92px; color: var(--muted); }
+    .row input[type="range"] { flex: 1; accent-color: var(--accent); }
+    .row output { flex: 0 0 36px; text-align: right; font: 12px ui-monospace, monospace; color: var(--muted); }
+    .row select { flex: 1; font: inherit; color: var(--text); background: #151924; border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px; }
+    .check { display: flex; align-items: center; gap: 8px; margin: 6px 0; color: var(--text); cursor: pointer; }
+    .check input { accent-color: var(--accent); }
+    ul.features { margin: 0; padding-left: 18px; color: var(--muted); }
+    ul.features li { margin: 3px 0; }
+    ul.features b { color: var(--text); font-weight: 600; }
+    .hint { color: var(--muted); font-size: 12px; margin: 8px 0 0; }
+    footer { color: var(--muted); font-size: 12px; }
+    footer a { color: var(--accent); }
+
+    #loading { position: fixed; inset: 0; display: grid; place-items: center; background: var(--bg); z-index: 10; transition: opacity 0.4s; }
+    #loading.done { opacity: 0; pointer-events: none; }
+    #loading .box { width: min(360px, calc(100% - 32px)); }
+    #loading .bar { height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 4px; overflow: hidden; margin: 12px 0 8px; }
+    #loading .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.3s; }
+    #loading p { margin: 0; color: var(--muted); font-size: 13px; }
+    #loading .error { color: #ff8a8a; }
+
+    #toggle-panel { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 2; background: var(--panel); backdrop-filter: blur(10px); }
+    @media (max-width: 720px) {
+      header { left: 16px; right: 16px; }
+      header .tag { display: none; }
+      #panel { top: auto; left: 16px; right: 16px; width: auto; max-height: 55vh; bottom: 64px; display: none; }
+      #panel.open { display: block; }
+      #toggle-panel { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="view"></canvas>
+
+  <header>
+    <h1>Omega Engine</h1>
+    <span class="tag">WebGL 2 game engine, running live in your browser</span>
+    <span class="stats" id="stats">–</span>
+  </header>
+
+  <aside id="panel" aria-label="Demo controls">
+    <section id="characters">
+      <h2>Characters</h2>
+      <!-- filled by main.js -->
+    </section>
+
+    <section>
+      <h2>Lights</h2>
+      <label class="check"><input type="checkbox" id="orbit-lights" checked> Lights and ring move</label>
+      <label class="check"><input type="checkbox" id="shadows" checked> Shadows (all light types)</label>
+      <label class="check"><input type="checkbox" id="day-cycle" checked> Time passes (a day in 2 minutes)</label>
+      <div class="row"><label for="time-of-day">Time of day</label><input type="range" id="time-of-day" min="0" max="24" step="0.1" value="22"><output for="time-of-day"></output></div>
+    </section>
+
+    <section>
+      <h2>Performance</h2>
+      <div class="row"><label for="quality">Quality</label>
+        <select id="quality"><option value="auto">Auto</option><option value="0">Low (phones)</option><option value="1">Medium</option><option value="2">High</option></select></div>
+      <p class="hint" id="quality-info"></p>
+    </section>
+
+    <section>
+      <h2>Image</h2>
+      <div class="row"><label for="tonemap">Tone map</label>
+        <select id="tonemap"><option value="2">ACES filmic</option><option value="1">Reinhard</option><option value="0">None (clamp)</option></select></div>
+      <div class="row"><label for="exposure">Exposure</label><input type="range" id="exposure" min="0.2" max="3" step="0.01" value="1"><output for="exposure"></output></div>
+      <div class="row"><label for="saturation">Saturation</label><input type="range" id="saturation" min="0" max="2" step="0.01" value="1.15"><output for="saturation"></output></div>
+      <div class="row"><label for="contrast">Contrast</label><input type="range" id="contrast" min="0.5" max="2" step="0.01" value="1.05"><output for="contrast"></output></div>
+    </section>
+
+    <section>
+      <h2>Camera</h2>
+      <label class="check"><input type="checkbox" id="auto-rotate" checked> Slowly circle the stage</label>
+      <p class="hint">Drag to orbit, scroll or pinch to zoom.</p>
+    </section>
+
+    <section>
+      <h2>What you are seeing</h2>
+      <ul class="features">
+        <li><b>Skinned meshes</b> deformed on the GPU, joint matrices in a float texture (67 and 99 bones).</li>
+        <li><b>Three model formats</b>: binary FBX (Ely), ASCII FBX (Vampire) and COLLADA (the Vampire's crouch clip).</li>
+        <li><b>Animator</b>: crossfades, speed, loop, in-place root motion; clips shared across files and formats.</li>
+        <li><b>Shadows</b> from the sun, point and spot lights in one shadow atlas.</li>
+        <li><b>Linear HDR</b> lighting with tone mapping, saturation and contrast.</li>
+        <li><b>Render to texture</b>: the monitor shows a second camera live.</li>
+      </ul>
+    </section>
+
+    <section>
+      <footer>
+        Characters and animations from <a href="https://www.mixamo.com" rel="noopener">Mixamo</a>.
+        Built with the Omega engine.
+      </footer>
+    </section>
+  </aside>
+
+  <button id="toggle-panel" type="button" aria-controls="panel">Controls</button>
+
+  <div id="loading">
+    <div class="box">
+      <h1 style="margin:0;font-size:18px">Omega Engine</h1>
+      <div class="bar"><i id="progress"></i></div>
+      <p id="status">Starting…</p>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

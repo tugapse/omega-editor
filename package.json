@@ -1,13 +1,13 @@
 {
   "name": "omega-editor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-docs": "npx typedoc --entryPointStrategy Expand src"
+    "build-docs": "npx typedoc --entryPointStrategy Expand src --cleanOutputDir false"
   },
   "prettier": {
     "overrides": [
@@ -30,7 +30,7 @@
     "cannon-es": "^0.20.0",
     "gl-matrix": "^3.4.4",
     "monaco-editor": "^0.55.1",
-    "omega-game-engine": "^4.0.0",
+    "omega-game-engine": "^5.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^11.1.0",

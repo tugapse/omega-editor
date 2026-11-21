@@ -1,10 +1,35 @@
 # Changelog
 
+## 0.2.0 (2026-11-21)
+
+### Changed
+
+- Requires omega-game-engine 5.0.0.
+
+### Fixed
+
+- Demo: the sky no longer shows streaked stars or banded clouds on phones (engine skybox in `highp`, noise hashes without `sin()`).
+- `SunBehaviour` and `RotateBehaviour` now live in the engine (removed from the editor), so scenes keep them outside the editor too.
+- `SunBehaviour` and `RotateBehaviour` are registered again (they were only imported by the demo generator removed in 0.1.0). Scenes using them lost them when loaded, and saving such a scene dropped them for good.
+- `SunBehaviour` fades the sun's own shadow (`Light.shadowStrength`) with the time of day, instead of the scene-wide strength the engine no longer has. The day strength defaults to 0.75.
+- The "+" menu describes the cube and plane with their real sizes (2×2×2 and 10×10).
+
+### Added
+
+- Demo: "Time passes" checkbox (on by default): the time of day moves on by itself, a day in 2 minutes, and the slider follows it.
+- Engine demo: the sky now shows its stars, clouds and moon (the `SunBehaviour` comes from the engine now), and a "Time of day" slider replaces the Sun intensity slider (the behaviour sets the sun's colour). The ring spins with its own `RotateBehaviour`, stopped by "Lights and ring move".
+- Engine demo: a Performance section with a quality preset (Auto picks Low on phones: half resolution with dynamic resolution, 1024² shadow atlas, 4-tap shadows, no point-light shadows), live render scale and shadow-cache counters, `?quality=low|medium|high` in the URL. The canvas no longer asks for MSAA (the scene is drawn off-screen, so it only cost). "Lights and ring move" now also stops the ring, so a still stage redraws no shadows.
+- Double-clicking an FBX or COLLADA (.dae) file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations), on the ground 4 m in front of the camera. A COLLADA model's textures are found among the project's assets by file name.
+- Scene tree branches can be collapsed; branches with more than 10 descendants (a skeleton) start collapsed.
+
+- The texture picker lists a "Cameras" group: the render textures of the scene's cameras (`Camera.targetTexture`, needs the engine's render to texture). The camera's `targetTexture`, `targetWidth` and `targetHeight` show in its inspector.
+
 ## 0.1.0 (2026-11-20)
 
 Needs `omega-game-engine` 4.0.0. Until it is published to npm, install the local engine with `npm install --no-save ../omega-engine`.
 
 ### Added
+- Demo: "Time passes" checkbox (on by default): the time of day moves on by itself, a day in 2 minutes, and the slider follows it.
 
 - **Project templates:** the New Project dialog offers the API's templates (Empty, Sample). The sample scene and its textures now live in the project, not in the editor.
 - **Code Editor button** on the project page. **Go to Editor** opens the latest scene, or creates "Main Scene" when the project has none.

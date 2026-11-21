@@ -26,7 +26,7 @@ export interface PrimitiveDefinition {
 export const PRIMITIVES: PrimitiveDefinition[] = [
   {
     name: 'Cube',
-    description: 'A 1×1×1 cube.',
+    description: 'A 2×2×2 cube (scale 0.5 for a 1×1×1 one).',
     meshData: () => new CubePrimitive(),
   },
   {
@@ -36,7 +36,7 @@ export const PRIMITIVES: PrimitiveDefinition[] = [
   },
   {
     name: 'Plane',
-    description: 'A flat square on the XZ plane.',
+    description: 'A 10×10 flat square on the XZ plane.',
     meshData: () => new PlanePrimitive(10),
   },
   {
