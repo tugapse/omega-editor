@@ -10,6 +10,8 @@
 
 ### Added
 
+- Double-clicking an FBX file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations).
+
 - The texture picker lists a "Cameras" group: the render textures of the scene's cameras (`Camera.targetTexture`, needs the engine's render to texture). The camera's `targetTexture`, `targetWidth` and `targetHeight` show in its inspector.
 
 ## 0.1.0 (2026-11-20)
