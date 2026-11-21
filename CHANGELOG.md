@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-11-21)
+
+### Changed
+
+- Requires omega-game-engine 5.0.0.
 
 ### Fixed
 
