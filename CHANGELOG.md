@@ -11,6 +11,7 @@
 - The "+" menu describes the cube and plane with their real sizes (2×2×2 and 10×10).
 
 ### Added
+- Demo: "Time passes" checkbox (on by default): the time of day moves on by itself, a day in 2 minutes, and the slider follows it.
 
 - Engine demo: the sky now shows its stars, clouds and moon (the `SunBehaviour` comes from the engine now), and a "Time of day" slider replaces the Sun intensity slider (the behaviour sets the sun's colour). The ring spins with its own `RotateBehaviour`, stopped by "Lights and ring move".
 - Engine demo: a Performance section with a quality preset (Auto picks Low on phones: half resolution with dynamic resolution, 1024² shadow atlas, 4-tap shadows, no point-light shadows), live render scale and shadow-cache counters, `?quality=low|medium|high` in the URL. The canvas no longer asks for MSAA (the scene is drawn off-screen, so it only cost). "Lights and ring move" now also stops the ring, so a still stage redraws no shadows.
@@ -24,6 +25,7 @@
 Needs `omega-game-engine` 4.0.0. Until it is published to npm, install the local engine with `npm install --no-save ../omega-engine`.
 
 ### Added
+- Demo: "Time passes" checkbox (on by default): the time of day moves on by itself, a day in 2 minutes, and the slider follows it.
 
 - **Project templates:** the New Project dialog offers the API's templates (Empty, Sample). The sample scene and its textures now live in the project, not in the editor.
 - **Code Editor button** on the project page. **Go to Editor** opens the latest scene, or creates "Main Scene" when the project has none.

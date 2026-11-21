@@ -153,6 +153,7 @@ async function start() {
 const orbit = { yaw: 0, pitch: 12, distance: 7.5, target: [0, 1.0, 2.6], auto: true };
 const lights = {};
 let orbitLights = true;
+let syncTimeOfDay = null; // set by bindControls: moves the slider with the sun's clock
 let lightTime = 0;
 let last = 0;
 let fpsTime = 0, fpsFrames = 0, fps = 0;
@@ -198,6 +199,7 @@ function frame(now) {
     document.getElementById('stats').textContent = window.innerWidth < 720
       ? `${fps} fps · ${res}% res`
       : `${fps} fps · ${res}% res · ${scene.objects.length} entities · ${bones} bones · ${(verts / 1000).toFixed(0)}k skinned vertices`;
+    syncTimeOfDay?.();
     const info = document.getElementById('quality-info');
     if (info) {
       const st = pipeline.settings;
@@ -282,6 +284,19 @@ function bindControls() {
   slider('contrast', (v) => { settings.contrast.value = v; });
   const clock = (v) => `${String(Math.floor(v) % 24).padStart(2, '0')}:${String(Math.round((v % 1) * 60) % 60).padStart(2, '0')}`;
   slider('time-of-day', (v) => { if (sun) sun.dayCycleSettings.timeOfDay.value = v; }, clock);
+  // SunBehaviour advances timeOfDay by speed * 0.01 hours per second: 20 makes a day last 2 minutes.
+  const DAY_SPEED = 20;
+  const dayCycle = document.getElementById('day-cycle');
+  const setDayCycle = () => { if (sun) sun.dayCycleSettings.speed.value = dayCycle.checked ? DAY_SPEED : 0; };
+  dayCycle.addEventListener('change', setDayCycle);
+  setDayCycle();
+  const timeOut = timeInput.parentElement.querySelector('output');
+  syncTimeOfDay = () => {
+    if (!sun || !dayCycle.checked || document.activeElement === timeInput) return;
+    const v = sun.dayCycleSettings.timeOfDay.value;
+    timeInput.value = v;
+    timeOut.textContent = clock(v);
+  };
   document.getElementById('tonemap').addEventListener('change', (e) => { settings.toneMapping = Number(e.target.value); });
   document.getElementById('shadows').addEventListener('change', (e) => { settings.shadowsEnabled = e.target.checked; });
   document.getElementById('quality').addEventListener('change', (e) => applyQuality(e.target.value));
