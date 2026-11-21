@@ -20,6 +20,9 @@ import { AssetsUploadTriggerService } from './assets-upload-triger.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { combineLatest } from 'rxjs';
+import { instantiateModel } from 'omega-game-engine';
+import { EditorService } from '../../services/editor.service';
+import { SceneTreeService } from '../../services/scene-tree.service';
 
 @Component({
   selector: 'app-assets-explorer',
@@ -45,6 +48,8 @@ export class AssetsExplorerComponent implements AfterViewInit {
   private loadingService: LoadingService = inject(LoadingService);
   private assetsUploadTrigger = inject(AssetsUploadTriggerService);
   private apiAssetService = inject(AssetService);
+  private editorService = inject(EditorService);
+  private sceneTreeService = inject(SceneTreeService);
 
   private _projectId = this.editorState.activeProject;
 
@@ -87,7 +92,36 @@ export class AssetsExplorerComponent implements AfterViewInit {
   }
 
   handleFolderActivation(node: IAsset) {
+    if (AssetsExplorerComponent.isModel(node)) {
+      this.addModelToScene(node);
+      return;
+    }
     this.explorerState.activateFolder(node);
+  }
+
+  /** Model files the engine can place in a scene (binary FBX for now). */
+  static isModel(node: IAsset): boolean {
+    return node.type !== 'folder' && node.type !== 'project' && /\.fbx$/i.test(node.name);
+  }
+
+  /** Places a model in the open scene as an entity tree and selects its root. */
+  private async addModelToScene(node: IAsset): Promise<void> {
+    const scene = this.editorService.scene;
+    if (!scene) return;
+    this.loadingService.show(`A importar ${node.name}...`);
+    try {
+      const { root } = await instantiateModel((scene as any).gl, `asset://${node.id}`, {
+        name: node.name.replace(/\.fbx$/i, ''),
+        scene,
+      });
+      this.editorService.onSceneUpdated.emit(scene);
+      this.sceneTreeService.onEntitySelected.emit(root);
+    } catch (error) {
+      console.error(`Cannot place ${node.name} in the scene`, error);
+      alert(`Não foi possível abrir ${node.name}: ${(error as Error).message}`);
+    } finally {
+      this.loadingService.hide();
+    }
   }
 
   openContextMenu(event: { e: MouseEvent; node: IAsset }) {
