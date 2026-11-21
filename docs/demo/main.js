@@ -203,7 +203,7 @@ function frame(now) {
       const st = pipeline.settings;
       info.textContent = `${qualityLabel}: ${res}% resolution${st.dynamicResolution ? ' (dynamic)' : ''}, ` +
         `${st.shadowMapSize}² shadow atlas, ${st.shadowFilter}-tap filter, ` +
-        `shadow views redrawn ${sh.redrawn}/${sh.views}, ${sh.draws} caster draws.`;
+        `shadow views redrawn ${sh.redrawn}/${sh.views}, ${sh.draws} caster draws. GPU: ${GPU_NAME}.`;
     }
   }
   requestAnimationFrame(frame);
@@ -240,6 +240,10 @@ function buildCharacterUi() {
 }
 
 const QUALITY_NAMES = ['Low', 'Medium', 'High'];
+const GPU_NAME = (() => {
+  const info = gl.getExtension('WEBGL_debug_renderer_info');
+  return String(gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER));
+})();
 let qualityLabel = '';
 
 /** 'auto' picks Low on phones and tablets, High elsewhere; also 'low', 'medium', 'high' or 0–2. */
@@ -247,7 +251,7 @@ function applyQuality(choice) {
   const key = String(choice).toLowerCase();
   const named = { low: 0, medium: 1, high: 2, 0: 0, 1: 1, 2: 2 }[key];
   const auto = named === undefined;
-  const quality = auto ? E.RenderPipelineSettings.suggestedQuality() : named;
+  const quality = auto ? E.RenderPipelineSettings.suggestedQuality(gl) : named;
   scene.renderPipeline.settings.applyQuality(quality);
   qualityLabel = QUALITY_NAMES[quality] + (auto ? ' (auto)' : '');
   const select = document.getElementById('quality');
