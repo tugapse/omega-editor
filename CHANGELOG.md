@@ -10,6 +10,7 @@
 
 ### Added
 
+- Engine demo: a Performance section with a quality preset (Auto picks Low on phones: half resolution with dynamic resolution, 1024² shadow atlas, 4-tap shadows, no point-light shadows), live render scale and shadow-cache counters, `?quality=low|medium|high` in the URL. The canvas no longer asks for MSAA (the scene is drawn off-screen, so it only cost). "Lights and ring move" now also stops the ring, so a still stage redraws no shadows.
 - Double-clicking an FBX or COLLADA (.dae) file in the Asset Explorer places the model in the open scene: bones as entities, a skinned renderer and an Animator (Mixamo characters and animations), on the ground 4 m in front of the camera. A COLLADA model's textures are found among the project's assets by file name.
 - Scene tree branches can be collapsed; branches with more than 10 descendants (a skeleton) start collapsed.
 
