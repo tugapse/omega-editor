@@ -90,3 +90,16 @@
   background-color: #6ee7b7;
   border-radius: 1px;
 }
+
+.tree-node-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  flex-shrink: 0;
+  color: #9ca3af;
+
+  &.empty {
+    pointer-events: none;
+  }
+}

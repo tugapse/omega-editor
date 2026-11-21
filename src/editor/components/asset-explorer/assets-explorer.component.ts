@@ -20,7 +20,7 @@ import { AssetsUploadTriggerService } from './assets-upload-triger.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AssetService } from 'src/app/api/services/asset.service';
 import { combineLatest } from 'rxjs';
-import { instantiateModel } from 'omega-game-engine';
+import { instantiateModel, SceneEntity } from 'omega-game-engine';
 import { EditorService } from '../../services/editor.service';
 import { SceneTreeService } from '../../services/scene-tree.service';
 
@@ -104,6 +104,16 @@ export class AssetsExplorerComponent implements AfterViewInit {
     return node.type !== 'folder' && node.type !== 'project' && /\.fbx$/i.test(node.name);
   }
 
+  /** Puts a new model on the ground (y = 0), 4 m in front of the editor camera. */
+  private placeInFrontOfCamera(root: SceneEntity): void {
+    const camera = this.editorService.camera;
+    if (!camera) return;
+    const eye = camera.transform.worldPosition;
+    const f = camera.transform.forward;
+    const flat = Math.hypot(f[0], f[2]) || 1;
+    root.transform.setLocalPosition(eye[0] + (f[0] / flat) * 4, 0, eye[2] + (f[2] / flat) * 4);
+  }
+
   /** Places a model in the open scene as an entity tree and selects its root. */
   private async addModelToScene(node: IAsset): Promise<void> {
     const scene = this.editorService.scene;
@@ -114,6 +124,7 @@ export class AssetsExplorerComponent implements AfterViewInit {
         name: node.name.replace(/\.fbx$/i, ''),
         scene,
       });
+      this.placeInFrontOfCamera(root);
       this.editorService.onSceneUpdated.emit(scene);
       this.sceneTreeService.onEntitySelected.emit(root);
     } catch (error) {
