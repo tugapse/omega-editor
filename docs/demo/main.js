@@ -72,7 +72,7 @@ E.Resources.setLoader({
 
 // --- Engine, camera, scene -----------------------------------------------------
 
-const gl = canvas.getContext('webgl2', { antialias: true });
+const gl = canvas.getContext('webgl2', { antialias: false }) // the scene is drawn off-screen: canvas MSAA would only cost;
 if (!gl) throw fail('This browser has no WebGL 2.');
 new E.DependencyManager().registerDependencies();
 E.Resources.for(gl);
@@ -110,6 +110,7 @@ async function start() {
   showProgress('Loading the scene…');
   const sceneJson = await (await fetch('assets/scene/showcase.scene')).json();
   scene = await E.SceneManager.loadScene(gl, sceneJson);
+  window.omegaDemo = { E, scene }; // for the console
   scene.setGlRenderingContext(gl);
   engine = new E.Engine();
   engine.initialize(canvas);
@@ -117,6 +118,7 @@ async function start() {
 
   const settings = scene.renderPipeline.settings;
   settings.toneMapping = E.ToneMapping.ACES;
+  applyQuality(new URLSearchParams(location.search).get('quality') ?? 'auto');
 
   for (const def of CHARACTERS) {
     showProgress(`Placing ${def.name}…`);
@@ -180,8 +182,8 @@ function frame(now) {
     };
     swing(lights.magenta, 0, 3.2, 2.2);
     swing(lights.cyan, Math.PI, 3.2, 2.2);
+    if (lights.ring) lights.ring.transform.rotate(0, dt * 20, 0);
   }
-  if (lights.ring) lights.ring.transform.rotate(0, dt * 20, 0);
 
   engine.update(dt);
   engine.render();
@@ -191,9 +193,19 @@ function frame(now) {
     fps = Math.round(fpsFrames / fpsTime); fpsFrames = 0; fpsTime = 0;
     const bones = characters.reduce((n, c) => n + c.bones, 0);
     const verts = characters.reduce((n, c) => n + c.vertices, 0);
+    const pipeline = scene.renderPipeline;
+    const res = Math.round(pipeline.currentRenderScale * 100);
+    const sh = pipeline.shadowMap.stats;
     document.getElementById('stats').textContent = window.innerWidth < 720
-      ? `${fps} fps · ${bones} bones`
-      : `${fps} fps · ${scene.objects.length} entities · ${bones} bones · ${(verts / 1000).toFixed(0)}k skinned vertices`;
+      ? `${fps} fps · ${res}% res`
+      : `${fps} fps · ${res}% res · ${scene.objects.length} entities · ${bones} bones · ${(verts / 1000).toFixed(0)}k skinned vertices`;
+    const info = document.getElementById('quality-info');
+    if (info) {
+      const st = pipeline.settings;
+      info.textContent = `${qualityLabel}: ${res}% resolution${st.dynamicResolution ? ' (dynamic)' : ''}, ` +
+        `${st.shadowMapSize}² shadow atlas, ${st.shadowFilter}-tap filter, ` +
+        `shadow views redrawn ${sh.redrawn}/${sh.views}, ${sh.draws} caster draws.`;
+    }
   }
   requestAnimationFrame(frame);
 }
@@ -228,6 +240,21 @@ function buildCharacterUi() {
   }
 }
 
+const QUALITY_NAMES = ['Low', 'Medium', 'High'];
+let qualityLabel = '';
+
+/** 'auto' picks Low on phones and tablets, High elsewhere; also 'low', 'medium', 'high' or 0–2. */
+function applyQuality(choice) {
+  const key = String(choice).toLowerCase();
+  const named = { low: 0, medium: 1, high: 2, 0: 0, 1: 1, 2: 2 }[key];
+  const auto = named === undefined;
+  const quality = auto ? E.RenderPipelineSettings.suggestedQuality() : named;
+  scene.renderPipeline.settings.applyQuality(quality);
+  qualityLabel = QUALITY_NAMES[quality] + (auto ? ' (auto)' : '');
+  const select = document.getElementById('quality');
+  if (select) select.value = auto ? 'auto' : String(quality);
+}
+
 function bindControls() {
   const find = (name) => scene.objects.find((o) => o.name === name);
   lights.magenta = find('Magenta light');
@@ -250,6 +277,7 @@ function bindControls() {
   slider('sun', (v) => { if (sun && sunColor) sun.color = new E.Color(sunColor[0] * v, sunColor[1] * v, sunColor[2] * v, 1); });
   document.getElementById('tonemap').addEventListener('change', (e) => { settings.toneMapping = Number(e.target.value); });
   document.getElementById('shadows').addEventListener('change', (e) => { settings.shadowsEnabled = e.target.checked; });
+  document.getElementById('quality').addEventListener('change', (e) => applyQuality(e.target.value));
   document.getElementById('orbit-lights').addEventListener('change', (e) => { orbitLights = e.target.checked; });
   document.getElementById('auto-rotate').addEventListener('change', (e) => { orbit.auto = e.target.checked; });
   const panel = document.getElementById('panel');

@@ -87,9 +87,16 @@
 
     <section>
       <h2>Lights</h2>
-      <label class="check"><input type="checkbox" id="orbit-lights" checked> Coloured lights orbit the stage</label>
+      <label class="check"><input type="checkbox" id="orbit-lights" checked> Lights and ring move</label>
       <label class="check"><input type="checkbox" id="shadows" checked> Shadows (all light types)</label>
       <div class="row"><label for="sun">Sun</label><input type="range" id="sun" min="0" max="2" step="0.01" value="1"><output for="sun"></output></div>
+    </section>
+
+    <section>
+      <h2>Performance</h2>
+      <div class="row"><label for="quality">Quality</label>
+        <select id="quality"><option value="auto">Auto</option><option value="0">Low (phones)</option><option value="1">Medium</option><option value="2">High</option></select></div>
+      <p class="hint" id="quality-info"></p>
     </section>
 
     <section>
