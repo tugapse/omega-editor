@@ -11,6 +11,7 @@ import {
   ObjectInstanciator,
   ClassMetadata,
   ClassType,
+  TerrainBehaviour,
 } from 'omega-game-engine';
 
 import { DropdownItem } from 'src/app/components/dropdown/dropdown';
@@ -27,6 +28,7 @@ import {
 } from '../object-inspector/object-inspector';
 import { TransformInspector } from '../transform-inspector/transform-inspector';
 import { TextInputInspector } from '@editor/components/inspector-components/text-input-inspector/text-input-inspector';
+import { TerrainInspector } from '../terrain-inspector/terrain-inspector';
 
 @Component({
   selector: 'editor-entity-inspector',
@@ -41,6 +43,7 @@ import { TextInputInspector } from '@editor/components/inspector-components/text
     CommonModule,
     DefaultInspector,
     TextInputInspector,
+    TerrainInspector,
   ],
   templateUrl: './entity-inspector.html',
   styleUrl: './entity-inspector.scss',
@@ -53,6 +56,7 @@ export class EntityInspector extends ObjectInspector {
     'name',
     'active',
     'updateInEditor',
+    'transient',
     'entityType',
     'show',
     'tag',
@@ -156,6 +160,10 @@ export class EntityInspector extends ObjectInspector {
       (b) => b.name !== 'EntityBehaviour' && b.name !== 'RenderBehaviour',
     ) as ClassMetadata[];
     this.isAddBehaviourMenuOpen = true;
+  }
+
+  isTerrain(behaviour: EntityBehaviour): boolean {
+    return behaviour instanceof TerrainBehaviour;
   }
 
   onBehaviourSelected(behaviour: ClassMetadata) {

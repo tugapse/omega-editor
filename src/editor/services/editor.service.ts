@@ -8,6 +8,7 @@ import {
   Scene,
 } from "omega-game-engine";
 import { BehaviorSubject } from "rxjs";
+import type { TerrainToolState } from "@editor/behaviours/scene-editor/terrain-edit.behaviour";
 import { GizmoMode } from "../behaviours/scene-editor/gizmo-mode.enum";
 import { TransformSpace } from "../behaviours/scene-editor/transform-space.enum";
 import { EditorStateService } from "./editor-state.service";
@@ -43,6 +44,10 @@ export class EditorService {
   public onUpdateFrame = new BehaviorSubject<number>(0);
 
   public gizmoMode = new BehaviorSubject<GizmoMode>(GizmoMode.Translate);
+  /** The terrain tool picked in the terrain inspector (null: none, the mouse selects as usual). */
+  public terrainTool = new BehaviorSubject<TerrainToolState | null>(null);
+  /** A terrain stroke ended (undo and redo can change). */
+  public terrainHistoryChanged = new EventEmitter<void>();
   public transformSpace = new BehaviorSubject<TransformSpace>(
     TransformSpace.Local,
   );
