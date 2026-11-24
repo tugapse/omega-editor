@@ -83,7 +83,8 @@ export class SceneTree {
 
   prepareObjects() {
     if (!this.scene) return;
-    const sceneObjects = this.scene.objects;
+    // Entities made at run time by others (a terrain's chunks) are not listed.
+    const sceneObjects = this.scene.objects.filter((o) => !o.transient);
     this.treeNodeMap = sceneObjects.reduce((acc, curr) => {
       return { ...acc, [curr.uuid]: curr };
     }, {});
