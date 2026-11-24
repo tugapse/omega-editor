@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0 (2026-11-24)
+
+### Added
+
+- Terrain editing. A terrain entity (add the `TerrainBehaviour`; it starts with one 128 m chunk) shows its own inspector with four tabs:
+  - Esculpir: raise, lower, smooth, flatten and noise with the left button in the viewport (the right button still moves the camera), brush size, strength and hardness, undo and redo, a relief generator, heightmap import (PNG, R16) and export.
+  - Pintar: paint a layer or erase the painting, apply the rules (writes them into the painting, to touch up by hand), clear the painting.
+  - Camadas: the layers' textures, tiling, relief and height and slope rules, add, remove and reorder layers, blend by height, large-scale variation, triplanar on slopes.
+  - Blocos: a grid of the chunks, + to add one beside them, click one to remove it.
+- The brush is drawn as a ring on the ground; while a terrain tool is picked, clicks no longer select entities or move gizmos.
+
+### Changed
+
+- Requires omega-game-engine 6.0.0.
+- A terrain's chunks are not listed in the scene tree; clicking one in the viewport selects the terrain.
+
 ## 0.2.0 (2026-11-21)
 
 ### Changed
