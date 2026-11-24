@@ -1,0 +1,128 @@
+<editor-inpector-toggle-panel [title]="'Terreno'" [collapsed]="false">
+  <nav class="tabs">
+    <button [class.on]="tab === 'sculpt'" (click)="setTab('sculpt')">Esculpir</button>
+    <button [class.on]="tab === 'paint'" (click)="setTab('paint')">Pintar</button>
+    <button [class.on]="tab === 'layers'" (click)="setTab('layers')">Camadas</button>
+    <button [class.on]="tab === 'chunks'" (click)="setTab('chunks')">Blocos</button>
+  </nav>
+
+  @if (tab === 'sculpt' || tab === 'paint') {
+    <div class="tools">
+      @if (tab === 'sculpt') {
+        @for (t of sculptTools; track t.id) {
+          <button [class.on]="tool === t.id" (click)="setTool(t.id)" [title]="t.label">
+            <span class="i">{{ t.icon }}</span>{{ t.label }}
+          </button>
+        }
+      } @else {
+        <button [class.on]="tool === 'paint'" (click)="setTool('paint')"><span class="i">✎</span>Pintar</button>
+        <button [class.on]="tool === 'erase'" (click)="setTool('erase')"><span class="i">⌫</span>Apagar</button>
+      }
+    </div>
+
+    @if (tab === 'paint') {
+      <div class="swatches">
+        @for (l of layers; track $index) {
+          <button class="swatch" [class.on]="layer === $index" [style.background-image]="swatch(l.ground)" [title]="l.name" (click)="pickLayer($index)"></button>
+        }
+      </div>
+    }
+
+    <p class="hint">
+      @if (tool) { Botão esquerdo no viewport; o direito move a câmara. } @else { Escolhe uma ferramenta. }
+    </p>
+
+    <label class="row">Tamanho <input type="range" min="1" max="80" [value]="brush.radius" (input)="setBrush('radius', $event)"><span>{{ brush.radius }} m</span></label>
+    <label class="row">Força <input type="range" min="2" max="100" [value]="brush.strength * 100" (input)="setBrush('strength', $event)"><span>{{ (brush.strength * 100).toFixed(0) }}</span></label>
+    <label class="row">Dureza <input type="range" min="0" max="95" [value]="brush.hardness * 100" (input)="setBrush('hardness', $event)"><span>{{ (brush.hardness * 100).toFixed(0) }}</span></label>
+
+    <div class="actions">
+      <button (click)="undo()" [disabled]="!canUndo">↶ Anular</button>
+      <button (click)="redo()" [disabled]="!canRedo">↷ Refazer</button>
+      @if (tab === 'paint') {
+        <button (click)="bake()">Aplicar regras</button>
+        <button (click)="clearPainting()">Limpar pintura</button>
+      }
+    </div>
+
+    @if (tab === 'sculpt') {
+      <editor-inpector-toggle-panel [title]="'Gerar relevo'" [isChild]="true" [collapsed]="true">
+        <label class="row">Semente <input type="number" [value]="relief.seed" (change)="setRelief('seed', $event)"></label>
+        <label class="row">Altura <input type="number" [value]="relief.amplitude" (change)="setRelief('amplitude', $event)"><span>m</span></label>
+        <label class="row">Escala <input type="number" [value]="relief.scale" (change)="setRelief('scale', $event)"><span>m</span></label>
+        <label class="row">Cristas <input type="range" min="0" max="1" step="0.05" [value]="relief.ridges" (input)="setRelief('ridges', $event)"></label>
+        <div class="actions"><button (click)="generate()">Gerar</button></div>
+      </editor-inpector-toggle-panel>
+      <editor-inpector-toggle-panel [title]="'Mapa de alturas'" [isChild]="true" [collapsed]="true">
+        <div class="actions">
+          <label class="file">Importar PNG ou R16<input type="file" accept=".png,.jpg,.r16,.raw" (change)="importFile($event)"></label>
+          <button (click)="exportPng()">Exportar PNG</button>
+          <button (click)="exportRaw()">Exportar R16</button>
+        </div>
+      </editor-inpector-toggle-panel>
+    }
+  }
+
+  @if (tab === 'layers') {
+    <p class="hint">As camadas de baixo cobrem as de cima onde as suas regras se aplicam. A primeira é a base.</p>
+    @for (l of layers; track $index; let i = $index) {
+      <div class="layer" [class.open]="openLayer === i">
+        <div class="layer-head" (click)="openLayer = openLayer === i ? -1 : i">
+          <span class="swatch small" [style.background-image]="swatch(l.ground)"></span>
+          <span class="name">{{ l.name }}</span>
+          <span class="tag">{{ i === 0 ? 'base' : l.auto ? 'regras' : 'só pintura' }}</span>
+          <app-icon iconName="fa-arrow-up" (click)="moveLayer(i, -1); $event.stopPropagation()"></app-icon>
+          <app-icon iconName="fa-arrow-down" (click)="moveLayer(i, 1); $event.stopPropagation()"></app-icon>
+          <app-icon iconName="fa-trash" (click)="removeLayer(i); $event.stopPropagation()"></app-icon>
+        </div>
+        @if (openLayer === i) {
+          <label class="row">Nome <input type="text" [value]="l.name" (change)="setName(l, $event)"></label>
+          <label class="row">Textura
+            <select (change)="setGround(l, $event)">
+              @for (g of grounds; track g.id) { <option [value]="g.id" [selected]="g.id === l.ground">{{ g.label }}</option> }
+            </select>
+          </label>
+          <label class="row">Repetição <input type="number" step="0.5" [value]="l.tiling" (change)="setLayerNumber(l, 'tiling', $event)"><span>m</span></label>
+          <label class="row">Relevo <input type="number" step="0.1" [value]="l.normalStrength" (change)="setLayerNumber(l, 'normalStrength', $event)"></label>
+          @if (i > 0) {
+            <label class="row check">Regras automáticas <input type="checkbox" [checked]="l.auto" (change)="toggleAuto(l)"></label>
+            @if (l.auto) {
+              <div class="pair">Altura
+                <input type="number" [value]="l.height[0]" (change)="setRange(l, 'height', 0, $event)">
+                <input type="number" [value]="l.height[1]" (change)="setRange(l, 'height', 1, $event)"><span>m</span>
+              </div>
+              <label class="row">Esbater altura <input type="number" [value]="l.heightBlend" (change)="setLayerNumber(l, 'heightBlend', $event)"><span>m</span></label>
+              <div class="pair">Inclinação
+                <input type="number" [value]="l.slope[0]" (change)="setRange(l, 'slope', 0, $event)">
+                <input type="number" [value]="l.slope[1]" (change)="setRange(l, 'slope', 1, $event)"><span>°</span>
+              </div>
+              <label class="row">Esbater inclinação <input type="number" [value]="l.slopeBlend" (change)="setLayerNumber(l, 'slopeBlend', $event)"><span>°</span></label>
+              <label class="row">Ruído na borda <input type="number" [value]="l.noise" (change)="setLayerNumber(l, 'noise', $event)"><span>m</span></label>
+            }
+          }
+        }
+      </div>
+    }
+    <div class="actions">
+      <button (click)="addLayer()" [disabled]="layers.length >= maxLayers">+ Camada</button>
+    </div>
+    <label class="row">Mistura por altura <input type="range" min="0" max="1" step="0.05" [value]="material.heightBlend" (input)="setMaterialNumber('heightBlend', $event)"></label>
+    <label class="row">Variação larga <input type="range" min="0" max="1" step="0.05" [value]="material.macroVariation" (input)="setMaterialNumber('macroVariation', $event)"></label>
+    <label class="row check">Triplanar nas encostas <input type="checkbox" [checked]="material.triplanar" (change)="toggleTriplanar()"></label>
+  }
+
+  @if (tab === 'chunks') {
+    <p class="hint">Blocos de {{ settings.size }} m com {{ settings.resolution }} × {{ settings.resolution }} células. Clica num + para acrescentar um bloco; num bloco para o apagar.</p>
+    <div class="grid">
+      @for (row of cells; track $index) {
+        <div class="grid-row">
+          @for (c of row; track $index) {
+            <button class="cell {{ c.state }}" [disabled]="c.state === 'empty'" (click)="cellClicked(c)" [title]="c.cx + ', ' + c.cz">
+              {{ c.state === 'free' ? '+' : c.state === 'chunk' ? c.cx + ',' + c.cz : '' }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+</editor-inpector-toggle-panel>

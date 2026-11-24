@@ -15,6 +15,7 @@ import { AssetService } from "src/app/api/services/asset.service";
 import { EntityPicker as EditorEntityPicker } from "./behaviours/scene-editor/entitypick.behaviour";
 import { GizmosBoxBehaviour } from "./behaviours/scene-editor/gizmos-behaviour";
 import { EditorGridBehaviour } from "./behaviours/scene-editor/grid-behaviour";
+import { TerrainEditBehaviour } from "./behaviours/scene-editor/terrain-edit.behaviour";
 import { AssetsExplorerComponent } from "./components/asset-explorer/assets-explorer.component";
 import { Canvas, EngineStats } from "./components/canvas/canvas";
 import { EngineStatsComponent } from "./components/engine-stats/engine-stats";
@@ -77,6 +78,7 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
   protected editorGridBehaviour!: EditorGridBehaviour;
   protected gizmosBehaviour!: GizmosBoxBehaviour;
   protected editorPickerBehaviour!: EditorEntityPicker;
+  protected terrainEditBehaviour?: TerrainEditBehaviour;
 
   private toastTimeout: any;
   private settings!: EditorSettings;
@@ -277,13 +279,16 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
   }
 
   private onRenderFrame(): void {
-    this.gizmosBehaviour?.draw();
-    this.editorPickerBehaviour?.draw();
+    if (!this.terrainEditBehaviour?.mouseClaimed) {
+      this.gizmosBehaviour?.draw();
+      this.editorPickerBehaviour?.draw();
+    }
     this.editorGridBehaviour?.draw();
   }
 
   private onUpdateFrame(ellapsed: number): void {
-    this.gizmosBehaviour?.updateEditor(ellapsed);
+    this.terrainEditBehaviour?.updateEditor(ellapsed);
+    if (!this.terrainEditBehaviour?.mouseClaimed) this.gizmosBehaviour?.updateEditor(ellapsed);
     this.editorPickerBehaviour?.update(ellapsed);
     this.editorGridBehaviour?.update(ellapsed);
   }
@@ -316,6 +321,7 @@ export class Editor implements OnDestroy, AfterViewInit, OnInit {
       this.sceneTreeService,
     );
     this.editorPickerBehaviour.boundingBehaviour = this.gizmosBehaviour;
+    this.terrainEditBehaviour = new TerrainEditBehaviour(this.gl, this.editorService);
 
     if (this.settings) {
       this.updateEditorSettings(this.settings);

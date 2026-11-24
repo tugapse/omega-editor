@@ -51,10 +51,12 @@ export class EntityPicker extends RendererBehaviour {
       if (this.canSelectEntity()) {
         this.lastClickedId = this.selectedEntityId;
 
-        const selectedEntity =
+        let selectedEntity =
           this.selectedEntityId > 0
             ? (this.parent as Scene).objects[this.selectedEntityId - 1]
             : undefined;
+        // A terrain's chunks are made by it: clicking one selects the terrain.
+        if (selectedEntity?.transient) selectedEntity = selectedEntity.transform.parent?.parentEntity ?? undefined;
         this.sceneTreeService.onEntitySelected.emit(selectedEntity);
       }
     }

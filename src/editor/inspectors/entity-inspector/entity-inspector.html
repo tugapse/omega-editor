@@ -69,13 +69,17 @@
 
     @if (entity.behaviours.length > 0) {
       @for (behaviour of entity.behaviours; track $index) {
-        <editor-behaviour-inspector
+        @if (isTerrain(behaviour)) {
+          <editor-terrain-inspector [terrain]="$any(behaviour)"></editor-terrain-inspector>
+        } @else {
+          <editor-behaviour-inspector
           [behaviour]="behaviour"
           [label]="
             behaviour.className.capitalize() +
             (behaviour.name ? ': ' + behaviour.name : '')
           "
         ></editor-behaviour-inspector>
+        }
       }
     }
   }
